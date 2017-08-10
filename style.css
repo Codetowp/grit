@@ -2556,7 +2556,7 @@ ul.about-features {
 }
 ul.about-features li {
 	list-style: none;
-	width: calc(100% / 2);
+	width: calc(85% / 2);
 	float: left;
 	padding-left: 12%;
 	margin-bottom: 75px;
