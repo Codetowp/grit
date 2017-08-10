@@ -145,7 +145,8 @@ p a:hover {
 dt {
 	margin-bottom:5px;
 }
-p, dd, td {
+
+dd, td {
 	margin: 0 0 20px;
 	line-height: 22px;	
     color: #73757d;
