@@ -40,7 +40,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_header', array(
             'title'                     => __('Header Intro', 'grit'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 99,
+            'priority'                  => 100,
 
         ));
 
@@ -62,17 +62,108 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_heder_text', array(      
-            'default'                   => 'Create your own website with our free themes.' ,
+            'default'                   => 'Dcrazed says' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
+            'transport'                 => 'refresh', // refresh or postMessage              
         ) );    
 
-        $wp_customize->add_control( 'dblogger_heder_text', array(
+        $wp_customize->add_control( 'grit_heder_text', array(
             'type'						=> 'text',
             'label' 					=> __( 'Heading', 'grit' ),
             'section'  					=> 'grit_header',
             'priority' 					=> 2,
+        ) );
+    
+
+        $wp_customize->add_setting( 'grit_header_description', array(      
+            'default'                   => '' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_header_description', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Description', 'grit' ),
+            'section'  					=> 'grit_header',
+            'priority' 					=> 3,
         ) );	
+    
+/********* about us **********/
+        
+        $wp_customize->add_section('grit_about_section', array(
+            'title'                     => __('About Section', 'grits'),
+
+            'priority'                  => 101,
+
+        ));
+
+        $wp_customize->add_setting( 'grit_about_heading', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_about_heading', array(
+            'label'                     => __( 'Heading', 'grit' ),
+            'section'                   => 'grit_about_section',
+            'settings'                  => 'grit_about_heading',
+            'context'                   => 'grit_about_heading',
+            'priority'                  => 1,
+            ) 
+        ) );
+    
+        $wp_customize->add_setting( 'grit_about_description', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_about_description', array(
+            'label'                     => __( 'Description', 'grit' ),
+            'section'                   => 'grit_about_section',
+            'settings'                  => 'grit_about_description',
+            'context'                   => 'grit_about_description',
+            'priority'                  => 2,
+            ) 
+        ) );
+    
+
+        $wp_customize->add_setting( 'grit_about_button_text', array(      
+            'default'                   => 'click more' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_about_button_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Text', 'grit' ),
+            'section'  					=> 'grit_about_section',
+            'priority' 					=> 4,
+        ) );	
+
+
+        $wp_customize->add_setting( 'grit_about_button_url', array(      
+            'default'                   => 'www.burstfly.com' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_about_button_url', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Url', 'grit' ),
+            'section'  					=> 'grit_about_section',
+            'priority' 					=> 5
+        ) );	  
+
+    
+    
+    
+    
+
 }
 add_action( 'customize_register', 'grit_customize_register' );
 

@@ -26,8 +26,8 @@ get_header(); ?>
   <div class="content">
     <div class="container"  data-wow-duration="1s"> 
         <span class="wow fadeIn">
-        <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_textv' ) )?
-                    ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
+            <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_text' ) )?
+            ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
         </span>
       <h1 class="wow fadeInUp">We put true <span>focus</span> on our design <span>process</span>, the concept, prototypes and <span>design</span>. </h1>
     </div>

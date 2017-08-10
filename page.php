@@ -14,25 +14,42 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
 
-			<?php
-			while ( have_posts() ) : the_post();
+<!-- banner Page
+    ==========================================-->
+<div id="page-banner" style="background-image: url(img/in-bg.jpg);">
+  <div class="content  wow fdeInUp">
+    <div class="container ">
+      <h1>Typography </h1>
+    </div>
+  </div>
+</div>
 
-				get_template_part( 'template-parts/content', 'page' );
+<!--page body-->
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+<div id="page-body">
+    <div class="container">
+        <div class="row  wow fdeInUp "> 
+        <!--blog posts container-->
+            <div class="col-md-12 page-block"   >
+                
+               <?php
+                    if(have_posts()):
+                    while ( have_posts() ) : the_post();
+                ?> 
+                    <h1><?php the_title();?></h1>
+                     <p><?php the_content();?></p>
+                 <?php endwhile;endif;?>
+                
+            </div>
+            <!--blog posts container-->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 
-			endwhile; // End of the loop.
-			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
