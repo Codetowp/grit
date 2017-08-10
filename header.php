@@ -29,7 +29,7 @@
     $fav_img   = esc_url( get_theme_mod( 'logo' ) );   
     $fav_img_static   = get_template_directory_uri()."/img/favicon.ico";
     $image = $fav_img ? "$fav_img" : "$fav_img_static"; 
-    echo "fff";
+    
 ?>
 <link rel="shortcut icon" href="<?php echo $image; ?>" type="image/x-icon">
 
