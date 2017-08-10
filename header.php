@@ -44,7 +44,7 @@
 <?php wp_head(); ?>  
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 <!-- Navigation
     ==========================================-->
 <nav id="top-menu" class="navbar navbar-default navbar-fixed-top">

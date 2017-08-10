@@ -113,6 +113,29 @@ function grit_widgets_init() {
 }
 add_action( 'widgets_init', 'grit_widgets_init' );
 
+// Custom Theme Functions
+	require get_template_directory() . '/inc/lib/related-post.php';
+
+add_image_size( 'grit_recent_post', 262, 163,  array( 'top', 'center' ) );
+
+
+// Breadcrumb Function
+function the_breadcrumb() {
+	if (!is_home()) {
+		echo '<a href="';
+		echo home_url('home');
+		echo '">';
+		echo __('Home', 'dblogger');
+		echo "</a> / ";
+		if (is_category() || is_single()) {
+			the_category('title_li=');			
+		} elseif (is_page()) {
+			echo the_title();
+		}
+	}
+}
+
+
 /**
  * Enqueue scripts and styles.
  */
