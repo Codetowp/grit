@@ -46,15 +46,16 @@ get_header(); ?>
                 if(have_posts()):		  
 	               while ( have_posts() ) : the_post();
             ?>
-                    <p> <?php echo the_content();?> </p>
+                    <?php echo the_content();?>
             <?php endwhile;endif;?>
         </article>
         <footer class="entry-footer entry-meta-bar">
           <div class="entry-meta"> 
               <i class="fa fa-tags"></i> 
               <span class="tag-links  clearfix"> 
+			  <?php grit_entry_footer(); ?>
                  <?php
-                    $args = array('orderby' => 'name','parent' => 0,'category__in'   => wp_get_post_categories( get_the_ID() ),);
+                 /*   $args = array('orderby' => 'name','parent' => 0,'category__in'   => wp_get_post_categories( get_the_ID() ),);
                     $categories = get_categories( $args );
                     if($categories!='')
                     {
@@ -62,7 +63,7 @@ get_header(); ?>
                        {
                           echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
                        }
-                     }
+                     }*/
                   ?>
               </span> 
             </div>
