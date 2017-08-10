@@ -14,33 +14,25 @@
 
 get_header(); ?>
 
-
 <!-- banner Page
     ==========================================-->
 <div id="page-banner" style="background-image: url(img/in-bg.jpg);">
-  <div class="content  wow fdeInUp">
-    <div class="container ">
-      <h1>Typography </h1>
+  <div class="content wow fadeInUp">
+    <div class="container">
+      <h1><?php the_title();?></h1>
     </div>
   </div>
 </div>
 
 <!--page body-->
-
 <div id="page-body">
     <div class="container">
-        <div class="row  wow fdeInUp "> 
+        <div class="row  wow fadeInUp"> 
         <!--blog posts container-->
-            <div class="col-md-12 page-block"   >
-                
-               <?php
-                    if(have_posts()):
-                    while ( have_posts() ) : the_post();
-                ?> 
-                    <h1><?php the_title();?></h1>
-                     <p><?php the_content();?></p>
-                 <?php endwhile;endif;?>
-                
+            <div class="col-md-12 page-block">                
+				<?php if(have_posts()): while ( have_posts() ) : the_post(); ?> 
+					<?php the_content();?>
+                <?php endwhile;endif;?>                
             </div>
             <!--blog posts container-->
             <div class="clearfix"></div>
@@ -48,8 +40,5 @@ get_header(); ?>
     </div>
 </div>
 
-
-
 <?php
-//get_sidebar();
 get_footer();
