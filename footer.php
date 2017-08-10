@@ -47,7 +47,7 @@
   </div>
 </footer>
 <?php wp_footer(); ?>
-
+<?php if (is_front_page()){ ?>
 <script>
     jQuery(document).ready(function( $ ) {
         $('.counter').counterUp({
@@ -56,6 +56,7 @@
         });
     });
 </script> 
+<?php } ?>
 <script>
 new WOW().init();
 </script>
