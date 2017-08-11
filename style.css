@@ -50,8 +50,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /*--------------------
 1.0 Normalize
 --------------------*/
-
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600|Montserrat:100,200,300,300i,400,500,600,700,800,900');
 /*
 fonts used
 
@@ -641,7 +639,8 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	line-height: 1;
 	color: #ffffff;
 	text-align: center;
-	white-space: nowrap;
+	white-space: nowrap;	
+	margin-right:2px;
 	vertical-align: baseline;
 	border-radius: .25em;
 }
@@ -828,6 +827,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 	font-size: 11px;
 	line-height: 1.42857143;
 	border-radius: 4px;
+	margin-right:4px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
