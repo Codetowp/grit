@@ -54,17 +54,6 @@ get_header(); ?>
               <i class="fa fa-tags"></i> 
               <span class="tag-links  clearfix"> 
 			  <?php grit_entry_footer(); ?>
-                 <?php
-                 /*   $args = array('orderby' => 'name','parent' => 0,'category__in'   => wp_get_post_categories( get_the_ID() ),);
-                    $categories = get_categories( $args );
-                    if($categories!='')
-                    {
-                       foreach ( $categories as $category ) 
-                       {
-                          echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
-                       }
-                     }*/
-                  ?>
               </span> 
             </div>
         </footer>

@@ -8,7 +8,11 @@
  */
 
 ?>
-
+<div id="page-body">
+  <div class="container">
+    <div class="row  wow fdeInUp"> 
+      <!--blog page container-->
+      <div class="col-md-9 col-sm-7 col-xs-12 page-block "   > 
 <section class="no-results not-found">
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'grit' ); ?></h1>
@@ -48,3 +52,8 @@
 		endif; ?>
 	</div><!-- .page-content -->
 </section><!-- .no-results -->
+
+        </div>
+      </div>
+    </div>
+</div>
