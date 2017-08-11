@@ -2057,6 +2057,26 @@ aside li a:hover {
 .widget_social .fa-pinterest {
 	background: #3fccfd;
 }
+
+.widget_social .fa-dribbble {
+	background: #ea4c89;
+}
+
+.widget_social .fa-behance {
+	background: #006ffb;
+}
+
+.widget_social .fa-instagram {
+	background: #893a8b;
+}
+
+.widget_social .fa-youtube-play {
+	background: #c71d20;
+}
+.widget_social .fa-youtube {
+	background: #c71d20;
+}
+
 .widget_tag_cloud .tagcloud a {
 	margin-top: 5px;
 }
