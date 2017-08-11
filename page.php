@@ -27,7 +27,7 @@ get_header(); ?>
 <!--page body-->
 <div id="page-body">
     <div class="container">
-        <div class="row  wow fadeInUp"> 
+        <div class="row wow fadeInUp"> 
         <!--blog posts container-->
             <div class="col-md-12 page-block">                
 				<?php if(have_posts()): while ( have_posts() ) : the_post(); ?> 
