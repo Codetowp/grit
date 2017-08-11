@@ -110,8 +110,12 @@ function grit_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    require get_template_directory() . '/inc/widgets/social.php';  
 }
 add_action( 'widgets_init', 'grit_widgets_init' );
+
+//recent post widget
+require get_template_directory() . '/inc/widgets/recentpost.php';
 
 // Custom Theme Functions
 	require get_template_directory() . '/inc/lib/related-post.php';

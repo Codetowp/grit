@@ -31,12 +31,21 @@
             <span class="icon-bar"></span> 
             <span class="icon-bar"></span>
         </button>
-        <?php
-            $logo_img   = esc_url( get_theme_mod( 'logo' ) );   
-            $logo_img_static   = get_template_directory_uri()."/img/logo-top.png";
-            $image = $logo_img ? "$logo_img" : "$logo_img_static";      
+        <?php  
+                $custom_logo = get_theme_mod( 'custom_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo , 'full' );
+                $logo_img_static   = get_template_directory_uri()."/img/logo-top.png";
+                
+                if ( has_custom_logo() ) 
+                {
+                    $img='<img src="'. esc_url( $logo[0] ) .'" class="img-responsive">';
+                } 
+                else 
+                {
+                    $img='<img src="'.$logo_img_static.'" class="img-responsive">';
+                }
         ?>
-      <a class="navbar-brand" href="<?php echo esc_url( get_home_url() ); ?>"><img src="<?php echo $image; ?>" class="img-responsive"><span><?php echo bloginfo( 'name' ); ?></span></a> 
+      <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>"><?php echo $img; ?><span><?php echo bloginfo( 'name' ); ?></span></a> 
     </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->

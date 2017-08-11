@@ -4629,3 +4629,8 @@ ul.about-features li i {
 }
  @media (max-width: 360px) {
 }
+
+/*edited file*/
+time.updated{
+    display: none;
+}
