@@ -27,7 +27,7 @@ get_header(); ?>
         <h1><?php the_title(); ?> </h1>
         <hr>
 		<?php grit_posted_on(); ?>
-        <span class="date-article"><?php get_option('d F Y');?><!--JULY 13 2017--></span> <span class="byline"> By <span class="author vcard"><a href="#">Rijo</a> ,<a href="#"> BLOG</a></span></span> 
+        
 	  </div>
     </div>
     <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
