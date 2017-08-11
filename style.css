@@ -1319,6 +1319,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
 	background-color: #1393fd;
 	border-color: #337ab7;
 }
+.panel .panel-title{margin-bottom:0;}
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
 	border: #1393fd 1px solid;
 }
@@ -1538,6 +1539,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
 	padding: 15px;
 	background: #f0f2f7;
 }
+.page .page-block .nav-tabs > li, .single .nav-tabs > li{margin:0;}
 
 /*----------------------
 3.8 Tables, Others
