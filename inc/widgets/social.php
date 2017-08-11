@@ -55,7 +55,7 @@ class Grit_Premium extends WP_Widget{
               
               
                <?php if( !empty( $instance['rss'] ) ){?>
-            <li ><a href="<?php if( !empty( $instance['rss'] ) ): echo apply_filters( 'widget_title', $instance['rss'] ); endif; ?>" title="behance"><i class="fa fa-rss"></i></a> </li>
+            <li ><a href="<?php if( !empty( $instance['rss'] ) ): echo apply_filters( 'widget_title', $instance['rss'] ); endif; ?>" title="rss"><i class="fa fa-rss"></i></a> </li>
               <?php }?>
               
               
@@ -67,7 +67,9 @@ class Grit_Premium extends WP_Widget{
             <li ><a href="<?php if( !empty( $instance['behance'] ) ): echo apply_filters( 'widget_title', $instance['behance'] ); endif; ?>" title="behance"><i class="fa fa-behance"></i></a> </li>
               <?php }?>
               
-              
+               <?php if( !empty( $instance['youtube'] ) ){?>
+            <li ><a href="<?php if( !empty( $instance['youtube'] ) ): echo apply_filters( 'widget_title', $instance['youtube'] ); endif; ?>" title="youtube"><i class="fa fa-youtube"></i></a> </li>
+              <?php }?>
               
               
               
@@ -200,6 +202,15 @@ class Grit_Premium extends WP_Widget{
 
         </p>      
               
+        <p>
+
+            <label for="<?php echo $this->get_field_id('youtube'); ?>"><?php esc_html_e( 'Youtube Url', 'grit' ); ?></label><br/>
+
+            <input type="text" name="<?php echo $this->get_field_name('youtube'); ?>"
+                   id="<?php echo $this->get_field_id('youtube'); ?>" value="<?php if( !empty( $instance['youtube'] ) ): echo $instance['youtube']; endif; ?>"
+                   class="widefat"/>
+
+        </p>
         
     <?php
 
