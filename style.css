@@ -157,7 +157,7 @@ address{
 }
 
 b, strong {
-	color: #5a5a5a;
+	
 }
 
 dfn,
@@ -384,6 +384,7 @@ a.navbar-brand:hover span {
 	background-image: none;
 	border: 1px solid transparent;
 	white-space: nowrap;
+	font-family: 'Montserrat', sans-serif;
 	padding: 12px 50px;
 	font-size: 10px;
 	line-height: 1.42857143;
@@ -639,6 +640,7 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	line-height: 1;
 	color: #ffffff;
 	text-align: center;
+	font-family: 'Montserrat', sans-serif;
 	white-space: nowrap;	
 	margin-right:2px;
 	vertical-align: baseline;
@@ -1317,6 +1319,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
 	background-color: #1393fd;
 	border-color: #337ab7;
 }
+.panel .panel-title{margin-bottom:0;}
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
 	border: #1393fd 1px solid;
 }
@@ -1536,6 +1539,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
 	padding: 15px;
 	background: #f0f2f7;
 }
+.page .page-block .nav-tabs > li, .single .nav-tabs > li{margin:0;}
 
 /*----------------------
 3.8 Tables, Others
