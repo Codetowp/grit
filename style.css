@@ -640,6 +640,7 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	line-height: 1;
 	color: #ffffff;
 	text-align: center;
+	font-family: 'Montserrat', sans-serif;
 	white-space: nowrap;	
 	margin-right:2px;
 	vertical-align: baseline;
