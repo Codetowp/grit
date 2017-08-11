@@ -384,6 +384,7 @@ a.navbar-brand:hover span {
 	background-image: none;
 	border: 1px solid transparent;
 	white-space: nowrap;
+	font-family: 'Montserrat', sans-serif;
 	padding: 12px 50px;
 	font-size: 10px;
 	line-height: 1.42857143;
