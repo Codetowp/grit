@@ -122,16 +122,20 @@ add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function
 function the_breadcrumb() {
 	if (!is_home()) {
+		echo '<li class="breadcrumb-item">';
 		echo '<a href="';
 		echo home_url('home');
 		echo '">';
 		echo __('Home', 'dblogger');
-		echo "</a> / ";
+		echo "</a>";
+		echo '</li>';
+		echo '<li class="breadcrumb-item">';
 		if (is_category() || is_single()) {
 			the_category('title_li=');			
 		} elseif (is_page()) {
 			echo the_title();
 		}
+		echo '</li>';
 	}
 }
 
