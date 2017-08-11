@@ -18,17 +18,17 @@ get_header(); ?>
 	  while ( have_posts() ) : the_post();
    ?>
   <header class="entry-header" style="background-image: url(<?php echo the_post_thumbnail_url(); ?>);">
-    <div class="content  wow fadeInUp">
-      <div class="container "> 
+    <div class="content wow fadeInUp">
+      <div class="container"> 
         <!--breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#"><?php the_breadcrumb(); ?></a></li>
-        <!--  <li class="breadcrumb-item active">Wordpress</li>-->
+          <?php the_breadcrumb(); ?>
         </ol>
-        <!--/breadcrumb-->
         <h1><?php the_title(); ?> </h1>
         <hr>
-        <a href="#"> </a><span class="date-article"><?php get_option('d F Y');?><!--JULY 13 2017--></span> <span class="byline"> By <span class="author vcard"><a href="#">Rijo</a> ,<a href="#"> BLOG</a></span></span> </div>
+		<?php grit_posted_on(); ?>
+        <span class="date-article"><?php get_option('d F Y');?><!--JULY 13 2017--></span> <span class="byline"> By <span class="author vcard"><a href="#">Rijo</a> ,<a href="#"> BLOG</a></span></span> 
+	  </div>
     </div>
     <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
   </header>    
