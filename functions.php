@@ -122,7 +122,7 @@ require get_template_directory() . '/inc/widgets/recentpost.php';
 
 // Custom Theme Image Sizes	
 add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
-
+add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function
 function the_breadcrumb() {
 	if (!is_home()) {

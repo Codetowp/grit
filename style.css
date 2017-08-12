@@ -3516,18 +3516,18 @@ blockquote p {
 .single .also-like-block .entry-header:before, .page article .entry-header:before {
 	display: none;
 }
-.single .also-like-block article, .page article {
+.single .also-like-block article, .page article,  .category article, .search article {
 	padding: 0 10px;
 	text-align: center;
 	margin-top: 35px;
 }
-.single .also-like-block article img, .page article img {
+.single .also-like-block article img, .page article img, .category article img, .search article img {
 	min-height: 163px;
 	max-height: 163px;
 	width: 100%;
 	object-fit: cover;
 }
-.single .also-like-block article a h6, .page article a h6 {
+.single .also-like-block article a h6, .page article a h6, .category article a h6, .search article a h6  {
 	font-size: 13px;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
@@ -3537,14 +3537,14 @@ blockquote p {
 	font-style: normal;
 	margin-bottom: 6px;
 }
-.single .also-like-block article .entry-header a, .page article .entry-header a {
+.single .also-like-block article .entry-header a, .page article .entry-header a,  .category article .entry-header a,  .search article .entry-header a {
 	font-family: 'PT Serif', serif;
 	color: #6f6f6f;
 	font-size: 14px;
 	font-style: italic;
 	margin-top: 5px;
 }
-.single .also-like-block article:hover .entry-header, .page article:hover .entry-header {
+.single .also-like-block article:hover .entry-header, .page article:hover .entry-header,  .category article:hover .entry-header,  .search article:hover .entry-header {
 	background: #fff;
 	-webkit-box-shadow: 0px 5px 27px 0px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 5px 27px 0px rgba(0,0,0,0.3);
@@ -3552,7 +3552,7 @@ blockquote p {
 	transition: all 300ms ease-in-out;
 	-webkit-transition: all 300ms ease-in-out;
 }
-.single .also-like-block article .entry-header, .page article .entry-header {
+.single .also-like-block article .entry-header, .page article .entry-header, .category article .entry-header, .search article .entry-header {
 	padding: 0px 0 20px;
 }
 #page-body {
