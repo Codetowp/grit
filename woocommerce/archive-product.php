@@ -21,8 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-<div style="width:100%; height:20px; background:#006"></div>
-	<?php
+
+   <?php
 		/**
 		 * woocommerce_before_main_content hook.
 		 *
@@ -31,37 +31,47 @@ get_header( 'shop' ); ?>
 		 * @hooked WC_Structured_Data::generate_website_data() - 30
 		 */
 		do_action( 'woocommerce_before_main_content' );
-	?>
+	?><!--/breadcrumb-->
+<!-- banner Page
+    ==========================================-->
+<div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
+  <div class="content  wow fdeInUp">
+    <div class="container ">
+      <h1><?php woocommerce_page_title(); ?> </h1>
+    </div>
+  </div>
+</div>
 
+<!--woocommerce body-->
 
-<section style="padding:80px 0;">
-<div class="container">
-<div class="row">
+<section id="woocommerce-page">
+    <div class="container">
+        <div class="row">
+            <div id="content" role="main">
+                <nav class="woocommerce-breadcrumb">
+                    <?php
+                    /**
+                    * woocommerce_before_main_content hook.
+                    *
+                    * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                    * @hooked woocommerce_breadcrumb - 20
+                    * @hooked WC_Structured_Data::generate_website_data() - 30
+                    */
+                    do_action( 'woocommerce_before_main_content' );
+                    ?>
+                    
+                </nav>
+            <header class="woocommerce-products-header">
+                <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 
-    <header class="woocommerce-products-header">
+			         <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 
-		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-			<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-
-		<?php endif; ?>
-
-		<?php
-			/**
-			 * woocommerce_archive_description hook.
-			 *
-			 * @hooked woocommerce_taxonomy_archive_description - 10
-			 * @hooked woocommerce_product_archive_description - 10
-			 */
-			do_action( 'woocommerce_archive_description' );
-		?>
-
-    </header>
-    
-    
-    
-
-		<?php if ( have_posts() ) : ?>
+		      <?php endif; ?> 
+                
+            </header>
+          
+            <ul class="products">
+              <?php if ( have_posts() ) : ?>
 
 			<?php
 				/**
@@ -79,16 +89,8 @@ get_header( 'shop' ); ?>
 				<?php woocommerce_product_subcategories(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php
-						/**
-						 * woocommerce_shop_loop hook.
-						 *
-						 * @hooked WC_Structured_Data::generate_product_data() - 10
-						 */
-						do_action( 'woocommerce_shop_loop' );
-					?>
-
+				
+					
 					<?php wc_get_template_part( 'content', 'product' ); ?>
 
 				<?php endwhile; // end of the loop. ?>
@@ -102,44 +104,15 @@ get_header( 'shop' ); ?>
 				 * @hooked woocommerce_pagination - 10
 				 */
 				do_action( 'woocommerce_after_shop_loop' );
+                endif;
 			?>
-
-		<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
-
-			<?php
-				/**
-				 * woocommerce_no_products_found hook.
-				 *
-				 * @hooked wc_no_products_found - 10
-				 */
-				do_action( 'woocommerce_no_products_found' );
-			?>
-
-		<?php endif; ?>
-</div>
-</div>
+				
+           
+            </ul>
+            
+            </div>
+        </div>
+    </div>
 </section>
-
-
-
-
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		/* do_action( 'woocommerce_sidebar' );*/
-	?>
 
 <?php get_footer( 'shop' ); ?>

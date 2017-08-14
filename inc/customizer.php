@@ -97,43 +97,38 @@ function grit_customize_register( $wp_customize ) {
 
         ));
 
-        $wp_customize->add_setting( 'grit_about_heading', array(
-            'default'                   => '',
-            'type'                      => 'theme_mod',
-            'capability'                => 'edit_theme_options',
-            'sanitize_callback'         => 'esc_url_raw',
-        ) );
+       
+        $wp_customize->add_setting( 'grit_about_header', array(      
+            'default'                   => 'About us' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh', // refresh or postMessage              
+        ) );    
+    
 
-        $wp_customize->add_control( new WP_Customize_Image_Control(
-            $wp_customize,'grit_about_heading', array(
-            'label'                     => __( 'Heading', 'grit' ),
-            'section'                   => 'grit_about_section',
-            'settings'                  => 'grit_about_heading',
-            'context'                   => 'grit_about_heading',
-            'priority'                  => 1,
-            ) 
+        $wp_customize->add_control( 'grit_about_header', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Heading', 'grit' ),
+            'section'  					=> 'grit_about_section',
+            'priority' 					=> 2,
         ) );
     
-        $wp_customize->add_setting( 'grit_about_description', array(
-            'default'                   => '',
-            'type'                      => 'theme_mod',
-            'capability'                => 'edit_theme_options',
-            'sanitize_callback'         => 'esc_url_raw',
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Image_Control(
-            $wp_customize,'grit_about_description', array(
-            'label'                     => __( 'Description', 'grit' ),
-            'section'                   => 'grit_about_section',
-            'settings'                  => 'grit_about_description',
-            'context'                   => 'grit_about_description',
-            'priority'                  => 2,
-            ) 
+    
+        $wp_customize->add_setting( 'grit_about_description', array(      
+            'default'                   => '' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh', // refresh or postMessage              
+        ) );    
+    
+        $wp_customize->add_control( 'grit_about_description', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Description', 'grit' ),
+            'section'  					=> 'grit_about_section',
+            'priority' 					=> 3,
         ) );
     
 
         $wp_customize->add_setting( 'grit_about_button_text', array(      
-            'default'                   => 'click more' ,
+            'default'                   => 'Mission brief' ,
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
