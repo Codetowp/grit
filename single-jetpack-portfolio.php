@@ -9,10 +9,15 @@
 
 get_header(); ?>
 
+ <?php
+   if(have_posts()):		  
+	  while ( have_posts() ) : the_post();	 
+   ?>
+   
 <!-- banner Page
     ==========================================-->
 <div id="page-banner" style="background-image: url(img/p-1.jpg);">
-  <div class="content  wow fdeInUp">
+  <div class="content  wow fadeInUp">
     <div class="container "> 
       
       <!--breadcrumb--
@@ -21,11 +26,29 @@ get_header(); ?>
           <li class="breadcrumb-item active">Wordpress</li>
         </ol>
         --/breadcrumb--> 
-      <span>Branading.Design</span>
-      <h1>Case Study: Bradley Co 
-        Protoype design </h1>
+		<?php
+			echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
+			sprintf(
+			'<span class="portfolio-type-links"><span class="screen-reader-text">%1$s </span>',
+			esc_html__( 'Project types: ', 'grit' )
+			),
+			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			'</span>'
+			);
+		?>
+      <h1><?php the_title(); ?></h1>
       <!--  <header class="entry-header"><a href="#"> </a><span class="date-article">10 days ago</span> in <span class="byline"><span class="author vcard"><a href="#">WORDPRESS</a> ,<a href="#"> BLOG</a></span></span> </header>-->
       <ul class="tag-head">
+		<?php
+			echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
+			sprintf(
+			'<span class="portfolio-type-tags"><span class="screen-reader-text">%1$s </span>',
+			esc_html__( 'Project tags: ', 'grit' )
+			),
+			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			'</span>'
+			);
+		?>
         <li><a href="#">Red</a></li>
         <li><a href="#">design</a></li>
       </ul>
@@ -37,26 +60,10 @@ get_header(); ?>
 
 <div id="page-body">
   <div class="container">
-    <div class="row  wow fdeInUp"> 
+    <div class="row wow fadeInUp"> 
       <!--blog posts container-->
-      <div class="col-md-12 page-block "   >
-        <h3><strong>The Brief:</strong></h3>
-        <p> Donut cake carrot cake toffee tootsie roll halvah muffin tiramisu icing. Danish pie liquorice candy dessert soufflé. Pudding halvah jelly-o gingerbread sweet roll candy canes donut. I love topping lemon drops wafer chocolate candy chupa chups I love icing. Biscuit pudding brownie danish macaroon soufflé candy. </p>
-        <h3><strong>Our Approach:</strong></h3>
-        <p> Donut cake carrot cake toffee tootsie roll halvah muffin tiramisu icing. Danish pie liquorice candy dessert soufflé. <em>Pudding halvah jelly-o gingerbread sweet roll candy canes donut. I love topping lemon drops wafer chocolate candy chupa chups I love icing. Biscuit pudding brownie danish macaroon soufflé candy.</em> </p>
-        <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
-        <h3><strong>The Result:</strong></h3>
-        <figure  ><img src="img/p-1.jpg" class="img-responsive">
-          <figcaption class="wp-caption-text">Look at 580×300 getting some <a title="Image Settings" href="http://en.support.wordpress.com/images/image-settings/">caption</a> love. </figcaption>
-        </figure>
-        <h3><strong>Client Details:</strong></h3>
-        <ul>
-          <li> Client: Designscrazed</li>
-          <li> Task: Design, Prototype</li>
-          <li> Dead line: 3 Months</li>
-        </ul>
-        <a href="#" class="page-body-a">Vist Website</a> 
-        
+      <div class="col-md-12 page-block">
+        <?php the_content(); ?>
         <!--footer tags-->
         
         <footer class="entry-footer entry-meta-bar">
@@ -72,7 +79,10 @@ get_header(); ?>
   </div>
 </div>
 <!--/page body-->
-
+   <?php 
+      endwhile;
+    endif;
+   ?> 
 <div class="page-share-block">
   <div class="container">
     <div class="row">

@@ -13,22 +13,16 @@ get_header(); ?>
     ==========================================-->
 
 
-<?php 
-    //$loop = new WP_Query(array('project_type' => 'portfolio'));
-    //$count =0;
-?> 
-<?php //if ( $loop ) : 
-                      
-         //   while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
 <div id="page-banner" style="background-image: url(<?php //the_post_thumbnail_url( array(400, 160) ); ?>);">
-  <div class="content  wow fdeInUp">
+  <div class="content wow fadeInUp">
     <div class="container ">
-      <h1><?php //the_title(); ?> </h1>
+      <h1><?php the_archive_title(); ?> </h1>
     </div>
   </div>
 </div>
-<?php //endwhile; endif;?>
+
+
 <!-- our works block
     ==========================================-->
 <section id="our-work-block">
@@ -38,12 +32,31 @@ get_header(); ?>
         
         <!--portfolio grid-->
         <ul class="grid">
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/01-screenshot.jpg" alt="Screenshot 01">
+		 <?php
+			//if(have_posts()):		  
+			//while ( have_posts() ) : the_post();
+		 ?>
+		 
+		 <?php
+
+			// The Query
+			$the_query = new WP_Query( array('post_type' => 'jetpack-portfolio') );
+			
+
+			// The Loop
+			if ( $the_query->have_posts() ) {
+				echo '<ul>';
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					echo '<li>' . get_the_title() . '</li>';
+					?>
+					 <li class="wow fadeInUp">
+            <figure> <?php echo the_post_thumbnail_url(); ?>
               <figcaption>
-                <div class="caption-content  wow fdeInUp">
+                <div class="caption-content  wow fadeInUp">
                   <h6>Codetowp branding</h6>
                   <hr>
+				 
                   <a href="#">Design</a>/ <a href="#">brand</a>
                   <ul class="work-more">
                     <li><a href="#"><i class="fa fa-search"></i></a></li>
@@ -53,6 +66,34 @@ get_header(); ?>
               </figcaption>
             </figure>
           </li>
+					<?php
+				}
+				echo '</ul>';
+				/* Restore original Post Data */
+				wp_reset_postdata();
+			} else {
+				// no posts found
+			} ?>
+          <li class="wow fadeInUp">
+            <figure> <?php echo the_post_thumbnail_url(); ?>
+              <figcaption>
+                <div class="caption-content  wow fadeInUp">
+                  <h6>Codetowp branding</h6>
+                  <hr>
+				 
+                  <a href="#">Design</a>/ <a href="#">brand</a>
+                  <ul class="work-more">
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                  </ul>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+		     <?php 
+		//endwhile;
+		//endif;
+   ?> 
           <li class="wow fdeInUp">
             <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">
               <figcaption>
@@ -198,6 +239,7 @@ get_header(); ?>
     </div>
   </div>
 </section>
+
 <?php
 //get_sidebar();
 get_footer();
