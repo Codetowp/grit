@@ -50,7 +50,7 @@ get_header(); ?>
 					$the_query->the_post();
 					echo '<li>' . get_the_title() . '</li>';
 					?>
-					 <li class="wow fadeInUp">
+		  <li class="wow fadeInUp">
             <figure> <?php echo the_post_thumbnail_url(); ?>
               <figcaption>
                 <div class="caption-content  wow fadeInUp">
@@ -94,127 +94,7 @@ get_header(); ?>
 		//endwhile;
 		//endif;
    ?> 
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/06-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/05-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/06-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="wow fdeInUp">
-            <figure> <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
+       </ul>
         <!--/portfolio grid-->
         
         <div class="clearfix"></div>
