@@ -39,5 +39,15 @@
 			}
 		} );
 	} );
+       
+  //************************** HEADERSECTION****************************************//    
+
+     wp.customize( 'grit_heder_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#home-banner span .fadeIn' ).text( to );
+		} );
+	} );
+    
+    
   
 } )( jQuery );

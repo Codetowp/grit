@@ -25,11 +25,11 @@ get_header(); ?>
 <section id="home-banner" style="background-image: url(<?php echo $image; ?>);">
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
-            <span class="wow fadeIn">
+            <span class="wow fadeIn" id="head">
                 <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_text' ) )?
                 ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
             </span>
-            <h1 class="wow fadeInUp">
+            <h1 class="wow fadeInUp" >
                 <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_description' ) )?
                 ( get_theme_mod( 'grit_header_description' ) ):' We put true <span>focus</span> on our design <span>process</span>, the concept, prototypes and <span>design</span>.'; ?>
             </h1>

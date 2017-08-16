@@ -15,15 +15,17 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
         $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-            if ( isset( $wp_customize->selective_refresh ) ) {
-        $wp_customize->selective_refresh->add_partial( 'blogname', array(
-            'selector'        => '.site-title a',
-            'render_callback' => 'grit_customize_partial_blogname',
-        ) );
-        $wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-            'selector'        => '.site-description',
-            'render_callback' => 'grit_customize_partial_blogdescription',
-        ) );
+        if ( isset( $wp_customize->selective_refresh ) ) {
+            $wp_customize->selective_refresh->add_partial( 'blogname', array(
+                'selector'        => '.site-title a',
+                'render_callback' => 'grit_customize_partial_blogname',
+            ) );
+            $wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+                'selector'        => '.site-description',
+                'render_callback' => 'grit_customize_partial_blogdescription',
+            ) );
+            
+          
         }
 
 
@@ -33,7 +35,19 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->get_section('title_tagline')->title = __( 'Branding' );  
 
-
+  if ( isset( $wp_customize->selective_refresh ) ) {
+      
+        $wp_customize->selective_refresh->add_partial( 'grit_heder_text', array(
+                'selector'        => '.container #head',
+                'render_callback' => 'grit_customize_partial_grit_heder_text',
+            ) ); 
+      
+       $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
+                'selector'        => '#home-banner h1',
+                'render_callback' => 'grit_customize_partial_grit_header_description',
+            ) ); 
+      
+  }
     
 /********* header intro **********/
 
@@ -64,7 +78,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_heder_text', array(      
             'default'                   => 'Dcrazed says' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
         $wp_customize->add_control( 'grit_heder_text', array(
@@ -180,6 +194,9 @@ function grit_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
+function grit_customize_partial_grit_header_description() {
+    bloginfo('grit_heder_text');
+}
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
@@ -187,3 +204,7 @@ function grit_customize_preview_js() {
 	wp_enqueue_script( 'grit-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'grit_customize_preview_js' );
+
+
+
+
