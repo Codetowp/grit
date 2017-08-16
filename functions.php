@@ -34,6 +34,7 @@ if ( ! function_exists( 'grit_setup' ) ) :
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
+       // add_theme_support( 'post-thumbnails' );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.

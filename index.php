@@ -23,16 +23,19 @@ get_header(); ?>
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 <section id="home-banner" style="background-image: url(<?php echo $image; ?>);">
-  <div class="content">
-    <div class="container"  data-wow-duration="1s"> 
-        <span class="wow fadeIn">
-            <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_text' ) )?
-            ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
-        </span>
-      <h1 class="wow fadeInUp">We put true <span>focus</span> on our design <span>process</span>, the concept, prototypes and <span>design</span>. </h1>
+    <div class="content">
+        <div class="container"  data-wow-duration="1s"> 
+            <span class="wow fadeIn">
+                <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_text' ) )?
+                ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
+            </span>
+            <h1 class="wow fadeInUp">
+                <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_description' ) )?
+                ( get_theme_mod( 'grit_header_description' ) ):' We put true <span>focus</span> on our design <span>process</span>, the concept, prototypes and <span>design</span>.'; ?>
+            </h1>
+        </div>
     </div>
-  </div>
-  <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
+    <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
 </section>
 
 <!-- about us Page
@@ -42,9 +45,18 @@ get_header(); ?>
     <div class="row"> 
       <!--section-title-->
       <div class="section-title text-center wow fadeInUp">
-        <h2>About us</h2>
-        <a href="#">Mission brief</a>
-        <p>Creating websites from the web Studio <span>"Ui Team"</span> as a tool for business starts with Analytics. Goals and the ways to achieve them are defined. The goal is to encourage visitors to use the service or to buy goods in your company instead of the competitor.</p>
+        <h2>
+            <?php echo  $grit_header=( get_theme_mod( 'grit_about_header' ) )?
+            ( get_theme_mod( 'grit_about_header' ) ):'About us'; ?>
+        </h2>
+        <a href="#">
+            <?php echo  $grit_header=( get_theme_mod( 'grit_about_button_text' ) )?
+            ( get_theme_mod( 'grit_about_button_text' ) ):'Mission brief'; ?>
+        </a>
+        <p>
+             <?php echo  $grit_header=( get_theme_mod( 'grit_about_description' ) )?
+            ( get_theme_mod( 'grit_about_description' ) ):'Creating websites from the web Studio <span>"Ui Team"</span> as a tool for business starts with Analytics. Goals and the ways to achieve them are defined. The goal is to encourage visitors to use the service or to buy goods in your company instead of the competitor.'; ?>
+        </p>
       </div>
       <!--/section-title-->
       
