@@ -595,7 +595,25 @@ class Grit_Customize_Repeatable_Control extends WP_Customize_Control {
 
                                             </select>
 
-                                        <# } else if ( field.type === 'radio' ) { #>
+                                        <# } else if ( field.type === 'dropdown-pages' ) { #>
+
+                                             <# if ( field.multiple ) { #>
+                                                <select data-customize-setting-link="{{ field.id }}"  class="select-multiple" multiple="multiple" id="_customize-dropdown-pages-dropdown_pages_setting" data-repeat-name="_items[__i__][{{ field.id }}][]">
+                                            <# } else  { #>
+                                                <select data-customize-setting-link="{{ field.id }}"  class="select-one" id="_customize-dropdown-pages-dropdown_pages_setting"  data-repeat-name="_items[__i__][{{ field.id }}]">
+                                            <# } #>
+
+                                                <# for ( k in field.options ) { #>
+                                                    <# if ( _.isArray( field.value ) ) { #>
+                                                        <option <# if ( _.contains( field.value , k ) ) { #> selected="selected" <# } #>  value="{{ k }}">{{ field.options[k] }}</option>
+                                                    <# } else { #>
+                                                        <option <# if ( field.value == k ) { #> selected="selected" <# } #>  value="{{ k }}">{{ field.options[k] }}</option>
+                                                    <# } #>
+                                                <# } #>
+
+                                            </select>
+
+                                        <# }else if ( field.type === 'radio' ) { #>
 
                                             <# for ( k in field.options ) { #>
 
