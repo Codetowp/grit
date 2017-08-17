@@ -13,22 +13,13 @@
  */
 
 get_header(); ?>
-<?php
-          if(have_posts()):
-			while ( have_posts() ) : the_post();
-
-?> 
-
-
-<div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content  wow fdeInUp">
     <div class="container ">
       <h1><?php the_title(); ?></h1>
     </div>
   </div>
 </div>
-
-<?php endwhile;endif;?>
 <div id="page-body">
   <div class="container">
     <div class="row  wow fdeInUp"> 

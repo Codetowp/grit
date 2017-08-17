@@ -14,9 +14,7 @@
 
 get_header(); ?>
 <section class="page">
-   
-
-<div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
+ <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content  wow fdeInUp">
     <div class="container ">
       <h1><?php the_title(); ?></h1>
