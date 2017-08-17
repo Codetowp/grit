@@ -36,8 +36,7 @@ get_header(); ?>
 		<?php
 			echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
 			sprintf(
-			'<span>%1$s',
-			esc_html__( 'Project types: ', 'grit' )
+			'<span>%1$s'
 			),
 			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 			'</span>'

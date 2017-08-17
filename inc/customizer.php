@@ -43,6 +43,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
                 'selector'        => '.container #head',
                 'render_callback' => 'grit_customize_partial_header_text',
+
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
@@ -69,18 +70,31 @@ function grit_customize_register( $wp_customize ) {
                 'selector'        => '#our-work-block .section-title  h2',
                 'render_callback' => 'grit_customize_partial_grit_work_header',
             ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
+                'selector'        => '#about-us-block h2',
+                'render_callback' => 'grit_customize_partial_grit_about_header',
+            ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'grit_about_description', array(
+                'selector'        => '#about-us-block .section-title  p',
+                'render_callback' => 'grit_customize_partial_grit_about_description',
+            ) ); 
+
+        $wp_customize->selective_refresh->add_partial( 'grit_contact_header', array(
+                'selector'        => '#home-contact-block  p',
+                'render_callback' => 'grit_customize_partial_grit_contact_header',
+            ) ); 
+      
+        $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
+                'selector'        => '#our-work-block .section-title  p',
+                'render_callback' => 'grit_customize_partial_grit_work_header',
+            ) ); 
       
         $wp_customize->selective_refresh->add_partial( 'grit_process_header', array(
                 'selector'        => '#process-block  h2',
                 'render_callback' => 'grit_customize_partial_grit_process_header',
             ) ); 
-     
-        $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
-                'selector'        => '#latest-news-block .section-title  h2',
-                'render_callback' => 'grit_customize_partial_grit_latest_news_header',
-            ) ); 
-     
-      
   }
     
 /********* header intro **********/
@@ -112,7 +126,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_header_text', array(      
             'default'                   => 'Dcrazed says' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
+            'transport'                 => 'refresh', // refresh or postMessage              
         ) );    
 
         $wp_customize->add_control( 'grit_header_text', array(
@@ -273,6 +287,7 @@ function grit_customize_register( $wp_customize ) {
             'section'  					=> 'grit_work_section',
             'priority' 					=> 2,
         ) );
+
     
 
     
@@ -419,6 +434,91 @@ function grit_customize_register( $wp_customize ) {
             'priority' 					=> 5
         ) );	  
     
+        $wp_customize->add_setting( 'grit_process_header', array(      
+            'default'                   => 'The process' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh', // refresh or postMessage              
+        ) );    
+
+
+        $wp_customize->add_control( 'grit_process_header', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header', 'grit' ),
+            'section'  					=> 'grit_process_section',
+            'priority' 					=> 2,
+        ) );
+    
+/********* Counter section **********/   
+
+        $wp_customize->add_section('grit_counter_section', array(
+            'title'                     => __('Counter Section', 'grit'),
+            'priority'                  => 105,
+
+        ));
+
+        $wp_customize->add_setting( 'grit_counter_setting', 
+               array(               
+                   'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
+                    'transport' => 'refresh', // refresh or postMessage
+
+               ) );    
+
+
+        $wp_customize->add_control(
+                new Grit_Customize_Repeatable_Control(
+                    $wp_customize,
+                    'grit_counter_setting',
+                    array(
+                        'label'     => esc_html__('Counter Sections', 'grit'),
+                        'description'   => 'Add upto 4 service blocks',
+                        'section'       => 'grit_counter_section',
+                        //'live_title_id' => 'user_id', // apply for unput text and textarea only
+                        'title_format'  => esc_html__( '[live_title]', 'grit'), // [live_title]
+                        'max_item'      => 4, // Maximum item can add
+                        'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'grit' ),
+                        'fields'    => array(
+
+                         'icon_type'  => array(
+                            'title' => esc_html__('Custom icon', 'grit'),
+                            'type'  =>'select',
+                            'options' => array(
+                                'icon' => esc_html__('Icon', 'grit'),
+                                'image' => esc_html__('image', 'grit'),
+                            ),
+                        ),
+
+                        'icon'  => array(
+                            'title' => esc_html__('Icon', 'grit'),
+                            'type'  =>'icon',
+                            'required' => array( 'icon_type', '=', 'icon' ),
+                        ),
+
+                        'image'  => array(
+                            'title' => esc_html__('Image', 'grit'),
+                            'type'  =>'media',
+                            'required' => array( 'icon_type', '=', 'image' ),
+                        ),
+
+                             'count' => array(
+                                'title' => esc_html__('Count', 'grit'),
+                                'type'  =>'text',
+                                'default' => wp_kses_post('455', 'grit'),
+                            ),
+
+
+                             'title' => array(
+                                'title' => esc_html__('Title', 'grit'),
+                                'type'  =>'text',
+                                'default' => wp_kses_post('CLIENTS'),
+                            ),
+                        ),
+
+                    )
+                )
+            );
+
+
+
 
 
 }

@@ -29,20 +29,10 @@ get_header(); ?>
       <div class="works"> 
         <!--portfolio grid-->
         <ul class="grid">
-         <?php  
             
-            $args = array(
-                    'post_type'      => 'archive-jetpack-portfolio',
-                   
-                );
- 
-                $project_query = new WP_Query ( $args );
- 
-                if ( post_type_exists( 'archive-jetpack-portfolio' ) && $project_query -> have_posts() ) :
- 
-                    while ( $project_query -> have_posts() ) : $project_query -> the_post();
-
-          ?>
+        <?php if ( have_posts() ) : ?>
+			<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
             
           <li class="wow fdeInUp">
             <figure>
@@ -52,10 +42,19 @@ get_header(); ?>
                 <div class="caption-content  wow fdeInUp">
                   <h6><?php the_title(); ?></h6>
                   <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
+                    <?php
+			          echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
+			          sprintf(
+			             '<a href="#">%1$s'
+			                 ),
+			             esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			             '</a>'
+			             );
+		              ?>
+                    
                   <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    <li><a href="<?php the_permalink();?>" ><i class="fa fa-search"></i></a></li>
+                    <li><a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a></li>
                   </ul>
                 </div>
               </figcaption>
@@ -72,17 +71,11 @@ get_header(); ?>
         <!--/portfolio page nav-->
         <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
           <ul>
-            <li >
-              <div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i></a></div>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li >
-              <div class="nav-next"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-right"></i></a></div>
-            </li>
+            <?php the_posts_navigation( array(
+					'prev_text'          => esc_html__( 'Older projects', 'grit' ),
+					'next_text'          => esc_html__( 'Newer projects', 'grit' ),
+					'screen_reader_text' => esc_html__( 'Projects navigation', 'grit' ),
+				) ); ?>
           </ul>
         </nav>
       </div>
