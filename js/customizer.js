@@ -41,7 +41,25 @@
 	} );
        
   //************************** HEADERSECTION****************************************//    
-
+    
+     wp.customize( 'bck_ground_image', function( value ) {
+		value.bind( function( to ) {
+			$( '#home-banner' ).text( to );
+		} );
+	} );
+    
+      wp.customize( 'grit_transparnt', function( value ) {
+			value.bind( function( to ) {
+				$( '#home-banner:before' ).css( 'opacity', to );
+			} );
+		} );
+    //calender background color
+    wp.customize( 'grit_header_background_color', function( value ) {
+			value.bind( function( to ) {
+				$( '#home-banner:before' ).css( 'background-color', to );
+			} );
+		} );
+    
     
   
 } )( jQuery );
