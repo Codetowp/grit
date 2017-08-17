@@ -42,12 +42,12 @@ function grit_customize_register( $wp_customize ) {
       
         $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
                 'selector'        => '.container #head',
-                'render_callback' => 'grit_customize_partial_grit_header_text',
+                'render_callback' => 'grit_customize_partial_header_text',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
                 'selector'        => '#home-banner h1',
-                'render_callback' => 'grit_customize_partial_grit_header_description',
+                'render_callback' => 'grit_customize_partial_header_description',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
@@ -66,7 +66,7 @@ function grit_customize_register( $wp_customize ) {
             ) ); 
       
         $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
-                'selector'        => '#our-work-block .section-title  p',
+                'selector'        => '#our-work-block .section-title  h2',
                 'render_callback' => 'grit_customize_partial_grit_work_header',
             ) ); 
       
@@ -75,6 +75,12 @@ function grit_customize_register( $wp_customize ) {
                 'render_callback' => 'grit_customize_partial_grit_process_header',
             ) ); 
      
+        $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
+                'selector'        => '#latest-news-block .section-title  h2',
+                'render_callback' => 'grit_customize_partial_grit_latest_news_header',
+            ) ); 
+     
+      
   }
     
 /********* header intro **********/
@@ -106,7 +112,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_header_text', array(      
             'default'                   => 'Dcrazed says' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
         $wp_customize->add_control( 'grit_header_text', array(
@@ -364,6 +370,55 @@ function grit_customize_register( $wp_customize ) {
             );
 
 
+/********* Latest news section **********/   
+
+        $wp_customize->add_section('grit_latest_news_section', array(
+            'title'                     => __('Latest News Section', 'grit'),
+            'priority'                  => 106,
+
+        ));
+    
+        $wp_customize->add_setting( 'grit_latest_news_header', array(      
+            'default'                   => 'Latest news' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh', // refresh or postMessage              
+        ) );    
+
+
+        $wp_customize->add_control( 'grit_latest_news_header', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header', 'grit' ),
+            'section'  					=> 'grit_latest_news_section',
+            'priority' 					=> 2,
+        ) );
+
+        $wp_customize->add_setting( 'grit_latest_news_button_text', array(      
+            'default'                   => 'SEE THE BLOG' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_latest_news_button_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Text', 'grit' ),
+            'section'  					=> 'grit_latest_news_section',
+            'priority' 					=> 3,
+        ) );	
+
+
+        $wp_customize->add_setting( 'grit_latest_news_button_url', array(      
+            'default'                   => 'www.burstfly.com' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_latest_news_button_url', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Url', 'grit' ),
+            'section'  					=> 'grit_latest_news_section',
+            'priority' 					=> 5
+        ) );	  
+    
 
 
 }
@@ -387,8 +442,8 @@ function grit_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
-function grit_customize_partial_grit_header_description() {
-    bloginfo('grit_header_text');
+function grit_customize_partial_header_text() {
+    echo get_theme_mod('grit_header_text');
 }
 
 function grit_customize_partial_grit_about_header() {
