@@ -22,7 +22,7 @@ get_header(); ?>
     $background_img_static   = get_template_directory_uri()."/img/b-1.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="home-banner" style="background-image: url(<?php echo $image; ?>);">
+<section id="home-banner" style="background-image: url(<?php echo $image; ?>);background-color:<?php  echo esc_attr(get_theme_mod( 'grit_header_background_color' ));?>; opacity: <?php echo esc_attr(get_theme_mod( 'grit_transparnt' ));?>">
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
             <span class="wow fadeIn" id="head">

@@ -155,7 +155,34 @@ function grit_customize_register( $wp_customize ) {
             'section'  					=> 'grit_header',
             'priority' 					=> 3,
         ) );	
+
+        $wp_customize->add_setting( 'grit_header_background_color', array(
+            'default'                   => '#ff4a5d', 
+            'transport'                 => 'postMessage', 
+            'sanitize_callback'         => 'sanitize_hex_color', 
+        ) );
     
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_header_background_color', array(
+            'label'                     => esc_attr__( 'Background Color', 'grit' ),
+            'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
+            'section'                   => 'grit_header',
+            'priority' 					=> 4,
+        ) ) );
+
+        $wp_customize->add_setting( 'grit_transparnt', array( 
+           'default'                    => __( '0.7', 'grit' ),
+           'transport'                  => 'postMessage',
+           'sanitize_callback'          => 'sanitize_text_field',
+         ) );
+        $wp_customize->add_control( 'grit_transparnt', array(
+            'type'                      => 'text',
+            'section'                   => 'grit_header',
+            'label'                     => esc_attr__( "Background Transparency", 'grit' ),
+            'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
+            'priority' 					=> 5,
+            ) );
+
+
 /********* about us **********/
         
         $wp_customize->add_section('grit_about_section', array(
