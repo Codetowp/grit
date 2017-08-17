@@ -338,31 +338,44 @@ get_header(); ?>
     ==========================================-->
 
 <section id="latest-news-block">
-  <div class="container">
-    <div class="row"> 
-      <!--section-title-->
-      <div class="section-title text-center wow fadeInUp">
-        <h2>Latest news</h2>
-        <a href="#">See the blog</a></div>
-      <!--/section-title--> 
+    <div class="container">
+        <div class="row"> 
+            <!--section-title-->
+            <div class="section-title text-center wow fadeInUp">
+                <h2>
+                     <?php echo  $grit_header=( get_theme_mod( 'grit_latest_news_header' ) )?
+                    ( get_theme_mod( 'grit_latest_news_header' ) ):'Latest news'; ?>
+                </h2>
+                <a href="<?php echo  $grit_button_url=( get_theme_mod( 'grit_latest_news_button_url' ) )?
+                    ( get_theme_mod( 'grit_latest_news_button_url' ) ):'www.burstfly.com'; ?>">
+                    
+                    <?php echo  $grit_button_text=( get_theme_mod( 'grit_latest_news_button_text' ) )?
+                    ( get_theme_mod( 'grit_latest_news_button_text' ) ):'See the blog'; ?>
+                    
+                </a>
+            </div>
+            <!--/section-title--> 
+            
+            <!--home article-->
+            <article class="col-md-3 col-sm-6 col-xs-12">
+                <header class="entry-header"> 
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="image 1"> 
+                    <a href="#"><h6>10 Incredible Quotes To Guide Your Life</h6></a> 
+                    <a href="#">Web-design</a> , <a href="#">Front-end</a>
+                </header>
+            </article>
+            <!--/home article --> 
       
-      <!--home article-->
-      <article class="col-md-3 col-sm-6 col-xs-12">
-        <header class="entry-header"> <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="image 1"> <a href="#">
-          <h6>10 Incredible Quotes To Guide Your Life</h6>
-          </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>
-      </article>
-      <!--/home article --> 
-      
-      <!--home article-->
-      <article class="col-md-3 col-sm-6 col-xs-12">
-        <header class="entry-header"> <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="image 1"> <a href="#">
-          <h6>Responsive Website in 2017 – 
-            Step by Step Guide</h6>
-          </a> <a href="#">Web-design</a> </header>
-      </article>
-      <!--/home article --> 
-      
+            <!--home article-->
+            <article class="col-md-3 col-sm-6 col-xs-12">
+                <header class="entry-header"> 
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="image 1"> 
+                    <a href="#"><h6>Responsive Website in 2017 – Step by Step Guide</h6></a> 
+                    <a href="#">Web-design</a> 
+                </header>
+            </article>
+            <!--/home article --> 
+
       <!--home article-->
       <article class="col-md-3 col-sm-6 col-xs-12">
         <header class="entry-header"> <img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" alt="image 1"> <a href="#">
