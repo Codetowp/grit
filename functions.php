@@ -144,6 +144,8 @@ function the_breadcrumb() {
 	}
 }
 
+
+
 /**
  * Enqueue scripts and styles.
  */
