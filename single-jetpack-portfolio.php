@@ -45,7 +45,7 @@ get_header(); ?>
 			'<span class="portfolio-type-tags"><span class="screen-reader-text">%1$s </span>',
 			esc_html__( 'Project tags: ', 'grit' )
 			),
-			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			esc_attr_x(' , ', 'Used file between list items, there is a space after the comma.', 'grit' ),
 			'</span>'
 			);
 		?>
