@@ -52,49 +52,55 @@ function grit_customize_register( $wp_customize ) {
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
-                'selector'        => '#about-us-block h2',
-                'render_callback' => 'grit_customize_partial_grit_about_header',
+                'selector'        => '#about-us-block .section-title h2',
+                'render_callback' => 'grit_customize_partial_about_header',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_about_description', array(
                 'selector'        => '#about-us-block .section-title  p',
-                'render_callback' => 'grit_customize_partial_grit_about_description',
+                'render_callback' => 'grit_customize_partial_about_description',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_contact_header', array(
                 'selector'        => '#home-contact-block  p',
-                'render_callback' => 'grit_customize_partial_grit_contact_header',
+                'render_callback' => 'grit_customize_partial_contact_header',
             ) ); 
       
         $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
                 'selector'        => '#our-work-block .section-title  h2',
-                'render_callback' => 'grit_customize_partial_grit_work_header',
+                'render_callback' => 'grit_customize_partial_work_header',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
                 'selector'        => '#about-us-block h2',
-                'render_callback' => 'grit_customize_partial_grit_about_header',
+                'render_callback' => 'grit_customize_partial_about_header',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_about_description', array(
                 'selector'        => '#about-us-block .section-title  p',
-                'render_callback' => 'grit_customize_partial_grit_about_description',
+                'render_callback' => 'grit_customize_partial_about_description',
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_contact_header', array(
                 'selector'        => '#home-contact-block  p',
-                'render_callback' => 'grit_customize_partial_grit_contact_header',
+                'render_callback' => 'grit_customize_partial_contact_header',
             ) ); 
       
         $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
-                'selector'        => '#our-work-block .section-title  p',
-                'render_callback' => 'grit_customize_partial_grit_work_header',
+                'selector'        => '#our-work-block .section-title  h2',
+                'render_callback' => 'grit_customize_partial_work_header',
             ) ); 
       
         $wp_customize->selective_refresh->add_partial( 'grit_process_header', array(
-                'selector'        => '#process-block  h2',
-                'render_callback' => 'grit_customize_partial_grit_process_header',
+                'selector'        => '#process-block .section-title h2',
+                'render_callback' => 'grit_customize_partial_process_header',
             ) ); 
+      
+        $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
+                'selector'        => '#latest-news-block .section-title h2',
+                'render_callback' => 'grit_customize_partial_latest_news_header',
+            ) );
+      
   }
     
 /********* header intro **********/
@@ -126,7 +132,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_header_text', array(      
             'default'                   => 'Dcrazed says' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
         $wp_customize->add_control( 'grit_header_text', array(
@@ -140,7 +146,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_header_description', array(      
             'default'                   => '' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh',               
+            'transport'                 => 'postMessage',               
         ) );    
 
         $wp_customize->add_control( 'grit_header_description', array(
@@ -163,7 +169,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_about_header', array(      
             'default'                   => 'About us' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
     
 
@@ -176,9 +182,9 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_about_description', array(      
-            'default'                   => '' ,
+            'default'                   => 'Creating websites from the web Studio "Ui Team" as a tool for business starts   with Analytics. Goals and the ways to achieve them are defined. The goal is to encourage visitors to use the service or to buy goods in your company instead of the competitor.' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
     
         $wp_customize->add_control( 'grit_about_description', array(
@@ -228,7 +234,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_contact_header', array(      
             'default'                   => 'Increase leads, build a professional website and be awesome..' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
 
@@ -277,7 +283,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_work_header', array(      
             'default'                   => 'Our work' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
 
@@ -304,7 +310,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_process_header', array(      
             'default'                   => 'The process' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
 
@@ -396,7 +402,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_latest_news_header', array(      
             'default'                   => 'Latest news' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
+            'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
 
@@ -434,19 +440,7 @@ function grit_customize_register( $wp_customize ) {
             'priority' 					=> 5
         ) );	  
     
-        $wp_customize->add_setting( 'grit_process_header', array(      
-            'default'                   => 'The process' ,
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh', // refresh or postMessage              
-        ) );    
-
-
-        $wp_customize->add_control( 'grit_process_header', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Header', 'grit' ),
-            'section'  					=> 'grit_process_section',
-            'priority' 					=> 2,
-        ) );
+     
     
 /********* Counter section **********/   
 
@@ -546,25 +540,33 @@ function grit_customize_partial_header_text() {
     echo get_theme_mod('grit_header_text');
 }
 
-function grit_customize_partial_grit_about_header() {
-    bloginfo('grit_about_header');
+function grit_customize_partial_header_description() {
+    echo get_theme_mod('grit_header_description');
 }
 
-function grit_customize_partial_grit_about_description() {
-    bloginfo('grit_about_description');
+function grit_customize_partial_about_header() {
+    echo get_theme_mod('grit_about_header');
 }
 
-function grit_customize_partial_grit_contact_header() {
-    bloginfo('grit_contact_header');
+function grit_customize_partial_about_description() {
+     echo get_theme_mod('grit_about_description');
 }
 
-function grit_customize_partial_grit_work_header() {
-    bloginfo('grit_work_header');
+function grit_customize_partial_contact_header() {
+    echo get_theme_mod('grit_contact_header');
 }
 
-function grit_customize_partial_grit_process_header() {
-    bloginfo('grit_process_header');
+function grit_customize_partial_work_header() {
+    echo get_theme_mod('grit_work_header');
 }
+
+function grit_customize_partial_process_header() {
+    echo get_theme_mod('grit_process_header');
+}
+    
+function grit_customize_partial_latest_news_header() {
+    echo get_theme_mod('grit_latest_news_header');
+}   
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
