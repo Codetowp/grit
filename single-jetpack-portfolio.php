@@ -16,7 +16,14 @@ get_header(); ?>
    
 <!-- banner Page
     ==========================================-->
-<div id="page-banner" style="background-image: url(img/p-1.jpg);">
+<?php //daniela_post_thumbnail(); ?>
+
+<?php 
+    //$feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+    //            echo '<div style="background-image:url('.$feat_image_url.');"></div>';
+
+?>
+<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url() ; ?>);">
   <div class="content  wow fadeInUp">
     <div class="container "> 
       
@@ -29,7 +36,7 @@ get_header(); ?>
 		<?php
 			echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
 			sprintf(
-			'<span class="portfolio-type-links"><span class="screen-reader-text">%1$s </span>',
+			'<span>%1$s',
 			esc_html__( 'Project types: ', 'grit' )
 			),
 			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
@@ -37,20 +44,19 @@ get_header(); ?>
 			);
 		?>
       <h1><?php the_title(); ?></h1>
-      <!--  <header class="entry-header"><a href="#"> </a><span class="date-article">10 days ago</span> in <span class="byline"><span class="author vcard"><a href="#">WORDPRESS</a> ,<a href="#"> BLOG</a></span></span> </header>-->
+     
       <ul class="tag-head">
 		<?php
 			echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
 			sprintf(
-			'<span class="portfolio-type-tags"><span class="screen-reader-text">%1$s </span>',
+			' <li><a href="#">%1$s</a>',
 			esc_html__( 'Project tags: ', 'grit' )
 			),
-			esc_attr_x(' , ', 'Used file between list items, there is a space after the comma.', 'grit' ),
-			'</span>'
+			esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			'</li>'
 			);
 		?>
-        <li><a href="#">Red</a></li>
-        <li><a href="#">design</a></li>
+      
       </ul>
     </div>
   </div>
@@ -67,7 +73,19 @@ get_header(); ?>
         <!--footer tags-->
         
         <footer class="entry-footer entry-meta-bar">
-          <div class="entry-meta"> <i class="fa fa-tags"></i> <span class="tag-links  clearfix"> <a href="#" rel="tag">wordpress</a> <a href="#" rel="tag">themes</a> </span> </div>
+          <div class="entry-meta"> 
+              <i class="fa fa-tags"></i> 
+              <span class="tag-links  clearfix"> 
+                 	<?php
+			             echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
+			             sprintf('<a href="#">%1$s',
+			             esc_html__( 'Project tags: ', 'grit' )
+			             ),
+			             esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+                         ''
+			             );
+		            ?>
+              </span> </div>
         </footer>
         <!--/footer tags--> 
         
@@ -90,12 +108,12 @@ get_header(); ?>
       
       <!--page-share-->
       <ul class="page-share">
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Facebook!', 'cryst4l')?>"><i class="fa fa-facebook"></i></a></li>
+        <li><a target="_blank" href="http://www.twitter.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Twitter!', 'cryst4l')?>"><i class="fa fa-twitter"></i></a></li>
+        <li><a target="_blank" href="http://www.plus.google.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Google Plus!', 'cryst4l')?>"><i class="fa fa-google-plus"></i></a></li>
+        <li><a target="_blank" href="http://www.pinterest.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Pinterest!', 'cryst4l')?>"><i class="fa fa-pinterest"></i></a></li>
+        <li><a target="_blank" href="http://www.dribbble.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Dribbble!', 'cryst4l')?>"><i class="fa fa-dribbble"></i></a></li>
+        <li><a target="_blank" href="http://www.linkein.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php _e('Share this post on Linkein!', 'cryst4l')?>"><i class="fa fa-linkedin"></i></a></li>
       </ul>
       
       <!--page-share--> 
