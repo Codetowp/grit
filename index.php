@@ -26,8 +26,8 @@ get_header(); ?>
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
             <span class="wow fadeIn" id="head">
-                <?php echo  $grit_tagline=( get_theme_mod( 'grit_heder_text' ) )?
-                ( get_theme_mod( 'grit_heder_text' ) ):'Dcrazed says'; ?>
+                <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_text' ) )?
+                ( get_theme_mod( 'grit_header_text' ) ):'Dcrazed says'; ?>
             </span>
             <h1 class="wow fadeInUp" >
                 <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_description' ) )?
@@ -91,8 +91,16 @@ get_header(); ?>
 <section id="home-contact-block">
   <div class="container">
     <div class="row wow fadeInUp">
-      <p>Increase leads, build a professional website and be awesome..</p>
-      <a href="#">Contact us</a> </div>
+        <p>
+            <?php echo  $grit_header=( get_theme_mod( 'grit_contact_header' ) )?
+            ( get_theme_mod( 'grit_contact_header' ) ):'Increase leads, build a professional website and be awesome..';?>
+        </p>
+        <a href="<?php echo  $grit_header=( get_theme_mod( 'grit_contact_button_url' ) )?
+            ( get_theme_mod( 'grit_contact_button_url' ) ):'www.burstfly.com';?>">
+            
+            <?php echo  $grit_header=( get_theme_mod( 'grit_contact_button_text' ) )?
+            ( get_theme_mod( 'grit_contact_button_text' ) ):'Contact us';?>
+        </a> </div>
   </div>
 </section>
 
@@ -101,11 +109,15 @@ get_header(); ?>
 <section id="our-work-block">
   <div class="container">
     <div class="row"> 
-      <!--section-title-->
-      <div class="section-title text-center wow fadeInUp">
-        <h2>Our work</h2>
-        <a href="#">go to portfolio</a></div>
-      <!--/section-title-->
+        <!--section-title-->
+        <div class="section-title text-center wow fadeInUp">
+            <h2>
+                <?php echo  $grit_header=( get_theme_mod( 'grit_work_header' ) )?
+                ( get_theme_mod( 'grit_work_header' ) ):'Our work';?>
+            </h2>
+            <a href="#">go to portfolio</a>
+        </div>
+        <!--/section-title-->
       <div class="clearfix"></div>
       <div class="works">
         <ul class="grid">
@@ -209,13 +221,16 @@ get_header(); ?>
     ==========================================-->
 
 <section id="process-block">
-  <div class="container">
-    <div class="row"> 
-      <!--section-title-->
-      <div class="section-title text-center wow fadeInUp">
-        <h2>The process</h2>
-      </div>
-      <!--/section-title--> 
+    <div class="container">
+        <div class="row"> 
+            <!--section-title-->
+            <div class="section-title text-center wow fadeInUp">
+                <h2>
+                    <?php echo  $grit_header=( get_theme_mod( 'grit_process_header' ) )?
+                    ( get_theme_mod( 'grit_process_header' ) ):'The process';?>
+                </h2>
+            </div>
+            <!--/section-title--> 
       <!--process tab-->
       <div> 
         <!--tab nav-->
@@ -287,26 +302,7 @@ get_header(); ?>
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-heart-o"></i><span class="counter">17</span>
-            <p>Clients</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-envelope-o"></i><span class="counter">456</span>
-            <p>Leads</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-folder-o"></i><span class="counter">8596</span>
-            <p>Websites</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="c-block"><i class="fa fa-coffee"></i><span class="counter">456</span>
-            <p>Coffee</p>
-          </div>
-        </div>
+       <?php  get_template_part( 'section-part/section', counts );?>  
       </div>
     </div>
   </div>
