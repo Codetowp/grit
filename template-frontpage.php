@@ -115,7 +115,12 @@ get_header(); ?>
                 <?php echo  $grit_header=( get_theme_mod( 'grit_work_header' ) )?
                 ( get_theme_mod( 'grit_work_header' ) ):'Our work';?>
             </h2>
-            <a href="#">go to portfolio</a>
+            <a href="<?php echo  $grit_BUTTON_header=( get_theme_mod( 'grit_work_button_url' ) )?
+                ( get_theme_mod( 'grit_work_button_url' ) ):'#';?>">
+                
+                <?php echo  $grit_BUTTON_header=( get_theme_mod( 'grit_work_button_text' ) )?
+                ( get_theme_mod( 'grit_work_button_text' ) ):'go to portfolio';?>
+            </a>
         </div>
         <!--/section-title-->
       <div class="clearfix"></div>
@@ -298,7 +303,12 @@ get_header(); ?>
 
 <!-- Company counter section
     ==========================================-->
-<section id="company-counter" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/07-screenshot.jpg);">
+<?php
+    $background_img   = esc_url( get_theme_mod( 'grit_counter_bck_ground_image' ) );   
+    $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
+    $image = $background_img ? "$background_img" : "$background_img_static";      
+?>
+<section id="company-counter" style="background-image:url(<?php echo $image; ?>); background-color:<?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?>">
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">

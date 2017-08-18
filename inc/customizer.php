@@ -329,7 +329,7 @@ function grit_customize_register( $wp_customize ) {
             'priority' => 5
         ) );
     */
-    
+
 
 /********* contact us **********/    
       
@@ -403,8 +403,32 @@ function grit_customize_register( $wp_customize ) {
             'priority' 					=> 2,
         ) );
 
-    
+        $wp_customize->add_setting( 'grit_work_button_text', array(      
+            'default'                   => 'GO TO PORTFOLIO' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
 
+        $wp_customize->add_control( 'grit_work_button_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Text', 'grit' ),
+            'section'  					=> 'grit_work_section',
+            'priority' 					=> 3,
+        ) );	
+
+
+        $wp_customize->add_setting( 'grit_work_button_url', array(      
+            'default'                   => 'www.burstfly.com' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'grit_work_button_url', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Url', 'grit' ),
+            'section'  					=> 'grit_work_section',
+            'priority' 					=> 5
+        ) );	
     
     
 
@@ -499,6 +523,35 @@ function grit_customize_register( $wp_customize ) {
                 )
             );
 
+        $wp_customize->add_setting( 'grit_counter_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_counter_bck_ground_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'grit_counter_section',
+            'settings'                  => 'grit_counter_bck_ground_image',
+            'context'                   => 'grit_counter_bck_ground_image',
+            'priority'                  => 20,
+            ) 
+        ) );
+
+        $wp_customize->add_setting( 'grit_counter_background_color', array(
+            'default'                   => '#ff4a5d', 
+            'transport'                 => 'postMessage', 
+            'sanitize_callback'         => 'sanitize_hex_color', 
+        ) );
+    
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_counter_background_color', array(
+            'label'                     => esc_attr__( 'Background Color', 'grit' ),
+            'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
+            'section'                   => 'grit_counter_section',
+            'priority' 					=> 21,
+        ) ) );
 
 /********* Latest news section **********/   
 
