@@ -47,6 +47,10 @@ if ( ! function_exists( 'grit_setup' ) ) :
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'grit' ),
 		) );
+        
+		register_nav_menus( array(
+			'footer-menu' => esc_html__( 'Footer', 'grit' ),
+		) );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -105,6 +109,16 @@ function grit_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'grit' ),
 		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'grit' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+    
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer-social', 'grit' ),
+		'id'            => 'footer',
 		'description'   => esc_html__( 'Add widgets here.', 'grit' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
