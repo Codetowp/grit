@@ -53,13 +53,19 @@
 				$( '#home-banner:before' ).css( 'opacity', to );
 			} );
 		} );
-    //calender background color
+    //header background color
     wp.customize( 'grit_header_background_color', function( value ) {
 			value.bind( function( to ) {
 				$( '#home-banner:before' ).css( 'background-color', to );
 			} );
 		} );
     
+    //counter background color
+    wp.customize( 'grit_counter_background_color', function( value ) {
+			value.bind( function( to ) {
+				$( '#company-counter:before' ).css( 'background-color', to );
+			} );
+		} );
     
   
 } )( jQuery );
