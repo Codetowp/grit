@@ -63,22 +63,7 @@ get_header(); ?>
       <div class="clearfix"></div>
       <!--about features list-->
       <ul class="about-features wow fadeInUp">
-        <li><i class="fa fa-comment-o"></i>
-          <h5>Brand strategy</h5>
-          <p>A brand is a name, term, design, symbol or other feature that distinguishes</p>
-        </li>
-        <li><i class="fa fa-file-image-o"></i>
-          <h5>Art direction</h5>
-          <p>Art director is the title for a variety of similar  job functions in theater</p>
-        </li>
-        <li><i class="fa fa-birthday-cake"></i>
-          <h5>Graphic design</h5>
-          <p>Graphic design is the process of visual communication, and problem-solving</p>
-        </li>
-        <li><i class="fa fa-inbox"></i>
-          <h5>Web Development</h5>
-          <p>Web development is a broad term for the work involved in developing a web site </p>
-        </li>
+         <?php  get_template_part( 'section-part/section', about );?>
       </ul>
       <!--/about features list--> 
       
@@ -245,60 +230,11 @@ get_header(); ?>
       <!--process tab-->
       <div> 
         <!--tab nav-->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#concept" data-toggle="tab"><i class="fa fa-star-o"></i>
-                <h5>01. Concept</h5>
-                </a>
-            </li>
-            <li><a href="#prototype" data-toggle="tab"><i class="fa fa-copy"></i>
-                <h5>02. Prototyping</h5>
-                </a>
-            </li>
-            <li><a href="#Design" data-toggle="tab"><i class="fa fa-laptop"></i>
-                <h5>03. Design</h5>
-                </a>
-            </li>
-            <li><a href="#development" data-toggle="tab"><i class="fa fa-code"></i>
-                <h5>04. Development</h5>
-                </a>
-            </li>
-        </ul>
-        <!--/tab nav--> 
-        <!--tab container-->
-        <div class="tab-content"> 
           
-          <!--tab nav item 1-->
-          <div id="concept" class="tab-pane active"> 
-            <!--tab img-->
-            <div class="col-md-5 process-img"> <img src="<?php echo get_template_directory_uri(); ?>/img/tab-1.jpg" class="img-responsive"> </div>
-            <!--/tab img--> 
-            <!--tab content-->
-            <div class="col-md-7 process-content">
-              <h6>Professional website design</h6>
-              <p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
-              <a href="#">Read More</a> </div>
-            <!--/tab content--> 
-            
-          </div>
-          <!--/tab nav item 1--> 
+          <?php  get_template_part( 'section-part/section', process );?>
           
-          <!--tab nav item 2-->
-          <div id="prototype" class="tab-pane"> 
-            <!--tab img-->
-            <div class="col-md-5 process-img"> <img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" class="img-responsive"> </div>
-            <!--/tab img--> 
-            <!--tab content-->
-            <div class="col-md-7 process-content">
-              <h6>Professional website design</h6>
-              <p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
-              <a href="#">Read More</a> </div>
-            <!--/tab content--> 
-            
-          </div>
-          <!--/tab nav item 2--> 
           
-        </div>
-        <!--/tab container--> 
+      
         
       </div>
       <!--\process tab--> 

@@ -281,8 +281,8 @@ function grit_customize_register( $wp_customize ) {
 						'section'       => 'grit_about_section',
 						'live_title_id' => 'content_page', // apply for unput text and textarea only
 						'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
-						'max_item'      => 3, // Maximum item can add
-                        'limited_msg' 	=> wp_kses_post( 'Upgrade to <a target="_blank" href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#get-started">OnePress Plus</a> to be able to add more items and unlock other premium features!', 'grit' ),
+						'max_item'      => 4, // Maximum item can add
+                       /* 'limited_msg' 	=> wp_kses_post( 'Upgrade to <a target="_blank" href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#get-started">OnePress Plus</a> to be able to add more items and unlock other premium features!', 'grit' ),*/
 						//'allow_unlimited' => false, // Maximum item can add
                             
 						'fields'    => array(
@@ -297,11 +297,6 @@ function grit_customize_register( $wp_customize ) {
                                 'required' => array( 'icon_type', '=', 'icon' ),
                             ),
                      
-							'title' => array(
-                                'title' => esc_html__('Title', 'grit'),
-                                'type'  =>'text',
-                                'default' => wp_kses_post('CLIENTS'),
-                          ),
 						),
 
 					)
@@ -310,95 +305,6 @@ function grit_customize_register( $wp_customize ) {
     /*
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     $wp_customize->add_setting( 'grit_dropdown_pages_setting', 
-               array(               
-                   'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
-                    'transport' => 'refresh', // refresh or postMessage
-
-               ) );    
-
-
-        $wp_customize->add_control(
-                new Grit_Customize_Repeatable_Control(
-                    $wp_customize,
-                    'grit_dropdown_pages_setting',
-                    array(
-                        'label'     => esc_html__('Dropdown Pages Setting', 'grit'),
-                        'description'   => 'Add upto 4 service blocks',
-                        'section'       => 'grit_about_section',
-                        //'live_title_id' => 'user_id', // apply for unput text and textarea only
-                        'title_format'  => esc_html__( '[live_title]', 'grit'), // [live_title]
-                        'max_item'      => 4, // Maximum item can add
-                        'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'grit' ),
-                        'fields'    => array(
-                         'icon_type'  => array(
-                            'title' => esc_html__('Custom icon', 'grit'),
-                            'type'  =>'select',
-                            'options' => array(
-                                'icon' => esc_html__('Icon', 'grit'),
-                                'image' => esc_html__('image', 'grit'),
-                            ),
-                        ),
-
-                        'icon'  => array(
-                            'title' => esc_html__('Icon', 'grit'),
-                            'type'  =>'icon',
-                            'required' => array( 'icon_type', '=', 'icon' ),
-                        ),
-
-                        'image'  => array(
-                            'title' => esc_html__('Image', 'grit'),
-                            'type'  =>'media',
-                            'required' => array( 'icon_type', '=', 'image' ),
-                        ),
-                                
-                         'dropdown_pages_setting' => array(
-                            'title' => esc_html__('Dropdown Pages', 'grit'),
-                            'type'  =>'dropdown-pages',
-                            'default' => 6,
-                         ),
-                            
-                         'title' => array(
-                             'title' => esc_html__('Title', 'grit'),
-                             'type'  =>'text',
-                             'default' => wp_kses_post('CLIENTS'),
-                          ),
-                        ),
-
-                    )
-                )
-            );
-
-    */
-    
-    
-    
-       /* $wp_customize->add_setting( 'grit_dropdown_pages_setting', array(
-            'default'        => 6,
-        ) );
-
-        $wp_customize->add_control( 'grit_dropdown_pages_setting', array(
-            'label'   => 'Dropdown Pages Setting',
-            'section' => 'grit_about_section',
-            'type'    => 'dropdown-pages',
-            'priority' => 5
-        ) );
-    */
-
-
 /********* contact us **********/    
       
         $wp_customize->add_section('grit_contact_section', array(
@@ -521,6 +427,55 @@ function grit_customize_register( $wp_customize ) {
             'section'  					=> 'grit_process_section',
             'priority' 					=> 2,
         ) );
+    
+    
+        // Dropdown pages control
+    
+        $wp_customize->add_setting(
+			'grit_process_boxes',
+			array(
+				//'default' => '',
+				'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
+				'transport' => 'refresh', // refresh or postMessage
+			) );
+
+
+			$wp_customize->add_control(
+				new Grit_Customize_Repeatable_Control(
+					$wp_customize,
+					'grit_process_boxes',
+					array(
+						'label' 		=> esc_html__('process content page', 'grit'),
+						'description'   => '',
+						'section'       => 'grit_process_section',
+						'live_title_id' => 'content_page', // apply for unput text and textarea only
+						'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
+						'max_item'      => 4, // Maximum item can add
+                       /* 'limited_msg' 	=> wp_kses_post( 'Upgrade to <a target="_blank" href="https://www.famethemes.com/plugins/onepress-plus/?utm_source=theme_customizer&utm_medium=text_link&utm_campaign=onepress_customizer#get-started">OnePress Plus</a> to be able to add more items and unlock other premium features!', 'grit' ),*/
+						//'allow_unlimited' => false, // Maximum item can add
+                            
+						'fields'    => array(
+							'content_page'  => array(
+								'title' => esc_html__('Select a page', 'grit'),
+								'type'  =>'select',
+								'options' => $option_pages
+							),
+                            'icon'  => array(
+                                'title' => esc_html__('Icon', 'grit'),
+                                'type'  =>'icon',
+                                'required' => array( 'icon_type', '=', 'icon' ),
+                            ),
+                            'title' => array(
+                                'title' => esc_html__('Title', 'grit'),
+                                'type'  =>'text',
+                                'default' => wp_kses_post('Creating idea', 'grit'),
+                            ),
+						),
+
+					)
+				)
+			);
+    /*
     
 /********* Counter section **********/   
 
