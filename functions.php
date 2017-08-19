@@ -136,6 +136,7 @@ require get_template_directory() . '/inc/widgets/recentpost.php';
 	require get_template_directory() . '/inc/lib/related-post.php';
 
 // Custom Theme Image Sizes	
+add_image_size( 'process-medium', 360, 463,  array( 'top', 'center' ) );
 add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function
