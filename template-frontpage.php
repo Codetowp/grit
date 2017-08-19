@@ -111,15 +111,32 @@ get_header(); ?>
       <div class="clearfix"></div>
       <div class="works">
         <ul class="grid">
+          <?php 
+                   // $count_blog = get_theme_mod( 'grit_blog_post_count' );
+//                $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>5, 'page' =>'jetpack-portfolio' ) );
+
+//                if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+           ?>
+        
             
-            
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/01-screenshot.jpg" alt="Screenshot 01">
+       <!--   <li>
+            <figure>
+                
+                  <?php //the_post_thumbnail();?>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">
               <figcaption>
                 <div class="caption-content">
-                  <h6>Codetowp branding</h6>
+                  <h6><?php the_title(); ?></h6>
                   <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
+                   <?php
+			          //echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
+			          //sprintf(
+			            /* '<a href="#">%1$s'
+			                 ),
+			             esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+			             '</a>'
+			             );*/
+		           ?>
                   <ul class="work-more">
                     <li><a href="#"><i class="fa fa-search"></i></a></li>
                     <li><a href="#"><i class="fa fa-link"></i></a></li>
@@ -127,24 +144,9 @@ get_header(); ?>
                 </div>
               </figcaption>
             </figure>
-          </li>
+          </li>-->
+        <?php // endwhile; endif;  wp_reset_postdata();?>       
             
-            
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
           <li>
             <figure><img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" alt="Screenshot 01">
               <figcaption>
@@ -248,7 +250,7 @@ get_header(); ?>
     $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="company-counter" style="background-image:url(<?php echo $image; ?>); background-color:<?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?>">
+<section id="company-counter" style="background-image:url(<?php echo $image; ?>); background-color:<?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?>; opacity: <?php echo esc_attr(get_theme_mod( 'grit_counter_transparnt' ));?>">
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">
@@ -296,8 +298,7 @@ get_header(); ?>
                      <?php echo  $grit_header=( get_theme_mod( 'grit_latest_news_header' ) )?
                     ( get_theme_mod( 'grit_latest_news_header' ) ):'Latest news'; ?>
                 </h2>
-                <a href="<?php echo  $grit_button_url=( get_theme_mod( 'grit_latest_news_button_url' ) )?
-                    ( get_theme_mod( 'grit_latest_news_button_url' ) ):'www.burstfly.com'; ?>">
+                    <a href="<?php echo  esc_url( home_url( '/blog' ) ); ?>">
                     
                     <?php echo  $grit_button_text=( get_theme_mod( 'grit_latest_news_button_text' ) )?
                     ( get_theme_mod( 'grit_latest_news_button_text' ) ):'See the blog'; ?>
@@ -305,43 +306,32 @@ get_header(); ?>
                 </a>
             </div>
             <!--/section-title--> 
-            
-            <!--home article-->
-            <article class="col-md-3 col-sm-6 col-xs-12">
-                <header class="entry-header"> 
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="image 1"> 
-                    <a href="#"><h6>10 Incredible Quotes To Guide Your Life</h6></a> 
-                    <a href="#">Web-design</a> , <a href="#">Front-end</a>
-                </header>
-            </article>
-            <!--/home article --> 
-      
-            <!--home article-->
-            <article class="col-md-3 col-sm-6 col-xs-12">
-                <header class="entry-header"> 
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="image 1"> 
-                    <a href="#"><h6>Responsive Website in 2017 – Step by Step Guide</h6></a> 
-                    <a href="#">Web-design</a> 
-                </header>
-            </article>
-            <!--/home article --> 
 
-      <!--home article-->
-      <article class="col-md-3 col-sm-6 col-xs-12">
-        <header class="entry-header"> <img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" alt="image 1"> <a href="#">
-          <h6>10 Incredible Quotes To Guide Your Life</h6>
-          </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>
-      </article>
-      <!--/home article --> 
-      
-      <!--home article-->
-      <article class="col-md-3 col-sm-6 col-xs-12">
-        <header class="entry-header"> <img src="<?php echo get_template_directory_uri(); ?>/img/01-screenshot.jpg" alt="image 1"> <a href="#">
-          <h6>HEADING 6 in use here</h6>
-          </a> <a href="#">Web-design</a> </header>
-      </article>
-      <!--/home article --> 
-      
+                <?php 
+                    $count_blog = get_theme_mod( 'grit_blog_post_count' );
+                    $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+
+                if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+ ?>
+                    <article class="col-md-3 col-sm-6 col-xs-12">
+                    <header class="entry-header">        
+                    <?php
+                        if  ( get_the_post_thumbnail()!='')
+                        {
+                            the_post_thumbnail('grit_latest_news'); 
+                        }else{?>
+                         <img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
+                    <?php }?>       
+                            <!--  <img src="img/04-screenshot.jpg" alt="image 1">--> <a href="<?php the_permalink();?>">
+                     <h6><?php the_title();?></h6>
+                    </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>
+                    </article>
+
+
+             <?php   endwhile;endif;?>
+
+                <?php wp_reset_postdata(); ?>
+           
     </div>
   </div>
 </section>
