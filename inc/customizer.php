@@ -20,7 +20,9 @@ function grit_customize_register( $wp_customize ) {
 	}
     
     
-    
+    require get_template_directory() . '/inc/lib/fo-to-range.php';
+    require get_template_directory() . '/inc/lib/theme-info.php';   
+
     require get_template_directory() . '/inc/customizer-controls.php';
     
         $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
@@ -697,6 +699,34 @@ function grit_customize_register( $wp_customize ) {
             'priority'                  => 1,
             ) 
         ) );    
+    
+/******************fonts*****************/
+
+        $wp_customize->add_section('grit_font', array(
+                'title'                     => __('Font', 'grit'),
+                'description'               => 'Easily edit your body section',
+                'priority'                  => 109,
+
+        ));
+    
+    
+        /*** paragraph ****/
+    
+        $font_choices = customizer_library_get_font_choices();
+
+        $wp_customize->add_setting( 'grit_paragraph_font', array(
+            'default'        => 'Open Sans',
+        ) );
+
+        $wp_customize->add_control( 'grit_paragraph_font', array(
+            'label'   => 'Grit Paragragh Font Family',
+            'section' => 'grit_font',
+            'type'    => 'select',
+            'choices' => $font_choices,
+            'priority' => 1,
+            ));
+
+    
 
 }
 add_action( 'customize_register', 'grit_customize_register' );
