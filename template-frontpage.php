@@ -100,8 +100,7 @@ get_header(); ?>
                 <?php echo  $grit_header=( get_theme_mod( 'grit_work_header' ) )?
                 ( get_theme_mod( 'grit_work_header' ) ):'Our work';?>
             </h2>
-            <a href="<?php echo  $grit_BUTTON_header=( get_theme_mod( 'grit_work_button_url' ) )?
-                ( get_theme_mod( 'grit_work_button_url' ) ):'#';?>">
+            <a href="<?php echo  esc_url( home_url( '/portfolio' ) ); ?>">
                 
                 <?php echo  $grit_BUTTON_header=( get_theme_mod( 'grit_work_button_text' ) )?
                 ( get_theme_mod( 'grit_work_button_text' ) ):'go to portfolio';?>
@@ -112,102 +111,50 @@ get_header(); ?>
       <div class="works">
         <ul class="grid">
           <?php 
-                   // $count_blog = get_theme_mod( 'grit_blog_post_count' );
-//                $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>5, 'page' =>'jetpack-portfolio' ) );
-
-//                if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+                $posts_per_page_portfolio = get_theme_mod( 'grit_portfolio_post_count' );
+                $args = array(
+                    'post_type'      => 'jetpack-portfolio',
+                    'posts_per_page' => $posts_per_page_portfolio,
+                );
+ 
+                $project_query = new WP_Query ( $args );
+ 
+                if ( post_type_exists( 'jetpack-portfolio' ) && $project_query -> have_posts() ) :
+ 
+                    while ( $project_query -> have_posts() ) : $project_query -> the_post();
+ 
            ?>
         
             
-       <!--   <li>
+          <li>
             <figure>
                 
-                  <?php //the_post_thumbnail();?>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">
+                  <?php the_post_thumbnail();?>
+                <!--<img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
               <figcaption>
                 <div class="caption-content">
                   <h6><?php the_title(); ?></h6>
                   <hr>
                    <?php
-			          //echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-			          //sprintf(
-			            /* '<a href="#">%1$s'
+			          echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
+			          sprintf(
+			           '<a href="#">%1$s'
 			                 ),
 			             esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 			             '</a>'
-			             );*/
+			             );
 		           ?>
                   <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    <li><a href="<?php the_permalink();?>"><i class="fa fa-search"></i></a></li>
+                    <li><a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a></li>
                   </ul>
                 </div>
               </figcaption>
             </figure>
-          </li>-->
-        <?php // endwhile; endif;  wp_reset_postdata();?>       
+          </li>
+        <?php  endwhile; endif;  wp_reset_postdata();?>       
             
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/03-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/04-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><img src="<?php echo get_template_directory_uri(); ?>/img/06-screenshot.jpg" alt="Screenshot 01">
-              <figcaption>
-                <div class="caption-content">
-                  <h6>Optimised For Design</h6>
-                  <hr>
-                  <a href="#">Design</a>/ <a href="#">brand</a>
-                  <ul class="work-more">
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                  </ul>
-                </div>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
+         </ul>
       </div>
     </div>
   </div>
@@ -250,7 +197,14 @@ get_header(); ?>
     $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="company-counter" style="background-image:url(<?php echo $image; ?>); background-color:<?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?>; opacity: <?php echo esc_attr(get_theme_mod( 'grit_counter_transparnt' ));?>">
+<style>
+    #company-counter:after{
+      /*  background: <?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?> ;
+        opacity: <?php echo esc_attr(get_theme_mod( 'grit_counter_transparnt' ));?>*/
+    
+    }
+</style>
+<section id="company-counter" style="background-image:url(<?php echo $image; ?>); ">
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12 wow fadeInDown">
@@ -268,18 +222,40 @@ get_header(); ?>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div id="testimonial" class="owl-carousel owl-theme">
-          <div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/01.jpg">
-            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+            
+             <?php 
+                $posts_per_page_testimonial = get_theme_mod( 'grit_testimonial_post_count' );
+                $args = array(
+                    'post_type'      => 'jetpack-testimonial',
+                    'posts_per_page' => $posts_per_page_testimonial,
+                );
+ 
+                $project_query = new WP_Query ( $args );
+ 
+                if ( post_type_exists( 'jetpack-testimonial' ) && $project_query -> have_posts() ) :
+ 
+                    while ( $project_query -> have_posts() ) : $project_query -> the_post();
+ 
+           ?>
+            
+            
+            
+          <div class="item"> <?php the_post_thumbnail();?>
+              <h5><?php the_excerpt();?></h5>
             <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
           </div>
-          <div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/02.jpg">
+            
+          <?php  endwhile; endif;  wp_reset_postdata();?>
+            
+            
+          <!--<div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/02.jpg">
             <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
             <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
           </div>
           <div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/03.jpg">
             <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
             <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
@@ -319,12 +295,20 @@ get_header(); ?>
                         if  ( get_the_post_thumbnail()!='')
                         {
                             the_post_thumbnail('grit_latest_news'); 
-                        }else{?>
+                        }
+                        else
+                        {?>
                          <img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
                     <?php }?>       
-                            <!--  <img src="img/04-screenshot.jpg" alt="image 1">--> <a href="<?php the_permalink();?>">
+                    <a href="<?php the_permalink();?>">
                      <h6><?php the_title();?></h6>
-                    </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>
+                    </a>
+                    <?php 
+                        $categories = get_the_category();
+                        if ( ! empty( $categories ) ) {
+      echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ). '">'. esc_html( $categories[0]->name ) . '</a> ';
+                        }?>
+                     </header>
                     </article>
 
 
