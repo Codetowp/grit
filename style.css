@@ -2582,7 +2582,7 @@ embed, iframe, object {
 }
 ul.about-features {
 	padding: 50px 80px;
-	display: inline-block;
+	/*display: inline-block;*/
 }
 ul.about-features li {
 	list-style: none;

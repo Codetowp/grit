@@ -156,6 +156,24 @@ if ( ! function_exists( 'grit_get_section_about_data' ) ) {
 }
 
 
+if ( ! function_exists( 'grit_get_section_process' ) ) {
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function grit_get_section_process()
+    {
+        $boxes = get_theme_mod('grit_process_boxes');
+        if (is_string($boxes)) {
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) {
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
 
 
 

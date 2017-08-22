@@ -1,5 +1,5 @@
 <?php
- $page_ids = grit_get_section_about_data();
+ $page_ids = grit_get_section_process();
 
 ?>
 <?php
@@ -33,7 +33,7 @@
             
         <?php  
         
-         $firstClass = "active"; 
+         $firstClass = 'active'; 
         foreach ($page_ids as $post_id => $settings  ) {
             
               
@@ -49,7 +49,7 @@
                 </a>
             </li>  
             
-        <?php $active="";} ?>        
+        <?php $firstClass=''; } ?>        
           
         </ul>
         <!--/tab nav--> 

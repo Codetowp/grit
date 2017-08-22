@@ -16,7 +16,12 @@ get_header(); ?>
 <div id="page-banner" style="background-image: url(<?php get_template_directory_uri(); ?>/img/in-bg.jpg);">
   <div class="content  wow fdeInUp">
     <div class="container ">
-      <h1>Portfolio</h1>
+      <h1><?php
+				if ( isset( $jetpack_options['page-title'] ) && '' != $jetpack_options['page-title'] )
+					echo esc_html( $jetpack_options['page-title'] );
+				else
+					esc_html_e( 'Portfolio', 'grit' );
+			?></h1>
     </div>
   </div>
 </div>
