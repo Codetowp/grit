@@ -11,9 +11,13 @@ get_header(); ?>
 
 	<!-- banner Page
     ==========================================-->
+<?php
+    $background_img   = esc_url( get_theme_mod( 'grit_portfolio_bck_ground_image' ) );   
+    $background_img_static   = get_template_directory_uri()."/img/in-bg.jpg";
+    $image = $background_img ? "$background_img" : "$background_img_static";      
+?>
 
-
-<div id="page-banner" style="background-image: url(<?php get_template_directory_uri(); ?>/img/in-bg.jpg);">
+<div id="page-banner" class="portfolio" style="background-image: url(<?php echo $image; ?>);">
   <div class="content  wow fdeInUp">
     <div class="container ">
       <h1><?php
