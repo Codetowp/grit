@@ -20,7 +20,9 @@ function grit_customize_register( $wp_customize ) {
 	}
     
     
-    
+    require get_template_directory() . '/inc/lib/fo-to-range.php';
+    require get_template_directory() . '/inc/lib/theme-info.php';   
+
     require get_template_directory() . '/inc/customizer-controls.php';
     
         $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
@@ -703,10 +705,71 @@ function grit_customize_register( $wp_customize ) {
 
             )
         );
-       
-  
+ 
 
+=======
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_portfolio_bck_ground_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'grit_portfolio_section',
+            'settings'                  => 'grit_portfolio_bck_ground_image',
+            'context'                   => 'grit_portfolio_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );
 
+/********* Testimonial page **********/   
+
+        $wp_customize->add_section('grit_testimonial_section', array(
+            'title'                     => __('blogPage', 'grit'),
+            'priority'                  => 108,
+
+        ));
+    
+        $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_testimonial_bck_ground_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'grit_testimonial_section',
+            'settings'                  => 'grit_testimonial_bck_ground_image',
+            'context'                   => 'grit_testimonial_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );    
+    
+/******************fonts*****************/
+
+        $wp_customize->add_section('grit_font', array(
+                'title'                     => __('Font', 'grit'),
+                'description'               => 'Easily edit your body section',
+                'priority'                  => 109,
+
+        ));
+    
+    
+        /*** paragraph ****/
+    
+        $font_choices = customizer_library_get_font_choices();
+
+        $wp_customize->add_setting( 'grit_paragraph_font', array(
+            'default'        => 'Open Sans',
+        ) );
+
+        $wp_customize->add_control( 'grit_paragraph_font', array(
+            'label'   => 'Grit Paragragh Font Family',
+            'section' => 'grit_font',
+            'type'    => 'select',
+            'choices' => $font_choices,
+            'priority' => 1,
+            ));
+
+    
 
 }
 add_action( 'customize_register', 'grit_customize_register' );
