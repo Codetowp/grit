@@ -65,12 +65,16 @@
 
     
       </ul>        
-          <!--search form-->         
-          <form method="get" action="/search" id="search">
-            <input name="q" type="text" size="40" placeholder="Search..." />
-          </form>
-          <!--/search form--> 
-          
+            <!--search form-->    
+                <?php 
+                    if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
+                        <form method="get" action="/search" id="search">
+                        <input name="q" type="text" size="40" placeholder="Search..." />
+                        </form>
+                <?php }?>
+               
+            <!--/search form--> 
+
         <nav class="bottom-nav">
           <ul>
             <li><a href="#">FAQ</a></li>
