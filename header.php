@@ -66,10 +66,20 @@
     
       </ul>        
             <!--search form-->    
-                <?php 
-                    if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
-                        <form method="get" action="/search" id="search">
-                        <input name="q" type="text" size="40" placeholder="Search..." />
+      <?php 
+           if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
+        
+     <!--        <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
+              <div class="input-group">
+                 <input class="form-control" type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>">
+                 <span class="input-group-btn">
+                 <button  type="text" value="<?php echo esc_attr_x( 'Search', 'submit button', 'grit' ); ?>"><i class="fa  fa-search"></i></button>
+              </span></div>
+</form>-->
+        
+                
+                        <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
+                        <input  class="form-control" type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>" size="40" />
                         </form>
                 <?php }?>
                

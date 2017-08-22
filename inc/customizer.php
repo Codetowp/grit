@@ -953,6 +953,19 @@ function grit_customize_register( $wp_customize ) {
                 'section'  => 'enabled_switch',
                 'type'     => 'ios',
         ) ) );
+    
+    
+     $wp_customize->add_setting( 'grit_enable_disable_blog_auother_button', array(
+                'default'    => '1',
+                'capability' => 'manage_options',
+                'transport' => 'refresh',
+        ) );
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_blog_auother_button', array(
+                'settings' => 'grit_enable_disable_blog_auother_button',
+                'label'    => ( 'Enable/Disable Blog Author option' ),
+                'section'  => 'enabled_switch',
+                'type'     => 'ios',
+        ) ) );
 
 
 }
