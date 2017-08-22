@@ -62,7 +62,7 @@
 
     //counter background color
 
-    wp.customize( 'grit_counter_background_color', function( value ) {
+  /*  wp.customize( 'grit_counter_background_color', function( value ) {
         value.bind( function( to ) {
             $( '#company-counter:after' ).css( 'background', to );
         } );
@@ -72,6 +72,6 @@
         value.bind( function( to ) {
             $( '#company-counter:after' ).css( 'opacity', to );
         } );
-    } );
+    } );*/
 } )( jQuery );
 

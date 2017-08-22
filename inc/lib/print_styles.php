@@ -124,3 +124,5 @@ if (!function_exists('dblogger_accent_color'))  {
 }
  // Add custom styles to `<head>`.
 add_action( 'wp_head', 'dblogger_accent_color' );
+
+
