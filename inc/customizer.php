@@ -404,7 +404,18 @@ function grit_customize_register( $wp_customize ) {
             'priority' 					=> 5
         ) );	
     
-    
+       $wp_customize->add_setting( 'grit_work_portfolio_count', array(
+            'default'                   => '6',
+            'sanitize_callback'         => 'grit_sanitize_integer'
+            )
+        );
+        $wp_customize->add_control( 'grit_work_portfolio_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Blog To Show - i.e 10 (default is 6)','grit'),
+            'section'                   => 'grit_work_section',
+
+            )
+        );
 
 /********* process block **********/    
       
@@ -565,7 +576,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_setting( 'grit_counter_background_color', array(
             'default'                   => '#ff4a5d', 
-            'transport'                 => 'postMessage', 
+            'transport'                 => 'refresh', 
             'sanitize_callback'         => 'sanitize_hex_color', 
         ) );
     

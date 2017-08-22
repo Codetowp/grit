@@ -111,7 +111,7 @@ get_header(); ?>
       <div class="works">
         <ul class="grid">
           <?php 
-                $posts_per_page_portfolio = get_theme_mod( 'grit_portfolio_post_count' );
+                $posts_per_page_portfolio = get_theme_mod( 'grit_work_portfolio_count' );
                 $args = array(
                     'post_type'      => 'jetpack-portfolio',
                     'posts_per_page' => $posts_per_page_portfolio,
