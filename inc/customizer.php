@@ -725,6 +725,20 @@ function grit_customize_register( $wp_customize ) {
             'choices' => $font_choices,
             'priority' => 1,
             ));
+    
+        $wp_customize->add_setting( 'grit_paragraph_font_color', 
+                array(
+                    'default' => '#9C9C9C', 
+                    'transport' => 'refresh', 
+                    'sanitize_callback' => 'sanitize_hex_color', 
+                ) );
+         $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_paragraph_font_color', 
+               array(
+                'label'      => esc_attr__( 'Paragraph Font Color', 'grit' ),
+                'section'    => 'grit_font',
+                   'priority'   => 2,
+            ) ) );    
+
 
     
 
