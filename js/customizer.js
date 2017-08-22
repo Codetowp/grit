@@ -73,8 +73,5 @@
             $( '#company-counter:after' ).css( 'opacity', to );
         } );
     } );
-  
-
-    
 } )( jQuery );
 
