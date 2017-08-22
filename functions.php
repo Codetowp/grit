@@ -131,6 +131,7 @@ add_action( 'widgets_init', 'grit_widgets_init' );
 
 //recent post widget
 require get_template_directory() . '/inc/widgets/recentpost.php';
+require get_template_directory() . '/inc/lib/print_styles.php';
 
 // Custom Theme Functions
 	require get_template_directory() . '/inc/lib/related-post.php';
@@ -236,3 +237,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
+
+// Helper library for the theme customizer.
+require get_template_directory() . '/inc/customizer-library.php';
+
+// Output inline styles based on theme customizer selections.
+require get_template_directory() . '/inc/styles.php';
+
+endif;
