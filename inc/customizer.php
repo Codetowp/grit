@@ -648,8 +648,55 @@ function grit_customize_register( $wp_customize ) {
             )
         );
        
+/********* Portfolio page **********/   
 
+        $wp_customize->add_section('grit_portfolio_section', array(
+            'title'                     => __('Portfolio Page', 'grit'),
+            'priority'                  => 107,
 
+        ));
+    
+        $wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_portfolio_bck_ground_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'grit_portfolio_section',
+            'settings'                  => 'grit_portfolio_bck_ground_image',
+            'context'                   => 'grit_portfolio_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );
+
+/********* Testimonial page **********/   
+
+        $wp_customize->add_section('grit_testimonial_section', array(
+            'title'                     => __('blogPage', 'grit'),
+            'priority'                  => 108,
+
+        ));
+    
+        $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_testimonial_bck_ground_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'grit_testimonial_section',
+            'settings'                  => 'grit_testimonial_bck_ground_image',
+            'context'                   => 'grit_testimonial_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );    
 
 }
 add_action( 'customize_register', 'grit_customize_register' );
