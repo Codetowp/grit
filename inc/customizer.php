@@ -468,7 +468,7 @@ function grit_customize_register( $wp_customize ) {
                             'title' => array(
                                 'title' => esc_html__('Title', 'grit'),
                                 'type'  =>'text',
-                                'default' => wp_kses_post('Creating idea', 'grit'),
+                                'default' => wp_kses_post('Creating', 'grit'),
                             ),
 						),
 
