@@ -197,13 +197,6 @@ get_header(); ?>
     $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<style>
-    #company-counter:after{
-      /*  background: <?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?> ;
-        opacity: <?php echo esc_attr(get_theme_mod( 'grit_counter_transparnt' ));?>*/
-    
-    }
-</style>
 <section id="company-counter" style="background-image:url(<?php echo $image; ?>); ">
   <div class="container">
     <div class="row text-center">
@@ -224,7 +217,7 @@ get_header(); ?>
         <div id="testimonial" class="owl-carousel owl-theme">
             
              <?php 
-                $posts_per_page_testimonial = get_theme_mod( 'grit_testimonial_post_count' );
+                $posts_per_page_testimonial = get_theme_mod( 'grit_testimonial_count' );
                 $args = array(
                     'post_type'      => 'jetpack-testimonial',
                     'posts_per_page' => $posts_per_page_testimonial,
@@ -237,25 +230,11 @@ get_header(); ?>
                     while ( $project_query -> have_posts() ) : $project_query -> the_post();
  
            ?>
-            
-            
-            
           <div class="item"> <?php the_post_thumbnail();?>
               <h5><?php the_excerpt();?></h5>
-            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
+            <p><strong><?php the_title();?></strong> <!--CEO Acme Inc.--></p>
           </div>
-            
           <?php  endwhile; endif;  wp_reset_postdata();?>
-            
-            
-          <!--<div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/02.jpg">
-            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
-          </div>
-          <div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/team/03.jpg">
-            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-            <p><strong>Dean Martin</strong> CEO Acme Inc.</p>
-          </div>-->
         </div>
       </div>
     </div>

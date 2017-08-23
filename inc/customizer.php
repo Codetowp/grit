@@ -465,7 +465,7 @@ function grit_customize_register( $wp_customize ) {
 /********* our work **********/    
       
         $wp_customize->add_section('grit_work_section', array(
-            'title'                     => __('Work Section', 'grit'),
+            'title'                     => __('Portfolio Section', 'grit'),
             'priority'                  => 104,
 
         ));
@@ -501,7 +501,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 'grit_work_button_url', array(      
             'default'                   => 'www.burstfly.com' ,
             'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh',               
+            'transport'                 => 'postMessage',               
         ) );    
 
         $wp_customize->add_control( 'grit_work_button_url', array(
@@ -523,7 +523,25 @@ function grit_customize_register( $wp_customize ) {
 
             )
         );
+            
+     $wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
 
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_portfolio_bck_ground_image', array(
+            'label'                     => __( 'Portfolio Page Background Image', '' ),
+            'section'                   => 'grit_work_section',
+            'settings'                  => 'grit_portfolio_bck_ground_image',
+            'context'                   => 'grit_portfolio_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );
+    
+    
 /********* process block **********/    
       
         $wp_customize->add_section('grit_process_section', array(
@@ -609,8 +627,7 @@ function grit_customize_register( $wp_customize ) {
                     'transport' => 'refresh', // refresh or postMessage
 
                ) );    
-
-
+    
         $wp_customize->add_control(
                 new Grit_Customize_Repeatable_Control(
                     $wp_customize,
@@ -706,12 +723,51 @@ function grit_customize_register( $wp_customize ) {
             'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
             'priority' 					=> 25,
             ) );
+    
+ /********* Testimonial page **********/   
 
+        $wp_customize->add_section('grit_testimonial_section', array(
+            'title'                     => __('Testimonial Section', 'grit'),
+            'priority'                  => 107,
+
+        ));
+    
+        $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_testimonial_bck_ground_image', array(
+            'label'                     => __( 'testimonial Page Background Image', '' ),
+            'section'                   => 'grit_testimonial_section',
+            'settings'                  => 'grit_testimonial_bck_ground_image',
+            'context'                   => 'grit_testimonial_bck_ground_image',
+            'priority'                  => 1,
+            ) 
+        ) );    
+    
+      $wp_customize->add_setting( 'grit_testimonial_count', array(
+            'default'                   => '3',
+            'sanitize_callback'         => 'grit_sanitize_integer'
+            )
+        );
+        $wp_customize->add_control( 'grit_testimonial_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 3)','grit'),
+            'section'                   => 'grit_testimonial_section',
+
+            )
+        );
+      
+    
 /********* Latest news section **********/   
 
         $wp_customize->add_section('grit_latest_news_section', array(
             'title'                     => __('Latest News Section', 'grit'),
-            'priority'                  => 106,
+            'priority'                  => 108,
 
         ));
     
@@ -754,22 +810,7 @@ function grit_customize_register( $wp_customize ) {
 
             )
         );
-       
-/********* Portfolio page **********/   
-
-        $wp_customize->add_section('grit_portfolio_section', array(
-            'title'                     => __('Portfolio Page', 'grit'),
-            'priority'                  => 107,
-
-        ));
-    
-        $wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
-            'default'                   => '',
-            'type'                      => 'theme_mod',
-            'capability'                => 'edit_theme_options',
-            'sanitize_callback'         => 'esc_url_raw',
-        ) );
-
+ 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_portfolio_bck_ground_image', array(
             'label'                     => __( 'Background Image', '' ),
@@ -783,7 +824,7 @@ function grit_customize_register( $wp_customize ) {
 /********* Testimonial page **********/   
 
         $wp_customize->add_section('grit_testimonial_section', array(
-            'title'                     => __('blogPage', 'grit'),
+            'title'                     => __('Testimonial Section', 'grit'),
             'priority'                  => 108,
 
         ));
