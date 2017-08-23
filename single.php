@@ -26,8 +26,10 @@ get_header(); ?>
         </ol>
         <h1><?php the_title(); ?> </h1>
         <hr>
-		<?php grit_posted_on(); ?>
-        
+        <?php 
+           if( get_theme_mod( 'grit_enable_disable_blog_auother_button' ) == 1 ) { ?>
+		      <?php grit_posted_on(); ?>
+        <?php }?>
 	  </div>
     </div>
     <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>

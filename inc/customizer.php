@@ -18,10 +18,6 @@ function grit_customize_register( $wp_customize ) {
 	foreach( $pages as $p ){
 		$option_pages[ $p->ID ] = $p->post_title;
 	}
-    
-    
-    require get_template_directory() . '/inc/lib/fo-to-range.php';
-    require get_template_directory() . '/inc/lib/theme-info.php';   
 
     require get_template_directory() . '/inc/customizer-controls.php';
     
@@ -49,6 +45,115 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->get_section('title_tagline')->title = __( 'Branding' );
         $wp_customize->get_section('header_image')->title = __( 'Blog Settings' );  
+    
+    
+    class Customizer_Range_Value_Control extends WP_Customize_Control {
+		public $type = 'range-input';
+
+		/**
+		 * Enqueue scripts/styles.
+		 *
+		 * @since 3.4.0
+		 */
+		public function enqueue() {
+			wp_enqueue_script( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/js/customizer-range-value-control.js', array( 'jquery' ), rand(), true );
+			wp_enqueue_style( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/css/customizer-range-value-control.css', array(), rand() );
+		}
+
+		/**
+		 * Render the control's content.
+		 *
+		 * @author soderlind
+		 * @version 1.2.0
+		 */
+		public function render_content() {
+			?>
+			<label>
+				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+				<div class="range-slider"  style="width:100%; display:flex;flex-direction: row;justify-content: flex-start;">
+					<span  style="width:100%; flex: 1 0 0; vertical-align: middle;"><input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->input_attrs(); $this->link(); ?>>
+					<span class="range-slider__value">0</span></span>
+				</div>
+				<?php if ( ! empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</label>
+			<?php
+		}
+	}
+
+    
+    class Customizer_Toggle_Control extends WP_Customize_Control {
+		public $type = 'ios';
+
+		/**
+		 * Enqueue scripts/styles.
+		 *
+		 * @since 3.4.0
+		 */
+		public function enqueue() {
+			/*wp_enqueue_script( 'customizer-toggle-control', get_stylesheet_directory_uri() . '/js/customizer-toggle-control.js', array( 'jquery' ), rand(), true );*/
+			wp_enqueue_style( 'pure-css-toggle-buttons', get_stylesheet_directory_uri() . '/css/pure-css-togle-buttons.css', array(), rand() );
+
+			$css = '
+				.disabled-control-title {
+					color: #a0a5aa;
+				}
+				input[type=checkbox].tgl-light:checked + .tgl-btn {
+			  		background: #0085ba;
+				}
+				input[type=checkbox].tgl-light + .tgl-btn {
+				  background: #a0a5aa;
+			  	}
+				input[type=checkbox].tgl-light + .tgl-btn:after {
+				  background: #f7f7f7;
+			  	}
+
+				input[type=checkbox].tgl-ios:checked + .tgl-btn {
+				  background: #0085ba;
+				}
+
+				input[type=checkbox].tgl-flat:checked + .tgl-btn {
+				  border: 4px solid #0085ba;
+				}
+				input[type=checkbox].tgl-flat:checked + .tgl-btn:after {
+				  background: #0085ba;
+				}
+
+			';
+			wp_add_inline_style( 'pure-css-toggle-buttons' , $css );
+		}
+
+		/**
+		 * Render the control's content.
+		 *
+		 * @author soderlind
+		 * @version 1.2.0
+		 */
+		public function render_content() {
+			?>
+			<label>
+				<div style="display:flex;flex-direction: row;justify-content: flex-start;">
+					<span class="customize-control-title" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->label ); ?></span>
+					<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl tgl-<?php echo $this->type?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+					<label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
+				</div>
+				<?php if ( ! empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</label>
+			<?php
+		}
+	}
+
+    
+    
+    
+    
+    
+    
+    
+    
     
   if ( isset( $wp_customize->selective_refresh ) ) {
       
@@ -170,7 +275,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_setting( 'grit_header_background_color', array(
             'default'                   => '#ff4a5d', 
-            'transport'                 => 'postMessage', 
+            'transport'                 => 'refresh', 
             'sanitize_callback'         => 'sanitize_hex_color', 
         ) );
     
@@ -183,7 +288,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_setting( 'grit_transparnt', array( 
            'default'                    => __( '0.7', 'grit' ),
-           'transport'                  => 'postMessage',
+           'transport'                  => 'refresh',
            'sanitize_callback'          => 'sanitize_text_field',
          ) );
         $wp_customize->add_control( 'grit_transparnt', array(
@@ -742,8 +847,8 @@ function grit_customize_register( $wp_customize ) {
         ) );    
     
 /******************fonts*****************/
-
-        $wp_customize->add_section('grit_font', array(
+    
+       $wp_customize->add_section('grit_font', array(
                 'title'                     => __('Font', 'grit'),
                 'description'               => 'Easily edit your body section',
                 'priority'                  => 109,
@@ -756,7 +861,7 @@ function grit_customize_register( $wp_customize ) {
         $font_choices = customizer_library_get_font_choices();
 
         $wp_customize->add_setting( 'grit_paragraph_font', array(
-            'default'        => 'Open Sans',
+            'default'        => 'PT Serif , serif',
         ) );
 
         $wp_customize->add_control( 'grit_paragraph_font', array(
@@ -767,21 +872,142 @@ function grit_customize_register( $wp_customize ) {
             'priority' => 1,
             ));
     
-        $wp_customize->add_setting( 'grit_paragraph_font_color', 
-                array(
-                    'default' => '#9C9C9C', 
-                    'transport' => 'refresh', 
-                    'sanitize_callback' => 'sanitize_hex_color', 
-                ) );
-         $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_paragraph_font_color', 
-               array(
-                'label'      => esc_attr__( 'Paragraph Font Color', 'grit' ),
-                'section'    => 'grit_font',
-                   'priority'   => 2,
-            ) ) );    
+         $wp_customize->add_setting( 'grit_paragraph_font_color', 
+            array(
+                'default' => '#5a5a5a', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_paragraph_font_color', 
+           array(
+			'label'      => esc_attr__( 'Paragraph Font Color', 'grit' ),
+			'section'    => 'grit_font',
+               'priority'   => 2,
+		  ) ) );
+    
+            $wp_customize->add_setting( 'grit_paragraph_font_size', array(
+			'default'       => get_theme_mod( 'grit_paragraph_font_size', '24px' ),
+			'capability'    => 'edit_theme_options',
+			'transport'     => 'refresh',
+	       ) );
 
+	       $wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'grit_paragraph_font_size', array(
+			'type'     => 'range-value',
+			'section'  => 'grit_font',
+			'settings' => 'grit_paragraph_font_size',
+			'label'    => __( 'Paragraph Font Width' ),
+			'input_attrs' => array(
+				'min'    => 11,
+				'max'    => 24,
+				'step'   => 1,
+				'suffix' => 'px',
+		  ),
+        'priority'   => 3,
+	) ) );
+    
 
     
+        $wp_customize->add_setting( 'grit_font_family', array(
+            'default'        => 'PT Serif , serif',
+        ) );
+
+        $wp_customize->add_control( 'grit_font_family', array(
+            'label'   => 'Grit Font Family',
+            'section' => 'grit_font',
+            'type'    => 'select',
+            'choices' => $font_choices,
+            'priority' => 4,
+            ));
+    
+         $wp_customize->add_setting( 'grit_font_color', 
+            array(
+                'default' => '#5a5a5a', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+	     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_font_color', 
+           array(
+			'label'      => esc_attr__( 'Font Color', 'grit' ),
+			'section'    => 'grit_font',
+               'priority'   => 5,
+		  ) ) );
+    
+            $wp_customize->add_setting( 'grit_font_size', array(
+			'default'       => get_theme_mod( 'grit_font_size_styles', '24px' ),
+			'capability'    => 'edit_theme_options',
+			'transport'     => 'refresh',
+	       ) );
+
+	       $wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'grit_font_size', array(
+			'type'     => 'range-value',
+			'section'  => 'grit_font',
+			'settings' => 'grit_font_size_styles',
+			'label'    => __( 'Font Width' ),
+			'input_attrs' => array(
+				'min'    => 11,
+				'max'    => 24,
+				'step'   => 1,
+				'suffix' => 'px',
+		  ),
+        'priority'   => 6,
+	) ) );
+    
+/******************fonts*****************/
+    
+       $wp_customize->add_section('grit_accent', array(
+                'title'                     => __('Accent Color', 'grit'),
+                'description'               => 'Easily edit your body section',
+                'priority'                  => 110,
+
+        ));
+        $wp_customize->add_setting( 'grit_accent_color', 
+            array(
+                'default' => '#f53347', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_accent_color', 
+           array(
+            'label'      => esc_attr__( 'Accent Color', 'grit' ),
+            'description' => esc_attr__( 'Add Accent Color to Button.', 'grit' ),
+            'section'    => 'grit_accent',
+        ) ) );
+
+    /***********************Enable/Disable************************************/
+    
+        $wp_customize->add_section('enabled_switch', array(
+                'title'                     => __('Enable/Disable', 'grit'),
+                'description'               => 'Easily edit your body section',
+                'priority'                  => 111,
+
+        ));
+    
+        $wp_customize->add_setting( 'grit_enable_disable_search_button', array(
+                'default'    => '1',
+                'capability' => 'manage_options',
+                'transport' => 'refresh',
+        ) );
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_search_button', array(
+                'settings' => 'grit_enable_disable_search_button',
+                'label'    => ( 'Enable/Disable serach option' ),
+                'section'  => 'enabled_switch',
+                'type'     => 'ios',
+        ) ) );
+    
+    
+     $wp_customize->add_setting( 'grit_enable_disable_blog_auother_button', array(
+                'default'    => '1',
+                'capability' => 'manage_options',
+                'transport' => 'refresh',
+        ) );
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_blog_auother_button', array(
+                'settings' => 'grit_enable_disable_blog_auother_button',
+                'label'    => ( 'Enable/Disable Blog Author option' ),
+                'section'  => 'enabled_switch',
+                'type'     => 'ios',
+        ) ) );
+
 
 }
 add_action( 'customize_register', 'grit_customize_register' );
