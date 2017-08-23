@@ -706,8 +706,6 @@ function grit_customize_register( $wp_customize ) {
             )
         );
  
-
-=======
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_portfolio_bck_ground_image', array(
             'label'                     => __( 'Background Image', '' ),
@@ -721,7 +719,7 @@ function grit_customize_register( $wp_customize ) {
 /********* Testimonial page **********/   
 
         $wp_customize->add_section('grit_testimonial_section', array(
-            'title'                     => __('blogPage', 'grit'),
+            'title'                     => __('Testimonial Section', 'grit'),
             'priority'                  => 108,
 
         ));

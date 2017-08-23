@@ -197,13 +197,6 @@ get_header(); ?>
     $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<style>
-    #company-counter:after{
-      /*  background: <?php  echo esc_attr(get_theme_mod( 'grit_counter_background_color' ));?> ;
-        opacity: <?php echo esc_attr(get_theme_mod( 'grit_counter_transparnt' ));?>*/
-    
-    }
-</style>
 <section id="company-counter" style="background-image:url(<?php echo $image; ?>); ">
   <div class="container">
     <div class="row text-center">
