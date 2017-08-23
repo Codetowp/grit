@@ -43,8 +43,8 @@ function grit_customize_register( $wp_customize ) {
         //$wp_customize->remove_section('header_image');
         $wp_customize->remove_section('background_image');
 
-        $wp_customize->get_section('title_tagline')->title = __( 'Branding' );
-        $wp_customize->get_section('header_image')->title = __( 'Blog Settings' );  
+        $wp_customize->get_section('title_tagline')->title = __( 'Branding','' );
+        $wp_customize->get_section('header_image')->title = __( 'Blog Settings','' );  
     
     
     class Customizer_Range_Value_Control extends WP_Customize_Control {
@@ -895,7 +895,7 @@ function grit_customize_register( $wp_customize ) {
 			'type'     => 'range-value',
 			'section'  => 'grit_font',
 			'settings' => 'grit_paragraph_font_size',
-			'label'    => __( 'Paragraph Font Width' ),
+			'label'    => __( 'Paragraph Font Width','' ),
 			'input_attrs' => array(
 				'min'    => 11,
 				'max'    => 24,
@@ -942,7 +942,7 @@ function grit_customize_register( $wp_customize ) {
 			'type'     => 'range-value',
 			'section'  => 'grit_font',
 			'settings' => 'grit_font_size_styles',
-			'label'    => __( 'Font Width' ),
+			'label'    => __( 'Font Width','' ),
 			'input_attrs' => array(
 				'min'    => 11,
 				'max'    => 24,
