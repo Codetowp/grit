@@ -76,11 +76,12 @@
             <!--tab content-->
             <div class="col-md-7 process-content">
               <h6><?php the_title(); ?></h6>
+                <p>
                 <?php 
                     $excerpt = get_the_excerpt();
                     $excerpt = substr( $excerpt , 0, 200); 
                     echo $excerpt;
-                ?>
+                    ?></p>
               <a href="<?php get_permalink($post); ?>">Read More</a> </div>
             <!--/tab content--> 
             

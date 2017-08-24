@@ -2921,6 +2921,7 @@ ul.about-features li:hover i {
 	overflow: hidden;
 	max-width: 360px;
 	margin:0 auto;
+    min-height: 400px;
 }
 #process-block .process-content {
 	padding: 5em 3em;
