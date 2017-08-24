@@ -952,12 +952,37 @@ function grit_customize_register( $wp_customize ) {
         'priority'   => 6,
 	) ) );
     
+    /* Footer Social */
+    
+    $wp_customize->add_section( 'social', array(
+        'title'    => __( '[Grit]Footer Social', 'grit'  ),
+        'priority'                  => 110,
+    ) );
+
+    $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+		foreach( $social_sites as $social_site ) {
+			$wp_customize->add_setting( "social[$social_site]", array(
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'esc_url_raw'
+			) );
+
+			$wp_customize->add_control( "social[$social_site]", array(
+					'label'   => ucwords( $social_site ) . __( " Url:", 'grit' ),
+					'section' => 'social',
+					'type'    => 'text',
+			) );
+		}
+
+    
+    
 /******************fonts*****************/
     
        $wp_customize->add_section('grit_accent', array(
                 'title'                     => __('Accent Color', 'grit'),
                 'description'               => 'Easily edit your body section',
-                'priority'                  => 110,
+                'priority'                  => 111,
 
         ));
         $wp_customize->add_setting( 'grit_accent_color', 
@@ -979,7 +1004,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('enabled_switch', array(
                 'title'                     => __('Enable/Disable', 'grit'),
                 'description'               => 'Easily edit your body section',
-                'priority'                  => 111,
+                'priority'                  => 112,
 
         ));
     
