@@ -218,15 +218,44 @@ function grit_customize_register( $wp_customize ) {
                 'render_callback' => 'grit_customize_partial_latest_news_header',
             ) );
       
+      
+      
+      
   }
     
+    
+     $wp_customize->add_setting( 'grit_accent_color', 
+            array(
+                'default' => '#f53347', 
+                'transport' => 'refresh', 
+                'sanitize_callback' => 'sanitize_hex_color', 
+            ) );
+
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_accent_color', 
+           array(
+            'label'      => esc_attr__( 'Accent Color', 'grit' ),
+            'description' => esc_attr__( 'Add Accent Color', 'grit' ),
+            'section'    => 'colors',
+        ) ) );
+    
+    
+    /*label */
+     $wp_customize->add_panel( 'grit_panel' ,
+		array(
+			'priority'        => 130,
+			'title'           => esc_html__( 'Frontpage Theme Sections', 'grit' ),
+			'description'     => '',
+			/*'active_callback' => 'onepress_showon_frontpage'*/
+		)
+	);
+
 /********* header intro **********/
 
         $wp_customize->add_section('grit_header', array(
             'title'                     => __('Header Intro', 'grit'),
             'description'               => 'Easily edit your header section',
             'priority'                  => 100,
-
+            'panel'                     => 'grit_panel',    
         ));
 
         $wp_customize->add_setting( 'bck_ground_image', array(
@@ -304,9 +333,8 @@ function grit_customize_register( $wp_customize ) {
         
         $wp_customize->add_section('grit_about_section', array(
             'title'                     => __('About Section', 'grit'),
-
             'priority'                  => 101,
-
+            'panel'                     => 'grit_panel', 
         ));
 
        
@@ -417,7 +445,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_contact_section', array(
             'title'                     => __('Contact Section', 'grit'),
             'priority'                  => 101,
-
+            'panel'                     => 'grit_panel', 
         ));
 
 
@@ -467,7 +495,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_work_section', array(
             'title'                     => __('Portfolio Section', 'grit'),
             'priority'                  => 104,
-
+            'panel'                     => 'grit_panel', 
         ));
     
         $wp_customize->add_setting( 'grit_work_header', array(      
@@ -547,7 +575,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_process_section', array(
             'title'                     => __('Process Section', 'grit'),
             'priority'                  => 104,
-
+            'panel'                     => 'grit_panel', 
         ));
     
         $wp_customize->add_setting( 'grit_process_header', array(      
@@ -618,7 +646,7 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_counter_section', array(
             'title'                     => __('Counter Section', 'grit'),
             'priority'                  => 105,
-
+            'panel'                     => 'grit_panel', 
         ));
 
         $wp_customize->add_setting( 'grit_counter_setting', 
@@ -729,26 +757,10 @@ function grit_customize_register( $wp_customize ) {
         $wp_customize->add_section('grit_testimonial_section', array(
             'title'                     => __('Testimonial Section', 'grit'),
             'priority'                  => 107,
-
+            'panel'                     => 'grit_panel', 
         ));
     
-        $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
-            'default'                   => '',
-            'type'                      => 'theme_mod',
-            'capability'                => 'edit_theme_options',
-            'sanitize_callback'         => 'esc_url_raw',
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Image_Control(
-            $wp_customize,'grit_testimonial_bck_ground_image', array(
-            'label'                     => __( 'testimonial Page Background Image', '' ),
-            'section'                   => 'grit_testimonial_section',
-            'settings'                  => 'grit_testimonial_bck_ground_image',
-            'context'                   => 'grit_testimonial_bck_ground_image',
-            'priority'                  => 1,
-            ) 
-        ) );    
-    
+           
       $wp_customize->add_setting( 'grit_testimonial_count', array(
             'default'                   => '3',
             'sanitize_callback'         => 'grit_sanitize_integer'
@@ -766,9 +778,9 @@ function grit_customize_register( $wp_customize ) {
 /********* Latest news section **********/   
 
         $wp_customize->add_section('grit_latest_news_section', array(
-            'title'                     => __('Latest News Section', 'grit'),
-            'priority'                  => 108,
-
+            'title'                     => __('Blog Section', 'grit'),
+            'priority'                  => 109,
+            'panel'                     => 'grit_panel',
         ));
     
         $wp_customize->add_setting( 'grit_latest_news_header', array(      
@@ -821,12 +833,12 @@ function grit_customize_register( $wp_customize ) {
             ) 
         ) );
 
-/********* Testimonial page **********/   
-
-        $wp_customize->add_section('grit_testimonial_section', array(
-            'title'                     => __('Testimonial Section', 'grit'),
-            'priority'                  => 108,
-
+/*testimonial Page*/
+    
+     $wp_customize->add_section('grit_page_setting', array(
+            'title'                     => __('Page Settings', 'grit'),
+            'priority'                  => 112,
+           
         ));
     
         $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
@@ -838,20 +850,39 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_testimonial_bck_ground_image', array(
-            'label'                     => __( 'Background Image', '' ),
-            'section'                   => 'grit_testimonial_section',
+            'label'                     => __( 'Testimonial Page Background Image', '' ),
+            'section'                   => 'grit_page_setting',
             'settings'                  => 'grit_testimonial_bck_ground_image',
             'context'                   => 'grit_testimonial_bck_ground_image',
             'priority'                  => 1,
             ) 
+        ) );   
+    
+    
+      $wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'grit_portfolio_bck_ground_image', array(
+            'label'                     => __( 'PortFolio Page Background Image', '' ),
+            'section'                   => 'grit_page_setting',
+            'settings'                  => 'grit_portfolio_bck_ground_image',
+            'context'                   => 'grit_portfolio_bck_ground_image',
+            'priority'                  => 1,
+            ) 
         ) );    
+    
     
 /******************fonts*****************/
     
        $wp_customize->add_section('grit_font', array(
                 'title'                     => __('Font', 'grit'),
                 'description'               => 'Easily edit your body section',
-                'priority'                  => 109,
+                'priority'                  => 110,
 
         ));
     
@@ -957,6 +988,7 @@ function grit_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'social', array(
         'title'    => __( '[Grit]Footer Social', 'grit'  ),
         'priority'                  => 110,
+        'panel'                     => 'grit_panel', 
     ) );
 
     $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
@@ -974,30 +1006,6 @@ function grit_customize_register( $wp_customize ) {
 					'type'    => 'text',
 			) );
 		}
-
-    
-    
-/******************fonts*****************/
-    
-       $wp_customize->add_section('grit_accent', array(
-                'title'                     => __('Accent Color', 'grit'),
-                'description'               => 'Easily edit your body section',
-                'priority'                  => 111,
-
-        ));
-        $wp_customize->add_setting( 'grit_accent_color', 
-            array(
-                'default' => '#f53347', 
-                'transport' => 'refresh', 
-                'sanitize_callback' => 'sanitize_hex_color', 
-            ) );
-
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_accent_color', 
-           array(
-            'label'      => esc_attr__( 'Accent Color', 'grit' ),
-            'description' => esc_attr__( 'Add Accent Color to Button.', 'grit' ),
-            'section'    => 'grit_accent',
-        ) ) );
 
     /***********************Enable/Disable************************************/
     
