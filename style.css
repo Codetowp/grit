@@ -3428,6 +3428,7 @@ blockquote {
 	margin-left: 40px;
 	padding-left: 36px;
 	background: #fff url(img/bq-bg.png) 0 0 no-repeat;
+	float:left;
 }
 
 
@@ -3447,6 +3448,9 @@ blockquote p {
 	border-radius: 5px;
 	margin-top: 20px;
 }
+
+
+
 .page figure .wp-caption-text, .single .single-post article figure .wp-caption-text {
 	font-size: 12px;
 	font-family: 'PT Serif', serif;
@@ -3456,6 +3460,14 @@ blockquote p {
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
+
+.page figure img, .single .single-post article figure {
+	width: 100%;
+	min-width:100%;
+}
+
+.page .post p img, .single .post p img{margin:30px auto;}
+
 .author-box {
 	display: block;
 	float: left;
@@ -3486,6 +3498,8 @@ blockquote p {
 	color: #73757d;
 	font-size: 14px;
 	line-height: 1.8;
+		min-height:75px;
+	min-width: 260px;
 }
 .author-box .author-box-title {
 	color: #fe5339;
@@ -3587,11 +3601,12 @@ blockquote p {
 	text-decoration: none;
 }
 /*#page-body h1, .page-block h2, #page-body h3, .page-block h4, .page-block h5, .page-block h6, .page-block p {
-	margin-left: 8.33333333%;*/
-}
+	margin-left: 8.33333333%;
+}*/
 .single .single-post ul, .single .single-post ol, .page .page-block ul, .page .page-block ol {
 	/* margin-left: 50px; */
 	margin-bottom: 48px;
+	float:left;
 }
 
 
@@ -3630,6 +3645,7 @@ blockquote p {
 	text-align: center;
 	margin-left: 0 !important;
 	padding-left: 0;
+	float:none !important;
 }
 .single .posts-navigation ul li {
 }
