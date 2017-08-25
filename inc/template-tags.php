@@ -100,3 +100,82 @@ if ( ! function_exists( 'grit_entry_footer' ) ) :
 		);
 	}
 endif;
+
+/*count section*/
+if ( ! function_exists( 'grit_get_section_counter_data' ) ) {
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function grit_get_section_counter_data()
+    {
+        $boxes = get_theme_mod('grit_counter_setting');
+        if (is_string($boxes)) {
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) {
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+if ( ! function_exists( 'grit_get_media_url' ) ) {
+    function grit_get_media_url($media = array())
+    {
+        $media = wp_parse_args($media, array('url' => '', 'id' => ''));
+        $url = '';
+        if ($media['id'] != '') {
+            $url = wp_get_attachment_url($media['id']);
+        }
+        if ($url == '' && $media['url'] != '') {
+            $url = $media['url'];
+        }
+        return $url;
+    }
+}
+
+if ( ! function_exists( 'grit_get_section_about_data' ) ) {
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function grit_get_section_about_data()
+    {
+        $boxes = get_theme_mod('grit_about_boxes');
+        if (is_string($boxes)) {
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) {
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+if ( ! function_exists( 'grit_get_section_process' ) ) {
+    /**
+     * Get counter data
+     *
+     * @return array
+     */
+    function grit_get_section_process()
+    {
+        $boxes = get_theme_mod('grit_process_boxes');
+        if (is_string($boxes)) {
+            $boxes = json_decode($boxes, true);
+        }
+        if (empty($boxes) || !is_array($boxes)) {
+            $boxes = array();
+        }
+        return $boxes;
+    }
+}
+
+
+
+
+

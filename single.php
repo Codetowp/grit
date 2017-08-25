@@ -26,8 +26,10 @@ get_header(); ?>
         </ol>
         <h1><?php the_title(); ?> </h1>
         <hr>
-		<?php grit_posted_on(); ?>
-        
+        <?php 
+           if( get_theme_mod( 'grit_enable_disable_blog_auother_button' ) == 1 ) { ?>
+		      <?php grit_posted_on(); ?>
+        <?php }?>
 	  </div>
     </div>
     <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
@@ -54,17 +56,6 @@ get_header(); ?>
               <i class="fa fa-tags"></i> 
               <span class="tag-links  clearfix"> 
 			  <?php grit_entry_footer(); ?>
-                 <?php
-                 /*   $args = array('orderby' => 'name','parent' => 0,'category__in'   => wp_get_post_categories( get_the_ID() ),);
-                    $categories = get_categories( $args );
-                    if($categories!='')
-                    {
-                       foreach ( $categories as $category ) 
-                       {
-                          echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
-                       }
-                     }*/
-                  ?>
               </span> 
             </div>
         </footer>

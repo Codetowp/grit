@@ -39,5 +39,39 @@
 			}
 		} );
 	} );
-  
+       
+    //header background color
+
+    wp.customize( 'bck_ground_image', function( value ) {
+        value.bind( function( to ) {
+            $( '#home-banner' ).text( to );
+        } );
+    } );
+
+    wp.customize( 'grit_transparnt', function( value ) {
+        value.bind( function( to ) {
+            $( '#home-banner:before' ).css( 'opacity', to );
+        } );
+    } );
+
+    wp.customize( 'grit_header_background_color', function( value ) {
+        value.bind( function( to ) {
+            $( '#home-banner:before' ).css( 'background-color', to );
+        } );
+    } );
+
+    //counter background color
+
+  /*  wp.customize( 'grit_counter_background_color', function( value ) {
+        value.bind( function( to ) {
+            $( '#company-counter:after' ).css( 'background', to );
+        } );
+    } );
+
+    wp.customize( 'grit_counter_transparnt', function( value ) {
+        value.bind( function( to ) {
+            $( '#company-counter:after' ).css( 'opacity', to );
+        } );
+    } );*/
 } )( jQuery );
+

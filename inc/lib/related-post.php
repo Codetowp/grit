@@ -44,7 +44,7 @@ function grit_related_post() {
                 $cat_link = get_category_link($categories[0]->cat_ID);
                 
 				printf(
-					'<article class="col-md-4 col-sm-6 col-xs-12">
+					'<article class="col-md-4 col-sm-6 col-xs-12 eq-blocks">
                         <header class="entry-header"> %s <a href="%s">
                         <h6>%s</h6>
                         </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>

@@ -2009,11 +2009,14 @@ aside li a:hover {
 	color: #000;
 }
 .widget_social li i:hover {
-	color: #ff4a5d;
+	color: #fff;
 	transition: all ease-in .3s;
 	-moz-transition: all ease-in .3s;
 	-webkit-transition: all ease-in .3s;
+    opacity: 0.8;
+    
 }
+
 .widget_social li {
 	border: none;
 	color: #fff;
@@ -2031,13 +2034,15 @@ aside li a:hover {
 	display: inline-block;
 }
 .widget_social {
-	height: 140px;
+	height: auto;
+    
 	display: block;
 }
 .widget_social .fa {
 	display: inline-block;
 	padding: 10px 15px;
 	border-radius: 4px;
+    width: 46px;
 	color: #fff;
 }
 .widget_social .fa-facebook {
@@ -2403,7 +2408,7 @@ embed, iframe, object {
 	right: 0;
 	width: 100%;
 	height: 100%;
-	background: #ff4a5d;
+	background-color: #ff4a5d;
 	opacity: 0.7;
 }
 #home-banner .content {
@@ -2577,7 +2582,7 @@ embed, iframe, object {
 }
 ul.about-features {
 	padding: 50px 80px;
-	display: inline-block;
+	/*display: inline-block;*/
 }
 ul.about-features li {
 	list-style: none;
@@ -2916,6 +2921,7 @@ ul.about-features li:hover i {
 	overflow: hidden;
 	max-width: 360px;
 	margin:0 auto;
+    min-height: 400px;
 }
 #process-block .process-content {
 	padding: 5em 3em;
@@ -3423,6 +3429,7 @@ blockquote {
 	padding-left: 36px;
 	float:left;
 	background: #fff url(img/bq-bg.png) 0 0 no-repeat;
+	float:left;
 }
 
 
@@ -3445,6 +3452,9 @@ blockquote p {
 	border-radius: 5px;
 	margin-top: 20px;
 }
+
+
+
 .page figure .wp-caption-text, .single .single-post article figure .wp-caption-text {
 	font-size: 12px;
 	font-family: 'PT Serif', serif;
@@ -3455,9 +3465,13 @@ blockquote p {
 	margin-bottom: 30px;
 }
 
-.page .post p img, .single .post p img {
-	margin:30px auto;
+.page figure img, .single .single-post article figure {
+	width: 100%;
+	min-width:100%;
 }
+
+.page .post p img, .single .post p img{margin:30px auto;}
+
 .author-box {
 	display: block;
 	float: left;
@@ -3523,18 +3537,18 @@ blockquote p {
 .single .also-like-block .entry-header:before, .page article .entry-header:before {
 	display: none;
 }
-.single .also-like-block article, .page article {
+.single .also-like-block article, .page article,  .category article, .search article {
 	padding: 0 10px;
 	text-align: center;
 	margin-top: 35px;
 }
-.single .also-like-block article img, .page article img {
+.single .also-like-block article img, .page article img, .category article img, .search article img {
 	min-height: 163px;
 	max-height: 163px;
 	width: 100%;
 	object-fit: cover;
 }
-.single .also-like-block article a h6, .page article a h6 {
+.single .also-like-block article a h6, .page article a h6, .category article a h6, .search article a h6  {
 	font-size: 13px;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
@@ -3544,14 +3558,14 @@ blockquote p {
 	font-style: normal;
 	margin-bottom: 6px;
 }
-.single .also-like-block article .entry-header a, .page article .entry-header a {
+.single .also-like-block article .entry-header a, .page article .entry-header a,  .category article .entry-header a,  .search article .entry-header a {
 	font-family: 'PT Serif', serif;
 	color: #6f6f6f;
 	font-size: 14px;
 	font-style: italic;
 	margin-top: 5px;
 }
-.single .also-like-block article:hover .entry-header, .page article:hover .entry-header {
+.single .also-like-block article:hover .entry-header, .page article:hover .entry-header,  .category article:hover .entry-header,  .search article:hover .entry-header {
 	background: #fff;
 	-webkit-box-shadow: 0px 5px 27px 0px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 5px 27px 0px rgba(0,0,0,0.3);
@@ -3559,7 +3573,7 @@ blockquote p {
 	transition: all 300ms ease-in-out;
 	-webkit-transition: all 300ms ease-in-out;
 }
-.single .also-like-block article .entry-header, .page article .entry-header {
+.single .also-like-block article .entry-header, .page article .entry-header, .category article .entry-header, .search article .entry-header {
 	padding: 0px 0 20px;
 }
 #page-body {
@@ -3593,11 +3607,12 @@ blockquote p {
 	text-decoration: none;
 }
 /*#page-body h1, .page-block h2, #page-body h3, .page-block h4, .page-block h5, .page-block h6, .page-block p {
-	margin-left: 8.33333333%;*/
-}
+	margin-left: 8.33333333%;
+}*/
 .single .single-post ul, .single .single-post ol, .page .page-block ul, .page .page-block ol {
 	/* margin-left: 50px; */
 	margin-bottom: 48px;
+	float:left;
 }
 
 
@@ -3638,6 +3653,7 @@ blockquote p {
 	text-align: center;
 	margin-left: 0 !important;
 	padding-left: 0;
+	float:none !important;
 }
 .single .posts-navigation ul li {
 }

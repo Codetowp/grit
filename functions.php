@@ -34,6 +34,7 @@ if ( ! function_exists( 'grit_setup' ) ) :
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
+       // add_theme_support( 'post-thumbnails' );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
@@ -45,6 +46,10 @@ if ( ! function_exists( 'grit_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'grit' ),
+		) );
+        
+		register_nav_menus( array(
+			'footer-menu' => esc_html__( 'Footer', 'grit' ),
 		) );
 
 		/*
@@ -110,19 +115,31 @@ function grit_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer-social', 'grit' ),
+		'id'            => 'footer',
+		'description'   => esc_html__( 'Add widgets here.', 'grit' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
     require get_template_directory() . '/inc/widgets/social.php';  
 }
 add_action( 'widgets_init', 'grit_widgets_init' );
 
 //recent post widget
 require get_template_directory() . '/inc/widgets/recentpost.php';
+require get_template_directory() . '/inc/lib/print_styles.php';
 
 // Custom Theme Functions
 	require get_template_directory() . '/inc/lib/related-post.php';
 
 // Custom Theme Image Sizes	
+add_image_size( 'process-medium', 360, 463,  array( 'top', 'center' ) );
 add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
-
+add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function
 function the_breadcrumb() {
 	if (!is_home()) {
@@ -142,6 +159,8 @@ function the_breadcrumb() {
 		echo '</li>';
 	}
 }
+
+
 
 /**
  * Enqueue scripts and styles.
@@ -218,3 +237,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
+
+// Helper library for the theme customizer.
+require get_template_directory() . '/inc/customizer-library.php';
+
+// Output inline styles based on theme customizer selections.
+require get_template_directory() . '/inc/styles.php';
+
+endif;

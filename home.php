@@ -13,22 +13,28 @@
  */
 
 get_header(); ?>
-<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+<section class="page">
+ <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
   <div class="content  wow fdeInUp">
     <div class="container ">
       <h1><?php the_title(); ?></h1>
     </div>
   </div>
 </div>
+
+
+    
+    
 <div id="page-body">
   <div class="container">
     <div class="row  wow fdeInUp"> 
       <!--blog page container-->
       <div class="col-md-9 col-sm-7 col-xs-12 page-block "   > 
-        <?php         
-           $query_post = new WP_Query( array( 'post_type' => 'post',  ) );    
-            if ($query_post->have_posts()) :
-              while ($query_post->have_posts()) : $query_post->the_post();	      
+        
+    <?php
+          if(have_posts()):
+			while ( have_posts() ) : the_post();
+      
                    get_template_part( 'template-parts/content', get_post_format() );     
               endwhile; // End of the loop.
         	endif;			
@@ -101,7 +107,7 @@ get_header(); ?>
     </div>
   </div>
 </div>
-
+</section>
 
 <?php
 
