@@ -268,7 +268,7 @@ get_header(); ?>
 
                 if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
  ?>
-                    <article class="col-md-3 col-sm-6 col-xs-12">
+                    <article class="col-md-3 col-sm-6 col-xs-12 eq-blocks">
                     <header class="entry-header">        
                     <?php
                         if  ( get_the_post_thumbnail()!='')
