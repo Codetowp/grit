@@ -117,10 +117,12 @@ if (!function_exists('grit_accent_color'))  {
 		echo '<style type="text/css" id="rijo-css">';
 		$color_value = get_theme_mod('grit_accent_color', '');
 		$append_color = sprintf( 'background-color: %s;border: 2px %s solid',  $color_value, $color_value );
-//        $border_color = sprintf( 'border: 2px %s solid', $color_value )
+        $icon_color = sprintf( 'color: %s', $color_value );
+        $process_color = sprintf( 'background: %s', $color_value );
+		$button_color = sprintf( 'background: %s;border: 1px %s solid',  $color_value, $color_value );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" . '.section-title a:hover{' . $append_color . '}';
+			echo "\n" . '.section-title a:hover{' . $append_color . '}'. "\n" .  'ul.about-features li:hover i{' . $icon_color . '}' ."\n" . '#process-block .nav-tabs > li.active i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i:after{'.$process_color.'}'."\n".'#process-block .nav-tabs > li.active i:after{'.$process_color.'}'."\n" . '#home-contact-block a{' . $button_color . '}'."\n".'#process-block .process-content a{'.$icon_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
