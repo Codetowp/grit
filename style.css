@@ -3421,6 +3421,7 @@ blockquote {
 	margin: 30px;
 	margin-left: 40px;
 	padding-left: 36px;
+	float:left;
 	background: #fff url(img/bq-bg.png) 0 0 no-repeat;
 }
 
@@ -3434,6 +3435,9 @@ blockquote p {
 	margin: 0px !important;
 	line-height: 1.7 !important;
 }
+
+.page figure, .single .single-post article figure  {width:100%; min-width:100%;}
+
 .page figure img, .single .single-post article figure img {
 	width: 100%;
 	height: 460px;
@@ -3450,6 +3454,10 @@ blockquote p {
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
+
+.page .post p img, .single .post p img {
+	margin:30px auto;
+}
 .author-box {
 	display: block;
 	float: left;
@@ -3458,6 +3466,7 @@ blockquote p {
 	border-radius: 8px;
 	margin: 60px 0;
 }
+
 .author-box .avatar {
 	margin: 0rem 2.1rem 4.1rem 0rem;
 	border-radius: 10px;
@@ -3480,6 +3489,8 @@ blockquote p {
 	color: #73757d;
 	font-size: 14px;
 	line-height: 1.8;
+		min-height:75px;
+	min-width: 260px;
 }
 .author-box .author-box-title {
 	color: #fe5339;
@@ -3487,6 +3498,7 @@ blockquote p {
 	text-transform: uppercase;
 	font-weight: 600;
 	margin-bottom: 15px;
+	
 }
 .author-box .author-box-title a {
 	background: #ff5959;
@@ -3590,6 +3602,8 @@ blockquote p {
 
 
 .page .page-block ul{margin-left:3%;}
+.single .single-post .post ul , .page .page-block .post ul  {float:left;}
+
 .single .single-post ul li, .page .page-block ul li {
 	list-style: none;
 	color: #43484d;
