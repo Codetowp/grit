@@ -4,15 +4,16 @@
  *
  * @package dblogger
  */
-if ( ! class_exists( 'WP_Customize_Control' ) ) {
+if ( ! class_exists( 'WP_Customize_Control' ) ) 
+{
 	return;
 }
 
 /**
  * Class dblogger_info
  */
-class dblogger_info extends WP_Customize_Control {
-
+class dblogger_info extends WP_Customize_Control 
+{
 	/**
 	 * The type of customize section being rendered.
 	 *
@@ -30,8 +31,6 @@ class dblogger_info extends WP_Customize_Control {
 	 * @var    string
 	 */
 	public $label = '';
-
-
 	/**
 	 * The render function for the controler
 	 */
@@ -54,11 +53,11 @@ class dblogger_info extends WP_Customize_Control {
 				'link' => esc_url( '#' ),
 			),
 		); ?>
-
-
+		
 		<div class="dblogger-theme-info">
 			<?php
-			foreach ( $links as $item ) {  ?>
+			foreach ( $links as $item ) 
+			{  ?>
 				<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank"><?php echo esc_html( $item['name'] ); ?></a>
 				<?php
 			} ?>

@@ -13,13 +13,14 @@ if ( ! function_exists( 'customizer_library_demo_build_styles' ) && class_exists
  *
  * @return void
  */
-function customizer_library_demo_build_styles() {
-
+function customizer_library_demo_build_styles() 
+{
 	// Primary Color
 	$setting = 'spore_paragraph_font_color';
 	$mod = get_theme_mod( $setting,  $setting  );
 
-	if ( $mod !==  $setting  ) {
+	if ( $mod !==  $setting  ) 
+	{
 
 		$color = sanitize_hex_color( $mod );
 
@@ -32,78 +33,6 @@ function customizer_library_demo_build_styles() {
 			)
 		) );
 	}
-
-	/*// Secondary Color
-	$setting = 'secondary-color';
-	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
-
-	if ( $mod !== customizer_library_get_default( $setting ) ) {
-
-		$color = sanitize_hex_color( $mod );
-
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.secondary'
-			),
-			'declarations' => array(
-				'color' => $color
-			)
-		) );
-	}
-
-	// Border Color
-	$setting = 'border';
-	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
-
-	if ( $mod !== customizer_library_get_default( $setting ) ) {
-
-		$color = sanitize_hex_color( $mod );
-
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.border'
-			),
-			'declarations' => array(
-				'border-color' => $color
-			)
-		) );
-	}
-
-	// Primary Font
-	$setting = 'primary-font';
-	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
-	$stack = customizer_library_get_font_stack( $mod );
-
-	if ( $mod != customizer_library_get_default( $setting ) ) {
-
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.primary'
-			),
-			'declarations' => array(
-				'font-family' => $stack
-			)
-		) );
-
-	}
-
-	// Secondary Font
-	$setting = 'secondary-font';
-	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
-	$stack = customizer_library_get_font_stack( $mod );
-
-	if ( $mod != customizer_library_get_default( $setting ) ) {
-
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.secondary',
-			),
-			'declarations' => array(
-				'font-family' => $stack
-			)
-		) );
-
-	}*/
 
 }
 endif;
@@ -121,14 +50,15 @@ if ( ! function_exists( 'customizer_library_demo_styles' ) ) :
  *
  * @return void
  */
-function customizer_library_demo_styles() {
-
+function customizer_library_demo_styles() 
+{
 	do_action( 'customizer_library_styles' );
 
 	// Echo the rules
 	$css = Customizer_Library_Styles()->build();
 
-	if ( ! empty( $css ) ) {
+	if ( ! empty( $css ) ) 
+	{
 		echo "\n<!-- Begin Custom CSS -->\n<style type=\"text/css\" id=\"demo-custom-css\">\n";
 		echo $css;
 		echo "\n</style>\n<!-- End Custom CSS -->\n";

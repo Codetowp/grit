@@ -1,7 +1,7 @@
 <?php
 
-function grit_related_post() {
-
+function grit_related_post() 
+{
 	$args = '';
     $count = get_theme_mod( 'dblogger_post_related_post_count' );
       
@@ -12,14 +12,14 @@ function grit_related_post() {
 	) );
 	$related = new WP_Query( $args );
 
-	if ( $related->have_posts() ) {
+	if ( $related->have_posts() ) 
+	{
 	?>
-		
 			<?php
             $num = 0;
-			while ( $related->have_posts() ) {
+			while ( $related->have_posts() ) 
+			{
 				$related->the_post();
-                
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
@@ -37,7 +37,7 @@ function grit_related_post() {
 				if  ( get_the_post_thumbnail() !='' )
 				$class_format = 'fa-format-' . get_post_format( get_the_ID() );
                 
-                 $title=get_the_title();
+					$title=get_the_title();
                 
                 global $post;
                 $categories = get_the_category($post->ID);

@@ -16,43 +16,39 @@ class Grit_Premium extends WP_Widget{
             )
         );
 		// 2 Enqueue style if widget is active (appears in a sidebar) or if in Customizer preview.
-        if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
-           
-		function Grit_Premium_widget_scripts(){
-
-		   wp_enqueue_media();
-
-		  wp_enqueue_script( 'Grit_Premium_widget_scripts', get_template_directory_uri() . '/js/widget.js', false, '1.0', true );
-
-		}
-		add_action('admin_enqueue_scripts', 'Grit_Premium_widget_scripts');
+        if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) 
+		{
+			function Grit_Premium_widget_scripts()
+			{
+				wp_enqueue_media();
+				wp_enqueue_script( 'Grit_Premium_widget_scripts', get_template_directory_uri() . '/js/widget.js', false, '1.0', true );
+			}
+			add_action('admin_enqueue_scripts', 'Grit_Premium_widget_scripts');
         }
     }
-    
+
     /* *front-end widget form.
     front page view */
-    public function widget( $args, $instance ){
+    public function widget( $args, $instance )
+	{
+		echo $args['before_widget'];
 
-
-    echo $args['before_widget'];
-
-  ?>
-<?php if(! empty( $instance['social_title'] ) ){?>
-        <h2 class="widget-title"><?php echo apply_filters( 'widget_title', $instance['social_title'] );?></h2>
-<?php }?>
-          <ul >
-              
-                  
+		?>
+		<?php if(! empty( $instance['social_title'] ) ){?>
+			<h2 class="widget-title"><?php echo apply_filters( 'widget_title', $instance['social_title'] );?></h2>
+		<?php }?>
+        <ul>
               <?php if( !empty( $instance['facebook_url'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['facebook_url'] ) ): echo apply_filters( 'widget_title', $instance['facebook_url'] ); endif; ?>" title="facebook"><i class="fa fa-facebook"></i></a></li>
               <?php }?>
+			  
                <?php if( !empty( $instance['twitter_url'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['twitter_url'] ) ): echo apply_filters( 'widget_title', $instance['twitter_url'] ); endif; ?>" title="twitter"><i class="fa  fa-twitter"></i></a></li>
                <?php }?>
+			   
               <?php if( !empty( $instance['google_url'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['google_url'] ) ): echo apply_filters( 'widget_title', $instance['google_url'] ); endif; ?>" title="google-plus"><i class="fa  fa-google-plus"></i></a> </li>
               <?php }?>
-              
               
                <?php if( !empty( $instance['rss'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['rss'] ) ): echo apply_filters( 'widget_title', $instance['rss'] ); endif; ?>" title="rss"><i class="fa fa-rss"></i></a> </li>
@@ -71,14 +67,11 @@ class Grit_Premium extends WP_Widget{
             <li ><a href="<?php if( !empty( $instance['youtube'] ) ): echo apply_filters( 'widget_title', $instance['youtube'] ); endif; ?>" title="youtube"><i class="fa fa-youtube"></i></a> </li>
               <?php }?>
               
-              
-              
               <?php if( !empty( $instance['inst_title'] ) ){?>
             <li ><a href="<?php if( !empty( $instance['inst_title'] ) ): echo apply_filters( 'widget_title', $instance['inst_title'] ); endif; ?>" title="instagram"><i class="fa  fa-instagram"></i></a>
 
                 <?php 
                     if( !empty($instance['text']) ):
-                    
                         echo '<p>';
                             $wp_kses_args = array(
                                 'br' => array(),
@@ -88,25 +81,18 @@ class Grit_Premium extends WP_Widget{
                             echo htmlspecialchars_decode( wp_kses( apply_filters( 'widget_title', $instance['text'] ), $wp_kses_args ) );
                         echo '</p>';
                     endif;
-                    ?>  
-
+                ?>  
             </li>
+            <li> <!--search form-->
+				<form  action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
+					<input  type="text" size="40" placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>">
+				</form>
+            </li>  
               
-             <li> <!--search form-->
-                         
-                        <form  action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
-                            <input  type="text" size="40" placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>">
-                        </form>
-                        <!--/search form--> 
-                    </li>  
-              
-                <?php }?>
+            <?php }?>
             
-</ul>
-   
-        <?php
-
-        echo $args['after_widget'];
+		</ul>
+        <?php echo $args['after_widget'];
 
     }
     
@@ -117,105 +103,67 @@ class Grit_Premium extends WP_Widget{
      *
      * @param array $instance Previously saved values from database.
      */
-    public function form( $instance ) {
-
-        ?>
-        
-         <p>
-            <label for="<?php echo $this->get_field_id('social_title'); ?>"><?php esc_html_e( 'Social Title', 'grit' ); ?></label><br/>
-
+    public function form( $instance ) 
+	{
+		?>
+        <p>
+			<label for="<?php echo $this->get_field_id('social_title'); ?>"><?php esc_html_e( 'Social Title', 'grit' ); ?></label><br/>
             <input type="text" name="<?php echo $this->get_field_name('social_title'); ?>"
                    id="<?php echo $this->get_field_id('social_title'); ?>" value="<?php if( !empty( $instance['social_title'] ) ): echo $instance['social_title']; endif; ?>"
                    class="widefat"/>
         </p>
-        
-         <p>
+        <p>
             <label for="<?php echo $this->get_field_id('facebook_url'); ?>"><?php esc_html_e( 'Facebook Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('facebook_url'); ?>"
                    id="<?php echo $this->get_field_id('facebook_url'); ?>" value="<?php if( !empty( $instance['facebook_url'] ) ): echo $instance['facebook_url']; endif; ?>"
                    class="widefat"/>
         </p>
-
-
         <p>
-
             <label for="<?php echo $this->get_field_id('twitter_url'); ?>"><?php esc_html_e( 'Twitter Url', 'grit' ); ?></label><br/>
 
             <input type="text" name="<?php echo $this->get_field_name('twitter_url'); ?>"
                    id="<?php echo $this->get_field_id('twitter_url'); ?>" value="<?php if( !empty( $instance['twitter_url'] ) ): echo $instance['twitter_url']; endif; ?>"
                    class="widefat"/>
-
         </p>
-            
-
         <p>
-
             <label for="<?php echo $this->get_field_id('google_url'); ?>"><?php esc_html_e( 'Google Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('google_url'); ?>"
                    id="<?php echo $this->get_field_id('google_url'); ?>" value="<?php if( !empty( $instance['google_url'] ) ): echo $instance['google_url']; endif; ?>"
                    class="widefat"/>
-
         </p>
-        
-
         <p>
-
             <label for="<?php echo $this->get_field_id('rss'); ?>"><?php esc_html_e( 'Rss Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('rss'); ?>"
                    id="<?php echo $this->get_field_id('rss'); ?>" value="<?php if( !empty( $instance['rss'] ) ): echo $instance['rss']; endif; ?>"
                    class="widefat"/>
-
         </p>
-        
-
         <p>
-
             <label for="<?php echo $this->get_field_id('inst_title'); ?>"><?php esc_html_e( 'Instagram Title', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('inst_title'); ?>"
                    id="<?php echo $this->get_field_id('inst_title'); ?>" value="<?php if( !empty( $instance['inst_title'] ) ): echo $instance['inst_title']; endif; ?>"
                    class="widefat"/>
-
         </p>
-              
          <p>
-
             <label for="<?php echo $this->get_field_id('dribbble'); ?>"><?php esc_html_e( 'Dribbble Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('dribbble'); ?>"
                    id="<?php echo $this->get_field_id('dribbble'); ?>" value="<?php if( !empty( $instance['dribbble'] ) ): echo $instance['dribbble']; endif; ?>"
                    class="widefat"/>
-
         </p>
-              
-        
         <p>
-
             <label for="<?php echo $this->get_field_id('behance'); ?>"><?php esc_html_e( 'Behance Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('behance'); ?>"
                    id="<?php echo $this->get_field_id('behance'); ?>" value="<?php if( !empty( $instance['behance'] ) ): echo $instance['behance']; endif; ?>"
                    class="widefat"/>
 
         </p>      
-              
         <p>
-
             <label for="<?php echo $this->get_field_id('youtube'); ?>"><?php esc_html_e( 'Youtube Url', 'grit' ); ?></label><br/>
-
             <input type="text" name="<?php echo $this->get_field_name('youtube'); ?>"
                    id="<?php echo $this->get_field_id('youtube'); ?>" value="<?php if( !empty( $instance['youtube'] ) ): echo $instance['youtube']; endif; ?>"
                    class="widefat"/>
-
         </p>
-        
-    <?php
-
+		<?php
     }
-
 }
 register_widget( 'Grit_Premium' );
 ?>

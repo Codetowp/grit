@@ -134,7 +134,7 @@ require get_template_directory() . '/inc/widgets/recentpost.php';
 require get_template_directory() . '/inc/lib/print_styles.php';
 
 // Custom Theme Functions
-	require get_template_directory() . '/inc/lib/related-post.php';
+require get_template_directory() . '/inc/lib/related-post.php';
 
 // Custom Theme Image Sizes	
 add_image_size( 'process-medium', 360, 463,  array( 'top', 'center' ) );

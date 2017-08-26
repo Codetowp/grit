@@ -14,7 +14,8 @@ if ( ! function_exists( 'customizer_library_get_font_choices' ) ) :
  *
  * @return array    The fonts in value/label pairs.
  */
-function customizer_library_get_all_fonts() {
+function customizer_library_get_all_fonts() 
+{
 	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'customizer-library' ) ) ) );
 	$standard_fonts = customizer_library_get_standard_fonts();
 	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'customizer-library' ) ) ) );
@@ -39,12 +40,14 @@ if ( ! function_exists( 'customizer_library_get_font_choices' ) ) :
  *
  * @return array    The fonts in value/label pairs.
  */
-function customizer_library_get_font_choices() {
+function customizer_library_get_font_choices() 
+{
 	$fonts   = customizer_library_get_all_fonts();
 	$choices = array();
 
 	// Repackage the fonts into value/label pairs
-	foreach ( $fonts as $key => $font ) {
+	foreach ( $fonts as $key => $font ) 
+	{
 		$choices[ $key ] = $font['label'];
 	}
 
@@ -60,7 +63,8 @@ if ( ! function_exists( 'customizer_library_get_google_font_uri' ) ) :
  *
  * @return string    The URL for including Google Fonts.
  */
-function customizer_library_get_google_font_uri( $fonts ) {
+function customizer_library_get_google_font_uri( $fonts ) 
+{
 
 	// De-dupe the fonts
 	$fonts         = array_unique( $fonts );
@@ -68,20 +72,25 @@ function customizer_library_get_google_font_uri( $fonts ) {
 	$family        = array();
 
 	// Validate each font and convert to URL format
-	foreach ( $fonts as $font ) {
+	foreach ( $fonts as $font ) 
+	{
 		$font = trim( $font );
 
 		// Verify that the font exists
-		if ( array_key_exists( $font, $allowed_fonts ) ) {
+		if ( array_key_exists( $font, $allowed_fonts ) ) 
+		{
 			// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
 			$family[] = urlencode( $font . ':' . join( ',', customizer_library_choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
 		}
 	}
 
 	// Convert from array to string
-	if ( empty( $family ) ) {
+	if ( empty( $family ) ) 
+	{
 		return '';
-	} else {
+	}
+	else 
+	{
 		$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
 	}
 
@@ -104,7 +113,8 @@ function customizer_library_get_google_font_uri( $fonts ) {
 	}
 
 	// Append the subset string
-	if ( ! empty( $subsets ) ) {
+	if ( ! empty( $subsets ) ) 
+	{
 		$request .= urlencode( '&subset=' . join( ',', $subsets ) );
 	}
 
@@ -120,7 +130,8 @@ if ( ! function_exists( 'customizer_library_get_google_font_subsets' ) ) :
  *
  * @return array    The available subsets.
  */
-function customizer_library_get_google_font_subsets() {
+function customizer_library_get_google_font_subsets() 
+{
 	return array(
 		'all'          => __( 'All', 'textdomain' ),
 		'cyrillic'     => __( 'Cyrillic', 'textdomain' ),
@@ -149,30 +160,36 @@ if ( ! function_exists( 'customizer_library_choose_google_font_variants' ) ) :
  * @param  array     $variants    The variants for the font.
  * @return array                  The chosen variants.
  */
-function customizer_library_choose_google_font_variants( $font, $variants = array() ) {
+function customizer_library_choose_google_font_variants( $font, $variants = array() ) 
+{
 	$chosen_variants = array();
-	if ( empty( $variants ) ) {
+	if ( empty( $variants ) ) 
+	{
 		$fonts = customizer_library_get_google_fonts();
 
-		if ( array_key_exists( $font, $fonts ) ) {
+		if ( array_key_exists( $font, $fonts ) ) 
+		{
 			$variants = $fonts[ $font ]['variants'];
 		}
 	}
 
 	// If a "regular" variant is not found, get the first variant
-	if ( ! in_array( 'regular', $variants ) ) {
+	if ( ! in_array( 'regular', $variants ) ) 
+	{
 		$chosen_variants[] = $variants[0];
 	} else {
 		$chosen_variants[] = 'regular';
 	}
 
 	// Only add "italic" if it exists
-	if ( in_array( 'italic', $variants ) ) {
+	if ( in_array( 'italic', $variants ) ) 
+	{
 		$chosen_variants[] = 'italic';
 	}
 
 	// Only add "700" if it exists
-	if ( in_array( '700', $variants ) ) {
+	if ( in_array( '700', $variants ) ) 
+	{
 		$chosen_variants[] = '700';
 	}
 
@@ -188,7 +205,8 @@ if ( ! function_exists( 'customizer_library_get_standard_fonts' ) ) :
  *
  * @return array    Standard websafe fonts.
  */
-function customizer_library_get_standard_fonts() {
+function customizer_library_get_standard_fonts() 
+{
 	return array(
 		'serif' => array(
 			'label' => _x( 'Serif', 'font style', 'textdomain' ),
@@ -226,9 +244,12 @@ function customizer_library_get_font_stack( $font ) {
 	$serif = 'Georgia, serif';
 
 	// Use stack if one is identified
-	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
+	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) 
+	{
 		$stack = $all_fonts[ $font ]['stack'];
-	} else {
+	}
+	else 
+	{
 		$stack = '"' . $font . '",' . $sans;
 	}
 
@@ -245,13 +266,18 @@ if ( ! function_exists( 'customizer_library_sanitize_font_choice' ) ) :
  * @param  string    $value    The font choice.
  * @return string              The sanitized font choice.
  */
-function customizer_library_sanitize_font_choice( $value ) {
-	if ( is_int( $value ) ) {
+function customizer_library_sanitize_font_choice( $value ) 
+{
+	if ( is_int( $value ) ) 
+	{
 		// The array key is an integer, so the chosen option is a heading, not a real choice
 		return '';
-	} else if ( array_key_exists( $value, customizer_library_get_font_choices() ) ) {
+	} else if ( array_key_exists( $value, customizer_library_get_font_choices() ) ) 
+	{
 		return $value;
-	} else {
+	} 
+	else 
+	{
 		return '';
 	}
 }
