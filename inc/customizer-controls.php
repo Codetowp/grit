@@ -5,65 +5,71 @@
 /*  Grit Customizer Controls
 /*-----------------------------------------------------------------------------------*/
 
-class Grit_Misc_Control extends WP_Customize_Control {
+class Grit_Misc_Control extends WP_Customize_Control 
+	{
+		public $settings = 'blogname';
+		public $description = '';
+		public $group = '';
 
+		public function render_content() 
+		{
+			switch ( $this->type ) 
+			{
+				default:
 
-	public $settings = 'blogname';
-	public $description = '';
-	public $group = '';
+				case 'heading':
+					echo '<span class="customize-control-title">' . $this->title . '</span>';
+					break;
 
-	/**
-	 * Render the description and title for the sections
-	 */
-	public function render_content() {
-		switch ( $this->type ) {
-			default:
+				case 'custom_message' :
+					echo '<p class="description">' . $this->description . '</p>';
+					break;
 
-			case 'heading':
-				echo '<span class="customize-control-title">' . $this->title . '</span>';
-				break;
-
-			case 'custom_message' :
-				echo '<p class="description">' . $this->description . '</p>';
-				break;
-
-			case 'hr' :
-				echo '<hr />';
-				break;
+				case 'hr' :
+					echo '<hr />';
+					break;
+			}
 		}
 	}
-}
 
 class Grit_Textarea_Custom_Control extends WP_Customize_Control
-{
-	public function render_content() {
-		?>
-		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
-				<?php echo esc_textarea( $this->value() ); ?>
-			</textarea>
-			<p class="description"><?php echo $this->description ?></p>
-		</label>
-		<?php
+	{
+		public function render_content() 
+		{
+			?>
+			<label>
+				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+				<textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
+					<?php echo esc_textarea( $this->value() ); ?>
+				</textarea>
+				<p class="description"><?php echo $this->description ?></p>
+			</label>
+			<?php
+		}
 	}
-}
 
-class Grit_Theme_Support extends WP_Customize_Control {
-	public function render_content() {
-		echo wp_kses_post( 'Upgrade to <a href="#">Grit Plus</a> to be able to change the section order and styling!', 'saint' );
+class Grit_Theme_Support extends WP_Customize_Control 
+	{
+		public function render_content() 
+		{
+			echo wp_kses_post( 'Upgrade to <a href="#">Grit Plus</a> to be able to change the section order and styling!', 'saint' );
+		}
 	}
-}
 
-if ( ! function_exists( 'grit_sanitize_checkbox' ) ) {
-    function grit_sanitize_checkbox( $input ) {
-        if ( $input == 1 ) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-}
+if ( ! function_exists( 'grit_sanitize_checkbox' ) ) 
+	{
+		function grit_sanitize_checkbox( $input ) 
+		{
+			if ( $input == 1 ) 
+			{
+				return 1;
+			} 
+			else 
+			{
+				return 0;
+			}
+		}
+	}
 
 /**
  * Sanitize CSS code
@@ -76,7 +82,6 @@ function companion_sanitize_css($string) {
     $string = strip_tags($string);
     return trim( $string );
 }
-
 
 function companion_sanitize_color_alpha( $color ){
     $color = str_replace( '#', '', $color );
@@ -210,7 +215,6 @@ function Grit_sanitize_repeatable_data_field( $input , $setting ){
 
     return $data;
 }
-
 
 class Grit_Editor_Custom_Control extends WP_Customize_Control
 {

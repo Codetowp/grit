@@ -11,9 +11,11 @@ if ( ! function_exists( 'grit_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
-	function grit_posted_on() {
+	function grit_posted_on() 
+	{
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) 
+		{
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
@@ -45,25 +47,30 @@ if ( ! function_exists( 'grit_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function grit_entry_footer() {
+	function grit_entry_footer() 
+	{
 		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
+		if ( 'post' === get_post_type() ) 
+		{
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'grit' ) );
-			if ( $categories_list ) {
+			if ( $categories_list ) 
+			{
 				/* translators: 1: list of categories. */
 				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'grit' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'grit' ) );
-			if ( $tags_list ) {
+			if ( $tags_list ) 
+			{
 				/* translators: 1: list of tags. */
 				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'grit' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
 
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) 
+		{
 			echo '<span class="comments-link">';
 			comments_popup_link(
 				sprintf(
@@ -102,7 +109,8 @@ if ( ! function_exists( 'grit_entry_footer' ) ) :
 endif;
 
 /*count section*/
-if ( ! function_exists( 'grit_get_section_counter_data' ) ) {
+if ( ! function_exists( 'grit_get_section_counter_data' ) ) 
+{
     /**
      * Get counter data
      *
@@ -111,32 +119,38 @@ if ( ! function_exists( 'grit_get_section_counter_data' ) ) {
     function grit_get_section_counter_data()
     {
         $boxes = get_theme_mod('grit_counter_setting');
-        if (is_string($boxes)) {
+        if (is_string($boxes)) 
+		{
             $boxes = json_decode($boxes, true);
         }
-        if (empty($boxes) || !is_array($boxes)) {
+        if (empty($boxes) || !is_array($boxes)) 
+		{
             $boxes = array();
         }
         return $boxes;
     }
 }
 
-if ( ! function_exists( 'grit_get_media_url' ) ) {
+if ( ! function_exists( 'grit_get_media_url' ) ) 
+{
     function grit_get_media_url($media = array())
     {
         $media = wp_parse_args($media, array('url' => '', 'id' => ''));
         $url = '';
-        if ($media['id'] != '') {
+        if ($media['id'] != '') 
+		{
             $url = wp_get_attachment_url($media['id']);
         }
-        if ($url == '' && $media['url'] != '') {
+        if ($url == '' && $media['url'] != '') 
+		{
             $url = $media['url'];
         }
         return $url;
     }
 }
 
-if ( ! function_exists( 'grit_get_section_about_data' ) ) {
+if ( ! function_exists( 'grit_get_section_about_data' ) ) 
+{
     /**
      * Get counter data
      *
@@ -145,10 +159,12 @@ if ( ! function_exists( 'grit_get_section_about_data' ) ) {
     function grit_get_section_about_data()
     {
         $boxes = get_theme_mod('grit_about_boxes');
-        if (is_string($boxes)) {
+        if (is_string($boxes)) 
+		{
             $boxes = json_decode($boxes, true);
         }
-        if (empty($boxes) || !is_array($boxes)) {
+        if (empty($boxes) || !is_array($boxes)) 
+		{
             $boxes = array();
         }
         return $boxes;
@@ -156,7 +172,8 @@ if ( ! function_exists( 'grit_get_section_about_data' ) ) {
 }
 
 
-if ( ! function_exists( 'grit_get_section_process' ) ) {
+if ( ! function_exists( 'grit_get_section_process' ) ) 
+{
     /**
      * Get counter data
      *
@@ -165,10 +182,12 @@ if ( ! function_exists( 'grit_get_section_process' ) ) {
     function grit_get_section_process()
     {
         $boxes = get_theme_mod('grit_process_boxes');
-        if (is_string($boxes)) {
+        if (is_string($boxes)) 
+		{
             $boxes = json_decode($boxes, true);
         }
-        if (empty($boxes) || !is_array($boxes)) {
+        if (empty($boxes) || !is_array($boxes)) 
+		{
             $boxes = array();
         }
         return $boxes;

@@ -13,25 +13,24 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php wp_head(); ?>  
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>  
 </head>
-
 <body <?php body_class(); ?>>
 <!-- Navigation
     ==========================================-->
 <nav id="top-menu" class="navbar navbar-default navbar-fixed-top">
-  <div class="container"> 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-            <span class="sr-only">Toggle navigation</span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span>
-        </button>
-        <?php  
+	<div class="container"> 
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+				<span class="sr-only">Toggle navigation</span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
+			</button>
+			<?php  
                 $custom_logo = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo , 'full' );
                 $logo_img_static   = get_template_directory_uri()."/img/logo-top.png";
@@ -44,64 +43,52 @@
                 {
                     $img='<img src="'.$logo_img_static.'" class="img-responsive">';
                 }
-        ?>
-      <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>"><?php echo $img; ?><span><?php echo bloginfo( 'name' ); ?></span></a> 
-    </div>
+			?>
+			<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
+				<?php echo $img; ?><span><?php echo bloginfo( 'name' ); ?></span>
+			</a> 
+		</div>
     
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-   
-      <!--nav icon--> 
-      <a id="nav-icon"> <span></span> <span></span> <span></span> </a> 
-      <!--nav icon end-->
-      
-      <ul id="nav-top" class="nav navbar-nav navbar-right">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+	   
+			<!--nav icon--> 
+			<a id="nav-icon"> <span></span> <span></span> <span></span> </a> 
+			<!--nav icon end-->
+			  
+			<ul id="nav-top" class="nav navbar-nav navbar-right">
+			   <?php wp_nav_menu( array( 
+					'theme_location' => 'menu-1', 
+					'menu_class' => 'nav navbar-nav navbar-right' 
+					) );
+				?>
+			</ul>        
+			<!--search form-->    
+			<?php 
+				if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
+					<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
+						<input  class="form-control" type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>" size="40" />
+					</form>
+			<?php }?>
+			<!--/search form--> 
 
-          
-           <?php wp_nav_menu( array( 
-                'theme_location' => 'menu-1', 
-                'menu_class' => 'nav navbar-nav navbar-right' 
-            ) );?>
-
-    
-      </ul>        
-            <!--search form-->    
-      <?php 
-           if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
-        
-     <!--        <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <div class="input-group">
-                 <input class="form-control" type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>">
-                 <span class="input-group-btn">
-                 <button  type="text" value="<?php echo esc_attr_x( 'Search', 'submit button', 'grit' ); ?>"><i class="fa  fa-search"></i></button>
-              </span></div>
-</form>-->
-        
-                
-                        <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
-                        <input  class="form-control" type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'grit' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'grit' ); ?>" size="40" />
-                        </form>
-                <?php }?>
-               
-            <!--/search form--> 
-
-        <nav class="bottom-nav">
-          <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Pricing</a></li>
-          </ul>
-        </nav>
-          
-          <ul class="social-link">
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-        </ul>
-    </div>
-    <!-- /.navbar-collapse --> 
-  </div>
-  <!-- /.container-fluid --> 
+			<nav class="bottom-nav">
+				<ul>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Privacy</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Pricing</a></li>
+				</ul>
+			</nav>
+			  
+			<ul class="social-link">
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse --> 
+	</div>
+	<!-- /.container-fluid --> 
 </nav>
