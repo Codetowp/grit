@@ -14,6 +14,16 @@
 get_header(); ?>
 <!-- banner Page
     ==========================================-->
+
+<?php
+
+$disable1    = get_theme_mod( 'grit_header_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
 <?php
     $background_img   = esc_url( get_theme_mod( 'bck_ground_image' ) );   
     $background_img_static   = get_template_directory_uri()."/img/b-1.jpg";
@@ -22,38 +32,54 @@ get_header(); ?>
 <section id="home-banner" style="background-image: url(<?php echo $image; ?>);">
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
-            <span class="wow fadeIn" id="head">
-                <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_text' ) )?
-                ( get_theme_mod( 'grit_header_text' ) ):'Dcrazed says'; ?>
-            </span>
-            <h1 class="wow fadeInUp" >
-                <?php echo  $grit_tagline=( get_theme_mod( 'grit_header_description' ) )?
-                ( get_theme_mod( 'grit_header_description' ) ):' We put true <span>focus</span> on our design <span>process</span>, the concept, prototypes and <span>design</span>.'; ?>
-            </h1>
+             <?php 
+                $grit_header_text  = get_theme_mod( 'grit_header_text', esc_html__('Session Title', 'grit' ));
+                if ($grit_header_text != '') echo '<span class="wow fadeIn" id="head">  ' . wp_kses_post($grit_header_text) . ' </span>'; 
+             ?>
+            
+            <?php 
+                $grit_header_description  = get_theme_mod( 'grit_header_description', esc_html__('Session Description', 'grit' ));
+                if ($grit_header_description != '') echo '<h1 class="wow fadeInUp" >' . wp_kses_post($grit_header_description) . ' </h1>'; 
+             ?>
+            
+            
         </div>
     </div>
     <div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
 </section>
-
+<?php endif;?>
 <!-- about us Page
     ==========================================-->
+
+<?php
+
+$disable1    = get_theme_mod( 'grit_about_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
 <section id="about-us-block">
 	<div class="container">
 		<div class="row"> 
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
-				<h2>
-					<?php echo  $grit_header=( get_theme_mod( 'grit_about_header' ) )?
-					( get_theme_mod( 'grit_about_header' ) ):'About us'; ?>
-				</h2>
-				<a href="#">
-					<?php echo  $grit_header=( get_theme_mod( 'grit_about_button_text' ) )?
-					( get_theme_mod( 'grit_about_button_text' ) ):'Mission brief'; ?>
-				</a>
-				<p>
-					 <?php echo  $grit_header=( get_theme_mod( 'grit_about_description' ) )?
-					( get_theme_mod( 'grit_about_description' ) ):'Creating websites from the web Studio <span>"Ui Team"</span> as a tool for business starts with Analytics. Goals and the ways to achieve them are defined. The goal is to encourage visitors to use the service or to buy goods in your company instead of the competitor.'; ?>
-				</p>
+                 <?php 
+                    $grit_about_header  = get_theme_mod( 'grit_about_header', esc_html__('Session Title', 'grit' ));
+                    if ($grit_about_header != '') echo '<h2>  ' . wp_kses_post($grit_about_header) . ' </h2>'; 
+                 ?>
+                <?php 
+                    $grit_about_button_text  = get_theme_mod( 'grit_about_button_text', esc_html__('Read More', 'grit' ));
+                     $grit_about_button_url= get_theme_mod( 'grit_about_button_url', esc_html__('#', 'dblogger') );
+                
+                    if ($grit_about_button_text != '' && $grit_about_button_url != '') echo '<a href="' . esc_url($grit_about_button_url) . '">  ' . wp_kses_post($grit_about_button_text) . ' </a>'; 
+                 ?>
+                 <?php 
+                    $grit_about_description  = get_theme_mod( 'grit_about_description', esc_html__('Session Description', 'grit' ));
+                    if ($grit_about_description != '') echo '<p>  ' . wp_kses_post($grit_about_description) . ' </p>'; 
+                 ?>
+               
 			</div>
 			<!--/section-title-->
 			<div class="clearfix"></div>
@@ -65,26 +91,36 @@ get_header(); ?>
 		</div>
 	</div>
 </section>
-
+<?php endif;?>
 <!-- contact us Page
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
 <section id="home-contact-block">
 	<div class="container">
 		<div class="row wow fadeInUp">
-			<p>
-				<?php echo  $grit_header=( get_theme_mod( 'grit_contact_header' ) )?
-				( get_theme_mod( 'grit_contact_header' ) ):'Increase leads, build a professional website and be awesome..';?>
-			</p>
-			<a href="<?php echo  $grit_header=( get_theme_mod( 'grit_contact_button_url' ) )?
-				( get_theme_mod( 'grit_contact_button_url' ) ):'www.burstfly.com';?>">
-
-				<?php echo  $grit_header=( get_theme_mod( 'grit_contact_button_text' ) )?
-				( get_theme_mod( 'grit_contact_button_text' ) ):'Contact us';?>
-			</a>
+            
+             <?php 
+                    $grit_contact_header  = get_theme_mod( 'grit_contact_header', esc_html__('Session Title', 'grit' ));
+                    if ($grit_contact_header != '') echo '<p>  ' . wp_kses_post($grit_contact_header) . ' </p>'; 
+             ?>
+            <?php 
+                    $grit_contact_button_text  = get_theme_mod( 'grit_contact_button_text', esc_html__('Read More', 'grit' ));
+                     $grit_contact_button_url= get_theme_mod( 'grit_contact_button_url', esc_html__('#', 'grit') );
+                
+                    if ($grit_contact_button_text != '' && $grit_contact_button_url != '') echo '<a href="' . esc_url($grit_contact_button_url) . '">  ' . wp_kses_post($grit_contact_button_text) . ' </a>'; 
+                 ?>
 		</div>
 	</div>
 </section>
-
+<?php endif;?>
 <!-- our works block
     ==========================================-->
 <section id="our-work-block">

@@ -177,4 +177,3 @@ if (!function_exists('grit_count_background_color'))
 	}
 }// Add custom styles to `<head>`.
 add_action( 'wp_head', 'grit_count_background_color' );
-add_action( 'wp_head', 'dblogger_accent_color' );

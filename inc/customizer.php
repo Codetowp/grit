@@ -244,8 +244,25 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel',    
         ));
 
+        $wp_customize->add_setting( 'grit_header_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_header_check', array(
+			'settings' => 'grit_header_check',
+			'label'    => __( 'Disable Header?', 'grit' ),
+			'section'  => 'grit_header',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );
+    
         $wp_customize->add_setting( 'bck_ground_image', array(
-            'default'                   => '',
+             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',
@@ -262,7 +279,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_header_text', array(      
-            'default'                   => 'Dcrazed says' ,
+            'default'                   => esc_html__('Session Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -276,7 +293,7 @@ function grit_customize_register( $wp_customize ) {
     
 
         $wp_customize->add_setting( 'grit_header_description', array(      
-            'default'                   => '' ,
+            'default'                   => esc_html__('Session Description', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -321,9 +338,26 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel', 
         ));
 
-       
+         $wp_customize->add_setting( 'grit_about_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_about_check', array(
+			'settings' => 'grit_about_check',
+			'label'    => __( 'Disable Header?', 'grit' ),
+			'section'  => 'grit_about_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );   
+    
+    
         $wp_customize->add_setting( 'grit_about_header', array(      
-            'default'                   => 'About us' ,
+            'default'                   => esc_html__('Session Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -338,7 +372,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_about_description', array(      
-            'default'                   => 'Creating websites from the web Studio "Ui Team" as a tool for business starts   with Analytics. Goals and the ways to achieve them are defined. The goal is to encourage visitors to use the service or to buy goods in your company instead of the competitor.' ,
+            'default'                   => esc_html__('Session Description', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -352,7 +386,7 @@ function grit_customize_register( $wp_customize ) {
     
 
         $wp_customize->add_setting( 'grit_about_button_text', array(      
-            'default'                   => 'Mission brief' ,
+            'default'                   => esc_html__('Read More', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -366,7 +400,7 @@ function grit_customize_register( $wp_customize ) {
 
 
         $wp_customize->add_setting( 'grit_about_button_url', array(      
-            'default'                   => 'www.burstfly.com' ,
+            'default'                   => esc_url('#', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -421,8 +455,26 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel', 
         ) );
 
+        $wp_customize->add_setting( 'grit_contact_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_contact_check', array(
+			'settings' => 'grit_contact_check',
+			'label'    => __( 'Disable Header?', 'grit' ),
+			'section'  => 'grit_contact_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );   
+    
+    
         $wp_customize->add_setting( 'grit_contact_header', array(      
-            'default'                   => 'Increase leads, build a professional website and be awesome..' ,
+            'default'                   => esc_html__('Session Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -435,7 +487,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_contact_button_text', array(      
-            'default'                   => 'CONTACT US' ,
+            'default'                   => esc_html__('Session Button', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -449,7 +501,7 @@ function grit_customize_register( $wp_customize ) {
 
 
         $wp_customize->add_setting( 'grit_contact_button_url', array(      
-            'default'                   => 'www.burstfly.com' ,
+            'default'                   => esc_html__('Button Url', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    

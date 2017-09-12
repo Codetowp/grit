@@ -193,8 +193,13 @@ if ( ! function_exists( 'grit_get_section_process' ) )
         return $boxes;
     }
 }
-
-
+/*check button*/
+if ( ! function_exists( 'grit_is_selective_refresh' ) ) {
+    function grit_is_selective_refresh()
+    {
+        return isset($GLOBALS['grit_is_selective_refresh']) && $GLOBALS['grit_is_selective_refresh'] ? true : false;
+    }
+}
 
 
 
