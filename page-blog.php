@@ -10,6 +10,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package grit
+ *Template Name: blog
  */
 
 get_header(); ?>

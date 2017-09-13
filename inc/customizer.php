@@ -262,7 +262,7 @@ function grit_customize_register( $wp_customize ) {
 	    ) ) );
     
         $wp_customize->add_setting( 'bck_ground_image', array(
-             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
+            'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',
@@ -521,8 +521,28 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel', 
         ));
     
+    
+        
+        $wp_customize->add_setting( 'grit_work_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_work_check', array(
+			'settings' => 'grit_work_check',
+			'label'    => __( 'Disable Work?', 'grit' ),
+			'section'  => 'grit_work_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );  
+    
+    
         $wp_customize->add_setting( 'grit_work_header', array(      
-            'default'                   => 'Our work' ,
+            'default'                   => esc_html__('Session Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -535,7 +555,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_work_button_text', array(      
-            'default'                   => 'GO TO PORTFOLIO' ,
+            'default'                   => esc_html__('Session Button', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -548,7 +568,7 @@ function grit_customize_register( $wp_customize ) {
         ) );	
 
         $wp_customize->add_setting( 'grit_work_button_url', array(      
-            'default'                   => 'www.burstfly.com' ,
+            'default'                   => esc_html__('#', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -561,7 +581,7 @@ function grit_customize_register( $wp_customize ) {
         ) );	
     
        $wp_customize->add_setting( 'grit_work_portfolio_count', array(
-            'default'                   => '6',
+            'default'                   => esc_html__('6', 'grit'),
             'sanitize_callback'         => 'grit_sanitize_integer'
             )
         );
@@ -598,8 +618,26 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel', 
         ));
     
+         $wp_customize->add_setting( 'grit_process_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_process_check', array(
+			'settings' => 'grit_process_check',
+			'label'    => __( 'Disable Process?', 'grit' ),
+			'section'  => 'grit_process_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );  
+    
+    
         $wp_customize->add_setting( 'grit_process_header', array(      
-            'default'                   => 'The process' ,
+            'default'                   => esc_html__('Session Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -662,7 +700,25 @@ function grit_customize_register( $wp_customize ) {
             'priority'                  => 105,
             'panel'                     => 'grit_panel', 
         ));
+        
+        $wp_customize->add_setting( 'grit_counter_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_counter_check', array(
+			'settings' => 'grit_counter_check',
+			'label'    => __( 'Disable Process?', 'grit' ),
+			'section'  => 'grit_counter_section',
+			'type'     => 'ios',
+            'priority' => 1,
 
+	    ) ) );  
+    
+    
         $wp_customize->add_setting( 'grit_counter_setting', 
                array(               
                    'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
@@ -720,7 +776,7 @@ function grit_customize_register( $wp_customize ) {
 			) );
 
         $wp_customize->add_setting( 'grit_counter_bck_ground_image', array(
-            'default'                   => '',
+             'default'           => esc_url( get_template_directory_uri() . '/img/07-screenshot.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',
@@ -770,9 +826,25 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel', 
         ));
     
+        $wp_customize->add_setting( 'grit_testimonial_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_testimonial_check', array(
+			'settings' => 'grit_testimonial_check',
+			'label'    => __( 'Disable Process?', 'grit' ),
+			'section'  => 'grit_testimonial_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );  
            
       $wp_customize->add_setting( 'grit_testimonial_count', array(
-            'default'                   => '3',
+           'default'                   => esc_html__('3', 'grit'),
             'sanitize_callback'         => 'grit_sanitize_integer'
             )
         );
@@ -792,8 +864,26 @@ function grit_customize_register( $wp_customize ) {
             'panel'                     => 'grit_panel',
         ));
     
+         $wp_customize->add_setting( 'grit_latest_news_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_latest_news_check', array(
+			'settings' => 'grit_latest_news_check',
+			'label'    => __( 'Disable Latest News?', 'grit' ),
+			'section'  => 'grit_latest_news_section',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );  
+    
+    
         $wp_customize->add_setting( 'grit_latest_news_header', array(      
-            'default'                   => 'Latest news' ,
+            'default'                   => esc_html__('Our Blog', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -807,7 +897,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_latest_news_button_text', array(      
-            'default'                   => 'SEE THE BLOG' ,
+            'default'                   => esc_html__('Read More', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -820,7 +910,7 @@ function grit_customize_register( $wp_customize ) {
         ) );	
 
         $wp_customize->add_setting( 'grit_blog_post_count', array(
-            'default'                   => '4',
+            'default'                   => esc_html__('4', 'grit'),
             'sanitize_callback'         => 'grit_sanitize_integer'
             )
         );
@@ -850,8 +940,25 @@ function grit_customize_register( $wp_customize ) {
            
         ));
     
+        $wp_customize->add_setting( 'grit_page_check',
+				array(
+					'sanitize_callback' => 'grit_sanitize_checkbox',
+					'default'           => '',
+                    'capability'        => 'manage_options',
+			        'transport'         => 'refresh',
+				)
+			);
+	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_page_check', array(
+			'settings' => 'grit_page_check',
+			'label'    => __( 'Disable Latest News?', 'grit' ),
+			'section'  => 'grit_page_setting',
+			'type'     => 'ios',
+            'priority' => 1,
+
+	    ) ) );  
+    
         $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
-            'default'                   => '',
+             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',

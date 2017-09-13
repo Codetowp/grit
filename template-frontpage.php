@@ -123,20 +123,35 @@ if ( ! $disable1) : ?>
 <?php endif;?>
 <!-- our works block
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_work_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
 <section id="our-work-block">
 	<div class="container">
 		<div class="row"> 
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
-				<h2>
-					<?php echo  $grit_header=( get_theme_mod( 'grit_work_header' ) )?
-					( get_theme_mod( 'grit_work_header' ) ):'Our work';?>
-				</h2>
-				<a href="<?php echo  esc_url( home_url( '/portfolio' ) ); ?>">
-					
-					<?php echo  $grit_BUTTON_header=( get_theme_mod( 'grit_work_button_text' ) )?
-					( get_theme_mod( 'grit_work_button_text' ) ):'go to portfolio';?>
-				</a>
+                
+                <?php 
+                    $grit_work_header  = get_theme_mod( 'grit_work_header', esc_html__('Session Title', 'grit' ));
+                    if ($grit_work_header != '') echo '<h2>  ' . wp_kses_post($grit_work_header) . ' </h2>'; 
+                ?>
+                
+                
+                <?php 
+                    $grit_work_button_text  = get_theme_mod( 'grit_work_button_text', esc_html__('Read More', 'grit' ));
+                    
+                
+                    if ($grit_contact_button_text != '') echo '<a href="' . esc_url( home_url( '/portfolio' ) ) . '">  ' . wp_kses_post($grit_work_button_text) . ' </a>'; 
+                 ?>
+                
+				
 			</div>
 			<!--/section-title-->
 			<div class="clearfix"></div>
@@ -183,19 +198,29 @@ if ( ! $disable1) : ?>
 		</div>
   </div>
 </section>
-
+<?php endif;?>
 <!-- the process block
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_process_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
 <section id="process-block">
 	<div class="container">
 		<div class="row"> 
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
-				<h2>
-					<?php echo  $grit_header=( get_theme_mod( 'grit_process_header' ) )?
-					( get_theme_mod( 'grit_process_header' ) ):'The process';?>
-				</h2>
-			</div>
+                <?php 
+                    $grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Session Title', 'grit' ));
+                    if ($grit_process_header != '') echo '<h2>  ' . wp_kses_post($grit_process_header) . ' </h2>'; 
+                ?>
+                
+            </div>
 			<!--/section-title--> 
 			<!--process tab-->
 			<div> 
@@ -205,9 +230,19 @@ if ( ! $disable1) : ?>
 		</div>
 	</div>
 </section>
-
+<?php endif;?>
 <!-- Company counter section
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_counter_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
+
+
 <?php
     $background_img   = esc_url( get_theme_mod( 'grit_counter_bck_ground_image' ) );   
     $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
@@ -222,10 +257,19 @@ if ( ! $disable1) : ?>
 		</div>
 	</div>
 </section>
+<?php endif;?>
 <!-- /Company counter section --> 
 
 <!-- Testimonials Section
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_testimonial_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
 <section id="testimonials-block" class="text-center">
 	<div class="container">
 		<div class="row">
@@ -254,24 +298,34 @@ if ( ! $disable1) : ?>
 		</div>
     </div>
 </section>
-
+<?php endif;?>
 <!-- latest news block
     ==========================================-->
+<?php
+
+$disable1    = get_theme_mod( 'grit_latest_news_check' ) == 1 ? true : false ;
+
+if ( grit_is_selective_refresh() ) {
+    $disable1 = false;
+}
+if ( ! $disable1) : ?>
 <section id="latest-news-block">
     <div class="container">
         <div class="row"> 
             <!--section-title-->
             <div class="section-title text-center wow fadeInUp">
-                <h2>
-                     <?php echo  $grit_header=( get_theme_mod( 'grit_latest_news_header' ) )?
-                    ( get_theme_mod( 'grit_latest_news_header' ) ):'Latest news'; ?>
-                </h2>
-                    <a href="<?php echo  esc_url( home_url( '/blog' ) ); ?>">
+                
+                 <?php 
+                    $grit_latest_news_header = get_theme_mod( 'grit_latest_news_header', esc_html__('Session Title', 'grit' ));
+                    if ($grit_latest_news_header != '') echo '<h2>  ' . wp_kses_post($grit_latest_news_header) . ' </h2>'; 
+                ?>
+                 <?php 
+                    $grit_latest_news_button_text  = get_theme_mod( 'grit_latest_news_button_text', esc_html__('Read More', 'grit' ));
                     
-                    <?php echo  $grit_button_text=( get_theme_mod( 'grit_latest_news_button_text' ) )?
-                    ( get_theme_mod( 'grit_latest_news_button_text' ) ):'See the blog'; ?>
-                    
-                </a>
+                
+                    if ($grit_latest_news_button_text != '') echo '<a href="' . esc_url( home_url( '/blog' ) ) . '">  ' . wp_kses_post($grit_latest_news_button_text) . ' </a>'; 
+                 ?>
+                
             </div>
             <!--/section-title--> 
 
@@ -307,5 +361,6 @@ if ( ! $disable1) : ?>
 		</div>
 	</div>
 </section>
+<?php endif;?>
 <?php
 get_footer();

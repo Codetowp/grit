@@ -9,8 +9,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) 
-{
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
@@ -18,15 +17,12 @@ if ( ! defined( 'WPINC' ) )
 if ( ! class_exists( 'Customizer_Library' ) ) :
 
 	// Helper functions for fonts.
-	require plugin_dir_path( __FILE__ ) . 'extensions/fonts.php';
+	require plugin_dir_path( __FILE__ ) . '/lib/fonts.php';
 
-	require plugin_dir_path( __FILE__ ) . 'extensions/style-builder.php';
 
-	/**
-	 * Class wrapper with useful methods for interacting with the theme customizer.
-	 */
-	class Customizer_Library 
-	{
+	 /*Class wrapper with useful methods for interacting with the theme customizer.*/
+	
+	class Customizer_Library {
 
 		/**
 		 * The one instance of Customizer_Library.
@@ -54,22 +50,19 @@ if ( ! class_exists( 'Customizer_Library' ) ) :
 		 *
 		 * @return Customizer_Library
 		 */
-		public static function instance() 
-		{
-			if ( is_null( self::$instance ) ) 
-			{
+		public static function instance() {
+			if ( is_null( self::$instance ) ) {
 				self::$instance = new self();
 			}
+
 			return self::$instance;
 		}
 
-		public function add_options( $options = array() ) 
-		{
+		public function add_options( $options = array() ) {
 			$this->options = array_merge( $options, $this->options );
 		}
 
-		public function get_options() 
-		{
+		public function get_options() {
 			return $this->options;
 		}
 
