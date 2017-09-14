@@ -193,8 +193,24 @@ if ( ! function_exists( 'grit_get_section_process' ) )
         return $boxes;
     }
 }
+/*check button*/
+if ( ! function_exists( 'grit_is_selective_refresh' ) ) {
+    function grit_is_selective_refresh()
+    {
+        return isset($GLOBALS['grit_is_selective_refresh']) && $GLOBALS['grit_is_selective_refresh'] ? true : false;
+    }
+}
 
+/*for font*/
 
+function customizer_library_get_default( $setting ) {
 
+	$customizer_library = Customizer_Library::Instance();
+	$options = $customizer_library->get_options();
 
+	if ( isset( $options[$setting]['default'] ) ) {
+		return $options[$setting]['default'];
+	}
+
+}
 

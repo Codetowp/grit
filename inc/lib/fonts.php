@@ -131,16 +131,16 @@ if ( ! function_exists( 'customizer_library_get_google_font_subsets' ) ) :
 function customizer_library_get_google_font_subsets() 
 {
 	return array(
-		'all'          => __( 'All', 'textdomain' ),
-		'cyrillic'     => __( 'Cyrillic', 'textdomain' ),
-		'cyrillic-ext' => __( 'Cyrillic Extended', 'textdomain' ),
-		'devanagari'   => __( 'Devanagari', 'textdomain' ),
-		'greek'        => __( 'Greek', 'textdomain' ),
-		'greek-ext'    => __( 'Greek Extended', 'textdomain' ),
-		'khmer'        => __( 'Khmer', 'textdomain' ),
-		'latin'        => __( 'Latin', 'textdomain' ),
-		'latin-ext'    => __( 'Latin Extended', 'textdomain' ),
-		'vietnamese'   => __( 'Vietnamese', 'textdomain' ),
+		'all'          => __( 'All', 'grit' ),
+		'cyrillic'     => __( 'Cyrillic', 'grit' ),
+		'cyrillic-ext' => __( 'Cyrillic Extended', 'grit' ),
+		'devanagari'   => __( 'Devanagari', 'grit' ),
+		'greek'        => __( 'Greek', 'grit' ),
+		'greek-ext'    => __( 'Greek Extended', 'grit' ),
+		'khmer'        => __( 'Khmer', 'grit' ),
+		'latin'        => __( 'Latin', 'grit' ),
+		'latin-ext'    => __( 'Latin Extended', 'grit' ),
+		'vietnamese'   => __( 'Vietnamese', 'grit' ),
 	);
 }
 endif;
@@ -209,15 +209,15 @@ function customizer_library_get_standard_fonts()
 {
 	return array(
 		'serif' => array(
-			'label' => _x( 'Serif', 'font style', 'textdomain' ),
+			'label' => _x( 'Serif', 'font style', 'grit' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif'
 		),
 		'sans-serif' => array(
-			'label' => _x( 'Sans Serif', 'font style', 'textdomain' ),
+			'label' => _x( 'Sans Serif', 'font style', 'grit' ),
 			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
 		),
 		'monospace' => array(
-			'label' => _x( 'Monospaced', 'font style', 'textdomain' ),
+			'label' => _x( 'Monospaced', 'font style', 'grit' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 		)
 	);

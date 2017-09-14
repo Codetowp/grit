@@ -125,7 +125,8 @@ function grit_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-    require get_template_directory() . '/inc/widgets/social.php';  
+    require get_template_directory() . '/inc/widgets/social.php'; 
+    
 }
 add_action( 'widgets_init', 'grit_widgets_init' );
 
@@ -160,6 +161,24 @@ function the_breadcrumb() {
 	}
 }
 
+/*fonts*/
+
+/*fonts*/
+function demo_fonts() {
+
+	// Font options
+	$fonts = array(
+		get_theme_mod( 'grit_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'grit_font_family', customizer_library_get_default( 'secondary-font' ) )
+	);
+
+	$font_uri = customizer_library_get_google_font_uri( $fonts );
+
+	// Load Google Fonts
+	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
+
+}
+add_action( 'wp_enqueue_scripts', 'demo_fonts' );
 
 
 /**
@@ -243,7 +262,9 @@ if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) 
 // Helper library for the theme customizer.
 require get_template_directory() . '/inc/customizer-library.php';
 
+
 // Output inline styles based on theme customizer selections.
-require get_template_directory() . '/inc/styles.php';
+//require get_template_directory() . '/inc/styles.php';
+//require get_template_directory() . '/inc/style-builder.php';
 
 endif;

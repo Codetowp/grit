@@ -55,14 +55,24 @@
 			<!--nav icon--> 
 			<a id="nav-icon"> <span></span> <span></span> <span></span> </a> 
 			<!--nav icon end-->
-			  
-			<ul id="nav-top" class="nav navbar-nav navbar-right">
-			   <?php wp_nav_menu( array( 
+			<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
+            <?php
+				wp_nav_menu( array( 
+                        'theme_location'    => 'menu-1', 
+                        'menu_class'        => 'nav navbar-nav navbar-right' ) );
+            ?>
+            <?php else : ?>
+            <ul id="nav-top" class="nav navbar-nav navbar-right">
+				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo __( 'Add a Primary Menu', 'grit' );?>  </a></li>
+			<?php endif; ?>
+            </ul>
+			<!--<ul id="nav-top" class="nav navbar-nav navbar-right">
+			   <?php/* wp_nav_menu( array( 
 					'theme_location' => 'menu-1', 
 					'menu_class' => 'nav navbar-nav navbar-right' 
-					) );
+					) );*/
 				?>
-			</ul>        
+			</ul>-->        
 			<!--search form-->    
 			<?php 
 				if( get_theme_mod( 'grit_enable_disable_search_button' ) == 1 ) { ?>
