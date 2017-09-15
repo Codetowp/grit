@@ -17,7 +17,12 @@ get_header(); ?>
 	<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
 		<div class="content  wow fdeInUp">
 			<div class="container ">
-				<h1><?php the_title(); ?></h1>
+                
+                 <?php 
+                    $grit_header_page_text = get_theme_mod( 'grit_header_page_text', esc_html__('Session Title', 'grit' ));
+                    if ($grit_header_page_text != '') echo '<h1>  ' . wp_kses_post($grit_header_page_text) . ' </h1>'; 
+                ?>
+                
 			</div>
 		</div>
 	</div>

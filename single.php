@@ -24,9 +24,16 @@ get_header(); ?>
 				<h1><?php the_title(); ?> </h1>
 				<hr>
 				<?php 
-				   if( get_theme_mod( 'grit_enable_disable_blog_auother_button' ) == 1 ) { ?>
-					  <?php grit_posted_on(); ?>
-				<?php }?>
+                
+                 $disable    = get_theme_mod( 'grit_enable_disable_blog_auother_button' ) == 1 ? true : false ;
+
+                    if ( grit_is_selective_refresh() ) {
+                         $disable = false;
+                        }
+                    if ( ! $disable) : 
+                            grit_posted_on();
+                    endif;
+                ?>
 			</div>
 		</div>
 		<div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
@@ -69,17 +76,24 @@ get_header(); ?>
 
 				<!--posts navigation-->
 				<nav class="navigation posts-navigation"  role="navigation">
-					<ul>
-						<li class="pull-left">
+                    
+                      <?php 	
+		                  the_posts_pagination( array(
+	                           'prev_text' => '<i class="pull-left"><div class="nav-previous"></div></i> ' . __( 'Newer posts', 'grit' ),
+                                'next_text' => __( 'Older posts', 'grit' ) . ' <i class="pull-right"><div class="nav-next"></div></i>' ,
+                            ) );
+		              ?>
+                    <!--<ul>
+						<!--<li class="pull-left">
 							<div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i> Previous post</a></div>
 						</li>
 						<li class="pull-right">
 							<div class="nav-next"><a href="http://localhost/wordpress/page/2/">Next post <i class="fa fa-chevron-right"></i></a></div>
 						</li>
-					</ul>
+					</ul>-->
 				</nav>
 				<!--/posts navigation-->
-
+                <?php wp_reset_postdata(); ?>
 				<div class="clearfix"></div>
 				
 				<!--Also like-->
@@ -92,8 +106,6 @@ get_header(); ?>
 				
 				<!--comment-->
 				<div id="comments" class="comments-area text-left">
-					<h2 class="comments-title"> Comments </h2>
-					
 					<!-- .comment-list -->
 					<?php comments_template();?>
 					
@@ -105,14 +117,6 @@ get_header(); ?>
 
 			<!--aside-->
 			<aside class="col-md-3 col-sm-4" > 
-
-				<!--Search-->
-				<section class="widget widget_search  wow fadeInUp">
-				  <h2 class="widget-title">Search here</h2>
-				   <?php get_search_form();?>
-				</section>
-				<!--/Search--> 
-
 				<?php get_sidebar(); ?> 
 			</aside>
 			<!--aside-->

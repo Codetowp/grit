@@ -12,7 +12,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
 			<?php if ( have_posts() ) : ?>
-				<div id="page-banner" style="background-image: url(<?php echo get_template_directory_uri()?>/img/in-bg.jpg);">
+				<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
 					<div class="content  wow fdeInUp">
 						<div class="container ">
 							<header class="page-header">
@@ -50,18 +50,19 @@ get_header(); ?>
 										<a href="<?php the_permalink();?>">
 											<h6><?php the_title(); ?></h6>
 										</a> 
-										<?php
-											$args = array('orderby' => 'name','parent' => 0);
-											$tags = get_tags( $args );
-											if($tags!='')
-												{
-													foreach ( $tags as $tag ) 
-													{
-														echo '<a href="' . get_category_link( $tag->term_id ) . '">' . $tag->name .','. '</a>';
-													}
-										   
-												}
-										?>
+										       
+                                        <?php
+                                        $args = array(
+                                                'orderby' => 'name',
+                                                'parent' => 0
+                                            );
+                                        $categories = get_categories( $args );
+                                        if($categories!='')
+                                        {
+                                            foreach ( $categories as $category ) {
+                                                echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
+                                                }
+                                        }?>
 									</header>
 								</article>
 								<!--/ article --> 

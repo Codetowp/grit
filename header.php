@@ -59,13 +59,15 @@
             <?php
 				wp_nav_menu( array( 
                         'theme_location'    => 'menu-1', 
-                        'menu_class'        => 'nav navbar-nav navbar-right' ) );
+                        'menu_class'        => 'nav navbar-nav navbar-right',
+                        'menu_id'           => 'nav-top'
+                ) );
             ?>
             <?php else : ?>
             <ul id="nav-top" class="nav navbar-nav navbar-right">
-				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo __( 'Add a Primary Menu', 'grit' );?>  </a></li>
+				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo __( 'Add a Primary Menu', 'grit' );?>  </a></li></ul>
 			<?php endif; ?>
-            </ul>
+            
 			<!--<ul id="nav-top" class="nav navbar-nav navbar-right">
 			   <?php/* wp_nav_menu( array( 
 					'theme_location' => 'menu-1', 
