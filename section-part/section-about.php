@@ -3,42 +3,29 @@
 
 ?>
 <?php
-    if ( ! empty( $page_ids ) ) {
-                        $col = 3;
-                        $num_col = 4;
-                        $n = count( $page_ids );
-                        if ($n < 4) {
-                            switch ($n) {
-                                case 3:
-                                    $col = 4;
-                                    $num_col = 3;
-                                    break;
-                                case 2:
-                                    $col = 6;
-                                    $num_col = 2;
-                                    break;
-                                default:
-                                    $col = 12;
-                                    $num_col = 1;
+            if ( ! empty( $page_ids ) ) {
+               global $post;
+               foreach ($page_ids as $settings ) {
+                   
+                     $post_id = $settings['content_page'];
+                     $post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
+                     $post = get_post($post_id);
+                     setup_postdata($post);
+                     $settings['icon'] = trim($settings['icon']);
+                     if ( $settings['icon'] ) {
+                                $settings['icon'] = trim( $settings['icon'] );
+                                //Get/Set social icons
+                                if ( $settings['icon'] != '' && strpos($settings['icon'], 'fa') !== 0) {
+                                    $settings['icon'] = 'fa-' . $settings['icon'];
+                                }
+                                $media = '<i class="fa '.esc_attr( $settings['icon'] ).' fa-5x"></i>';
                             }
-                        }
-                        $j = 0;
-                        global $post;    
-               foreach ($page_ids as $post_id => $settings  ) {
-                   $post_id = $settings['content_page'];
-                            $post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-                            $post = get_post( $post_id );
-                            setup_postdata( $post );
-                                 
-                                 
-                    if ( $settings['icon'] ) {
-                        $settings['icon'] = trim( $settings['icon'] );
-                        $class = esc_attr( $settings['icon'] );
-                    }              
+                   
+                   
                           
                         
         ?>
-        <li><i class="<?php echo $class?>"></i>
+        <li ><?php echo $media; ?>
           <h5> <?php the_title(); ?></h5>
           <?php 
                     $excerpt = get_the_excerpt();
@@ -49,10 +36,12 @@
 
 
        <?php
- 
       } // end foreach
         wp_reset_postdata();
 }
+
+
+
 else
 {?>                
         <li><i class="fa fa-comment-o"></i>

@@ -151,10 +151,14 @@ function grit_customize_register( $wp_customize ) {
 
   if ( isset( $wp_customize->selective_refresh ) ) 
     {
-      
-        $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
-                'selector'       	 	=> '.container #head',
+      $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
+                'selector'       	 	=> '.navbar-brand span',
                 'render_callback' 	 	=> 'grit_customize_partial_header_text',
+
+            ) ); 
+        $wp_customize->selective_refresh->add_partial( 'grit_header_page_text', array(
+                'selector'       	 	=> '.container #head',
+                'render_callback' 	 	=> 'grit_customize_partial_header_page_text',
 
             ) ); 
 
@@ -262,7 +266,7 @@ function grit_customize_register( $wp_customize ) {
 	    ) ) );
     
          $wp_customize->add_setting( 'grit_header_page_text', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+            'default'                   => esc_html__('Section Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -291,13 +295,13 @@ function grit_customize_register( $wp_customize ) {
             ) 
         ) );
 
-        $wp_customize->add_setting( 'grit_header_text', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+        $wp_customize->add_setting( 'grit_header_page_text', array(      
+            'default'                   => esc_html__('Section Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
 
-        $wp_customize->add_control( 'grit_header_text', array(
+        $wp_customize->add_control( 'grit_header_page_text', array(
             'type'						=> 'text',
             'label' 					=> __( 'Header', 'grit' ),
             'section'  					=> 'grit_header',
@@ -306,7 +310,7 @@ function grit_customize_register( $wp_customize ) {
     
 
         $wp_customize->add_setting( 'grit_header_description', array(      
-            'default'                   => esc_html__('Session Description', 'grit'),
+            'default'                   => esc_html__('Section Description', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage',               
         ) );    
@@ -370,7 +374,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_about_header', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+            'default'                   => esc_html__('About', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -385,7 +389,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_about_description', array(      
-            'default'                   => esc_html__('Session Description', 'grit'),
+            'default'                   => esc_html__('Section Description', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -487,7 +491,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_contact_header', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+            'default'                   => esc_html__('Section Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -500,7 +504,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_contact_button_text', array(      
-            'default'                   => esc_html__('Session Button', 'grit'),
+            'default'                   => esc_html__('Section Button', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -546,7 +550,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_work_check', array(
 			'settings' => 'grit_work_check',
-			'label'    => __( 'Disable Work?', 'grit' ),
+			'label'    => __( 'Enable Portfolio?', 'grit' ),
 			'section'  => 'grit_work_section',
 			'type'     => 'ios',
             'priority' => 1,
@@ -555,7 +559,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_work_header', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+            'default'                   => esc_html__('Section Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -568,7 +572,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_work_button_text', array(      
-            'default'                   => esc_html__('Session Button', 'grit'),
+            'default'                   => esc_html__('Section Button', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -650,7 +654,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_process_header', array(      
-            'default'                   => esc_html__('Session Title', 'grit'),
+            'default'                   => esc_html__('Section Title', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
@@ -849,7 +853,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_testimonial_check', array(
 			'settings' => 'grit_testimonial_check',
-			'label'    => __( 'Disable Process?', 'grit' ),
+			'label'    => __( 'Enable Testimonial?', 'grit' ),
 			'section'  => 'grit_testimonial_section',
 			'type'     => 'ios',
             'priority' => 1,
@@ -1018,7 +1022,7 @@ function grit_customize_register( $wp_customize ) {
         /************paragraph************/
         $font_choices 					= customizer_library_get_font_choices();
         $wp_customize					->add_setting( 'grit_paragraph_font', array(
-            'default'        			=> 'PT Serif , serif',
+            'default'        			=> 'Montserrat',
         ) );
 
         $wp_customize->add_control( 'grit_paragraph_font', array(
@@ -1062,7 +1066,7 @@ function grit_customize_register( $wp_customize ) {
 		) ) );
     
         $wp_customize->add_setting( 'grit_font_family', array(
-            'default'        			=> 'PT Serif , serif',
+            'default'        			=> 'PT Serif',
         ) );
 
         $wp_customize->add_control( 'grit_font_family', array(
@@ -1181,10 +1185,15 @@ function grit_customize_partial_blogname() {
 function grit_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
-
 function grit_customize_partial_header_text() {
+   bloginfo( 'header_text' );
+}
+
+function grit_customize_partial_header_page_text() {
+	
     echo get_theme_mod('grit_header_text');
 }
+
 
 function grit_customize_partial_header_description() {
     echo get_theme_mod('grit_header_description');

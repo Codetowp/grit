@@ -12,12 +12,9 @@ get_header(); ?>
 <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
 		<div class="content  wow fdeInUp">
 			<div class="container ">
-                
-                 <?php 
-                    $grit_header_page_text = get_theme_mod( 'grit_header_page_text', esc_html__('Session Title', 'grit' ));
-                    if ($grit_header_page_text != '') echo '<h1>  ' . wp_kses_post($grit_header_page_text) . ' </h1>'; 
-                ?>
-                
+                <header class="page-header">
+                <h1 class="page-title"> <?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'grit' ); ?> </h1>
+                </header>
 			</div>
 		</div>
 	</div>
@@ -29,9 +26,7 @@ get_header(); ?>
 				<div id="primary" class="content-area">
 					<main id="main" class="site-main">
 						<section class="error-404 not-found">
-							<header class="page-header">
-								<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'grit' ); ?></h1>
-							</header><!-- .page-header -->
+							
 							<div class="page-content">
 								<p>
 									<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'grit' ); ?>
