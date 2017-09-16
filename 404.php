@@ -8,7 +8,19 @@
  */
 
 get_header(); ?>
-
+<section class="page">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+		<div class="content  wow fdeInUp">
+			<div class="container ">
+                
+                 <?php 
+                    $grit_header_page_text = get_theme_mod( 'grit_header_page_text', esc_html__('Session Title', 'grit' ));
+                    if ($grit_header_page_text != '') echo '<h1>  ' . wp_kses_post($grit_header_page_text) . ' </h1>'; 
+                ?>
+                
+			</div>
+		</div>
+	</div>
 <div id="page-body">
 	<div class="container">
 		<div class="row  wow fdeInUp"> 
@@ -26,15 +38,19 @@ get_header(); ?>
 								</p>
 								<?php
 									get_search_form();
-									the_widget( 'WP_Widget_Recent_Posts' );
+									
 								?>
 							</div><!-- .page-content -->
 						</section><!-- .error-404 -->
 					</main><!-- #main -->
 				</div><!-- #primary -->
 			</div>
+            <aside class="col-md-3 col-sm-5" > 
+					  <?php the_widget( 'WP_Widget_Recent_Posts' ); ?> 
+			</aside>
 		</div>
 	</div>
 </div>
+</section>
 <?php
 get_footer();

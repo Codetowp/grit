@@ -261,6 +261,19 @@ function grit_customize_register( $wp_customize ) {
 
 	    ) ) );
     
+         $wp_customize->add_setting( 'grit_header_page_text', array(      
+            'default'                   => esc_html__('Session Title', 'grit'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'grit_header_page_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header Page Title', 'grit' ),
+            'section'  					=> 'grit_header',
+            'priority' 					=> 2,
+        ) );
+        
         $wp_customize->add_setting( 'bck_ground_image', array(
             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
@@ -1122,9 +1135,10 @@ function grit_customize_register( $wp_customize ) {
                 'description'               => 'Easily edit your body section',
                 'priority'                  => 112,
         ));
-    
+        
         $wp_customize->add_setting( 'grit_enable_disable_search_button', array(
-                'default'    				=> '1',
+                'sanitize_callback'         => 'grit_sanitize_checkbox',
+                'default'    				=> '',
                 'capability' 				=> 'manage_options',
                 'transport' 				=> 'refresh',
         ) );
@@ -1136,13 +1150,14 @@ function grit_customize_register( $wp_customize ) {
         ) ) );
     
 		$wp_customize->add_setting( 'grit_enable_disable_blog_auother_button', array(
-                'default'    				=> '1',
+                'sanitize_callback'         => 'grit_sanitize_checkbox',
+                'default'    				=> '',
                 'capability' 				=> 'manage_options',
                 'transport' 				=> 'refresh',
         ) );
         $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_blog_auother_button', array(
                 'settings' 					=> 'grit_enable_disable_blog_auother_button',
-                'label'    					=> ( 'Enable/Disable Blog Author option' ),
+                'label'    					=> ( 'Disable Blog Author option' ),
                 'section'  					=> 'enabled_switch',
                 'type'     					=> 'ios',
         ) ) );
@@ -1204,7 +1219,13 @@ function grit_sanitize_integer( $input ) {
         return intval( $input );
    	}
 	}
-
+function grit_sanitize_checkbox( $input ) {
+    if ( $input == 1 ) {
+		return 1;
+    } else {
+		return 0;
+    }
+}
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
