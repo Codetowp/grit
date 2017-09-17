@@ -33,12 +33,12 @@ if ( ! $disable1) : ?>
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
              <?php 
-                $grit_header_text  = get_theme_mod( 'grit_header_text', esc_html__('Session Title', 'grit' ));
+                $grit_header_text  = get_theme_mod( 'grit_header_page_text', esc_html__('Section Title', 'grit' ));
                 if ($grit_header_text != '') echo '<span class="wow fadeIn" id="head">  ' . wp_kses_post($grit_header_text) . ' </span>'; 
              ?>
             
             <?php 
-                $grit_header_description  = get_theme_mod( 'grit_header_description', esc_html__('Session Description', 'grit' ));
+                $grit_header_description  = get_theme_mod( 'grit_header_description', esc_html__('Section Description', 'grit' ));
                 if ($grit_header_description != '') echo '<h1 class="wow fadeInUp" >' . wp_kses_post($grit_header_description) . ' </h1>'; 
              ?>
             
@@ -66,7 +66,7 @@ if ( ! $disable1) : ?>
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
                  <?php 
-                    $grit_about_header  = get_theme_mod( 'grit_about_header', esc_html__('Session Title', 'grit' ));
+                    $grit_about_header  = get_theme_mod( 'grit_about_header', esc_html__('About', 'grit' ));
                     if ($grit_about_header != '') echo '<h2>  ' . wp_kses_post($grit_about_header) . ' </h2>'; 
                  ?>
                 <?php 
@@ -76,7 +76,7 @@ if ( ! $disable1) : ?>
                     if ($grit_about_button_text != '' && $grit_about_button_url != '') echo '<a href="' . esc_url($grit_about_button_url) . '">  ' . wp_kses_post($grit_about_button_text) . ' </a>'; 
                  ?>
                  <?php 
-                    $grit_about_description  = get_theme_mod( 'grit_about_description', esc_html__('Session Description', 'grit' ));
+                    $grit_about_description  = get_theme_mod( 'grit_about_description', esc_html__('Section Description', 'grit' ));
                     if ($grit_about_description != '') echo '<p>  ' . wp_kses_post($grit_about_description) . ' </p>'; 
                  ?>
                
@@ -108,7 +108,7 @@ if ( ! $disable1) : ?>
 		<div class="row wow fadeInUp">
             
              <?php 
-                    $grit_contact_header  = get_theme_mod( 'grit_contact_header', esc_html__('Session Title', 'grit' ));
+                    $grit_contact_header  = get_theme_mod( 'grit_contact_header', esc_html__('Section Title', 'grit' ));
                     if ($grit_contact_header != '') echo '<p>  ' . wp_kses_post($grit_contact_header) . ' </p>'; 
              ?>
             <?php 
@@ -125,7 +125,7 @@ if ( ! $disable1) : ?>
     ==========================================-->
 <?php
 
-$disable1    = get_theme_mod( 'grit_work_check' ) == 1 ? true : false ;
+$disable1    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
 
 if ( grit_is_selective_refresh() ) {
     $disable1 = false;
@@ -139,7 +139,7 @@ if ( ! $disable1) : ?>
 			<div class="section-title text-center wow fadeInUp">
                 
                 <?php 
-                    $grit_work_header  = get_theme_mod( 'grit_work_header', esc_html__('Session Title', 'grit' ));
+                    $grit_work_header  = get_theme_mod( 'grit_work_header', esc_html__('Section Title', 'grit' ));
                     if ($grit_work_header != '') echo '<h2>  ' . wp_kses_post($grit_work_header) . ' </h2>'; 
                 ?>
                 
@@ -216,7 +216,7 @@ if ( ! $disable1) : ?>
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
                 <?php 
-                    $grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Session Title', 'grit' ));
+                    $grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Section Title', 'grit' ));
                     if ($grit_process_header != '') echo '<h2>  ' . wp_kses_post($grit_process_header) . ' </h2>'; 
                 ?>
                 
@@ -264,7 +264,7 @@ if ( ! $disable1) : ?>
     ==========================================-->
 <?php
 
-$disable1    = get_theme_mod( 'grit_testimonial_check' ) == 1 ? true : false ;
+$disable1    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
 
 if ( grit_is_selective_refresh() ) {
     $disable1 = false;
@@ -316,7 +316,7 @@ if ( ! $disable1) : ?>
             <div class="section-title text-center wow fadeInUp">
                 
                  <?php 
-                    $grit_latest_news_header = get_theme_mod( 'grit_latest_news_header', esc_html__('Session Title', 'grit' ));
+                    $grit_latest_news_header = get_theme_mod( 'grit_latest_news_header', esc_html__('Our Blog', 'grit' ));
                     if ($grit_latest_news_header != '') echo '<h2>  ' . wp_kses_post($grit_latest_news_header) . ' </h2>'; 
                 ?>
                  <?php 
