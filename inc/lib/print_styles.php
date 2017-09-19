@@ -42,7 +42,7 @@ if (!function_exists('grit_paragraph_font_color'))
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . 'p{' . $append_color . '}' ;
+			echo "\n" . '#about-us-block p{'.$append_color.'}' ."\n".'#process-block p{'.$append_color.'}'."\n".'#process-block process-content p{'.$append_color.'}'."\n".'#testimonials-block p{'.$append_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}

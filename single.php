@@ -66,7 +66,7 @@ get_header(); ?>
 
 				<!--author box-->
 				<div class="author-box"> <?php echo get_avatar( get_the_author_meta('user_email'), '100', '' ); ?> 
-					<div class="author-box-title"> Authored By <a href="#" rel="author"><?php the_author_link(); ?> </a> </div>
+					<div class="author-box-title"> <?php echo esc_html__( 'Authored By','');?> <a href="#" rel="author"><?php the_author_link(); ?> </a> </div>
 					<div class="author-description"><?php the_author_meta('description'); ?></div>
 					<div class="author_social"> </div>
 				</div>
@@ -80,17 +80,10 @@ get_header(); ?>
                       <?php 	
 		                  the_posts_pagination( array(
 	                           'prev_text' => '<i class="pull-left"><div class="nav-previous"></div></i> ' . __( 'Newer posts', 'grit' ),
-                                'next_text' => __( 'Older posts', 'grit' ) . ' <i class="pull-right"><div class="nav-next"></div></i>' ,
+                               'next_text' => __( 'Older posts', 'grit' ) . ' <i class="pull-right"><div   class="nav-next"></div></i>' ,
                             ) );
 		              ?>
-                    <!--<ul>
-						<!--<li class="pull-left">
-							<div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i> Previous post</a></div>
-						</li>
-						<li class="pull-right">
-							<div class="nav-next"><a href="http://localhost/wordpress/page/2/">Next post <i class="fa fa-chevron-right"></i></a></div>
-						</li>
-					</ul>-->
+                   
 				</nav>
 				<!--/posts navigation-->
                 <?php wp_reset_postdata(); ?>
@@ -126,8 +119,6 @@ get_header(); ?>
 	</div>
 </div>
 
-
-	
 <?php
 //get_sidebar();
 get_footer();
