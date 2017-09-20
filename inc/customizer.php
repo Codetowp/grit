@@ -29,7 +29,7 @@ function grit_customize_register( $wp_customize ) {
         if ( isset( $wp_customize->selective_refresh ) ) 
 		{
             $wp_customize->selective_refresh->add_partial( 'blogname', array(
-                'selector'        => '.site-title a',
+                'selector'        => '.navbar-header a span',
                 'render_callback' => 'grit_customize_partial_blogname',
             ) );
             $wp_customize->selective_refresh->add_partial( 'blogdescription', array(
@@ -151,13 +151,13 @@ function grit_customize_register( $wp_customize ) {
 
   if ( isset( $wp_customize->selective_refresh ) ) 
     {
-      $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
-                'selector'       	 	=> '.navbar-brand span',
+     /* $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
+                'selector'       	 	=> '.navbar-header a span',
                 'render_callback' 	 	=> 'grit_customize_partial_header_text',
 
-            ) ); 
+            ) ); */
         $wp_customize->selective_refresh->add_partial( 'grit_header_page_text', array(
-                'selector'       	 	=> '.container #head',
+                'selector'       	 	=> '#home-banner span',
                 'render_callback' 	 	=> 'grit_customize_partial_header_page_text',
 
             ) ); 
@@ -1182,12 +1182,14 @@ function grit_customize_partial_blogname() {
  *
  * @return void
  */
+/*function grit_customize_partial_header_text() {
+   bloginfo( 'name' );
+}*/
+
 function grit_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
-function grit_customize_partial_header_text() {
-   bloginfo( 'header_text' );
-}
+
 
 function grit_customize_partial_header_page_text() {
 	
