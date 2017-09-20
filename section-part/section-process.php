@@ -23,7 +23,7 @@
                             }
                         }
                         $j = 0;
-                        global $post;   
+                        
         
         
         ?>
@@ -32,7 +32,7 @@
         <ul class="nav nav-tabs">
             
         <?php  
-        
+        global $post;   
          $firstClass = 'active'; 
         foreach ($page_ids as $post_id => $settings  ) {
             
@@ -58,10 +58,7 @@
         <?php
         $firstClass = 'active'; 
                foreach ($page_ids as $post_id => $settings  ) {
-                   
-                    
-                   
-                   $post_id = $settings['content_page'];
+                            $post_id = $settings['content_page'];
                             $post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
                             $post = get_post( $post_id );
                             setup_postdata( $post );
@@ -78,12 +75,13 @@
               <h6><?php the_title(); ?></h6>
                 <p>
                 <?php 
-                    $excerpt = get_the_excerpt();
-                    $excerpt = substr( $excerpt , 0, 500); 
+                    //$excerpt = get_the_excerpt();
+                    //$excerpt = substr( $excerpt , 0, 500); 
                    // echo $excerpt;
-                    echo the_content();
-                    ?></p>
-              <a href="<?php get_permalink($post); ?>">Read More</a> </div>
+                   $content = get_the_content(); 
+                   echo mb_strimwidth($content, 0, 500, '...');
+                 ?></p>
+              <a href="<?php echo get_permalink($post); ?>">Read More</a> </div>
             <!--/tab content--> 
             
          </div>

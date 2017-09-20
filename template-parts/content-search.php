@@ -21,18 +21,17 @@
      <!--  <img src="img/04-screenshot.jpg" alt="image 1">--> <a href="<?php the_permalink();?>">
        <h6><?php the_title();?></h6>
        </a> 
-         <?php
-                                        $args = array(
-                                                'orderby' => 'name',
-                                                'parent' => 0
-                                            );
-                                        $categories = get_categories( $args );
-                                        if($categories!='')
-                                        {
-                                            foreach ( $categories as $category ) {
-                                                echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
-                                                }
-                                        }?>
-    
+        <?php
+               $args = array(
+                    'orderby' => 'name',
+                    'parent' => 0
+                    );
+              $categories = get_categories( $args );
+              if($categories!='')
+              {
+              foreach ( $categories as $category ) {
+                echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
+              }
+              }?>
     </header>
  </article>
