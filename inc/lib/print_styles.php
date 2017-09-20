@@ -25,7 +25,7 @@ if (!function_exists('grit_paragraph_font_family'))
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" .'#about-us-block p{'.$append_family.'}' ."\n".'#process-block p{'.$append_family.'}'."\n".'#process-block process-content p{'.$append_family.'}'."\n".'#testimonials-block p{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget_recent_entries ul li .media-body p a{'.$append_family.'}';
+			echo "\n" .'#about-us-block p{'.$append_family.'}' ."\n".'#process-block p{'.$append_family.'}'."\n".'#process-block process-content p{'.$append_family.'}'."\n".'#testimonials-block p{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget_recent_entries ul li .media-body p a{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget{'.$append_family.'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
