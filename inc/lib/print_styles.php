@@ -25,7 +25,7 @@ if (!function_exists('grit_paragraph_font_family'))
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" .'#about-us-block p{'.$append_family.'}' ."\n".'#process-block p{'.$append_family.'}'."\n".'#process-block process-content p{'.$append_family.'}'."\n".'#testimonials-block p{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget_recent_entries ul li .media-body p a{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget{'.$append_family.'}';
+			echo "\n" .'#about-us-block p{'.$append_family.'}' ."\n".'#process-block p{'.$append_family.'}'."\n".'#process-block process-content p{'.$append_family.'}'."\n".'#testimonials-block p{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget_recent_entries ul li .media-body p a{'.$append_family.'}'."\n".'.widget ul li{'.$append_family.'}'."\n".'.widget{'.$append_family.'}'."\n" .'.single .single-post p{'.$append_family.'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -42,7 +42,7 @@ if (!function_exists('grit_paragraph_font_color'))
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . '#about-us-block p{'.$append_color.'}' ."\n".'#process-block p{'.$append_color.'}'."\n".'#process-block .process-content p{'.$append_color.'}'."\n".'#testimonials-block p{'.$append_color.'}' ;
+			echo "\n" . '#about-us-block p{'.$append_color.'}' ."\n".'#process-block p{'.$append_color.'}'."\n".'#process-block .process-content p{'.$append_color.'}'."\n".'#testimonials-block p{'.$append_color.'}'."\n" .'.single .single-post p{'.$append_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -59,7 +59,7 @@ if (!function_exists('grit_paragraph_font_size_styles'))
 			// Output the styles.
 		if ( $fontparagraphfamily_value ) 
 		{
-			echo "\n" . 'p{' . $append_para_family_font . '}';
+			echo "\n" . '.single .single-post p{' . $append_para_family_font . '}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -77,7 +77,7 @@ if (!function_exists('grit_font_family'))
 		if ( $fontfamily_value ) 
 		{
 			echo "\n" . 'h1{' . $append_family . '}'."\n".'h2{'.$append_family.'}'."\n".'h3{'.$append_family.'}'.
-                "\n".'h4{'.$append_family.'}'."\n".'h5{'.$append_family.'}' ;
+                "\n".'h4{'.$append_family.'}'."\n".'h5{'.$append_family.'}'."\n".'h6{'.$append_family.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -113,7 +113,7 @@ if (!function_exists('grit_font_color'))
 		if ( $color_value ) 
 		{
 			echo "\n" . 'h1{' . $append_color . '}'."\n".'h2{'.$append_color.'}'."\n".'h3{'.$append_color.'}'.
-                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}' ;
+                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}' ."\n".'h6{'.$append_color.'}'."\n".'#process-block .process-content h6{'.$append_color.'}'."\n".'#latest-news-block h2{'.$append_color.'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -133,7 +133,7 @@ if (!function_exists('grit_accent_color'))
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . '.section-title a:hover{' . $append_color . '}'. "\n" .  'ul.about-features li:hover i{' . $icon_color . '}' ."\n" . '#process-block .nav-tabs > li.active i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i:after{'.$process_color.'}'."\n".'#process-block .nav-tabs > li.active i:after{'.$process_color.'}'."\n" . '#home-contact-block a{' . $button_color . '}'."\n".'#process-block .process-content a{'.$icon_color.'}' ;
+			echo "\n" . '.section-title a:hover{' . $append_color . '}'. "\n" .  'ul.about-features li:hover i{' . $icon_color . '}' ."\n" . '#process-block .nav-tabs > li.active i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i{'.$icon_color.'}' ."\n". '#process-block .nav > li > a:hover i:after{'.$process_color.'}'."\n".'#process-block .nav-tabs > li.active i:after{'.$process_color.'}'."\n" . '#home-contact-block a{' . $button_color . '}'."\n".'#process-block .process-content a{'.$icon_color.'}'."\n".'blockquote {border-left-color:'. $color_value.'}'."\n".'.author-box .author-box-title{'.$icon_color.'}'."\n".'.author-box .author-box-title a{'.$process_color.'}'."\n".'.single .single-post ul li:before, .page .page-block ul li:before{'.$process_color.'}'."\n".'aside .widget_search button{'.$process_color.'}'."\n" .'p a{'.$icon_color.'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}

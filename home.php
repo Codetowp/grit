@@ -19,7 +19,7 @@ get_header(); ?>
 			<div class="container ">
                 
                  <?php 
-                    $grit_header_page_text = get_theme_mod( 'grit_header_page_text', esc_html__('Section Title', 'grit' ));
+                    $grit_header_page_text = get_theme_mod( 'grit_header_page_text', esc_html__('Our Blog', 'grit' ));
                     if ($grit_header_page_text != '') echo '<h1>  ' . wp_kses_post($grit_header_page_text) . ' </h1>'; 
                 ?>
                 

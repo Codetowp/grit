@@ -3156,7 +3156,7 @@ ul.about-features li:hover i {
 	margin-bottom: 48px;
 	font-size: 42px;
 	font-weight: 700;
-	color: #404040;
+	/*color: #404040;*/
 	line-height: 1.4;
 }
 .page h3 {

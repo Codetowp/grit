@@ -31,10 +31,7 @@ get_header(); ?>
 			<ul class="tag-head">
 				<?php
 					echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
-					sprintf(
-					' <li><a href="#">%1$s</a>',
-					esc_html__( 'Project tags: ', 'grit' )
-					),
+					sprintf('<li><a href="#">%1$s</a>', ''),
 					esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 					'</li>'
 					);
@@ -52,7 +49,7 @@ get_header(); ?>
 			<!--blog posts container-->
 			<div class="col-md-12 page-block">
 				<?php the_content(); ?>
-				
+
 				<!--footer tags-->
 				<footer class="entry-footer entry-meta-bar">
 					<div class="entry-meta"> 

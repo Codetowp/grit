@@ -27,11 +27,11 @@
         ?>
         <li ><?php echo $media; ?>
           <h5> <?php the_title(); ?></h5>
-          <?php 
+          <p><?php 
                     $excerpt = get_the_excerpt();
                     $excerpt = substr( $excerpt , 0, 100); 
                     echo $excerpt;
-            ?>
+            ?></p>
         </li>
 
 

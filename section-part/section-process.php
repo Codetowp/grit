@@ -79,8 +79,9 @@
                 <p>
                 <?php 
                     $excerpt = get_the_excerpt();
-                    $excerpt = substr( $excerpt , 0, 200); 
-                    echo $excerpt;
+                    $excerpt = substr( $excerpt , 0, 500); 
+                   // echo $excerpt;
+                    echo the_content();
                     ?></p>
               <a href="<?php get_permalink($post); ?>">Read More</a> </div>
             <!--/tab content--> 

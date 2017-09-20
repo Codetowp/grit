@@ -504,7 +504,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_contact_button_text', array(      
-            'default'                   => esc_html__('Section Button', 'grit'),
+            'default'                   => esc_html__('Read More', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -518,7 +518,7 @@ function grit_customize_register( $wp_customize ) {
 
 
         $wp_customize->add_setting( 'grit_contact_button_url', array(      
-            'default'                   => esc_html__('Button Url', 'grit'),
+            'default'                   => '#',
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -572,7 +572,7 @@ function grit_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_setting( 'grit_work_button_text', array(      
-            'default'                   => esc_html__('Section Button', 'grit'),
+            'default'                   => esc_html__('Read More', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'refresh',               
         ) );    
@@ -927,7 +927,7 @@ function grit_customize_register( $wp_customize ) {
         ) );	
 
         $wp_customize->add_setting( 'grit_blog_post_count', array(
-            'default'                   => esc_html__('4', 'grit'),
+            'default'                   => 4,
             'sanitize_callback'         => 'grit_sanitize_integer'
             )
         );
@@ -1022,11 +1022,11 @@ function grit_customize_register( $wp_customize ) {
         /************paragraph************/
         $font_choices 					= customizer_library_get_font_choices();
         $wp_customize					->add_setting( 'grit_paragraph_font', array(
-            'default'        			=> 'Montserrat',
+            'default'        			=> 'PT Serif',
         ) );
 
         $wp_customize->add_control( 'grit_paragraph_font', array(
-            'label'   					=> 'Grit Paragragh Font Family',
+            'label'   					=> 'Pick Paragragh Font Family',
             'section' 					=> 'grit_font',
             'type'    					=> 'select',
             'choices' 					=> $font_choices,
@@ -1034,7 +1034,7 @@ function grit_customize_register( $wp_customize ) {
             ));
     
         $wp_customize->add_setting( 'grit_paragraph_font_color', array(
-			'default' 					=> '#5a5a5a', 
+			'default' 					=> '#6f6f6f', 
 			'transport' 				=> 'refresh', 
 			'sanitize_callback' 		=> 'sanitize_hex_color', 
             ) );
@@ -1066,11 +1066,11 @@ function grit_customize_register( $wp_customize ) {
 		) ) );
     
         $wp_customize->add_setting( 'grit_font_family', array(
-            'default'        			=> 'PT Serif',
+            'default'        			=> 'Montserrat',
         ) );
 
         $wp_customize->add_control( 'grit_font_family', array(
-            'label'   					=> 'Grit Font Family',
+            'label'   					=> 'Pick Heading Font Family',
             'section' 					=> 'grit_font',
             'type'    					=> 'select',
             'choices' 					=> $font_choices,
@@ -1120,8 +1120,9 @@ function grit_customize_register( $wp_customize ) {
 
 		foreach( $social_sites as $social_site ) 
 		{
-			$wp_customize->add_setting( "social[$social_site]", array(
+			$wp_customize->add_setting( "social[$social_site]", array(                
 				'type'              	=> 'theme_mod',
+				'default'              	=> '#',
 				'capability'        	=> 'edit_theme_options',
 				'sanitize_callback' 	=> 'esc_url_raw'
 			) );
