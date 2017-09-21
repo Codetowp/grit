@@ -3427,9 +3427,7 @@ blockquote {
 	margin: 30px;
 	margin-left: 40px;
 	padding-left: 36px;
-	float:left;
 	background: #fff url(img/bq-bg.png) 0 0 no-repeat;
-	float:left;
 }
 
 
@@ -3612,12 +3610,14 @@ blockquote p {
 .single .single-post ul, .single .single-post ol, .page .page-block ul, .page .page-block ol {
 	/* margin-left: 50px; */
 	margin-bottom: 48px;
-	float:left;
+	/* float:left;*/
 }
 
 
 .page .page-block ul{margin-left:3%;}
-.single .single-post .post ul , .page .page-block .post ul  {float:left;}
+.single .single-post .post ul , .page .page-block .post ul  {
+   /* float:left;*/
+}
 
 .single .single-post ul li, .page .page-block ul li {
 	list-style: none;
@@ -3638,7 +3638,7 @@ blockquote p {
 	border-radius: 100%;
 }
 .page #page-body ol {
-	margin-left: 10%;
+	margin-left: 3%;
 }
 .single .single-post ol li, .page .page-block ol li {
 	color: #43484d;
