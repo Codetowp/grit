@@ -332,7 +332,7 @@ if ( ! $disable1) : ?>
 			<?php 
                 
 				$count_blog = get_theme_mod( 'grit_blog_post_count', 4 );
-                $count_blog = $count_blog-1;
+                // $count_blog = $count_blog-1;
 				$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
 				if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();

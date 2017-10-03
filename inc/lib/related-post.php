@@ -3,7 +3,7 @@
 function grit_related_post() 
 {
 	$args = '';
-    $count = get_theme_mod( 'grit_post_related_post_count', 5 ); 
+    $count = get_theme_mod( 'grit_post_related_post_count', 3 ); 
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
 		'posts_per_page' => $count,

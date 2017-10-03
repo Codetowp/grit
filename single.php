@@ -66,9 +66,9 @@ get_header(); ?>
 
 				<!--author box-->
 				<div class="author-box"> <?php echo get_avatar( get_the_author_meta('user_email'), '100', '' ); ?> 
-					<div class="author-box-title"> <?php echo esc_html__( 'Authored By','');?> <a href="#" rel="author"><?php the_author_link(); ?> </a> </div>
+					<div class="author-box-title"> <?php echo esc_html__( 'Authored By','');?> <?php the_author_link(); ?> </div>
 					<div class="author-description"><?php the_author_meta('description'); ?></div>
-					<div class="author_social"> </div>
+					<div class="author_social"> <a href="<?php echo get_the_author_meta('url') ; ?>"><i class="fa fa-globe"></i></a></div>
 				</div>
 				<!--/author box-->
 
