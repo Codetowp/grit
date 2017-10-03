@@ -3,7 +3,7 @@
 function grit_related_post() 
 {
 	$args = '';
-    $count = get_theme_mod( 'dblogger_post_related_post_count', 5 ); 
+    $count = get_theme_mod( 'grit_post_related_post_count', 5 ); 
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
 		'posts_per_page' => $count,
@@ -39,19 +39,23 @@ function grit_related_post()
 					$title=get_the_title();
                 
                 global $post;
+                
+                
                 $categories = get_the_category($post->ID);
                 $cat_link = get_category_link($categories[0]->cat_ID);
+                //$cat_name = get_category_link($categories[0]->cat_name);
                 
 				printf(
 					'<article class="col-md-4 col-sm-6 col-xs-12 eq-blocks">
                         <header class="entry-header"> %s <a href="%s">
                         <h6>%s</h6>
-                        </a> <a href="#">Web-design</a> , <a href="#">Front-end</a> </header>
+                        </a> <a href="%s"></a> </header>
                      </article>
                    ',
 					$post_thumbnail,
                     esc_url( get_permalink() ),
                     $title,
+                    $cat_link,
                     $class_format
 				);
 				?>

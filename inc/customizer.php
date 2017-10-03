@@ -212,13 +212,22 @@ function grit_customize_register( $wp_customize ) {
                 'render_callback' 		=> 'grit_customize_partial_process_header',
             ) ); 
       
+      $wp_customize->selective_refresh->add_partial( 'grit_counter_setting', array(
+                'selector'        		=> '#company-counter .container',
+                'render_callback' 		=> 'grit_customize_partial_counter_check',
+            ) ); 
+      
+      
+      
         $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
                 'selector'        		=> '#latest-news-block .section-title h2',
                 'render_callback' 		=> 'grit_customize_partial_latest_news_header',
             ) );
 
     }
+      
     
+    /*accent color*/
     
 		$wp_customize->add_setting( 'grit_accent_color', array(
 				'default' 		 		=> '#f53347', 
@@ -898,13 +907,11 @@ function grit_customize_register( $wp_customize ) {
 
 	    ) ) );  
     
-    
         $wp_customize->add_setting( 'grit_latest_news_header', array(      
             'default'                   => esc_html__('Our Blog', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
             'transport'                 => 'postMessage', // refresh or postMessage              
         ) );    
-
 
         $wp_customize->add_control( 'grit_latest_news_header', array(
             'type'						=> 'text',
@@ -912,7 +919,7 @@ function grit_customize_register( $wp_customize ) {
             'section'  					=> 'grit_latest_news_section',
             'priority' 					=> 2,
         ) );
-
+    
         $wp_customize->add_setting( 'grit_latest_news_button_text', array(      
             'default'                   => esc_html__('Read More', 'grit'),
             'sanitize_callback'         => 'sanitize_text_field',
@@ -956,6 +963,26 @@ function grit_customize_register( $wp_customize ) {
             'priority'                  => 112,
            
         ));
+    
+      $wp_customize->add_setting(
+    'grit_post_related_post_count',
+		array(
+            'default' => '3',
+			'sanitize_callback' => 'grit_sanitize_integer'
+		)
+    );
+
+    $wp_customize->add_control(
+    'grit_post_related_post_count',
+    array(
+        'type' => 'integer',
+		
+        'label' => __('Number Of Related Post To Show - i.e 10 (default is 3)','grit'),
+        'section' => 'grit_page_setting',
+		
+        )
+    );
+    
     
         $wp_customize->add_setting( 'grit_page_check',
 				array(
@@ -1221,7 +1248,11 @@ function grit_customize_partial_work_header() {
 function grit_customize_partial_process_header() {
     echo get_theme_mod('grit_process_header');
 }
-    
+function grit_customize_partial_counter_check() {
+    echo get_theme_mod('grit_counter_setting');
+}  
+
+
 function grit_customize_partial_latest_news_header() {
     echo get_theme_mod('grit_latest_news_header');
 }  

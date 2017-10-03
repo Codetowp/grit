@@ -153,7 +153,7 @@ function the_breadcrumb() {
 		echo '</li>';
 		echo '<li class="breadcrumb-item">';
 		if (is_category() || is_single()) {
-			the_category('title_li=');			
+			the_category(',');			
 		} elseif (is_page()) {
 			echo the_title();
 		}
