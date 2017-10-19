@@ -18,6 +18,10 @@ function grit_body_classes( $classes )
 		{
 			$classes[] = 'hfeed';
 		}
+		if ( is_archive() ) 
+		{
+			$classes[] = 'page';
+		}
 		return $classes;
 	}
 add_filter( 'body_class', 'grit_body_classes' );

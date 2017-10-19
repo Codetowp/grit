@@ -18,11 +18,11 @@ class Grit_Misc_Control extends WP_Customize_Control
 				default:
 
 				case 'heading':
-					echo '<span class="customize-control-title">' . $this->title . '</span>';
+					echo '<span class="customize-control-title">' . esc_html( $this->title ) . '</span>';
 					break;
 
 				case 'custom_message' :
-					echo '<p class="description">' . $this->description . '</p>';
+					echo '<p class="description">' . esc_html( $this->description ) . '</p>';
 					break;
 
 				case 'hr' :
@@ -42,7 +42,7 @@ class Grit_Textarea_Custom_Control extends WP_Customize_Control
 				<textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
 					<?php echo esc_textarea( $this->value() ); ?>
 				</textarea>
-				<p class="description"><?php echo $this->description ?></p>
+				<p class="description"><?php echo esc_html( $this->description );?></p>
 			</label>
 			<?php
 		}
@@ -246,7 +246,7 @@ class Grit_Editor_Custom_Control extends WP_Customize_Control
             </label>
             
             <textarea class="wp-js-editor-textarea large-text" data-editor-mod="<?php echo esc_attr( $this->mod ); ?>" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-            <p class="description"><?php echo $this->description ?></p>
+            <p class="description"><?php echo esc_html( $this->description ); ?></p>
         </div>
     <?php
     }
