@@ -37,24 +37,24 @@ class dblogger_info extends WP_Customize_Control
 	public function render_content() {
 		$links = array(
 			array(
-				'name' => __( 'Documentation','dblogger' ),
+				'name' => __( 'Documentation','grit' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Demo','dblogger' ),
+				'name' => __( 'Demo','grit' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Leave a review','dblogger' ),
+				'name' => __( 'Leave a review','grit' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Buy us a coffee','dblogger' ),
+				'name' => __( 'Buy us a coffee','grit' ),
 				'link' => esc_url( '#' ),
 			),
 		); ?>
 		
-		<div class="dblogger-theme-info">
+		<div class="grit-theme-info">
 			<?php
 			foreach ( $links as $item ) 
 			{  ?>

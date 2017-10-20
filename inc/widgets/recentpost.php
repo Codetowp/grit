@@ -4,8 +4,8 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 	{
 		function __construct() 
 		{
-			$widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails",''), 'customize_selective_refresh' => true, );
-			parent::__construct('thirst-recent-posts', __('Grit Recent Posts',''), $widget_ops);
+			$widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails",'grit'), 'customize_selective_refresh' => true, );
+			parent::__construct('thirst-recent-posts', __('Grit Recent Posts','grit'), $widget_ops);
 			$this->alt_option_name = 'widget_recent_entries';
 
 			add_action( 'save_post', array($this, 'flush_widget_cache') );
@@ -31,7 +31,7 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 			ob_start();
 			extract($args);
 			
-			$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts','') : $instance['title'], $instance, $this->id_base);
+			$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts','grit') : $instance['title'], $instance, $this->id_base);
 			
 			if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
 				$number = 10;
@@ -41,7 +41,7 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 			if ($r->have_posts()) :
 			?>
 			<?php echo $before_widget; ?>
-			<?php if ( $title ) echo $before_title . $title . $after_title; ?>
+			<?php if ( $title ) echo $before_title . esc_html( $title ) . $after_title; ?>
 				<ul class="media-list main-list">
 					<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 					    <li class="media"> 
@@ -50,8 +50,8 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 								 
 								if  ( get_the_post_thumbnail()=='')
 								{
-									$background_img_relatedpost   = get_template_directory_uri()."/img/t-1.jpg";
-									echo  $post_thumbnail= '<img class="media-object" src="'.$background_img_relatedpost.'" alt="..." class="media-object">';
+									$background_img_relatedpost   = get_template_directory_uri() . '/img/t-1.jpg';
+									echo  $post_thumbnail= '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
 								}
 								else
 								{
@@ -117,18 +117,18 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 			 $show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
 			?>
 			<p>
-				 <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','' ); ?></label>
-				 <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+				 <label for="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>"><?php esc_html( 'Title:','grit' ); ?></label>
+				 <input id="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $title ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:','' ); ?></label>
-				<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" />
+				<label for="<?php echo esc_html( $this->get_field_id( 'number' ) ); ?>"><?php esc_html( 'Number of posts to show:','grit' ); ?></label>
+				<input id="<?php echo esc_html( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3" />
 			</p>
 
 			<p>
-				<input type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-				<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?','' ); ?></label>
+				<input type="checkbox" <?php checked( $show_date ); ?> id="<?php echo esc_html( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'show_date' ) ); ?>" />
+				<label for="<?php echo esc_html( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html( 'Display post date?','grit' ); ?></label>
 			</p>
 			<?php
 		 }
@@ -136,9 +136,9 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 	function Grit_WP_Widget_Recent_Posts() 
 	{
 		 // define widget title and description
-		 $widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails","") );
+		 $widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails","grit") );
 		 // register the widget
-		 $this->WP_Widget('grit-recent-posts', __('Grit Recent Posts',''), $widget_ops);
+		 $this->WP_Widget('grit-recent-posts', __('Grit Recent Posts','grit'), $widget_ops);
 	}
 	function Grit_WP_Widget_Recent_Posts_init()
 	{
