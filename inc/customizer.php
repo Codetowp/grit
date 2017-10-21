@@ -41,8 +41,8 @@ function grit_customize_register( $wp_customize ) {
         }
         $wp_customize->remove_control('blogdescription');
         $wp_customize->remove_section('background_image');
-        $wp_customize->get_section('title_tagline')->title = __( 'Branding','' );
-        $wp_customize->get_section('header_image')->title = __( 'Blog Settings','' );  
+        $wp_customize->get_section('title_tagline')->title = __( 'Branding','grit' );
+        $wp_customize->get_section('header_image')->title = __( 'Blog Settings','grit' );  
     
     
     class Customizer_Range_Value_Control extends WP_Customize_Control 
@@ -76,7 +76,7 @@ function grit_customize_register( $wp_customize ) {
 					<span class="range-slider__value">0</span></span>
 				</div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 				<?php endif; ?>
 			</label>
 			<?php
@@ -138,11 +138,11 @@ function grit_customize_register( $wp_customize ) {
 			<label>
 				<div style="display:flex;flex-direction: row;justify-content: flex-start;">
 					<span class="customize-control-title" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->label ); ?></span>
-					<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl tgl-<?php echo $this->type?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-					<label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
+					<input id="cb<?php echo esc_html( $this->instance_number ); ?>" type="checkbox" class="tgl tgl-<?php echo esc_html( $this->type );?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php esc_html( $this->link() ); checked( $this->value() ); ?> />
+					<label for="cb<?php echo esc_html( $this->instance_number ); ?>" class="tgl-btn"></label>
 				</div>
 				<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<span class="description customize-control-description"><?php echo  esc_html( $this->description ); ?></span>
 				<?php endif; ?>
 			</label>
 			<?php
@@ -296,7 +296,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'bck_ground_image', array(
-            'label'                     => __( 'Background Image', '' ),
+            'label'                     => __( 'Background Image', 'grit' ),
             'section'                   => 'grit_header',
             'settings'                  => 'bck_ground_image',
             'context'                   => 'bck_ground_image',
@@ -628,7 +628,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_portfolio_bck_ground_image', array(
-            'label'                     => __( 'Portfolio Page Background Image', '' ),
+            'label'                     => __( 'Portfolio Page Background Image', 'grit' ),
             'section'                   => 'grit_work_section',
             'settings'                  => 'grit_portfolio_bck_ground_image',
             'context'                   => 'grit_portfolio_bck_ground_image',
@@ -810,7 +810,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_counter_bck_ground_image', array(
-            'label'                     => __( 'Background Image', '' ),
+            'label'                     => __( 'Background Image', 'grit' ),
             'section'                   => 'grit_counter_section',
             'settings'                  => 'grit_counter_bck_ground_image',
             'context'                   => 'grit_counter_bck_ground_image',
@@ -948,7 +948,7 @@ function grit_customize_register( $wp_customize ) {
  
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_portfolio_bck_ground_image', array(
-            'label'                     => __( 'Background Image', '' ),
+            'label'                     => __( 'Background Image', 'grit' ),
             'section'                   => 'grit_portfolio_section',
             'settings'                  => 'grit_portfolio_bck_ground_image',
             'context'                   => 'grit_portfolio_bck_ground_image',
@@ -1010,7 +1010,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_testimonial_bck_ground_image', array(
-            'label'                     => __( 'Testimonial Page Background Image', '' ),
+            'label'                     => __( 'Testimonial Page Background Image', 'grit' ),
             'section'                   => 'grit_page_setting',
             'settings'                  => 'grit_testimonial_bck_ground_image',
             'context'                   => 'grit_testimonial_bck_ground_image',
@@ -1028,7 +1028,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'grit_portfolio_bck_ground_image', array(
-            'label'                     => __( 'PortFolio Page Background Image', '' ),
+            'label'                     => __( 'PortFolio Page Background Image', 'grit' ),
             'section'                   => 'grit_page_setting',
             'settings'                  => 'grit_portfolio_bck_ground_image',
             'context'                   => 'grit_portfolio_bck_ground_image',
@@ -1082,7 +1082,7 @@ function grit_customize_register( $wp_customize ) {
 			'type'     					=> 'range-value',
 			'section'  					=> 'grit_font',
 			'settings' 					=> 'grit_paragraph_font_size',
-			'label'    					=> __( 'Paragraph Font Width','' ),
+			'label'    					=> __( 'Paragraph Font Width','grit' ),
 			'input_attrs' 				=> array(
 				'min'   			 	=> 11,
 				'max'    				=> 24,
@@ -1125,7 +1125,7 @@ function grit_customize_register( $wp_customize ) {
 			'type'     					=> 'range-value',
 			'section'  					=> 'grit_font',
 			'settings' 					=> 'grit_font_size_styles',
-			'label'    					=> __( 'Font Width','' ),
+			'label'    					=> __( 'Font Width','grit' ),
 			'input_attrs' 				=> array(
 				'min'					=> 11,
 				'max'    				=> 24,
@@ -1221,40 +1221,40 @@ function grit_customize_partial_blogdescription() {
 
 function grit_customize_partial_header_page_text() {
 	
-    echo get_theme_mod('grit_header_text');
+    echo esc_html( get_theme_mod('grit_header_text') );
 }
 
 
 function grit_customize_partial_header_description() {
-    echo get_theme_mod('grit_header_description');
+    echo esc_html( get_theme_mod('grit_header_description') );
 }
 
 function grit_customize_partial_about_header() {
-    echo get_theme_mod('grit_about_header');
+    echo esc_html( get_theme_mod('grit_about_header') );
 }
 
 function grit_customize_partial_about_description() {
-     echo get_theme_mod('grit_about_description');
+     echo esc_html( get_theme_mod('grit_about_description') );
 }
 
 function grit_customize_partial_contact_header() {
-    echo get_theme_mod('grit_contact_header');
+    echo esc_html( get_theme_mod('grit_contact_header') );
 }
 
 function grit_customize_partial_work_header() {
-    echo get_theme_mod('grit_work_header');
+    echo esc_html( get_theme_mod('grit_work_header') );
 }
 
 function grit_customize_partial_process_header() {
-    echo get_theme_mod('grit_process_header');
+    echo esc_html( get_theme_mod('grit_process_header') );
 }
 function grit_customize_partial_counter_check() {
-    echo get_theme_mod('grit_counter_setting');
+    echo esc_html( get_theme_mod('grit_counter_setting') );
 }  
 
 
 function grit_customize_partial_latest_news_header() {
-    echo get_theme_mod('grit_latest_news_header');
+    echo esc_html( get_theme_mod('grit_latest_news_header') );
 }  
 
 function grit_sanitize_integer( $input ) {

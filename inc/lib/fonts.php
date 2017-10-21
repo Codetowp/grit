@@ -14,9 +14,9 @@ if ( ! function_exists( 'customizer_library_get_font_choices' ) ) :
  */
 function customizer_library_get_all_fonts() 
 {
-	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'customizer-library' ) ) ) );
+	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'grit' ) ) ) );
 	$standard_fonts = customizer_library_get_standard_fonts();
-	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'customizer-library' ) ) ) );
+	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'grit' ) ) ) );
 	$google_fonts   = customizer_library_get_google_fonts();
 
 	/**

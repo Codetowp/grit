@@ -12,12 +12,12 @@ get_header(); ?>
 <!-- banner Page
 ==========================================-->
 <?php
-    $background_img   = esc_url( get_theme_mod( 'grit_portfolio_bck_ground_image' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/in-bg.jpg";
-    $image = $background_img ? "$background_img" : "$background_img_static";      
+$background_img   =  get_theme_mod( 'grit_portfolio_bck_ground_image' ) ;   
+$background_img_static   = get_template_directory_uri() . '/img/in-bg.jpg';
+$image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 
-<div id="page-banner" class="portfolio" style="background-image: url(<?php echo $image; ?>);">
+<div id="page-banner" class="portfolio" style="background-image: url(<?php echo esc_url( $image ); ?>);">
 	<div class="content  wow fdeInUp">
 		<div class="container ">
 			<h1>
@@ -48,7 +48,7 @@ get_header(); ?>
 					<li class="wow fdeInUp">
 						<figure>
 							<?php the_post_thumbnail();?>
-							<!--<img src="<?php echo get_template_directory_uri(); ?>/img/01-screenshot.jpg" alt="Screenshot 01">-->
+							
 							<figcaption>
 								<div class="caption-content  wow fdeInUp">
 									<h6><?php the_title(); ?></h6>

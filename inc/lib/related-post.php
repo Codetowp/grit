@@ -22,9 +22,9 @@ function grit_related_post()
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
-                    $background_img_relatedpost   = get_template_directory_uri()."/img/04-screenshot.jpg";
+                    $background_img_relatedpost   = get_template_directory_uri() . '/img/04-screenshot.jpg';
                     
-                    $post_thumbnail= '<img src="'.$background_img_relatedpost.'" class="img-responsive">';
+                    $post_thumbnail= '<img src="' . $background_img_relatedpost . '" class="img-responsive">';
                 }
                 else
                 {
@@ -54,9 +54,9 @@ function grit_related_post()
                    ',
 					$post_thumbnail,
                     esc_url( get_permalink() ),
-                    $title,
-                    $cat_link,
-                    $class_format
+                    esc_html( $title ),
+                    esc_url( $cat_link ),
+                    esc_html( $class_format )
 				);
 				?>
 			<?php

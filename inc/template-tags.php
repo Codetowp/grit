@@ -43,11 +43,11 @@ if ( ! function_exists( 'grit_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'grit_entry_footer' ) ) :
+if ( ! function_exists( 'grit_entry_category' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function grit_entry_footer() 
+	function grit_entry_category() 
 	{
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) 
@@ -57,17 +57,53 @@ if ( ! function_exists( 'grit_entry_footer' ) ) :
 			if ( $categories_list ) 
 			{
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'grit' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'grit' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
+
+			
+		}
+
+	}
+endif;
+
+
+
+/*t section*/
+
+
+if ( ! function_exists( 'grit_entry_tag' ) ) :
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function  grit_entry_tag () 
+	{
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) 
+		{
+			
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'grit' ) );
 			if ( $tags_list ) 
 			{
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'grit' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( '%1$s', 'grit' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
+
+		
+
+	}
+endif;
+
+
+if ( ! function_exists( 'grit_entry_edited' ) ) :
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function grit_entry_edited() 
+	{
+		
 
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) 
 		{
@@ -107,6 +143,13 @@ if ( ! function_exists( 'grit_entry_footer' ) ) :
 		);
 	}
 endif;
+
+
+
+
+
+
+
 
 /*count section*/
 if ( ! function_exists( 'grit_get_section_counter_data' ) ) 

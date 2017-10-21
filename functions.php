@@ -133,10 +133,8 @@ add_action( 'widgets_init', 'grit_widgets_init' );
 //recent post widget
 require get_template_directory() . '/inc/widgets/recentpost.php';
 require get_template_directory() . '/inc/lib/print_styles.php';
-
 // Custom Theme Functions
 require get_template_directory() . '/inc/lib/related-post.php';
-
 // Custom Theme Image Sizes	
 add_image_size( 'process-medium', 360, 463,  array( 'top', 'center' ) );
 add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
@@ -146,9 +144,9 @@ function the_breadcrumb() {
 	if (!is_home()) {
 		echo '<li class="breadcrumb-item">';
 		echo '<a href="';
-		echo home_url('home');
+		echo esc_url( home_url('/') );
 		echo '">';
-		echo __('Home', 'dblogger');
+		echo esc_html_e( 'Home', 'grit');
 		echo "</a>";
 		echo '</li>';
 		echo '<li class="breadcrumb-item">';
@@ -160,23 +158,18 @@ function the_breadcrumb() {
 		echo '</li>';
 	}
 }
-
 /*fonts*/
 
 /*fonts*/
 function demo_fonts() {
-
 	// Font options
 	$fonts = array(
 		get_theme_mod( 'grit_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
 		get_theme_mod( 'grit_font_family', customizer_library_get_default( 'secondary-font' ) )
 	);
-
 	$font_uri = customizer_library_get_google_font_uri( $fonts );
-
 	// Load Google Fonts
 	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
-
 }
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
 

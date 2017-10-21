@@ -27,59 +27,30 @@ get_header(); ?>
 				<div id="page-body">
 					<div class="container">
 						<div class="row  wow fdeInUp"> 
-						<!--blog page container-->
-							<div class="col-md-12 col-xs-12 page-block "   > 
+							<!--blog page container-->
+							<div class="col-md-12 col-xs-12 page-block "> 
 								<?php
-									/* Start the Loop */
-									while ( have_posts() ) : the_post();
+								/* Start the Loop */
+								while ( have_posts() ) : the_post();
 								?>
-								<!-- article-->
-								<article class="col-md-3 col-sm-3 col-xs-12 eq-blocks" style="height: 300px;">
-									<header class="entry-header"> 
-										<?php
-											if  ( get_the_post_thumbnail()!='')
-												{
-													the_post_thumbnail('grit_category'); 
-												}
-											else
-												{?>
-													<img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
-											<?php 
-												}
-										?> 
-										<a href="<?php the_permalink();?>">
-											<h6><?php the_title(); ?></h6>
-										</a> 
-										       
-                                        <?php
-                                        $args = array(
-                                                'orderby' => 'name',
-                                                'parent' => 0
-                                            );
-                                        $categories = get_categories( $args );
-                                        if($categories!='')
-                                        {
-                                            foreach ( $categories as $category ) {
-                                                echo '<a rel="tag" href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a> ';
-                                                }
-                                        }?>
-									</header>
-								</article>
-								<!--/ article --> 
+									<!-- article-->
+									<?php 	get_template_part( 'template-parts/content', 'archive' ); ?>
+									<!--/ article --> 
 								<?php endwhile;?>
-								
+
 								<div class="clearfix"></div>
-							
+
 								<!--/portfolio page nav-->
 								<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
-								  <ul>
-									   <?php 	
-										  the_posts_pagination( array(
-										   'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Newer posts', 'grit' ),
-										   'next_text' => __( 'Older posts', 'grit' ) . ' <i class="fa fa-chevron-right"></i>' ,
-										   ) );
-									   ?>
-								  </ul>
+									<ul>
+										<?php 	
+										the_posts_pagination( array(
+											'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Newer posts', 'grit' ),
+											'next_text' => __( 'Older posts', 'grit' ) . ' <i class="fa fa-chevron-right"></i>',
+										) );
+										?>
+										<?php wp_reset_postdata(); ?>
+									</ul>
 								</nav>
 							</div>
 							<!--blog page container-->
@@ -90,7 +61,6 @@ get_header(); ?>
 		<?php endif;?>
     </main>
 </div>
-
 <?php
 //get_sidebar();
 get_footer();

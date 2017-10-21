@@ -16,9 +16,9 @@ if ( ! function_exists( 'customizer_library_get_font_choices' ) ) :
  */
 function customizer_library_get_all_fonts() 
 {
-	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'customizer-library' ) ) ) );
+	$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', esc_html( 'Standard Fonts', 'customizer-library' ) ) ) );
 	$standard_fonts = customizer_library_get_standard_fonts();
-	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'customizer-library' ) ) ) );
+	$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', esc_html( 'Google Fonts', 'customizer-library' ) ) ) );
 	$google_fonts   = customizer_library_get_google_fonts();
 
 	/**
@@ -133,16 +133,16 @@ if ( ! function_exists( 'customizer_library_get_google_font_subsets' ) ) :
 function customizer_library_get_google_font_subsets() 
 {
 	return array(
-		'all'          => __( 'All', 'textdomain' ),
-		'cyrillic'     => __( 'Cyrillic', 'textdomain' ),
-		'cyrillic-ext' => __( 'Cyrillic Extended', 'textdomain' ),
-		'devanagari'   => __( 'Devanagari', 'textdomain' ),
-		'greek'        => __( 'Greek', 'textdomain' ),
-		'greek-ext'    => __( 'Greek Extended', 'textdomain' ),
-		'khmer'        => __( 'Khmer', 'textdomain' ),
-		'latin'        => __( 'Latin', 'textdomain' ),
-		'latin-ext'    => __( 'Latin Extended', 'textdomain' ),
-		'vietnamese'   => __( 'Vietnamese', 'textdomain' ),
+		'all'          => esc_html_e( 'All', 'grit' ),
+		'cyrillic'     => esc_html_e( 'Cyrillic', 'grit' ),
+		'cyrillic-ext' => esc_html_e( 'Cyrillic Extended', 'grit' ),
+		'devanagari'   => esc_html_e( 'Devanagari', 'grit' ),
+		'greek'        => esc_html_e( 'Greek', 'grit' ),
+		'greek-ext'    => esc_html_e( 'Greek Extended', 'grit' ),
+		'khmer'        => esc_html_e( 'Khmer', 'grit' ),
+		'latin'        => esc_html_e( 'Latin', 'grit' ),
+		'latin-ext'    => esc_html_e( 'Latin Extended', 'grit' ),
+		'vietnamese'   => esc_html_e( 'Vietnamese', 'grit' ),
 	);
 }
 endif;
@@ -209,15 +209,15 @@ function customizer_library_get_standard_fonts()
 {
 	return array(
 		'serif' => array(
-			'label' => _x( 'Serif', 'font style', 'textdomain' ),
+			'label' => _x( 'Serif', 'font style', 'grit' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif'
 		),
 		'sans-serif' => array(
-			'label' => _x( 'Sans Serif', 'font style', 'textdomain' ),
+			'label' => _x( 'Sans Serif', 'font style', 'grit' ),
 			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
 		),
 		'monospace' => array(
-			'label' => _x( 'Monospaced', 'font style', 'textdomain' ),
+			'label' => _x( 'Monospaced', 'font style', 'grit' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 		)
 	);
