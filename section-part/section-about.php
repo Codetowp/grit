@@ -25,7 +25,7 @@
                           
                         
         ?>
-        <li ><?php echo $media; ?>
+        <li ><?php echo  $media ; ?>
           <h5> <?php the_title(); ?></h5>
           <p><?php 
                     $excerpt = get_the_excerpt();

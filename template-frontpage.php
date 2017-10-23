@@ -25,11 +25,11 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 
 <?php
-    $background_img   = esc_url( get_theme_mod( 'bck_ground_image' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/b-1.jpg";
+    $background_img   =  get_theme_mod( 'bck_ground_image' );   
+    $background_img_static   = get_template_directory_uri() . '/img/b-1.jpg';
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="home-banner" style="background-image: url(<?php echo $image; ?>);">
+<section id="home-banner" style="background-image: url(<?php echo esc_url( $image ); ?>);">
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
              <?php 
@@ -71,7 +71,7 @@ if ( ! $disable1) : ?>
                  ?>
                 <?php 
                     $grit_about_button_text  = get_theme_mod( 'grit_about_button_text', esc_html__('Read More', 'grit' ));
-                     $grit_about_button_url= get_theme_mod( 'grit_about_button_url', esc_html__('#', 'dblogger') );
+                     $grit_about_button_url= get_theme_mod( 'grit_about_button_url', esc_html__('#', 'grit') );
                 
                     if ($grit_about_button_text != '' && $grit_about_button_url != '') echo '<a href="' . esc_url($grit_about_button_url) . '">  ' . wp_kses_post($grit_about_button_text) . ' </a>'; 
                  ?>
@@ -244,11 +244,11 @@ if ( ! $disable1) : ?>
 
 
 <?php
-    $background_img   = esc_url( get_theme_mod( 'grit_counter_bck_ground_image' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/07-screenshot.jpg";
+    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image' );   
+    $background_img_static   = get_template_directory_uri() .'/img/07-screenshot.jpg';
     $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="company-counter" style="background-image:url(<?php echo $image; ?>); ">
+<section id="company-counter" style="background-image:url(<?php echo esc_url( $image ); ?>); ">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-md-12 wow fadeInDown">
