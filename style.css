@@ -3619,14 +3619,14 @@ blockquote p {
    /* float:left;*/
 }
 
-.single .single-post ul li, .page .page-block ul li {
+.single .single-post ul .page-numbers, .page .page-block ul .page-numbers {
 	list-style: none;
 	color: #43484d;
-	font-size: 18px;
+	
 	margin: 10px 0;
-	font-family: 'PT Serif', serif;
+	
 }
-.single .single-post ul li:before, .page .page-block ul li:before {
+.single .single-post ul .page-numbers:before, .page .page-block ul .page-numbers:before {
 	font-family: 'FontAwesome';
 	font-size: 10px;
 	content: "\f00c";
@@ -3657,10 +3657,10 @@ blockquote p {
 }
 .single .posts-navigation ul li {
 }
-#our-work-block .posts-navigation ul li {
+#our-work-block .posts-navigation ul .page-numbers{
 	float: none;
 }
-.posts-navigation ul li {
+.posts-navigation ul .page-numbers {
 	list-style: none;
 	display: inline-block;
 	margin: 10px 10px;
@@ -3668,10 +3668,10 @@ blockquote p {
 	font-family: 'Montserrat', sans-serif;
 	margin: 25px auto !important;
 }
-.posts-navigation ul li:before {
+.posts-navigation ul .page-numbers:before {
 	display: none !important;
 }
-.posts-navigation ul li a {
+.posts-navigation ul a.page-numbers {
 	background: #fff;
 	font-family: 'Montserrat', sans-serif;
 	color: #3a405b;
@@ -3682,7 +3682,7 @@ blockquote p {
 	border: 1px #f0f2f7 solid;
 	margin: 0 auto !important;
 }
-.posts-navigation ul li a:hover {
+.posts-navigation ul li a.page-numbers:hover {
 	transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	-webkit-transition: all 0.5s;
@@ -3954,7 +3954,7 @@ to {
 	float: none;
 	margin: 10px auto;
 	top: 30%;
-	left: -23%;
+	
 	color: #ffc051;
 	opacity: 1;
 }
@@ -3964,10 +3964,14 @@ to {
 	float: none;
 	margin: 10px auto;
 	top: 30%;
-	left: -23%;
+	
 	color: #ffc051;
 	opacity: 1;
 }
+
+
+.woocommerce .star-rating span:before{color: #ffc051;}
+
 .woocommerce ul.products li.product:hover .star-rating {
 	opacity: 1;
 	transition: all 0.5s;
@@ -4111,12 +4115,15 @@ to {
 	text-decoration: none;
 }
 .price ins .woocommerce-Price-amount {
-	color: #ff5959;
-	font-size: 24px;
+	color: #333;
+	font-size: 17px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
 	text-decoration: none;
 }
+
+.woocommerce .price ins{background: none;}
+
 .woocommerce div.product p.price, .woocommerce div.product span.price {
 	color: #fff;
 	font-size: 1.25em;

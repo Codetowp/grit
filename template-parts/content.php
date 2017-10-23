@@ -13,7 +13,7 @@
 		<?php
 		if  ( get_the_post_thumbnail()!='')
 		{
-			the_post_thumbnail('grit_latest_news'); 
+			the_post_thumbnail('grit_post_preview'); 
 		}else{?>
 			<img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
 		<?php }?>       

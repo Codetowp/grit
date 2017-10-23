@@ -14,7 +14,7 @@ get_header(); ?>
 	if(have_posts()):		  
 		while ( have_posts() ) : the_post();
 	?>
-			<header class="entry-header" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
+			<header class="entry-header" style="background-image: url(<?php echo the_post_thumbnail_url('grit_single_product'); ?>);">
 				<div class="content wow fadeInUp">
 					<div class="container"> 
 						<!--breadcrumb-->

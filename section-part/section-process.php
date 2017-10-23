@@ -68,7 +68,7 @@
 
         <div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
             <!--tab img-->
-            <div class="col-md-5 process-img">  <?php the_post_thumbnail('process-medium');?> </div>
+            <div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process_medium');?> </div>
             <!--/tab img--> 
             <!--tab content-->
             <div class="col-md-7 process-content">
