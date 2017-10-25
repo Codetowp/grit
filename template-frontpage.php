@@ -172,7 +172,7 @@ if ( ! $disable1) : ?>
 					<li>
 						<figure>
 							<?php the_post_thumbnail();?>
-							<!--<img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
+							<!--<img src="<?php //echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
 							<figcaption>
 								<div class="caption-content">
 									<h6><?php the_title(); ?></h6>
@@ -344,7 +344,7 @@ if ( ! $disable1) : ?>
 					}
 					else
 					{?>
-						<img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
+						<img src="<?php echo esc_url( get_template_directory_uri() );?>/img/04-screenshot.jpg"  alt="image 1" >
 					<?php }?>       
 					<a href="<?php the_permalink();?>">
 						<h6><?php the_title();?></h6>

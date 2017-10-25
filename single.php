@@ -14,55 +14,11 @@ get_header(); ?>
 	if(have_posts()):		  
 		while ( have_posts() ) : the_post();
 	?>
-			<header class="entry-header" style="background-image: url(<?php echo the_post_thumbnail_url('grit_single_product'); ?>);">
-				<div class="content wow fadeInUp">
-					<div class="container"> 
-						<!--breadcrumb-->
-						<ol class="breadcrumb">
-							<?php the_breadcrumb(); ?>
-						</ol>
-						<h1><?php the_title(); ?> </h1>
-						<hr>
-						<?php 						
-						$disable    = get_theme_mod( 'grit_enable_disable_blog_auother_button' ) == 1 ? true : false ;
-						if ( grit_is_selective_refresh() ) {
-							$disable = false;
-						}
-						if ( ! $disable) : 
-							grit_posted_on();
-						endif;
-						?>
-					</div>
-				</div>
-				<div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
-			</header>    
-	<?php 
-		endwhile;
-	endif;
-	?> 
-	<div class="container">
-		<div class="row wow fadeInUp"> 
-			<!--blog posts container-->
-			<div class="col-md-9 col-sm-8 single-post">
-				<article class="post">
-					<?php
-					if(have_posts()):		  
-						while ( have_posts() ) : the_post();
-					?>
-						<?php echo the_content();?>
-					<?php endwhile;endif;?>
-				</article>
-				<footer class="entry-footer entry-meta-bar">
-					<div class="entry-meta"> 
-						<i class="fa fa-tags"></i> 
-						<span class="tag-links  clearfix"> 
-							<?php grit_entry_tag(); ?>
-						</span> 
-					</div>
-				</footer><!--/footer tags--><?php grit_entry_edited();?>
+			<?php get_template_part( 'template-parts/content', 'single' ); ?>				
+	<?php endwhile;endif;?>
 				<div class="clearfix"></div>
 				<!--author box-->
-				<div class="author-box"> <?php echo get_avatar( get_the_author_meta('user_email'), '100', '' ); ?> 
+				<div class="author-box"> <?php echo get_avatar( get_the_author_meta('user_email'), '100', 'grit' ); ?> 
 					<div class="author-box-title"> <?php echo esc_html__( 'Authored By','grit');?> <?php the_author_link(); ?> </div>
 					<div class="author-description"><?php the_author_meta('description'); ?></div>
 					<div class="author_social"> <a href="<?php echo esc_url( get_the_author_meta('url') ) ; ?>"><i class="fa fa-globe"></i></a></div>

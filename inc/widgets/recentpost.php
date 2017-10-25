@@ -51,11 +51,11 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 								if  ( get_the_post_thumbnail()=='')
 								{
 									$background_img_relatedpost   = get_template_directory_uri() . '/img/t-1.jpg';
-									echo  $post_thumbnail= '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
+									echo '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
 								}
 								else
 								{
-									echo $post_thumbnail = get_the_post_thumbnail( get_the_ID(), 'grit_related_posts' );
+									echo get_the_post_thumbnail( get_the_ID(), 'grit_related_posts' );
 								}   
 								?>
 							</a>
