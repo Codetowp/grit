@@ -23,6 +23,6 @@
 		</a> 
 		<?php grit_entry_category();?>
 	</header>
- </article>
+</article>
 
 
