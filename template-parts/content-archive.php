@@ -8,7 +8,7 @@
 		}
 		else
 		{?>
-			<img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
+			<img src="<?php echo esc_url( get_template_directory_uri() ) ?>/img/04-screenshot.jpg"  alt="image 1" >
 		<?php 
 		}
 		?> 

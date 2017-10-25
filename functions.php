@@ -125,9 +125,14 @@ require get_template_directory() . '/inc/lib/print_styles.php';
 // Custom Theme Functions
 require get_template_directory() . '/inc/lib/related-post.php';
 // Custom Theme Image Sizes
-add_image_size( 'process-medium', 360, 463,  array( 'top', 'center' ) );
-add_image_size( 'grit_latest_news', 262, 163,  array( 'top', 'center' ) );
-add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
+add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );
+add_image_size( 'grit_process_medium ', 400, 470,  array( 'top', 'center' ) );
+add_image_size( 'grit_post_preview ', 270, 180,  array( 'top', 'center' ) );
+add_image_size( 'grit_recent_posts ', 50, 50,  array( 'top', 'center' ) );
+add_image_size( 'grit_related_posts ', 262, 163,  array( 'top', 'center' ) );
+add_image_size( 'grit_single_product ', 270, 343,  array( 'top', 'center' ) );
+
+//add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function
 function the_breadcrumb() {
 	if ( !is_home() ) {
@@ -238,6 +243,15 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+
 
 if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
 

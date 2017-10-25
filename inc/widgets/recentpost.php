@@ -46,16 +46,16 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 					<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 					    <li class="media"> 
 							<a  href="<?php the_permalink() ?>">
-								<?php add_image_size( 'footer_recent_post', 96, 80,  array( 'top', 'center' ) );
+								<?php add_image_size( 'grit_recent_posts' );
 								 
 								if  ( get_the_post_thumbnail()=='')
 								{
 									$background_img_relatedpost   = get_template_directory_uri() . '/img/t-1.jpg';
-									echo  $post_thumbnail= '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
+									echo '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
 								}
 								else
 								{
-									echo $post_thumbnail = get_the_post_thumbnail( get_the_ID() );
+									echo get_the_post_thumbnail( get_the_ID(), 'grit_related_posts' );
 								}   
 								?>
 							</a>

@@ -16,7 +16,7 @@ get_header(); ?>
 
 <!-- banner Page
     ==========================================-->
-<div id="page-banner" style="background-image: url(img/in-bg.jpg);">
+<div id="page-banner" style="background-image: url(<?php echo esc_url( the_post_thumbnail_url('grit_single_product') ); ?>);">
   <div class="content wow fadeInUp">
     <div class="container">
       <h1><?php the_title();?></h1>

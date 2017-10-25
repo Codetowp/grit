@@ -21,20 +21,20 @@ get_header(); ?>
 		<div class="container "> 
 			<?php
 				echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-				sprintf( '<span>%1$s' ),
+				sprintf( '<span>%1$s',
 				esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 				'</span>'
-				);
+				));
 			?>
 		    <h1><?php the_title(); ?></h1>
 		 
 			<ul class="tag-head">
 				<?php
 					echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
-					sprintf('<li><a href="#">%1$s</a>', ''),
+					sprintf('<li><a href="#">%1$s</a>', '',
 					esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 					'</li>'
-					);
+					));
 				?>
 			</ul>
 		</div>

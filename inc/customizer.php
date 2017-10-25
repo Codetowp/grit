@@ -274,18 +274,18 @@ function grit_customize_register( $wp_customize ) {
 
 	    ) ) );
     
-         $wp_customize->add_setting( 'grit_header_page_text', array(      
-            'default'                   => esc_html__('Section Title', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) );    
+         // $wp_customize->add_setting( 'grit_header_page_text', array(      
+            // 'default'                   => esc_html__('Section Title', 'grit'),
+            // 'sanitize_callback'         => 'sanitize_text_field',
+            // 'transport'                 => 'postMessage', // refresh or postMessage              
+        // ) );    
 
-        $wp_customize->add_control( 'grit_header_page_text', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Header Page Title', 'grit' ),
-            'section'  					=> 'grit_header',
-            'priority' 					=> 2,
-        ) );
+        // $wp_customize->add_control( 'grit_header_page_text', array(
+            // 'type'						=> 'text',
+            // 'label' 					=> __( 'Header Page Title', 'grit' ),
+            // 'section'  					=> 'grit_header',
+            // 'priority' 					=> 2,
+        // ) );
         
         $wp_customize->add_setting( 'bck_ground_image', array(
             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
@@ -1221,7 +1221,7 @@ function grit_customize_partial_blogdescription() {
 
 function grit_customize_partial_header_page_text() {
 	
-    echo esc_html( get_theme_mod('grit_header_text') );
+    echo esc_html( get_theme_mod('grit_header_page_text') );
 }
 
 

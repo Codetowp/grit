@@ -30,14 +30,14 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_breadcrumb - 20
 		 * @hooked WC_Structured_Data::generate_website_data() - 30
 		 */
-		do_action( 'woocommerce_before_main_content' );
+		//do_action( 'woocommerce_before_main_content' );
 	?><!--/breadcrumb-->
 <!-- banner Page
     ==========================================-->
-<div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
+<div id="page-banner" style="background-image: url(<?php  header_image(); ?>)">
   <div class="content  wow fdeInUp">
-    <div class="container ">
-      <h1><?php woocommerce_page_title(); ?> </h1>
+    <div class="container">
+      <h1><? echo woocommerce_template_single_title(); ?></h1>
     </div>
   </div>
 </div>

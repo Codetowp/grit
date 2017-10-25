@@ -26,20 +26,20 @@ if ( ! $disable1) : ?>
 
 <?php
     $background_img   =  get_theme_mod( 'bck_ground_image' );   
-    $background_img_static   = get_template_directory_uri() . '/img/b-1.jpg';
-    $image = $background_img ? "$background_img" : "$background_img_static";      
+   // $background_img_static   = get_template_directory_uri() . '/img/b-1.jpg';
+   // $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
-<section id="home-banner" style="background-image: url(<?php echo esc_url( $image ); ?>);">
+<section id="home-banner" style="background-image: url(<?php echo esc_url( $background_img ); ?>);">
     <div class="content">
         <div class="container"  data-wow-duration="1s"> 
              <?php 
-                $grit_header_text  = get_theme_mod( 'grit_header_page_text', esc_html__('Section Title', 'grit' ));
-                if ($grit_header_text != '') echo '<span class="wow fadeIn" id="head">  ' . wp_kses_post($grit_header_text) . ' </span>'; 
+                $grit_header_text  = get_theme_mod( 'grit_header_page_text', esc_html__( 'Section Title', 'grit' ));
+                if ($grit_header_text != '') echo '<span class="wow fadeIn" id="head">  ' . wp_kses_post( $grit_header_text ) . ' </span>'; 
              ?>
             
             <?php 
-                $grit_header_description  = get_theme_mod( 'grit_header_description', esc_html__('Section Description', 'grit' ));
-                if ($grit_header_description != '') echo '<h1 class="wow fadeInUp" >' . wp_kses_post($grit_header_description) . ' </h1>'; 
+                $grit_header_description  = get_theme_mod( 'grit_header_description', esc_html__( 'Section Description' , 'grit' ));
+                if ($grit_header_description != '') echo '<h1 class="wow fadeInUp" >' . wp_kses_post( $grit_header_description ) . ' </h1>'; 
              ?>
             
             
@@ -85,7 +85,7 @@ if ( ! $disable1) : ?>
 			<div class="clearfix"></div>
 			<!--about features list-->
 			<ul class="about-features wow fadeInUp">
-				<?php  get_template_part( 'section-part/section', about );?>
+				<?php  get_template_part( 'section-part/section', 'about' );?>
 			</ul>
 			<!--/about features list--> 
 		</div>
@@ -172,17 +172,17 @@ if ( ! $disable1) : ?>
 					<li>
 						<figure>
 							<?php the_post_thumbnail();?>
-							<!--<img src="<?php echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
+							<!--<img src="<?php //echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
 							<figcaption>
 								<div class="caption-content">
 									<h6><?php the_title(); ?></h6>
 									<hr>
 									<?php
-										echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-										sprintf( '<a href="#">%1$s' ),
-											esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
+									echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
+									sprintf('<a href="#">%1$s',
+												esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
 											'</a>'
-										);
+									));
 									?>
 									<ul class="work-more">
 										<li><a href="<?php the_permalink();?>"><i class="fa fa-search"></i></a></li>
@@ -224,7 +224,7 @@ if ( ! $disable1) : ?>
 			<!--/section-title--> 
 			<!--process tab-->
 			<div> 
-			  <?php  get_template_part( 'section-part/section', process );?>
+			  <?php  get_template_part( 'section-part/section', 'process' );?>
 			</div>
 			<!--\process tab--> 
 		</div>
@@ -245,14 +245,14 @@ if ( ! $disable1) : ?>
 
 <?php
     $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image' );   
-    $background_img_static   = get_template_directory_uri() .'/img/07-screenshot.jpg';
-    $image = $background_img ? "$background_img" : "$background_img_static";      
+    //$background_img_static   = get_template_directory_uri() .'/img/07-screenshot.jpg';
+   // $image = $background_img ? "$background_img" : "";      
 ?>
-<section id="company-counter" style="background-image:url(<?php echo esc_url( $image ); ?>); ">
+<section id="company-counter" style="background-image:url(<?php echo esc_url( $background_img ); ?>); ">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-md-12 wow fadeInDown">
-				<?php  get_template_part( 'section-part/section', counts );?>  
+				<?php  get_template_part( 'section-part/section', 'counts' );?>  
 			</div>
 		</div>
 	</div>
@@ -265,7 +265,6 @@ if ( ! $disable1) : ?>
 <?php
 
 $disable1    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
-
 if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
@@ -288,11 +287,11 @@ if ( ! $disable1) : ?>
 		 
 							while ( $project_query -> have_posts() ) : $project_query -> the_post();
 					?>
-					<div class="item"> <?php the_post_thumbnail();?>
-						<h5><?php the_excerpt();?></h5>
-						<p><strong><?php the_title();?></strong> <!--CEO Acme Inc.--></p>
-					</div>
-						<?php  endwhile; endif;  wp_reset_postdata();?>
+								<div class="item"> <?php the_post_thumbnail();?>
+									<h5><?php the_excerpt();?></h5>
+									<p><strong><?php the_title();?></strong> <!--CEO Acme Inc.--></p>
+								</div>
+					<?php  	endwhile; endif;  wp_reset_postdata();?>
 				</div>
 			</div>
 		</div>
@@ -320,8 +319,7 @@ if ( ! $disable1) : ?>
                     if ($grit_latest_news_header != '') echo '<h2>  ' . wp_kses_post($grit_latest_news_header) . ' </h2>'; 
                 ?>
                  <?php 
-                    $grit_latest_news_button_text  = get_theme_mod( 'grit_latest_news_button_text', esc_html__('Read More', 'grit' ));
-                    
+                    $grit_latest_news_button_text  = get_theme_mod( 'grit_latest_news_button_text', esc_html__('Read More', 'grit' ));                    
                 
                     if ($grit_latest_news_button_text != '') echo '<a href="' . esc_url( home_url( '/blog' ) ) . '">  ' . wp_kses_post($grit_latest_news_button_text) . ' </a>'; 
                  ?>
@@ -331,22 +329,22 @@ if ( ! $disable1) : ?>
 
 			<?php 
                 
-				$count_blog = get_theme_mod( 'grit_blog_post_count', 4 );
-                // $count_blog = $count_blog-1;
-				$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+			$count_blog = get_theme_mod( 'grit_blog_post_count', 4 );
+			$count_blog = $count_blog-1;
+			$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
-				if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+			if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 			?>
             <article class="col-md-3 col-sm-6 col-xs-12 eq-blocks">
 				<header class="entry-header">        
 					<?php
-						if  ( get_the_post_thumbnail()!='')
-						{
-							the_post_thumbnail('grit_latest_news'); 
-						}
-						else
-						{?>
-						 <img src="<?php echo get_template_directory_uri()?>/img/04-screenshot.jpg"  alt="image 1" >
+					if  ( get_the_post_thumbnail()!='')
+					{
+						the_post_thumbnail('grit_latest_news'); 
+					}
+					else
+					{?>
+						<img src="<?php echo esc_url( get_template_directory_uri() );?>/img/04-screenshot.jpg"  alt="image 1" >
 					<?php }?>       
 					<a href="<?php the_permalink();?>">
 						<h6><?php the_title();?></h6>
