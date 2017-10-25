@@ -27,12 +27,12 @@ get_header(); ?>
 			<!--blog page container-->
 			<div class="col-md-9 col-sm-7 col-xs-12 page-block "   > 
 				<?php         
-				   $query_post = new WP_Query( array( 'post_type' => 'post',  ) );    
-					if ($query_post->have_posts()) :
-					  while ($query_post->have_posts()) : $query_post->the_post();	      
-						   get_template_part( 'template-parts/content', get_post_format() );     
-					  endwhile; // End of the loop.
-					endif;			
+				$query_post = new WP_Query( array( 'post_type' => 'post',  ) );    
+				if ($query_post->have_posts()) :
+					while ($query_post->have_posts()) : $query_post->the_post();	      
+						get_template_part( 'template-parts/content', get_post_format() );     
+					endwhile; // End of the loop.
+				endif;			
 				?>
 
 				<div class="clearfix"></div>
@@ -41,10 +41,10 @@ get_header(); ?>
 				<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 					<ul>
 						<?php 	
-						 the_posts_pagination( array(
-						 'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Newer posts', 'grit' ),
-						 'next_text' => __( 'Older posts', 'grit' ) . ' <i class="fa fa-chevron-right"></i>' ,
-						 ) );
+						the_posts_pagination( array(
+						'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Newer posts', 'grit' ),
+						'next_text' => __( 'Older posts', 'grit' ) . ' <i class="fa fa-chevron-right"></i>' ,
+						) );
 						?>
 					  
 						<?php wp_reset_postdata(); ?>
