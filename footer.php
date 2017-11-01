@@ -19,15 +19,15 @@
 					</div>
 					<!--bottom nav-->
 					<div class="col-md-4 col-sm-4 col-xs-12">
-						<nav class="bottom-nav">
-							<ul>
+						
 								<?php wp_nav_menu( array(
 									'theme_location' => 'footer-menu',
-									'menu_class' => 'bottom-nav',) 
+									'menu_class' => 'bottom-nav',
+									'container' => 'nav'
+									) 
 									);
 								?>
-							</ul>
-						</nav>
+							
 					</div>
 					<!--/bottom nav-->       
 					<!--Social Links-->
