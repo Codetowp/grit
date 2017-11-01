@@ -20,8 +20,9 @@ get_header(); ?>
 				<!--author box-->
 				<div class="author-box"> <?php echo get_avatar( get_the_author_meta('user_email'), '100', 'grit' ); ?> 
 					<div class="author-box-title"> <?php echo esc_html__( 'Authored By','grit');?> <?php the_author_link(); ?> </div>
+                    <div class="author_social"> <a href="<?php echo esc_url( get_the_author_meta('url') ) ; ?>"><i class="fa fa-globe"></i></a></div>
 					<div class="author-description"><?php the_author_meta('description'); ?></div>
-					<div class="author_social"> <a href="<?php echo esc_url( get_the_author_meta('url') ) ; ?>"><i class="fa fa-globe"></i></a></div>
+					
 				</div>
 				<!--/author box-->
 				<div class="clearfix"></div>
