@@ -48,6 +48,11 @@ function grit_customize_register( $wp_customize ) {
     class Customizer_Range_Value_Control extends WP_Customize_Control 
 	{
 		public $type = 'range-input';
+		
+		
+		
+		
+		
 
 		/**
 		 * Enqueue scripts/styles.
@@ -58,6 +63,7 @@ function grit_customize_register( $wp_customize ) {
 		{
 			wp_enqueue_script( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/js/customizer-range-value-control.js', array( 'jquery' ), rand(), true );
 			wp_enqueue_style( 'customizer-range-value-control', get_stylesheet_directory_uri() . '/css/customizer-range-value-control.css', array(), rand() );
+			wp_enqueue_style( 'grit_customizer_css',  get_template_directory_uri() . '/css/customizer.css' );
 		}
 
 		/**
