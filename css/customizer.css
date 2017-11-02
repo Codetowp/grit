@@ -492,3 +492,151 @@ body .wp-full-overlay{
 }
 
 
+/*New Styles for Customze pannel 2/11/17*/
+
+#customize-theme-controls .accordion-section-title{color: #404040;}
+#customize-theme-controls .accordion-section-title:after{color: #404040;}
+
+
+#customize-controls .control-section .accordion-section-title:focus, #customize-controls .control-section .accordion-section-title:hover, #customize-controls .control-section.open .accordion-section-title, #customize-controls .control-section:hover>.accordion-section-title{color: #f53347;
+    background: #fff;
+    border-left-color: #f53347;}
+	
+	
+	#customize-theme-controls .control-section .accordion-section-title:focus:after, #customize-theme-controls .control-section .accordion-section-title:hover:after, #customize-theme-controls .control-section.open .accordion-section-title:after, #customize-theme-controls .control-section:hover>.accordion-section-title:after{color:#f53347; right:0; transition:all 0.5s;}
+
+
+
+.wp-core-ui .button, .wp-core-ui .button-secondary {
+    color: #404040;
+    border-color: #ccc;
+    background: #fff;
+     -webkit-box-shadow: 0 0px 0 #ccc; 
+     box-shadow: 0 0px 0 #ccc; 
+    vertical-align: top;
+}
+
+.wp-core-ui .button-secondary:active, .wp-core-ui .button.active, .wp-core-ui .button.active:hover, .wp-core-ui .button:active{background: #fb3d4e; border:none;}
+.wp-core-ui .button-secondary:focus, .wp-core-ui .button-secondary:hover, .wp-core-ui .button.focus, .wp-core-ui .button.hover, .wp-core-ui .button:focus, .wp-core-ui .button:hover{background: #fb3d4e;
+    border-color: #fff;
+    color: #fff; border-color:#fb3d4e;}
+	
+	
+	
+	
+	input[type=text], input[type=search], input[type=radio], input[type=tel], input[type=time], input[type=url], input[type=week], input[type=password], input[type=checkbox], input[type=color], input[type=date], input[type=datetime], input[type=datetime-local], input[type=email], input[type=month], input[type=number], select, textarea {
+  color: #666;
+    border: 1px solid #e3e8f0;
+    border-radius: 8px;
+    padding: 9.5px;
+}
+
+input[type="radio"] {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #e5e8ef;
+    cursor: pointer;
+    display: inline-block;
+    height: 17px;
+    margin-right: 3px;
+    position: relative;
+    width: 17px;
+    -webkit-appearance: none;
+}
+
+input[type="checkbox"] {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #e5e8ef;
+    cursor: pointer;
+    display: inline-block;
+    height: 17px;
+    margin-right: 3px;
+    position: relative;
+    width: 17px;
+    -webkit-appearance: none;
+}
+
+input[type=checkbox].tgl-ios:checked + .tgl-btn {
+    background: #fb3d4e;
+}
+
+input[type=checkbox].tgl-ios + .tgl-btn{background:#404040; border-color:#eee;}
+
+input[type="checkbox"]:checked {
+    background-color: #fb3d4e;
+}
+
+input[type=checkbox]:checked:before{color:#fff;}
+
+input[type="radio"] {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #cac9c9 !important;
+    cursor: pointer;
+    display: inline-block;
+    height: 17px;
+    margin-right: 3px;
+    position: relative;
+    width: 17px;
+    -webkit-appearance: none;
+}
+
+
+input[type="radio"]:checked::after {
+    
+    border-radius: 25px;
+    background-color: #F44336;
+    content: '';
+    display: block;
+    height: 9px;
+    left: 3px;
+    position: relative;
+    top: 3px;
+    width: 9px;
+    opacity: 1;
+}
+
+input#save {
+    background: #404040;
+    color: #fff;
+	text-shadow:none;
+}
+
+input#save:hover{background: #fb3d4e; color: #fff; text-shadow:none;}
+
+#customize-controls .customize-info .customize-help-toggle:focus, #customize-controls .customize-info .customize-help-toggle:hover, #customize-controls .customize-info.open .customize-help-toggle{background: #fb3d4e; color:#fff; border-radius:50%;}
+
+.customize-partial-edit-shortcut button svg{fill:#F44336;}
+
+button.customize-partial-edit-shortcut-button{background:#fff !important; text-shadow:none;}
+
+textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus {
+        outline:0px !important;
+    }
+	
+	
+.wp-color-result:after {
+    background: #fff;
+    -webkit-border-radius: 0 2px 2px 0;
+    border-radius: 0 2px 2px 0;
+    border-left: 1px solid #ccc;
+    color: #555;
+    content: attr(title);
+    display: block;
+    font-size: 11px;
+    line-height: 22px;
+    padding: 0 6px;
+    position: relative;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+
+.customize-panel-back:focus, .customize-panel-back:hover, .customize-section-back:focus, .customize-section-back:hover{color: #fb3d4e; border-left-color: #fb3d4e;}	
+
+.customize-controls-close:focus, .customize-controls-close:hover, .customize-controls-preview-toggle:focus, .customize-controls-preview-toggle:hover{color: #fb3d4e; border-top-color: #fb3d4e;}
+
+.customize-control select{height:44px;}
+.range-slider__value{background: #fb3d4e;}

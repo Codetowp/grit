@@ -4255,7 +4255,7 @@ to {
 	padding-left: 50px;
 }
 .product_meta .posted_in a {
-	color: #3b3e8a;
+	color: #ff4a5b;
 	font-size: 12px;
 	text-transform: none;
 }
@@ -4265,8 +4265,8 @@ to {
 
 .woocommerce-tabs {
 	text-align: center;
-	margin-top:50px;
-	display:inline-block;
+	padding-top:50px;
+	
 }
 .tabs.wc-tabs {
 	text-align: center;
@@ -4371,6 +4371,12 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
     width: 52%;
 }
 
+
+.woocommerce .quantity{display:inline-block;}
+.woocommerce .quantity input{width:60px;}
+.posted_in{margin-top:15px; display:block;}
+
+.up-sells.upsells.products ul.products li{width:inherit;}
 
 /*--------------------
 6.1 Gallery & captions
@@ -4582,7 +4588,9 @@ ul.about-features li{    width: calc(93% / 2);}
 blockquote{margin-left:0;}
 	 
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	width: 48% !important;
+	display:inline-block;
+	margin:1.9em;
+	width:42%;
 }
 #our-work-block .works ul li {
 	width: 47%;
@@ -4694,7 +4702,8 @@ ul.about-features li i {
     right: 0;}	 
 	 
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	width: 48% !important;
+	width: 44% ;
+	margin:1em;
 }
 #nav-top {
 
@@ -4818,7 +4827,14 @@ ul.about-features li i {
 }
 }
  @media (max-width: 360px) {
+	 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	display:inline-block;
+	margin:14px;
+	width:90%;
 }
+}
+
+
 
 /*edited file*/
 time.updated{

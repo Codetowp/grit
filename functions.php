@@ -168,6 +168,15 @@ function demo_fonts() {
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
 
 
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+
 /**
  * Enqueue scripts and styles.
  */
@@ -244,12 +253,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-/**
- * Load WooCommerce compatibility file.
- */
-if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce.php';
-}
+
 
 
 
