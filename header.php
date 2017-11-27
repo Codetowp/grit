@@ -35,7 +35,7 @@
 					$logo_img_static = get_template_directory_uri(). '/img/logo-top.png';
 					if ( has_custom_logo() )
 					{
-						$img = '<img src="'. esc_url( $logo[0] ) .'" class="img-responsive">';
+						$img = esc_url( $logo[0] );
 					}
 					else
 					{
@@ -43,7 +43,7 @@
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-					<?php echo esc_url( $img ); ?><span><?php echo bloginfo( 'name' ); ?></span>
+					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><span><?php echo bloginfo( 'name' ); ?></span>
 				</a>
 			</div>
 		
