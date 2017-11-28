@@ -177,12 +177,12 @@ if ( ! $disable1) : ?>
 								<div class="caption-content">
 									<h6><?php the_title(); ?></h6>
 									<hr>
-									<?php
-									echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-									sprintf('<a href="#">%1$s',
-												esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
-											'</a>'
-									));
+
+									<?php 
+                                    $before='';
+                                    $after='';
+									$separator=',';
+									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
 									?>
 									<ul class="work-more">
 										<li><a href="<?php the_permalink();?>"><i class="fa fa-search"></i></a></li>
