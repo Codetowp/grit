@@ -1227,7 +1227,7 @@ function grit_customize_partial_blogdescription() {
 
 function grit_customize_partial_header_page_text() {
 	
-    return get_theme_mod('grit_header_page_text') ;
+   echo get_theme_mod('grit_header_page_text') ;
 }
 
 
