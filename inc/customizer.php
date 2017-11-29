@@ -170,6 +170,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
                 'selector'          	=> '#home-banner h1',
+                'settings'              => array( 'grit_header_description' ),
                 'render_callback' 		=> 'grit_customize_partial_header_description',
             ) ); 
 
@@ -331,7 +332,6 @@ function grit_customize_register( $wp_customize ) {
         ) );    
 
         $wp_customize->add_control( 'grit_header_description', array(
-            'type'						=> 'textarea',
             'label' 					=> __( 'Description', 'grit' ),
             'section'  					=> 'grit_header',
             'priority' 					=> 3,
@@ -1227,12 +1227,12 @@ function grit_customize_partial_blogdescription() {
 
 function grit_customize_partial_header_page_text() {
 	
-    echo esc_html( get_theme_mod('grit_header_page_text') );
+    return get_theme_mod('grit_header_page_text') ;
 }
 
 
 function grit_customize_partial_header_description() {
-    echo esc_html( get_theme_mod('grit_header_description') );
+    return get_theme_mod('grit_header_description') ;
 }
 
 function grit_customize_partial_about_header() {
