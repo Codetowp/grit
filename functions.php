@@ -252,11 +252,6 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-
-
-
-
 if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
 
 // Helper library for the theme customizer.
@@ -266,3 +261,4 @@ require get_template_directory() . '/inc/customizer-library.php';
 //require get_template_directory() . '/inc/style-builder.php';
 
 endif;
+

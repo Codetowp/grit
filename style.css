@@ -3391,6 +3391,10 @@ ul.about-features li:hover i {
 	color: #fff;
 	font-weight: 600;
 }
+
+
+.single-jetpack-portfolio #Blog-post{padding: 80px 0;}
+
 .single .single-post p {
 	/* padding-left: 60px; */
 	color: #555555;
@@ -3413,7 +3417,7 @@ ul.about-features li:hover i {
 	position: relative;
 	left: -27px;
 	z-index: 10;
-	/*top: 26px;*/
+	top: 26px;
 	color: #e4e7ef;
 	font-size: 18px;
 	margin-top: 4px;
@@ -4838,4 +4842,8 @@ ul.about-features li i {
 /*edited file*/
 time.updated{
     display: none;
+}
+/*single jetpack portfolio */
+span.single-jet a {
+    color: white;
 }
