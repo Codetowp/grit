@@ -19,23 +19,21 @@ get_header(); ?>
 <div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url() ; ?>);">
 	<div class="content  wow fadeInUp">
 		<div class="container "> 
-			<?php
-				echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-type',
-				sprintf( '<span>%1$s',
-				esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
-				'</span>'
-				));
-			?>
+			<?php 
+                                    $before='<span class="single-jet">';
+                                    $after='</span>';
+									$separator=',';
+									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+									?>
 		    <h1><?php the_title(); ?></h1>
 		 
 			<ul class="tag-head">
-				<?php
-					echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
-					sprintf('<li><a href="#">%1$s</a>', '',
-					esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
-					'</li>'
-					));
-				?>
+				<<?php 
+                                    $before='<li>';
+                                    $after='</li>';
+									$separator=',';
+									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+									?>
 			</ul>
 		</div>
 	</div>
@@ -43,28 +41,25 @@ get_header(); ?>
 
 <!--page body-->
 
-<div id="page-body">
+<div id="Blog-post">
 	<div class="container">
 		<div class="row wow fadeInUp"> 
 			<!--blog posts container-->
-			<div class="col-md-12 page-block">
+			<div class="col-md-12 single-post">
 				<?php the_content(); ?>
 
 				<!--footer tags-->
 				<footer class="entry-footer entry-meta-bar">
 					<div class="entry-meta"> 
 						<i class="fa fa-tags"></i> 
-						<span class="tag-links  clearfix"> 
-							<?php
-							 echo get_the_term_list(get_the_ID(), 'jetpack-portfolio-tag',
-							 sprintf('<a href="#">%1$s',
-								esc_html__( 'Project tags: ', 'grit' )
-							 ),
-								esc_attr_x(' , ', 'Used between list items, there is a space after the comma.', 'grit' ),
-							 ''
-							 );
-							?>
-						</span> 
+						
+							<?php 
+                                    $before='<span class="tag-links  clearfix">';
+                                    $after='</span>';
+									$separator=',';
+									the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
+									?>
+						
 					</div>
 				</footer>
 				<!--/footer tags--> 
