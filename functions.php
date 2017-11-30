@@ -261,4 +261,8 @@ require get_template_directory() . '/inc/customizer-library.php';
 //require get_template_directory() . '/inc/style-builder.php';
 
 endif;
-
+//add excerpt in jetpack
+function grit_add_excerpt_testimonial() {
+	add_post_type_support( 'jetpack-testimonial', 'excerpt' );
+}
+add_action( 'init', 'grit_add_excerpt_testimonial' );
