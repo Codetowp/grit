@@ -288,9 +288,13 @@ if ( ! $disable1) : ?>
 							while ( $project_query -> have_posts() ) : $project_query -> the_post();
 					?>
 								<div class="item"> <?php the_post_thumbnail();?>
-									<h5><?php the_excerpt();?></h5>
-									<p><strong><?php the_title();?></strong> <!--CEO Acme Inc.--></p>
-								</div>
+									<h5><?php the_content();?></h5>
+									<p><strong><?php the_title();?></strong><?php if ( ! has_excerpt() ) {
+	                                 echo '';} else { echo strip_tags( get_the_excerpt() ); 
+	                                                } 
+	                                   ?>
+	                               </p>
+									</div>
 					<?php  	endwhile; endif;  wp_reset_postdata();?>
 				</div>
 			</div>

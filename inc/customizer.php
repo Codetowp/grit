@@ -157,19 +157,16 @@ function grit_customize_register( $wp_customize ) {
 
   if ( isset( $wp_customize->selective_refresh ) ) 
     {
-     /* $wp_customize->selective_refresh->add_partial( 'grit_header_text', array(
-                'selector'       	 	=> '.navbar-header a span',
-                'render_callback' 	 	=> 'grit_customize_partial_header_text',
-
-            ) ); */
+    
         $wp_customize->selective_refresh->add_partial( 'grit_header_page_text', array(
-                'selector'       	 	=> '#home-banner span',
+                'selector'       	 	=> '#home-banner #head',
                 'render_callback' 	 	=> 'grit_customize_partial_header_page_text',
 
             ) ); 
 
         $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
                 'selector'          	=> '#home-banner h1',
+                'settings'              => array( 'grit_header_description' ),
                 'render_callback' 		=> 'grit_customize_partial_header_description',
             ) ); 
 
@@ -192,12 +189,6 @@ function grit_customize_register( $wp_customize ) {
                 'selector'        		=> '#our-work-block .section-title  h2',
                 'render_callback' 		=> 'grit_customize_partial_work_header',
             ) ); 
-
-        $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
-                'selector'        		=> '#about-us-block h2',
-                'render_callback' 		=> 'grit_customize_partial_about_header',
-            ) ); 
-
         $wp_customize->selective_refresh->add_partial( 'grit_about_description', array(
                 'selector'        		=> '#about-us-block .section-title  p',
                 'render_callback' 		=> 'grit_customize_partial_about_description',
@@ -222,8 +213,6 @@ function grit_customize_register( $wp_customize ) {
                 'selector'        		=> '#company-counter .container',
                 'render_callback' 		=> 'grit_customize_partial_counter_check',
             ) ); 
-      
-      
       
         $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
                 'selector'        		=> '#latest-news-block .section-title h2',
@@ -279,19 +268,6 @@ function grit_customize_register( $wp_customize ) {
             'priority' => 1,
 
 	    ) ) );
-    
-         // $wp_customize->add_setting( 'grit_header_page_text', array(      
-            // 'default'                   => esc_html__('Section Title', 'grit'),
-            // 'sanitize_callback'         => 'sanitize_text_field',
-            // 'transport'                 => 'postMessage', // refresh or postMessage              
-        // ) );    
-
-        // $wp_customize->add_control( 'grit_header_page_text', array(
-            // 'type'						=> 'text',
-            // 'label' 					=> __( 'Header Page Title', 'grit' ),
-            // 'section'  					=> 'grit_header',
-            // 'priority' 					=> 2,
-        // ) );
         
         $wp_customize->add_setting( 'bck_ground_image', array(
             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
@@ -331,7 +307,6 @@ function grit_customize_register( $wp_customize ) {
         ) );    
 
         $wp_customize->add_control( 'grit_header_description', array(
-            'type'						=> 'textarea',
             'label' 					=> __( 'Description', 'grit' ),
             'section'  					=> 'grit_header',
             'priority' 					=> 3,
@@ -1227,40 +1202,40 @@ function grit_customize_partial_blogdescription() {
 
 function grit_customize_partial_header_page_text() {
 	
-    echo esc_html( get_theme_mod('grit_header_page_text') );
+   return get_theme_mod('grit_header_page_text') ;
 }
 
 
 function grit_customize_partial_header_description() {
-    echo esc_html( get_theme_mod('grit_header_description') );
+    return get_theme_mod('grit_header_description');
 }
 
 function grit_customize_partial_about_header() {
-    echo esc_html( get_theme_mod('grit_about_header') );
+    return get_theme_mod('grit_about_header');
 }
 
 function grit_customize_partial_about_description() {
-     echo esc_html( get_theme_mod('grit_about_description') );
+    return get_theme_mod('grit_about_description');
 }
 
 function grit_customize_partial_contact_header() {
-    echo esc_html( get_theme_mod('grit_contact_header') );
+   return get_theme_mod('grit_contact_header');
 }
 
 function grit_customize_partial_work_header() {
-    echo esc_html( get_theme_mod('grit_work_header') );
+   return get_theme_mod('grit_work_header');
 }
 
 function grit_customize_partial_process_header() {
-    echo esc_html( get_theme_mod('grit_process_header') );
+   return get_theme_mod('grit_process_header');
 }
 function grit_customize_partial_counter_check() {
-    echo esc_html( get_theme_mod('grit_counter_setting') );
+   return get_theme_mod('grit_counter_setting');
 }  
 
 
 function grit_customize_partial_latest_news_header() {
-    echo esc_html( get_theme_mod('grit_latest_news_header') );
+   return get_theme_mod('grit_latest_news_header');
 }  
 
 function grit_sanitize_integer( $input ) {

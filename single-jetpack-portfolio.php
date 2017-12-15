@@ -32,7 +32,7 @@ get_header(); ?>
                                     $before='<li>';
                                     $after='</li>';
 									$separator=',';
-									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+									the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
 									?>
 			</ul>
 		</div>

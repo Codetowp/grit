@@ -1,17 +1,17 @@
 
-jQuery(function($) { // DOM is now read and ready to be manipulated
+jQuery(function(jQuery) { // DOM is now read and ready to be manipulated
 equalheight = function(container){
 
 var currentTallest = 0,
      currentRowStart = 0,
      rowDivs = new Array(),
-     $el,
+     jQueryel,
      topPosition = 0;
- $(container).each(function() {
+ jQuery(container).each(function() {
 
-   $el = $(this);
-   $($el).height('auto')
-   topPostion = $el.position().top;
+   jQueryel = jQuery(this);
+   jQuery(jQueryel).height('auto')
+   topPostion = jQueryel.position().top;
 
    if (currentRowStart != topPostion) {
      for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
@@ -19,11 +19,11 @@ var currentTallest = 0,
      }
      rowDivs.length = 0; // empty the array
      currentRowStart = topPostion;
-     currentTallest = $el.height();
-     rowDivs.push($el);
+     currentTallest = jQueryel.height();
+     rowDivs.push(jQueryel);
    } else {
-     rowDivs.push($el);
-     currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+     rowDivs.push(jQueryel);
+     currentTallest = (currentTallest < jQueryel.height()) ? (jQueryel.height()) : (currentTallest);
   }
    for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
      rowDivs[currentDiv].height(currentTallest);
@@ -31,12 +31,12 @@ var currentTallest = 0,
  });
 }
 
-$(window).load(function() {
+jQuery(window).load(function() {
   equalheight('.eq-blocks');
 });
 
 
-$(window).resize(function(){
+jQuery(window).resize(function(){
   equalheight('.eq-blocks');
 });
 
@@ -55,7 +55,7 @@ function main() {
     counter
     ======================================*/
 
-(function(e){"use strict";e.fn.counterUp=function(t){var n=e.extend({time:400,delay:10},t);return this.each(function(){var t=e(this),r=n,i=function(){var e=[],n=r.time/r.delay,i=t.text(),s=/[0-9]+,[0-9]+/.test(i);i=i.replace(/,/g,"");var o=/^[0-9]+$/.test(i),u=/^[0-9]+\.[0-9]+$/.test(i),a=u?(i.split(".")[1]||[]).length:0;for(var f=n;f>=1;f--){var l=parseInt(i/n*f);u&&(l=parseFloat(i/n*f).toFixed(a));if(s)while(/(\d+)(\d{3})/.test(l.toString()))l=l.toString().replace(/(\d+)(\d{3})/,"");e.unshift(l)}t.data("counterup-nums",e);t.text("0");var c=function(){t.text(t.data("counterup-nums").shift());if(t.data("counterup-nums").length)setTimeout(t.data("counterup-func"),r.delay);else{delete t.data("counterup-nums");t.data("counterup-nums",null);t.data("counterup-func",null)}};t.data("counterup-func",c);setTimeout(t.data("counterup-func"),r.delay)};t.waypoint(i,{offset:"100%",triggerOnce:!0})})}})(jQuery);
+(function(e){"use strict";e.fn.counterUp=function(t){var n=e.extend({time:400,delay:10},t);return this.each(function(){var t=e(this),r=n,i=function(){var e=[],n=r.time/r.delay,i=t.text(),s=/[0-9]+,[0-9]+/.test(i);i=i.replace(/,/g,"");var o=/^[0-9]+jQuery/.test(i),u=/^[0-9]+\.[0-9]+jQuery/.test(i),a=u?(i.split(".")[1]||[]).length:0;for(var f=n;f>=1;f--){var l=parseInt(i/n*f);u&&(l=parseFloat(i/n*f).toFixed(a));if(s)while(/(\d+)(\d{3})/.test(l.toString()))l=l.toString().replace(/(\d+)(\d{3})/,"");e.unshift(l)}t.data("counterup-nums",e);t.text("0");var c=function(){t.text(t.data("counterup-nums").shift());if(t.data("counterup-nums").length)setTimeout(t.data("counterup-func"),r.delay);else{delete t.data("counterup-nums");t.data("counterup-nums",null);t.data("counterup-func",null)}};t.data("counterup-func",c);setTimeout(t.data("counterup-func"),r.delay)};t.waypoint(i,{offset:"100%",triggerOnce:!0})})}})(jQuery);
 
 	
 
@@ -66,18 +66,18 @@ function main() {
 
 
 
-$(window).resize(function(){
+jQuery(window).resize(function(){
 
-    $('#home-banner .content,.entry-header .content').css({
+    jQuery('#home-banner .content,.entry-header .content').css({
         position:'relative',
-        left: ($(window).width() - $('#home-banner .content,.entry-header .content').outerWidth())/2,
-        top: ($(window).height() - $('#home-banner .content,.entry-header .content ').outerHeight())/2
+        left: (jQuery(window).width() - jQuery('#home-banner .content,.entry-header .content').outerWidth())/2,
+        top: (jQuery(window).height() - jQuery('#home-banner .content,.entry-header .content ').outerHeight())/2
     });
 
 });
 
 // To initially run the function:
-$(window).resize();
+jQuery(window).resize();
 
 
 
@@ -88,16 +88,16 @@ $(window).resize();
     /*====================================
     Show Menu on Book
     ======================================*/
-    $(window).bind('scroll', function() {
-        var navHeight = $(window).height() - 10;
-        if ($(window).scrollTop() > navHeight) {
-            $('.navbar-default').addClass('on');
+    jQuery(window).bind('scroll', function() {
+        var navHeight = jQuery(window).height() - 10;
+        if (jQuery(window).scrollTop() > navHeight) {
+            jQuery('.navbar-default').addClass('on');
         } else {
-            $('.navbar-default').removeClass('on');
+            jQuery('.navbar-default').removeClass('on');
         }
     });
 
-    $('body').scrollspy({ 
+    jQuery('body').scrollspy({ 
         target: '.navbar-default',
         offset: 10
     })
@@ -110,11 +110,11 @@ $(window).resize();
     top -menu
     ======================================*/
 
-$('#top-menu.navbar-default li:has(ul)').addClass('menu-item-has-children');
+jQuery('#top-menu.navbar-default li:has(ul)').addClass('menu-item-has-children');
 
 
 
-$('#home-banner h1 span').addClass('liner');
+jQuery('#home-banner h1 span').addClass('liner');
 
 
 
@@ -123,12 +123,12 @@ $('#home-banner h1 span').addClass('liner');
 
 
 /*creating click event*/
-$(document).ready(function(){
-  $('a#nav-icon').click(function(){
-    $('#nav-top').toggleClass('nav-view');
+jQuery(document).ready(function(){
+  jQuery('a#nav-icon').click(function(){
+    jQuery('#nav-top').toggleClass('nav-view');
   });
   
-  $("#testimonial").owlCarousel({
+  jQuery("#testimonial").owlCarousel({
         navigation : false, // Show next and prev buttons
         slideSpeed : 300,
         paginationSpeed : 400,
@@ -139,22 +139,22 @@ $(document).ready(function(){
 
 
 /*nav-icon*/
-$(document).ready(function(){
-	$('#nav-icon').click(function(){
-		$(this).toggleClass('open');
+jQuery(document).ready(function(){
+	jQuery('#nav-icon').click(function(){
+		jQuery(this).toggleClass('open');
 	});
 });
 
-$('.guide-block .nav-tabs > li > a').hover(function() {
-  $(this).tab('show');
+jQuery('.guide-block .nav-tabs > li > a').hover(function() {
+  jQuery(this).tab('show');
 });
 
   	/*====================================
     Portfolio Isotope Filter
     ======================================*/
-    $(window).load(function() {
-        var $container = $('#lightbox');
-        $container.isotope({
+    jQuery(window).load(function() {
+        var jQuerycontainer = jQuery('#lightbox');
+        jQuerycontainer.isotope({
             filter: '*',
             animationOptions: {
                 duration: 750,
@@ -162,11 +162,11 @@ $('.guide-block .nav-tabs > li > a').hover(function() {
                 queue: false
             }
         });
-        $('.cat a').click(function() {
-            $('.cat .active').removeClass('active');
-            $(this).addClass('active');
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
+        jQuery('.cat a').click(function() {
+            jQuery('.cat .active').removeClass('active');
+            jQuery(this).addClass('active');
+            var selector = jQuery(this).attr('data-filter');
+            jQuerycontainer.isotope({
                 filter: selector,
                 animationOptions: {
                     duration: 750,
