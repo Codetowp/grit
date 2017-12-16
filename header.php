@@ -43,7 +43,8 @@
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><span><?php echo bloginfo( 'name' ); ?></span>
+					<?php if ( has_custom_logo() ) { ?>
+					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><?php } ?><span><?php echo bloginfo( 'name' ); ?></span>
 				</a>
 			</div>
 		
