@@ -39,7 +39,7 @@
 					}
 					else
 					{
-						$img = '<img src="'.$logo_img_static.'" class="img-responsive">';
+					 ?>	<h1><?php echo bloginfo( 'name' ); ?></h1><?php 
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
