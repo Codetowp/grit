@@ -25,7 +25,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 
 <?php
-    $background_img   =  get_theme_mod( 'bck_ground_image' );   
+    $background_img   =  get_theme_mod( 'bck_ground_image' ,esc_url( get_template_directory_uri() . '/img/b-1.jpg' ));   
    // $background_img_static   = get_template_directory_uri() . '/img/b-1.jpg';
    // $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
@@ -244,7 +244,7 @@ if ( ! $disable1) : ?>
 
 
 <?php
-    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image' );   
+    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', esc_url( get_template_directory_uri() . '/img/07-screenshot.jpg' ));   
     //$background_img_static   = get_template_directory_uri() .'/img/07-screenshot.jpg';
    // $image = $background_img ? "$background_img" : "";      
 ?>
@@ -334,7 +334,6 @@ if ( ! $disable1) : ?>
 			<?php 
                 
 			$count_blog = get_theme_mod( 'grit_blog_post_count', 4 );
-			$count_blog = $count_blog-1;
 			$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
 			if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
