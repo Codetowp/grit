@@ -2,7 +2,7 @@
 /**
  * Class to display upsells.
  *
- * @package dblogger
+ * @package grit
  */
 if ( ! class_exists( 'WP_Customize_Control' ) ) 
 {

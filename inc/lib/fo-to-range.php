@@ -2,7 +2,7 @@
 /**
  * Build Fonts List, Toggle, Range Slide
  * Note: Types select for fonts, toggle, range-input
- * @package dblogger
+ * @package grit
  */
  
 // If this file is called directly, abort.
