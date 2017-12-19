@@ -39,7 +39,7 @@
 					}
 					else
 					{
-					 ?>	<h1><?php echo bloginfo( 'name' ); ?></h1><?php 
+					 ?>	<h2><?php echo bloginfo( 'name' ); ?></h2><?php 
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
