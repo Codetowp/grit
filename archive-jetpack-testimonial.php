@@ -2,7 +2,7 @@
 /**
  * The archive template for Jetpack testimonial posts.
  *
- * @package Daniela
+ * @package grit
  */
 
 get_header(); ?>

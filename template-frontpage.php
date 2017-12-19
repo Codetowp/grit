@@ -21,7 +21,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'home-banner' );?>
+<?php  get_template_part( 'section-parts/section', 'home-banner' );?>
 <?php endif;?>
 <!-- about us Page
     ==========================================-->
@@ -31,7 +31,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'about' );?>			
+<?php  get_template_part( 'section-parts/section', 'about' );?>			
 <?php endif;?>
 <!-- contact us Page
     ==========================================-->
@@ -41,7 +41,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'home-contact' );?>
+<?php  get_template_part( 'section-parts/section', 'home-contact' );?>
 <?php endif;?>
 <!-- our works block
     ==========================================-->
@@ -51,7 +51,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'ourwork' );?>
+<?php  get_template_part( 'section-parts/section', 'ourwork' );?>
 <?php endif;?>
 <!-- the process block
     ==========================================-->
@@ -61,7 +61,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'process' );?>
+<?php  get_template_part( 'section-parts/section', 'process' );?>
 			
 <?php endif;?>
 <!-- Company counter section
@@ -72,7 +72,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'counts' );?>  			
+<?php  get_template_part( 'section-parts/section', 'counts' );?>  			
 <?php endif;?>
 <!-- /Company counter section --> 
 
@@ -84,7 +84,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'testimonials' );?>  
+<?php  get_template_part( 'section-parts/section', 'testimonials' );?>  
 <?php endif;?>
 <!-- latest news block
     ==========================================-->
@@ -94,7 +94,7 @@ if ( grit_is_selective_refresh() ) {
     $disable1 = false;
 }
 if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-part/section', 'latest-news' );?> 
+<?php  get_template_part( 'section-parts/section', 'latest-news' );?> 
 <?php endif;?>
 <?php
 get_footer();

@@ -2,7 +2,7 @@
 /**
  * Customizer Library
  *
- * @package        Customizer_Library
+ * @package        grit
  * @author         Devin Price, The Theme Foundry
  * @license        GPL-2.0+
  * @version        1.3.0
