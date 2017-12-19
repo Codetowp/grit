@@ -12,7 +12,7 @@
  *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
- * @package 	WooCommerce/Templates
+ * @package 	grit
  * @version     2.0.0
  */
 
@@ -37,7 +37,7 @@ get_header( 'shop' ); ?>
 <div id="page-banner" style="background-image: url(<?php  header_image(); ?>)">
   <div class="content  wow fdeInUp">
     <div class="container">
-      <h1><? echo woocommerce_template_single_title(); ?></h1>
+      <h1><?php echo woocommerce_template_single_title(); ?></h1>
     </div>
   </div>
 </div>

@@ -544,7 +544,7 @@ a.navbar-brand:hover span {
 color:#fff;
 }
 #search input[type="text"] {
-	background: url(img/search-white.png) no-repeat 0px 3px;
+	background: url(assets/img/search-white.png) no-repeat 0px 3px;
 	border: 0 none;
 	font: bold 12px Arial, Helvetica, Sans-serif;
 	color: #fff;
@@ -3464,7 +3464,7 @@ blockquote {
 	margin-left: 40px;
 	padding-left: 36px;
 	float:left;
-	background: #fff url(img/bq-bg.png) 0 0 no-repeat;
+	background: #fff url(assets/img/bq-bg.png) 0 0 no-repeat;
 }
 
 

@@ -1,4 +1,13 @@
 <?php
+    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', esc_url( get_template_directory_uri() . '/assets/img/07-screenshot.jpg' ));   
+    //$background_img_static   = get_template_directory_uri() .'/assets/assets/img/07-screenshot.jpg';
+   // $image = $background_img ? "$background_img" : "";      
+?>
+<section id="company-counter" style="background-image:url(<?php echo esc_url( $background_img ); ?>); ">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md-12 wow fadeInDown">
+<?php
 $user_ids = grit_get_section_counter_data();
 ?>
 <?php
@@ -47,7 +56,7 @@ if ( ! empty( $user_ids ) ) {
 			}
 			else
 			{
-				$url     = get_template_directory_uri()."/img/bq-bg.jpg";
+				$url     = get_template_directory_uri()."/assets/img/bq-bg.jpg";
 			}
 
 			if ( $url ) {
@@ -95,3 +104,7 @@ else{
 		</div>
 	</div>
 <?php  }?>
+</div>
+		</div>
+	</div>
+</section>

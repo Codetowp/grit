@@ -13,7 +13,7 @@ get_header(); ?>
 ==========================================-->
 <?php
 $background_img = get_theme_mod( 'grit_portfolio_bck_ground_image' );
-$background_img_static   = get_template_directory_uri() . '/img/in-bg.jpg';
+$background_img_static   = get_template_directory_uri() . '/assets/img/in-bg.jpg';
 $image = $background_img ? "$background_img" : "$background_img_static";
 ?>
 

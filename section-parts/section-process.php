@@ -1,3 +1,17 @@
+<section id="process-block">
+	<div class="container">
+		<div class="row"> 
+			<!--section-title-->
+			<div class="section-title text-center wow fadeInUp">
+                <?php 
+                    $grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Section Title', 'grit' ));
+                    if ($grit_process_header != '') echo '<h2>  ' . wp_kses_post($grit_process_header) . ' </h2>'; 
+                ?>
+                
+            </div>
+			<!--/section-title--> 
+			<!--process tab-->
+			<div>
 <?php
 $page_ids = grit_get_section_process();
 ?>
@@ -102,7 +116,7 @@ else
 	<!--tab nav item 1-->
 	<div id="concept" class="tab-pane active"> 
 		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/tab-1.jpg" class="img-responsive"> </div>
+		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/tab-1.jpg" class="img-responsive"> </div>
 		<!--/tab img--> 
 		<!--tab content-->
 		<div class="col-md-7 process-content">
@@ -116,7 +130,7 @@ else
 	<!--tab nav item 2-->
 	<div id="prototype" class="tab-pane"> 
 		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/03-screenshot.jpg" class="img-responsive"> </div>
+		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
 		<!--/tab img--> 
 		<!--tab content-->
 		<div class="col-md-7 process-content">
@@ -130,4 +144,9 @@ else
 </div>
 <!--/tab container--> 
 <?php  }?>
+</div>
+			<!--\process tab--> 
+		</div>
+	</div>
+</section>
 

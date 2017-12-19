@@ -32,19 +32,19 @@
 				<?php
 					$custom_logo = get_theme_mod( 'custom_logo' );
 					$logo = wp_get_attachment_image_src( $custom_logo , 'full' );
-					$logo_img_static = get_template_directory_uri(). '/img/logo-top.png';
+					$logo_img_static = get_template_directory_uri(). '/assets/img/logo-top.png';
 					if ( has_custom_logo() )
 					{
 						$img = esc_url( $logo[0] );
 					}
 					else
 					{
-					 ?>	<h2><?php echo bloginfo( 'name' ); ?></h2><?php 
+					 ?>	<h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></h2><?php 
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
 					<?php if ( has_custom_logo() ) { ?>
-					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><?php } ?><span><?php echo bloginfo( 'name' ); ?></span>
+					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><span><?php echo bloginfo( 'name' ); ?></span><?php } ?>
 				</a>
 			</div>
 		

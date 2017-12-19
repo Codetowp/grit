@@ -2,7 +2,7 @@
 /**
  * The template for displaying search forms in xtremelysocial
  *
- * @package totomo
+ * @package grit
  */
 ?>
 

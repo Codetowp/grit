@@ -1,6 +1,6 @@
 <?php
 /**
- * @package 	Customizer_Library
+ * @package 	grit
  * @author		The Theme Foundry
  */
 
