@@ -270,7 +270,7 @@ function grit_customize_register( $wp_customize ) {
 	    ) ) );
         
         $wp_customize->add_setting( 'bck_ground_image', array(
-            'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
+            'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',
@@ -783,7 +783,7 @@ function grit_customize_register( $wp_customize ) {
 			) );
 
         $wp_customize->add_setting( 'grit_counter_bck_ground_image', array(
-             'default'           => esc_url( get_template_directory_uri() . '/img/07-screenshot.jpg' ),
+             'default'           => esc_url( get_template_directory_uri() . '/assets/img/07-screenshot.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',
@@ -983,7 +983,7 @@ function grit_customize_register( $wp_customize ) {
 	    ) ) );  
     
         $wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
-             'default'           => esc_url( get_template_directory_uri() . '/img/b-1.jpg' ),
+             'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',

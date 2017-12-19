@@ -47,7 +47,7 @@ if ( ! empty( $user_ids ) ) {
 			}
 			else
 			{
-				$url     = get_template_directory_uri()."/img/bq-bg.jpg";
+				$url     = get_template_directory_uri()."/assets/img/bq-bg.jpg";
 			}
 
 			if ( $url ) {
