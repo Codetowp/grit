@@ -10,9 +10,9 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 }
 
 /**
- * Class dblogger_info
+ * Class grit_info
  */
-class dblogger_info extends WP_Customize_Control 
+class grit_info extends WP_Customize_Control 
 {
 	/**
 	 * The type of customize section being rendered.

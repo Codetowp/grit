@@ -249,7 +249,7 @@ function grit_customize_register( $wp_customize ) {
             'title'                     => __('Header Intro', 'grit'),
             'description'               => 'Easily edit your header section',
             'priority'                  => 100,
-            'panel'                     => 'grit_panel',    
+            1                     => 'grit_panel',    
         ));
 
         $wp_customize->add_setting( 'grit_header_check',
