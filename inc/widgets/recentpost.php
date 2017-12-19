@@ -50,7 +50,7 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 								 
 								if  ( get_the_post_thumbnail()=='')
 								{
-									$background_img_relatedpost   = get_template_directory_uri() . '/img/t-1.jpg';
+									$background_img_relatedpost   = get_template_directory_uri() . '/assets/img/t-1.jpg';
 									echo '<img class="media-object" src="'.esc_url( $background_img_relatedpost ). '" alt="..." class="media-object">';
 								}
 								else

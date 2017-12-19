@@ -102,7 +102,7 @@ else
 	<!--tab nav item 1-->
 	<div id="concept" class="tab-pane active"> 
 		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/tab-1.jpg" class="img-responsive"> </div>
+		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/tab-1.jpg" class="img-responsive"> </div>
 		<!--/tab img--> 
 		<!--tab content-->
 		<div class="col-md-7 process-content">
@@ -116,7 +116,7 @@ else
 	<!--tab nav item 2-->
 	<div id="prototype" class="tab-pane"> 
 		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/03-screenshot.jpg" class="img-responsive"> </div>
+		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
 		<!--/tab img--> 
 		<!--tab content-->
 		<div class="col-md-7 process-content">

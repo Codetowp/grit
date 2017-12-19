@@ -32,7 +32,7 @@
 				<?php
 					$custom_logo = get_theme_mod( 'custom_logo' );
 					$logo = wp_get_attachment_image_src( $custom_logo , 'full' );
-					$logo_img_static = get_template_directory_uri(). '/img/logo-top.png';
+					$logo_img_static = get_template_directory_uri(). '/assets/img/logo-top.png';
 					if ( has_custom_logo() )
 					{
 						$img = esc_url( $logo[0] );

@@ -25,8 +25,8 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 
 <?php
-    $background_img   =  get_theme_mod( 'bck_ground_image' ,esc_url( get_template_directory_uri() . '/img/b-1.jpg' ));   
-   // $background_img_static   = get_template_directory_uri() . '/img/b-1.jpg';
+    $background_img   =  get_theme_mod( 'bck_ground_image' ,esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ));   
+   // $background_img_static   = get_template_directory_uri() . '/assets/assets/img/b-1.jpg';
    // $image = $background_img ? "$background_img" : "$background_img_static";      
 ?>
 <section id="home-banner" style="background-image: url(<?php echo esc_url( $background_img ); ?>);">
@@ -172,7 +172,7 @@ if ( ! $disable1) : ?>
 					<li>
 						<figure>
 							<?php the_post_thumbnail();?>
-							<!--<img src="<?php //echo get_template_directory_uri(); ?>/img/02-screenshot.jpg" alt="Screenshot 01">-->
+							<!--<img src="<?php //echo get_template_directory_uri(); ?>/assets/assets/img/02-screenshot.jpg" alt="Screenshot 01">-->
 							<figcaption>
 								<div class="caption-content">
 									<h6><?php the_title(); ?></h6>
@@ -244,8 +244,8 @@ if ( ! $disable1) : ?>
 
 
 <?php
-    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', esc_url( get_template_directory_uri() . '/img/07-screenshot.jpg' ));   
-    //$background_img_static   = get_template_directory_uri() .'/img/07-screenshot.jpg';
+    $background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', esc_url( get_template_directory_uri() . '/assets/img/07-screenshot.jpg' ));   
+    //$background_img_static   = get_template_directory_uri() .'/assets/assets/img/07-screenshot.jpg';
    // $image = $background_img ? "$background_img" : "";      
 ?>
 <section id="company-counter" style="background-image:url(<?php echo esc_url( $background_img ); ?>); ">
@@ -347,7 +347,7 @@ if ( ! $disable1) : ?>
 					}
 					else
 					{?>
-						<img src="<?php echo esc_url( get_template_directory_uri() );?>/img/04-screenshot.jpg"  alt="image 1" >
+						<img src="<?php echo esc_url( get_template_directory_uri() );?>/assets/img/04-screenshot.jpg"  alt="image 1" >
 					<?php }?>       
 					<a href="<?php the_permalink();?>">
 						<h6><?php the_title();?></h6>
