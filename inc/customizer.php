@@ -1031,6 +1031,7 @@ function grit_customize_register( $wp_customize ) {
         $font_choices 					= customizer_library_get_font_choices();
         $wp_customize					->add_setting( 'grit_paragraph_font', array(
             'default'        			=> 'PT Serif',
+            'sanitize_callback'         =>'customizer_library_sanitize_font_choice',
         ) );
 
         $wp_customize->add_control( 'grit_paragraph_font', array(
@@ -1057,6 +1058,7 @@ function grit_customize_register( $wp_customize ) {
 			'default'       			=> get_theme_mod( 'grit_paragraph_font_size', '24px' ),
 			'capability'    			=> 'edit_theme_options',
 			'transport'     			=> 'refresh',
+            'sanitize_callback'         =>'grit_sanitize_integer',
 	       ) );
 
 	    $wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'grit_paragraph_font_size', array(
@@ -1075,6 +1077,7 @@ function grit_customize_register( $wp_customize ) {
     
         $wp_customize->add_setting( 'grit_font_family', array(
             'default'        			=> 'Montserrat',
+             'sanitize_callback'         =>'customizer_library_sanitize_font_choice',
         ) );
 
         $wp_customize->add_control( 'grit_font_family', array(
@@ -1100,6 +1103,7 @@ function grit_customize_register( $wp_customize ) {
 			'default'       			=> get_theme_mod( 'grit_font_size_styles', '24px' ),
 			'capability'    			=> 'edit_theme_options',
 			'transport'     			=> 'refresh',
+            'sanitize_callback'         =>'grit_sanitize_integer',
 	       ) );
 
 	    $wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'grit_font_size', array(
@@ -1119,7 +1123,7 @@ function grit_customize_register( $wp_customize ) {
     /* Footer Social */
     
 		$wp_customize->add_section( 'social', array(
-			'title'    					=> __( '[Grit]Footer Social', 'grit'  ),
+			'title'    					=> __( 'Footer Social', 'grit'  ),
 			'priority'                  => 110,
 			'panel'                     => 'grit_panel', 
 		) );
