@@ -13,16 +13,7 @@
  */
 
 get_header(); ?>
-<div class="entry-content">
-        <?php
-            the_content();
 
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
-                'after'  => '</div>',
-            ) );
-        ?>
-    </div><!-- .entry-content -->
 
 <!-- banner Page
     ==========================================-->
@@ -46,10 +37,19 @@ get_header(); ?>
             </div>
             <!--blog posts container-->
             <div class="clearfix"></div>
+            <div class="entry-content">
+        <?php
+            the_content();
+
+            wp_link_pages( array(
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+                'after'  => '</div>',
+            ) );
+        ?>
+    </div><!-- .entry-content -->
         </div>
     </div>
-</div>
-<?php if ( get_edit_post_link() ) : ?>
+    <?php if ( get_edit_post_link() ) : ?>
         <footer class="entry-footer">
             <?php
                 edit_post_link(
@@ -71,5 +71,7 @@ get_header(); ?>
             ?>
         </footer><!-- .entry-footer -->
     <?php endif; ?>
+</div>
+
 <?php
 get_footer();

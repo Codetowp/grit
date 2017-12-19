@@ -8,16 +8,7 @@
  */
 
 get_header(); ?>
-<div class="entry-content">
-		<?php
-			the_content();
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
 
 <div id="Blog-post"> 
 	<?php
@@ -46,6 +37,16 @@ get_header(); ?>
 					?>
 				</nav>
 				<!--/posts navigation-->
+				<div class="entry-content">
+		<?php
+			the_content();
+
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+				'after'  => '</div>',
+			) );
+		?>
+	</div><!-- .entry-content -->
                 <?php wp_reset_postdata(); ?>
 				<div class="clearfix"></div>
 				<!--Also like-->
@@ -53,26 +54,14 @@ get_header(); ?>
 					 <?php grit_related_post(); ?>
 				</div>
 				<!--/Also like-->
-				<div class="clearfix"></div>				
+								
 				<!--comment-->
 				<div id="comments" class="comments-area text-left">
 					<!-- .comment-list -->
 					<?php comments_template();?>					
 				</div>
-				<!--/comment--> 
-			</div>
-			<!--blog posts container--> 
-			<!--aside-->
-			<aside class="col-md-3 col-sm-4" > 
-				<?php get_sidebar(); ?> 
-			</aside>
-			<!--aside-->
-
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<?php if ( get_edit_post_link() ) : ?>
+				<div class="clearfix"></div>
+				<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
 			<?php
 				edit_post_link(
@@ -94,6 +83,20 @@ get_header(); ?>
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+				<!--/comment--> 
+			</div>
+			<!--blog posts container--> 
+			<!--aside-->
+			<aside class="col-md-3 col-sm-4" > 
+				<?php get_sidebar(); ?> 
+			</aside>
+			<!--aside-->
+
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
 <?php
 //get_sidebar();
 get_footer();
