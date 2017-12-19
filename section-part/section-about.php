@@ -1,3 +1,28 @@
+<section id="about-us-block">
+	<div class="container">
+		<div class="row"> 
+			<!--section-title-->
+			<div class="section-title text-center wow fadeInUp">
+                 <?php 
+                    $grit_about_header  = get_theme_mod( 'grit_about_header', esc_html__('About', 'grit' ));
+                    if ($grit_about_header != '') echo '<h2>  ' . wp_kses_post($grit_about_header) . ' </h2>'; 
+                 ?>
+                <?php 
+                    $grit_about_button_text  = get_theme_mod( 'grit_about_button_text', esc_html__('Read More', 'grit' ));
+                     $grit_about_button_url= get_theme_mod( 'grit_about_button_url', esc_html__('#', 'grit') );
+                
+                    if ($grit_about_button_text != '' && $grit_about_button_url != '') echo '<a href="' . esc_url($grit_about_button_url) . '">  ' . wp_kses_post($grit_about_button_text) . ' </a>'; 
+                 ?>
+                 <?php 
+                    $grit_about_description  = get_theme_mod( 'grit_about_description', esc_html__('Section Description', 'grit' ));
+                    if ($grit_about_description != '') echo '<p>  ' . wp_kses_post($grit_about_description) . ' </p>'; 
+                 ?>
+               
+			</div>
+			<!--/section-title-->
+			<div class="clearfix"></div>
+			<!--about features list-->
+			<ul class="about-features wow fadeInUp">
 <?php
 $page_ids = grit_get_section_about_data();
 ?>
@@ -55,3 +80,8 @@ else
 	  <p>Web development is a broad term for the work involved in developing a web site </p>
 	</li>                
 <?php  }?>
+</ul>
+			<!--/about features list--> 
+		</div>
+	</div>
+</section>

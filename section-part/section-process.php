@@ -1,3 +1,17 @@
+<section id="process-block">
+	<div class="container">
+		<div class="row"> 
+			<!--section-title-->
+			<div class="section-title text-center wow fadeInUp">
+                <?php 
+                    $grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Section Title', 'grit' ));
+                    if ($grit_process_header != '') echo '<h2>  ' . wp_kses_post($grit_process_header) . ' </h2>'; 
+                ?>
+                
+            </div>
+			<!--/section-title--> 
+			<!--process tab-->
+			<div>
 <?php
 $page_ids = grit_get_section_process();
 ?>
@@ -130,4 +144,9 @@ else
 </div>
 <!--/tab container--> 
 <?php  }?>
+</div>
+			<!--\process tab--> 
+		</div>
+	</div>
+</section>
 

@@ -39,12 +39,12 @@
 					}
 					else
 					{
-					 ?>	<h2><?php echo bloginfo( 'name' ); ?></h2><?php 
+					 ?>	<h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a></h2><?php 
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
 					<?php if ( has_custom_logo() ) { ?>
-					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><?php } ?><span><?php echo bloginfo( 'name' ); ?></span>
+					<img src="<?php echo esc_url( $img ); ?>" class="img-responsive"><span><?php echo bloginfo( 'name' ); ?></span><?php } ?>
 				</a>
 			</div>
 		
