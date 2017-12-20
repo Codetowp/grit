@@ -97,7 +97,10 @@ function grit_customize_register( $wp_customize ) {
                 'selector'              => '#latest-news-block .section-title h2',
                 'render_callback'       => 'grit_customize_partial_latest_news_header',
             ) );
-
+        $wp_customize->selective_refresh->add_partial( 'social', array(
+                'selector'              => '#bottom-footer .custom-social',
+               
+            ) );
    
             
           
@@ -131,7 +134,7 @@ function grit_customize_register( $wp_customize ) {
    // Blog SETTINGS
    
        $wp_customize->add_section( 'header_image', array(
-            'title'          => __( 'Blog Settings' ),
+            'title'          => __('Blog Settings' ),
             'theme_supports' => 'custom-header',
             'priority'       => 60,
             'panel'          =>'grit_general_panel',
@@ -347,7 +350,7 @@ function grit_customize_register( $wp_customize ) {
     
     
         $wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
-            'default'                   =>esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
+            'default'                   =>esc_url( get_template_directory_uri() . '/assets/img/in-bg.jpg' ),
             'type'                      => 'theme_mod',
             'capability'                => 'edit_theme_options',
             'sanitize_callback'         => 'esc_url_raw',

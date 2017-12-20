@@ -14,7 +14,7 @@
                     $grit_work_button_text  = get_theme_mod( 'grit_work_button_text', esc_html__('Read More', 'grit' ));
                     
                 
-                    if ($grit_contact_button_text != '') echo '<a href="' . esc_url( home_url( '/portfolio' ) ) . '">  ' . wp_kses_post($grit_work_button_text) . ' </a>'; 
+                    if ($grit_work_button_text != '') echo '<a href="' . esc_url( home_url( '/portfolio' ) ) . '">  ' . wp_kses_post($grit_work_button_text) . ' </a>' ; 
                  ?>
                 
 				

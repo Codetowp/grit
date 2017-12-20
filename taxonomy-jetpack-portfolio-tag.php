@@ -11,7 +11,7 @@ get_header(); ?>
 
 <!-- banner Page
 ==========================================-->
-<div id="page-banner" style="background-image: url(<?php //the_post_thumbnail_url( array(400, 160) ); ?>);">
+<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url( array(400, 160) ); ?>);">
 	<div class="content wow fadeInUp">
 		<div class="container ">
 			<h1><?php the_archive_title(); ?> </h1>

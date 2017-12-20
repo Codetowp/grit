@@ -44,7 +44,8 @@ function grit_related_post()
                 $categories = get_the_category($post->ID);
                 $cat_link = get_category_link($categories[0]->cat_ID);
                 //$cat_name = get_category_link($categories[0]->cat_name);
-                
+                ?>
+                <a  href="<?php the_permalink() ?>"><?php
 				printf(
 					'<article class="col-md-4 col-sm-6 col-xs-12 eq-blocks">
                         <header class="entry-header"> %s <a href="%s">
@@ -58,7 +59,7 @@ function grit_related_post()
                     esc_url( $cat_link ),
                     esc_html( $class_format )
 				);
-				?>
+				?></a>
 			<?php
 			}
 			?>
