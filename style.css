@@ -115,6 +115,9 @@ a {
 .site-title a {
 	color: #fff;
 }
+h2.site-title a {
+    text-decoration: none;
+}
 .site-title a:hover {
 	color: #fff;
 	opacity: 0.8;
