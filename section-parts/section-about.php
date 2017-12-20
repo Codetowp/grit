@@ -40,11 +40,15 @@ if ( ! empty( $page_ids ) ) {
 			//Get/Set social icons
 			if ( $settings['icon'] != '' && strpos($settings['icon'], 'fa') !== 0) {
 			$settings['icon'] = 'fa-' . $settings['icon'];
-			}
+		}
+			
 			$media = '<i class="fa '.esc_attr( $settings['icon'] ).' fa-5x"></i>';
-		}                                                     
+		}   else{
+
+			 $media='';	
+		}                                                  
 ?>
-			<li ><?php echo $media; ?>
+		<li ><?php echo $media; ?>
 				<h5> <?php the_title(); ?></h5>
 				<p>
 					<?php 

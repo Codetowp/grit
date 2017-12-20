@@ -29,11 +29,11 @@
 					<?php
 					if  ( get_the_post_thumbnail()!='')
 					{
-						the_post_thumbnail('grit_latest_news'); 
+						?><a href="<?php the_permalink();?>"> <?php the_post_thumbnail('grit_latest_news');  ?></a><?php 
 					}
 					else
 					{?>
-						<img src="<?php echo esc_url( get_template_directory_uri() );?>/assets/img/04-screenshot.jpg"  alt="image 1" >
+						<a href="<?php the_permalink();?>"><img src="<?php echo esc_url( get_template_directory_uri() );?>/assets/img/04-screenshot.jpg"  alt="image 1" ></a>
 					<?php }?>       
 					<a href="<?php the_permalink();?>">
 						<h6><?php the_title();?></h6>

@@ -45,7 +45,11 @@ if ( ! empty( $page_ids ) ) {
 			if ( $settings['icon'] ) {
 				$settings['icon'] = trim( $settings['icon'] );
 				$class = esc_attr( $settings['icon'] );
-			}    
+			}   
+			else{
+
+				$class ='';
+			} 
 			?>
 			<li class="<?php echo $firstClass;?>"><a href="#<?php echo $settings['title']?>" data-toggle="tab"><i class="<?php echo $class;?>"></i>
 			<h5><?php echo $settings['title']?></h5>
