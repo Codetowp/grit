@@ -467,7 +467,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_about_check', array(
 			'settings' => 'grit_about_check',
-			'label'    => __( 'Disable Header?', 'grit' ),
+			'label'    => __( 'Disable this section?', 'grit' ),
 			'section'  => 'grit_about_section',
 			'type'     => 'ios',
             'priority' => 1,
@@ -543,11 +543,11 @@ function grit_customize_register( $wp_customize ) {
 				'grit_about_boxes',
 				array(
 					'label' 		=> esc_html__('About content page', 'grit'),
-					'description'   => '',
+					'description'   => esc_html__('There is a limit of 8 item to maintain elegant design. Contact us if you need more.', 'grit'),
 					'section'       => 'grit_about_section',
 					'live_title_id' => 'content_page', // apply for unput text and textarea only
 					'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
-					'max_item'      => 4, // Maximum item can add
+					'max_item'      => 8, // Maximum item can add
 					'fields'    	=> array(
 						'content_page'  => array(
 							'title' 	=> esc_html__('Select a page', 'grit'),
@@ -565,9 +565,9 @@ function grit_customize_register( $wp_customize ) {
 				)
 			) );
     
-        //Contact SECTION  
+        //Call to action SECTION  
         $wp_customize->add_section('grit_contact_section', array(
-            'title'                     => __('Contact Section', 'grit'),
+            'title'                     => __('Call to action Section', 'grit'),
             'priority'                  => 101,
             'panel'                     => 'grit_panel', 
         ) );
@@ -582,7 +582,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_contact_check', array(
 			'settings' => 'grit_contact_check',
-			'label'    => __( 'Disable Header?', 'grit' ),
+			'label'    => __( 'Disable this section?', 'grit' ),
 			'section'  => 'grit_contact_section',
 			'type'     => 'ios',
             'priority' => 1,
@@ -598,7 +598,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( 'grit_contact_header', array(
             'type'						=> 'text',
-            'label' 					=> __( 'Header', 'grit' ),
+            'label' 					=> __( 'Description', 'grit' ),
             'section'  					=> 'grit_contact_section',
             'priority' 					=> 2,
         ) );
@@ -665,7 +665,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( 'grit_work_header', array(
             'type'						=> 'text',
-            'label' 					=> __( 'Header', 'grit' ),
+            'label' 					=> __( 'Heading', 'grit' ),
             'section'  					=> 'grit_work_section',
             'priority' 					=> 2,
         ) );
@@ -703,14 +703,12 @@ function grit_customize_register( $wp_customize ) {
         );
         $wp_customize->add_control( 'grit_work_portfolio_count', array(
             'type'                      => 'integer',
-            'label'                     => __('Number Of Blog To Show - i.e 10 (default is 6)','grit'),
+            'label'                     => __('Number Of Portfolio items to show - i.e 10 (default 6)','grit'),
             'section'                   => 'grit_work_section',
 
             )
         );
-            
-		
-    
+
     
         //Process SECTION  
         $wp_customize->add_section('grit_process_section', array(
@@ -729,7 +727,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_process_check', array(
 			'settings' => 'grit_process_check',
-			'label'    => __( 'Disable Process?', 'grit' ),
+			'label'    => __( 'Disable this section?', 'grit' ),
 			'section'  => 'grit_process_section',
 			'type'     => 'ios',
             'priority' => 1,
@@ -746,7 +744,7 @@ function grit_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( 'grit_process_header', array(
             'type'						=> 'text',
-            'label' 					=> __( 'Header', 'grit' ),
+            'label' 					=> __( 'Heading', 'grit' ),
             'section'  					=> 'grit_process_section',
             'priority' 					=> 2,
         ) );
@@ -768,11 +766,11 @@ function grit_customize_register( $wp_customize ) {
 				'grit_process_boxes',
 				array(
 					'label' 		=> esc_html__('process content page', 'grit'),
-					'description'   => '',
+					'description'   => esc_html__('You can add upto 7 process to maintain elegant design', 'grit'),
 					'section'       => 'grit_process_section',
 					'live_title_id' => 'content_page', // apply for unput text and textarea only
 					'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
-					'max_item'      => 4, // Maximum item can add	
+					'max_item'      => 7, // Maximum item can add	
 					'fields'    	=> array(
 						'content_page'  => array(
 							'title' 	=> esc_html__('Select a page', 'grit'),
@@ -811,7 +809,7 @@ function grit_customize_register( $wp_customize ) {
 			);
 	    $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'grit_counter_check', array(
 			'settings' => 'grit_counter_check',
-			'label'    => __( 'Disable Process?', 'grit' ),
+			'label'    => __( 'Disable this section?', 'grit' ),
 			'section'  => 'grit_counter_section',
 			'type'     => 'ios',
             'priority' => 1,
