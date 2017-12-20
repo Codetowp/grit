@@ -20,7 +20,7 @@ if (!function_exists('grit_paragraph_font_family'))
 	function grit_paragraph_font_family()
 	{
 		echo '<style type="text/css">';
-		$fontfamily_value 	= get_theme_mod('grit_paragraph_font', 'grit');
+		$fontfamily_value 	= get_theme_mod('grit_paragraph_font','PT Serif','grit');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
@@ -71,7 +71,7 @@ if (!function_exists('grit_font_family'))
 	function grit_font_family()
 	{
 		echo '<style type="text/css" >';
-		$fontfamily_value 	= get_theme_mod('grit_font_family', 'grit');
+		$fontfamily_value 	= get_theme_mod('grit_font_family','Montserrat ','grit');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 

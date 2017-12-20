@@ -14,6 +14,7 @@
 
 get_header(); ?>
 
+
 <!-- banner Page
     ==========================================-->
 <div id="page-banner" style="background-image: url(<?php echo esc_url( the_post_thumbnail_url('grit_single_product') ); ?>);">
@@ -36,8 +37,40 @@ get_header(); ?>
             </div>
             <!--blog posts container-->
             <div class="clearfix"></div>
+            <div class="entry-content">
+        <?php
+            the_content();
+
+            wp_link_pages( array(
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+                'after'  => '</div>',
+            ) );
+        ?>
+    </div><!-- .entry-content -->
         </div>
     </div>
+    <?php if ( get_edit_post_link() ) : ?>
+        <footer class="entry-footer">
+            <?php
+                edit_post_link(
+                    sprintf(
+                        wp_kses(
+                            /* translators: %s: Name of current post. Only visible to screen readers */
+                            __( 'Edit <span class="screen-reader-text">%s</span>', 'grit' ),
+                            array(
+                                'span' => array(
+                                    'class' => array(),
+                                ),
+                            )
+                        ),
+                        get_the_title()
+                    ),
+                    '<span class="edit-link">',
+                    '</span>'
+                );
+            ?>
+        </footer><!-- .entry-footer -->
+    <?php endif; ?>
 </div>
 
 <?php

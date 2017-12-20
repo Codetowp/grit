@@ -80,8 +80,7 @@ else
 	  <p>Web development is a broad term for the work involved in developing a web site </p>
 	</li>                
 <?php  }?>
-</ul>
-			<!--/about features list--> 
+</ul>		<!--/about features list--> 
 		</div>
 	</div>
 </section>

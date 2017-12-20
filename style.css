@@ -4837,6 +4837,12 @@ ul.about-features li i {
 }
 }
 
+/*--------------------
+6.0 Posts & Pages
+----------------------*/	
+.sticky {
+	display: block;
+}
 
 
 /*edited file*/
