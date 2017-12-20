@@ -97,7 +97,10 @@ function grit_customize_register( $wp_customize ) {
                 'selector'              => '#latest-news-block .section-title h2',
                 'render_callback'       => 'grit_customize_partial_latest_news_header',
             ) );
-
+        $wp_customize->selective_refresh->add_partial( 'social', array(
+                'selector'              => '#bottom-footer .custom-social',
+               
+            ) );
    
             
           
