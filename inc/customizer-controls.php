@@ -767,8 +767,8 @@ function grit_customizer_control_scripts(){
     wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_style( 'wp-color-picker' );
 
-    wp_enqueue_script( 'grit-customizer', get_template_directory_uri() . '/js/customizer_js.js', array( 'customize-controls', 'wp-color-picker' ) );
-    wp_enqueue_style( 'grit-customizer',  get_template_directory_uri() . '/css/customizer.css' );
+    wp_enqueue_script( 'grit-customizer', get_template_directory_uri() . '/inc/admin/customizer_js.js', array( 'customize-controls', 'wp-color-picker' ) );
+   
 
 }
 
