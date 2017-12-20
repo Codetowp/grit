@@ -1100,6 +1100,10 @@ function grit_customize_preview_js() {
 	wp_enqueue_script( 'grit-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'grit_customize_preview_js' );
+function grit_customizer_css() {
+        wp_enqueue_style( 'grit-customizer-css', get_template_directory_uri() . '/assets/css/customizer.css' );
+    }
+add_action( 'customize_controls_print_styles', ' grit_customizer_css' );
 
 /**
  * Customizer Icon picker
