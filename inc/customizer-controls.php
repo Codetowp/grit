@@ -768,8 +768,8 @@ function grit_customizer_control_scripts(){
     wp_enqueue_style( 'wp-color-picker' );
 
     wp_enqueue_script( 'grit-customizer', get_template_directory_uri() . '/inc/admin/customizer_js.js', array( 'customize-controls', 'wp-color-picker' ) );
-   
 
+	
 }
 
 add_action( 'customize_controls_enqueue_scripts', 'grit_customizer_control_scripts', 99 );
