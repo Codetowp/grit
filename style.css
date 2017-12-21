@@ -3470,10 +3470,8 @@ blockquote {
 	margin: 30px;
 	margin-left: 40px;
 	padding-left: 36px;
-	float:left;
 	background: #fff url(assets/img/bq-bg.png) 0 0 no-repeat;
 }
-
 
 .page blockquote{margin-left:8.333%;}
 blockquote p {
@@ -3488,14 +3486,10 @@ blockquote p {
 /*.page figure, .single .single-post article figure  {width:100%; min-width:100%;}*/
 
 .page figure img, .single .single-post article figure img {
-	/*width: 100%;*/
 	height: auto;
-	/*object-fit: cover;*/
 	border-radius: 5px;
 	margin-top: 20px;
 }
-
-
 
 .page figure .wp-caption-text, .single .single-post article figure .wp-caption-text {
 	font-size: 12px;
@@ -3507,11 +3501,11 @@ blockquote p {
 	margin-bottom: 30px;
 }
 .gallery-item a img {
-	width:100%;
 	object-fit: cover;
     min-height: fit-content;
     height: fit-content !important;
 }
+
 /*.page figure img, .single .single-post article figure {
 	width: 100%;
 	min-width:100%;
@@ -4425,8 +4419,8 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
 .wp-caption .wp-caption-text {
 	margin: 0.8075em 0;
 }
-.wp-caption-text {
-	text-align: center;
+.page figure .wp-caption-text, .single .single-post article figure .wp-caption-text, .wp-caption-text  {
+	text-align: left;
 }
 .gallery {
 	margin-bottom: 1.5em;
