@@ -1731,7 +1731,9 @@ table tr:nth-child(odd) { background-color: #f7f7f7;}
 	-ms-user-select: none;
 	user-select: none;
 	background-image: none;
+	text-decoration: none;
 }
+
 .tagcloud a:hover {
 	webkit-transition: all 300ms ease-in-out;
 	transition: all 300ms ease-in-out;

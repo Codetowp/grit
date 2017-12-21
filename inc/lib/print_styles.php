@@ -20,7 +20,7 @@ if (!function_exists('grit_paragraph_font_family'))
 	function grit_paragraph_font_family()
 	{
 		echo '<style type="text/css">';
-		$fontfamily_value 	= get_theme_mod('grit_paragraph_font','PT Serif','grit');
+		$fontfamily_value 	= get_theme_mod('grit_paragraph_font','Montserrat','grit');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
@@ -29,7 +29,8 @@ if (!function_exists('grit_paragraph_font_family'))
 		}
 		echo "\n". "</style>". "\n";
 	}
-}// Add custom styles to `<head>`.
+}
+// Add custom styles to `<head>`.
 add_action( 'wp_head', 'grit_paragraph_font_family' );
 
 if (!function_exists('grit_paragraph_font_color'))  
@@ -77,7 +78,7 @@ if (!function_exists('grit_font_family'))
 		if ( $fontfamily_value ) 
 		{
 			echo "\n" . 'h1{' . esc_html( $append_family ) . '}'."\n".'h2{' .esc_html( $append_family ).'}'."\n".'h3{' .esc_html($append_family). '}'.
-                "\n".'h4{' .esc_html( $append_family ).'}'."\n".'h5{' .esc_html($append_family). '}'."\n".'h6{' .esc_html( $append_family). '}'."\n".'.widget-title{' .esc_html( $append_family ).'}' ;
+			"\n".'h4{' .esc_html( $append_family ).'}'."\n".'h5{' .esc_html($append_family). '}'."\n".'h6{' .esc_html( $append_family). '}'."\n".'.widget-title{' .esc_html( $append_family ).'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -95,7 +96,7 @@ if (!function_exists('grit_font_size_styles'))
 		if ( $fontfamily_value ) 
 		{
 			echo "\n" . 'h1{' . esc_html( $append_family_font ) . '}'."\n".'h2{' . esc_html( $append_family_font ) . '}'."\n".'h3{' . esc_html( $append_family_font ) . '}'.
-                "\n".'h4{' . esc_html( $append_family_font ) .'}'."\n".'h5{' . esc_html( $append_family_font ) .'}' ;
+			"\n".'h4{' . esc_html( $append_family_font ) .'}'."\n".'h5{' . esc_html( $append_family_font ) .'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -113,7 +114,7 @@ if (!function_exists('grit_font_color'))
 		if ( $color_value ) 
 		{
 			echo "\n" . 'h1{' . esc_html( $append_color ) . '}'."\n".'h2{' . esc_html( $append_color ) .'}'."\n".'h3{' . esc_html( $append_color ) .'}'.
-                "\n".'h4{' . esc_html( $append_color ) .'}'."\n".'h5{' . esc_html( $append_color ) .'}' ."\n".'h6{' . esc_html( $append_color ) .'}'."\n".'#process-block .process-content h6{' . esc_html( $append_color ) .'}'."\n".'#latest-news-block h2{' . esc_html( $append_color ) .'}';
+			"\n".'h4{' . esc_html( $append_color ) .'}'."\n".'h5{' . esc_html( $append_color ) .'}' ."\n".'h6{' . esc_html( $append_color ) .'}'."\n".'#process-block .process-content h6{' . esc_html( $append_color ) .'}'."\n".'#latest-news-block h2{' . esc_html( $append_color ) .'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -127,13 +128,13 @@ if (!function_exists('grit_accent_color'))
 		echo '<style type="text/css" id="rijo-css">';
 		$color_value 		= get_theme_mod('grit_accent_color', '#f53347');
 		$append_color 		= sprintf( 'background-color: %s;border: 2px %s solid',  $color_value, $color_value );
-        $icon_color 		= sprintf( 'color: %s', $color_value );
-        $process_color 		= sprintf( 'background: %s', $color_value );
+		$icon_color 		= sprintf( 'color: %s', $color_value );
+		$process_color 		= sprintf( 'background: %s', $color_value );
 		$button_color 		= sprintf( 'background: %s;border: 1px %s solid',  $color_value, $color_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . '.section-title a:hover{' . esc_html( $append_color ) . '}'. "\n" .  'ul.about-features li:hover i{' . esc_html( $icon_color ) . '}' ."\n" . '#process-block .nav-tabs > li.active i{' . esc_html( $icon_color ) .'}' ."\n". '#process-block .nav > li > a:hover i{' . esc_html( $icon_color ) .'}' ."\n". '#process-block .nav > li > a:hover i:after{' . esc_html( $process_color ) .'}'."\n".'#process-block .nav-tabs > li.active i:after{' . esc_html( $process_color ) .'}'."\n" . '#home-contact-block a{' . esc_html( $button_color ) . '}'."\n".'#process-block .process-content a{' . esc_html( $icon_color ) .'}'."\n".'blockquote {border-left-color:' . esc_html( $color_value ) .'}'."\n".'.author-box .author-box-title{' . esc_html( $icon_color ) .'}'."\n".'.author-box .author-box-title a{' . esc_html( $process_color ) .'}'."\n".'.single .single-post ul li:before, .page .page-block ul li:before{' . esc_html( $process_color ) .'}'."\n".'aside .widget_search button{' . esc_html( $process_color ) .'}'."\n" .'p a{' . esc_html( $icon_color ) .'}'."\n".'.single .single-post footer.entry-meta-bar a:hover, .page .page-block footer.entry-meta-bar a:hover{' . esc_html( $process_color ) .'}'."\n".' .widget_recent_comments ul li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_archive li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_categories li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.tagcloud a:hover{' . esc_html( $process_color ) .'}'."\n".'.widget_meta li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_meta li:hover:before{' . esc_html( $icon_color ) .'}' ."\n".'aside li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'#bottom-footer .social-link li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.author_social a{' . esc_html( $icon_color ) .'}' ."\n".'.author_social a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_search .input-group-btn button{' . esc_html( $process_color ) .'}'."\n" ; 
+			echo "\n" . '.section-title a:hover{' . esc_html( $append_color ) . '}'. "\n" .  'ul.about-features li:hover i{' . esc_html( $icon_color ) . '}' ."\n" . '#process-block .nav-tabs > li.active i{' . esc_html( $icon_color ) .'}' ."\n". '#process-block .nav > li > a:hover i{' . esc_html( $icon_color ) .'}' ."\n". '#process-block .nav > li > a:hover i:after{' . esc_html( $process_color ) .'}'."\n".'#process-block .nav-tabs > li.active i:after{' . esc_html( $process_color ) .'}'."\n" . '#home-contact-block a{' . esc_html( $button_color ) . '}'."\n".'#process-block .process-content a{' . esc_html( $icon_color ) .'}'."\n".'blockquote {border-left-color:' . esc_html( $color_value ) .'}'."\n".'.author-box .author-box-title{' . esc_html( $icon_color ) .'}'."\n".'.author-box .author-box-title a{' . esc_html( $process_color ) .'}'."\n".'.single .single-post ul li:before, .page .page-block ul li:before{' . esc_html( $process_color ) .'}'."\n".'aside .widget_search button{' . esc_html( $process_color ) .'}'."\n" .'p a{' . esc_html( $icon_color ) .'}'."\n".'.single .single-post footer.entry-meta-bar a:hover, .page .page-block footer.entry-meta-bar a:hover{' . esc_html( $process_color ) .'}'."\n".' .widget_recent_comments ul li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_archive li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_categories li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.tagcloud a:hover{' . esc_html( $process_color ) .'}'."\n".'.widget_meta li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_meta li:hover:before{' . esc_html( $icon_color ) .'}' ."\n".'aside li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'#bottom-footer .social-link li a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.author_social a{' . esc_html( $icon_color ) .'}' ."\n".'.author_social a:hover{' . esc_html( $icon_color ) .'}' ."\n".'.widget_search .input-group-btn button{' . esc_html( $process_color ) .'}'."\n".'a:hover{' . esc_html( $icon_color ) .'}' ."\n".'figcaption.wp-caption-text a{' . esc_html( $icon_color ) .'}'   ; 
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -146,9 +147,9 @@ if (!function_exists('grit_header_background'))
 	{
 		echo '<style type="text/css" id="rijo-css">';
 		$color_value 		= get_theme_mod('grit_header_background_color', 'grit');
-        $opacity_value 		= get_theme_mod('grit_transparnt', '');
+		$opacity_value 		= get_theme_mod('grit_transparnt', '');
 		$append_color 		= sprintf( 'background-color: %s;',  $color_value );
-        $append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
+		$append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
@@ -165,9 +166,9 @@ if (!function_exists('grit_count_background_color'))
 	{
 		echo '<style type="text/css" id="rijo-css">';
 		$color_value 		= get_theme_mod('grit_counter_background_color', 'grit');
-        $opacity_value 		= get_theme_mod('grit_counter_transparnt', '');
+		$opacity_value 		= get_theme_mod('grit_counter_transparnt', '');
 		$append_color 		= sprintf( 'background: %s;',  $color_value );
-        $append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
+		$append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
