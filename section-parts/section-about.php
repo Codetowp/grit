@@ -48,7 +48,7 @@
 							$media='';	
 						}                                                  
 						?>
-						<li ><?php echo esc_html($media); ?>
+						<li><?php echo $media; ?>
 							<h5> <?php the_title(); ?></h5>
 							<p>
 								<?php 
