@@ -36,121 +36,99 @@
 						}
 					}
 					$j = 0;
-					?>
-					<ul class="nav nav-tabs">
-						<?php  
-						global $post;   
-						$firstClass = 'active'; 
-						foreach ($page_ids as $post_id => $settings  ) {
-							if ( $settings['icon'] ) {
-								$settings['icon'] = trim( $settings['icon'] );
-								$class = esc_attr( $settings['icon'] );
-							}   
-							else{
+				?>
+				<ul class="nav nav-tabs">
+					<?php  
+					global $post;   
+					$firstClass = 'active'; 
+					foreach ($page_ids as $post_id => $settings  ) {
+						if ( $settings['icon'] ) {
+							$settings['icon'] = trim( $settings['icon'] );
+							$class = esc_attr( $settings['icon'] );
+						}   
+						else{
 
-								$class ='';
-							} 
-							?>
-							<li class="<?php echo esc_html($firstClass);?>"><a href="#<?php echo esc_html($settings['title']);?>" data-toggle="tab"><i class="<?php echo esc_html($class);?>"></i>
-								<h5><?php echo esc_html($settings['title']);?></h5>
-							</a>
-						</li>  
-						<?php $firstClass = ''; } ?>     
-					</ul>
+							$class ='';
+						} 
+						?>
+						<li class="<?php echo esc_html($firstClass);?>"><a href="#<?php echo esc_html($settings['title']);?>" data-toggle="tab"><i class="<?php echo esc_html($class);?>"></i>
+							<h5><?php echo esc_html($settings['title']);?></h5>
+						</a>
+					</li>  
+					<?php $firstClass = ''; } ?>     
+				</ul>
 					<!--/tab nav--> 
-					<div class="tab-content"> 
-						<?php
-						$firstClass = 'active'; 
-						foreach ($page_ids as $post_id => $settings  ) {
-							$post_id = $settings['content_page'];
-							$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-							$post = get_post( $post_id );
-							setup_postdata( $post );
-							?>
-							<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
-								<!--tab img-->
-								<div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process-default');?> </div>
-								<!--/tab img--> 
-								<!--tab content-->
-								<div class="col-md-7 process-content">
-									<h6><?php the_title(); ?></h6>
-									<p>
-										<?php 
-			//$excerpt = get_the_excerpt();
-			//$excerpt = substr( $excerpt , 0, 500); 
-			// echo $excerpt;
-										$content = get_the_content(); 
-										echo mb_strimwidth($content, 0, 500, '...');
-										?></p>
-										<a href="<?php echo esc_url( get_permalink($post) ); ?>">Read More</a> </div>
-										<!--/tab content--> 
-									</div>
+				<div class="tab-content"> 
+					<?php
+					$firstClass = 'active'; 
+					foreach ($page_ids as $post_id => $settings  ) {
+						$post_id = $settings['content_page'];
+						$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
+						$post = get_post( $post_id );
+						setup_postdata( $post );
+						?>
+						<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
+							<!--tab img-->
+							<div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process-default');?> </div>
+							<!--/tab img--> 
+							<!--tab content-->
+							<div class="col-md-7 process-content">
+								<h6><?php the_title(); ?></h6>
+								<p>
 									<?php
-									$firstClass = ''; 
-		} // end foreach
-		wp_reset_postdata();
-		?>
-	</div>
-	<?php 
-}
-else
-	{?>                
-		<ul class="nav nav-tabs">
-
-			<li class="active"><a href="#concept" data-toggle="tab"><i class="fa fa-star-o"></i>
-				<h5>01. Concept</h5>
-			</a>
-		</li>
-		<li><a href="#prototype" data-toggle="tab"><i class="fa fa-copy"></i>
-			<h5>02. Prototyping</h5>
-		</a>
-	</li>
-	<li><a href="#Design" data-toggle="tab"><i class="fa fa-laptop"></i>
-		<h5>03. Design</h5>
-	</a>
-</li>
-<li><a href="#development" data-toggle="tab"><i class="fa fa-code"></i>
-	<h5>04. Development</h5>
-</a>
-</li>
-</ul>
-<!--/tab nav--> 
-<!--tab container-->
-<div class="tab-content"> 
-	<!--tab nav item 1-->
-	<div id="concept" class="tab-pane active"> 
-		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/tab-1.jpg" class="img-responsive"> </div>
-		<!--/tab img--> 
-		<!--tab content-->
-		<div class="col-md-7 process-content">
-			<h6>Professional website design</h6>
-			<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
-			<a href="#">Read More</a> 
+									$content = get_the_content(); 
+									echo mb_strimwidth($content, 0, 500, '...');
+									?></p>
+									<a href="<?php echo esc_url( get_permalink($post) ); ?>">Read More</a> </div>
+									<!--/tab content--> 
+								</div>
+								<?php
+								$firstClass = ''; 
+					} // end foreach
+					wp_reset_postdata();
+					?>
+				</div>
+				<?php } else {?>                
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#concept" data-toggle="tab"><i class="fa fa-star-o"></i>
+						<h5>01. Concept</h5>
+					</a>
+					</li>
+					<li><a href="#prototype" data-toggle="tab"><i class="fa fa-copy"></i>
+						<h5>02. Prototyping</h5>
+					</a>
+					</li>
+					<li><a href="#Design" data-toggle="tab"><i class="fa fa-laptop"></i>
+						<h5>03. Design</h5>
+					</a>
+					</li>
+					<li><a href="#development" data-toggle="tab"><i class="fa fa-code"></i>
+						<h5>04. Development</h5>
+					</a>
+					</li>
+				</ul>
+				<!--Demo tab container-->
+				<div class="tab-content"> 
+					<div id="concept" class="tab-pane active"> 
+						<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/tab-1.jpg" class="img-responsive"> </div>
+						<div class="col-md-7 process-content">
+							<h6>Professional website design</h6>
+							<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
+							<a href="#">Read More</a> 
+						</div>
+					</div>
+					<div id="prototype" class="tab-pane"> 
+						<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
+						<div class="col-md-7 process-content">
+							<h6>Professional website design</h6>
+							<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
+							<a href="#">Read More</a> 
+						</div>
+					</div>
+				</div>
+				<?php  }?>
+			</div>
 		</div>
-		<!--/tab content--> 
 	</div>
-	<!--/tab nav item 1--> 
-	<!--tab nav item 2-->
-	<div id="prototype" class="tab-pane"> 
-		<!--tab img-->
-		<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
-		<!--/tab img--> 
-		<!--tab content-->
-		<div class="col-md-7 process-content">
-			<h6>Professional website design</h6>
-			<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
-			<a href="#">Read More</a> 
-		</div>
-		<!--/tab content--> 
-	</div>
-	<!--/tab nav item 2--> 
-</div>
-<!--/tab container--> 
-<?php  }?>
-</div>
-<!--\process tab--> 
-</div>
-</div>
 </section>
 
