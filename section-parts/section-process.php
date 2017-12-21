@@ -69,7 +69,7 @@ if ( ! empty( $page_ids ) ) {
 			?>
 			<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
 			<!--tab img-->
-			<div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process_medium');?> </div>
+			<div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process-default');?> </div>
 			<!--/tab img--> 
 			<!--tab content-->
 			<div class="col-md-7 process-content">

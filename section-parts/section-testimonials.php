@@ -1,4 +1,8 @@
-<section id="testimonials-block" class="text-center">
+<?php
+$background_img = get_theme_mod( 'grit_testimonial_bck_ground_image',get_template_directory_uri() . '/assets/img/in-bg.jpg' );
+  
+?>
+<section id="testimonials-block" class="text-center" style="background-image: url(<?php echo esc_url( $background_img); ?>);">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">

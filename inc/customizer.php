@@ -97,11 +97,11 @@ function grit_customize_register( $wp_customize ) {
                 'selector'              => '#latest-news-block .section-title h2',
                 'render_callback'       => 'grit_customize_partial_latest_news_header',
             ) );
-        $wp_customize->selective_refresh->add_partial( 'social', array(
-                'selector'              => '#bottom-footer .custom-social',
+       
+    $wp_customize->selective_refresh->add_partial( 'grit_post_related_post_count', array(
+                'selector'              => '.also-like-block',
                
             ) );
-   
             
           
         }
@@ -681,20 +681,7 @@ function grit_customize_register( $wp_customize ) {
             'label' 					=> __( 'Button Text', 'grit' ),
             'section'  					=> 'grit_work_section',
             'priority' 					=> 3,
-        ) );	
-
-        $wp_customize->add_setting( 'grit_work_button_url', array(      
-            'default'                   => esc_html__('#', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage',               
-        ) );    
-
-        $wp_customize->add_control( 'grit_work_button_url', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Button Url', 'grit' ),
-            'section'  					=> 'grit_work_section',
-            'priority' 					=> 5
-        ) );	
+        ) );
     
        $wp_customize->add_setting( 'grit_work_portfolio_count', array(
             'default'                   => esc_html__('6', 'grit'),
@@ -1006,7 +993,18 @@ function grit_customize_register( $wp_customize ) {
             'section'  					=> 'grit_latest_news_section',
             'priority' 					=> 3,
         ) );	
+        $wp_customize->add_setting( 'grit_blog_button_url', array(      
+            'default'                   => esc_url('#', 'grit'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
 
+        $wp_customize->add_control( 'grit_blog_button_url', array(
+            'type'                      => 'text',
+            'label'                     => __( 'Button Url', 'grit' ),
+            'section'                   => 'grit_latest_news_section',
+            'priority'                  => 5
+        ) );      
         $wp_customize->add_setting( 'grit_blog_post_count', array(
             'default'                   => 4,
             'sanitize_callback'         => 'grit_sanitize_integer'

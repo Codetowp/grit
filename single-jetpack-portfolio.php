@@ -85,7 +85,6 @@ get_header(); ?>
 				<li><a target="_blank" href="http://www.twitter.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Twitter!', 'grit')?>"><i class="fa fa-twitter"></i></a></li>
 				<li><a target="_blank" href="http://www.plus.google.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Google Plus!', 'grit')?>"><i class="fa fa-google-plus"></i></a></li>
 				<li><a target="_blank" href="http://www.pinterest.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Pinterest!', 'grit')?>"><i class="fa fa-pinterest"></i></a></li>
-				<li><a target="_blank" href="http://www.dribbble.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Dribbble!', 'grit')?>"><i class="fa fa-dribbble"></i></a></li>
 				<li><a target="_blank" href="http://www.linkein.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Linkein!', 'grit')?>"><i class="fa fa-linkedin"></i></a></li>
 			</ul>
 			<!--page-share--> 

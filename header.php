@@ -55,6 +55,7 @@
 				<a id="nav-icon"> <span></span> <span></span> <span></span> </a> 
 				<!--nav icon end-->
 				<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
+					
 				<?php
 					wp_nav_menu( array(
 						'theme_location'    => 'menu-1',
@@ -62,6 +63,7 @@
 						'menu_id'           => 'nav-top',
 					) );
 				?>
+			
 				<?php else : ?>
 				<ul id="nav-top" class="nav navbar-nav navbar-right">
 					<li ><a  href=" <?php echo esc_url( admin_url( 'nav-menus.php' ) );?>  "><?php echo esc_html_e( 'Add a Primary Menu', 'grit' );?>  </a></li></ul>

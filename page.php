@@ -33,20 +33,11 @@ get_header(); ?>
             <div class="col-md-12 page-block">                
 				<?php if(have_posts()): while ( have_posts() ) : the_post(); ?> 
 					<?php the_content();?>
+                    
                 <?php endwhile;endif;?>                
             </div>
             <!--blog posts container-->
             <div class="clearfix"></div>
-            <div class="entry-content">
-        <?php
-            the_content();
-
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
-                'after'  => '</div>',
-            ) );
-        ?>
-    </div><!-- .entry-content -->
         </div>
     </div>
     <?php if ( get_edit_post_link() ) : ?>

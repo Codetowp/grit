@@ -21,6 +21,7 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
 						<nav class="bottom-nav">
+							<ul>
 								<?php wp_nav_menu( array(
 									'theme_location' => 'footer-menu',
 								    'container' => 'nav'
@@ -28,6 +29,7 @@
 									);
 								?>
 							</nav>
+						</ul>
 						<?php endif; ?>
 							
 					</div>
@@ -42,12 +44,7 @@
 										printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html( $social ) );
 									}
 								}
-								if( get_theme_mod( 'social' ) == '' ){ ?>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<?php } ?>
+							?>
 						</ul>
 					</div>
 					<!--/Social Links--> 
