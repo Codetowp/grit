@@ -30,7 +30,9 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'about' );?>			
 <?php endif;?>
-<!-- // contact us SECTION -->
+<!-- Call to action SECTION  
+    ==========================================-->
+
 <?php
 $disable1    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
