@@ -21,18 +21,18 @@
 	<div class="arrow bounce"> <i class="fa fa-arrow-down fa-2x"></i> </div>
 </header>    
 
-	<div class="container">
-		<div class="row wow fadeInUp"> 
-			<!--blog posts container-->
-			<div class="col-md-9 col-sm-8 single-post">
-				<article class="post">
-					<?php echo the_content();?>					
-				</article>
-				<footer class="entry-footer entry-meta-bar">
-					<div class="entry-meta"> 
-						<i class="fa fa-tags"></i> 
-						<span class="tag-links  clearfix"> 
-							<?php grit_entry_tag(); ?>
-						</span> 
-					</div>
-				</footer><!--/footer tags--><?php grit_entry_edited();?>
+<div class="container">
+	<div class="row wow fadeInUp"> 
+		<!--blog posts container-->
+		<div class="col-md-9 col-sm-8 single-post">
+			<article class="post">
+				<?php echo the_content();?>					
+			</article>
+			<footer class="entry-footer entry-meta-bar">
+				<div class="entry-meta"> 
+					<i class="fa fa-tags"></i> 
+					<span class="tag-links  clearfix"> 
+						<?php grit_entry_tag(); ?>
+					</span> 
+				</div>
+			</footer><!--/footer tags--><?php grit_entry_edited();?>

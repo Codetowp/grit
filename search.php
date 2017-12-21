@@ -9,14 +9,14 @@
 get_header();
 ?>
 <section class="page">
-    <div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+	<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
 		<div class="content  wow fdeInUp">
 			<div class="container ">
-                <header class="page-header">
+				<header class="page-header">
 					<h1 class="page-title">
 						<?php
-							/* translators: %s: search query. */
-							printf( esc_html__( 'Search Results for: %s', 'grit' ), '<span>' . get_search_query() . '</span>' );
+						/* translators: %s: search query. */
+						printf( esc_html__( 'Search Results for: %s', 'grit' ), '<span>' . get_search_query() . '</span>' );
 						?>
 					</h1>
 				</header><!-- .page-header -->
@@ -28,7 +28,7 @@ get_header();
 			<div class="row  wow fdeInUp"> 
 				<div class="col-md-9 col-sm-7 col-xs-12 page-block "   ><!--blog page container--> 
 					<?php if ( have_posts() ) : ?>						
-					<?php
+						<?php
 						/* Start the Loop */
 						while ( have_posts() ) : the_post();
 							/**
@@ -39,10 +39,10 @@ get_header();
 							get_template_part( 'template-parts/content', 'search' );
 
 						endwhile;
-							the_posts_navigation();
-						else :
-							get_template_part( 'template-parts/content', 'none' );
-						endif; 
+						the_posts_navigation();
+					else :
+						get_template_part( 'template-parts/content', 'none' );
+					endif; 
 					?>
 				</div>
 			</div>

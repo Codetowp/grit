@@ -83,7 +83,7 @@ if ( ! function_exists( 'grit_entry_tag' ) ) :
 			
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'grit' ) );
+			$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'grit' ) );
 			if ( $tags_list ) 
 			{
 				/* translators: 1: list of tags. */
