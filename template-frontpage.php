@@ -16,7 +16,7 @@ get_header(); ?>
 <?php
 $disable1    = get_theme_mod( 'grit_header_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'home-banner' );?>
@@ -25,7 +25,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_about_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'about' );?>			
@@ -34,7 +34,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'home-contact' );?>
@@ -43,7 +43,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'ourwork' );?>
@@ -52,7 +52,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_process_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'process' );?>
@@ -61,7 +61,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_counter_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'counts' );?>  			
@@ -70,7 +70,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'testimonials' );?>  
@@ -79,7 +79,7 @@ if ( ! $disable1) : ?>
 <?php
 $disable1    = get_theme_mod( 'grit_latest_news_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
-    $disable1 = false;
+	$disable1 = false;
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'latest-news' );?> 

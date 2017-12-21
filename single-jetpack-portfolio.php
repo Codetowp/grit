@@ -9,71 +9,71 @@
 
 get_header(); ?>
 
- <?php
-   if(have_posts()):		  
-	  while ( have_posts() ) : the_post();	 
-   ?>
-   
+<?php
+if(have_posts()):		  
+	while ( have_posts() ) : the_post();	 
+		?>
+		
 <!-- banner Page
-    ==========================================-->
-<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url() ; ?>);">
-	<div class="content  wow fadeInUp">
-		<div class="container "> 
-			<?php 
-                                    $before='<span class="single-jet">';
-                                    $after='</span>';
-									$separator=',';
-									the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
-									?>
-		    <h1><?php the_title(); ?></h1>
-		 
-			<ul class="tag-head">
+	==========================================-->
+	<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url() ; ?>);">
+		<div class="content  wow fadeInUp">
+			<div class="container "> 
 				<?php 
-                                    $before='<li>';
-                                    $after='</li>';
-									$separator=',';
-									the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
-									?>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<!--page body-->
-
-<div id="Blog-post">
-	<div class="container">
-		<div class="row wow fadeInUp"> 
-			<!--blog posts container-->
-			<div class="col-md-12 single-post">
-				<?php the_content(); ?>
-
-				<!--footer tags-->
-				<footer class="entry-footer entry-meta-bar">
-					<div class="entry-meta"> 
-						<i class="fa fa-tags"></i> 
-						
-							<?php 
-                                    $before='<span class="tag-links  clearfix">';
-                                    $after='</span>';
-									$separator=',';
-									the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
-									?>
-						
-					</div>
-				</footer>
-				<!--/footer tags--> 
+				$before='<span class="single-jet">';
+				$after='</span>';
+				$separator=',';
+				the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
+				?>
+				<h1><?php the_title(); ?></h1>
+				
+				<ul class="tag-head">
+					<?php 
+					$before='<li>';
+					$after='</li>';
+					$separator=',';
+					the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
+					?>
+				</ul>
 			</div>
-			<!--blog posts container-->
-			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
-<!--/page body-->
 
-<?php 
-	endwhile;
-	endif;
+	<!--page body-->
+
+	<div id="Blog-post">
+		<div class="container">
+			<div class="row wow fadeInUp"> 
+				<!--blog posts container-->
+				<div class="col-md-12 single-post">
+					<?php the_content(); ?>
+
+					<!--footer tags-->
+					<footer class="entry-footer entry-meta-bar">
+						<div class="entry-meta"> 
+							<i class="fa fa-tags"></i> 
+							
+							<?php 
+							$before='<span class="tag-links  clearfix">';
+							$after='</span>';
+							$separator=',';
+							the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
+							?>
+							
+						</div>
+					</footer>
+					<!--/footer tags--> 
+				</div>
+				<!--blog posts container-->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--/page body-->
+
+	<?php 
+endwhile;
+endif;
 ?> 
 <div class="page-share-block">
 	<div class="container">

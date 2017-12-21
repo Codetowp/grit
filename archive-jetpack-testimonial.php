@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-	<?php $jetpack_options = get_theme_mod( 'jetpack_testimonials' ); ?>
+<?php $jetpack_options = get_theme_mod( 'jetpack_testimonials' ); ?>
 
 <?php
 $background_img = get_theme_mod( 'grit_testimonial_bck_ground_image' );
@@ -32,7 +32,7 @@ $image = $background_img ? "$background_img" : "$background_img_static";
 	<div class="container">
 		<div class="row">
 			<div class="works"> 
-			<!--portfolio grid-->
+				<!--portfolio grid-->
 				<ul class="grid">
 					<?php if ( have_posts() ) : ?>
 						<?php /* Start the Loop */ ?>
@@ -54,11 +54,11 @@ $image = $background_img ? "$background_img" : "$background_img_static";
 							'prev_text'          => esc_html__( 'Older projects', 'grit' ),
 							'next_text'          => esc_html__( 'Newer projects', 'grit' ),
 							'screen_reader_text' => esc_html__( 'Projects navigation', 'grit' ),
-						) ); ?>
-					</ul>
-				</nav>
+							) ); ?>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<?php get_footer(); ?>
+	</section>
+	<?php get_footer(); ?>

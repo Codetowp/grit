@@ -16,15 +16,15 @@ get_header(); ?>
 <?php
 if ( have_posts() ) :
 	if ( is_home() && ! is_front_page() ) : ?>
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-		</header>
+	<header>
+		<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+	</header>
 
-		<?php
-		endif;
+	<?php
+endif;
 
-		/* Start the Loop */
-		while ( have_posts() ) : the_post();
+/* Start the Loop */
+while ( have_posts() ) : the_post();
 
 			/*
 			 * Include the Post-Format-specific template for the content.
@@ -37,10 +37,10 @@ if ( have_posts() ) :
 
 		the_posts_navigation();
 
-		else :
+	else :
 
 		get_template_part( 'template-parts/content', 'none' );
 
-	endif; ?>
-<?php
-get_footer();
+		endif; ?>
+		<?php
+		get_footer();
