@@ -71,9 +71,9 @@ if ( ! empty( $user_ids ) ) {
 			<div class="<?php echo esc_attr($class); ?>">
 				<div class="c-block"> 
 					<?php  if($f['icon'] ){?>
-						<i class="<?php echo $classs; ?>" style="font-size:65px;padding-top:33px"></i> 
+						<i class="<?php echo esc_html($classs); ?>" style="font-size:65px;padding-top:33px"></i> 
 						<!-- <i class="fa fa-heart-o"></i> -->
-					<?php }else{ echo $media;  }?>
+					<?php }else{ echo esc_html($media);  }?>
 					<span class="counter"><?php echo esc_html( $f['count'] ); ?></span>
 					<p><?php echo esc_html($f['title']); ?></p>
 				</div>

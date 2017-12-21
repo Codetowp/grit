@@ -48,7 +48,7 @@ if ( ! empty( $page_ids ) ) {
 			 $media='';	
 		}                                                  
 ?>
-		<li ><?php echo $media; ?>
+		<li ><?php echo esc_html($media); ?>
 				<h5> <?php the_title(); ?></h5>
 				<p>
 					<?php 

@@ -138,6 +138,8 @@ add_image_size( 'grit_related_posts ', 262, 163,  array( 'top', 'center' ) );
 add_image_size( 'grit_single_product ', 270, 343,  array( 'top', 'center' ) );
 add_image_size( 'grit_portfolio-default', 363, 312,  array( 'top', 'center' ) );
 add_image_size( 'grit_process-default', 360, 463,  array( 'top', 'center' ) );
+add_image_size( 'grit_latest_news', 263, 163,  array( 'top', 'center' ) );
+add_image_size('grit_blog_image', 262, 163,  array( 'top', 'center' ));
 
 //add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
 // Breadcrumb Function

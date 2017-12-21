@@ -37,7 +37,12 @@ get_header(); ?>
 					?>
 				</nav>
 				<!--/posts navigation-->
-				
+				 <?php
+            wp_link_pages( array(
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+                'after'  => '</div>',
+            ) );
+        ?>
 				
                 <?php wp_reset_postdata(); ?>
 				<div class="clearfix"></div>

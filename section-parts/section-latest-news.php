@@ -41,11 +41,7 @@
 					<a href="<?php the_permalink();?>">
 						<h6><?php the_title();?></h6>
 					</a>
-					<?php 
-						$categories = get_the_category();
-						if ( ! empty( $categories ) ) {
-							echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ). '">'. esc_html( $categories[0]->name ) . '</a> ';
-					}?>
+					<?php the_category(',') ?>
 				</header>
             </article>
 			<?php   endwhile;endif;?>

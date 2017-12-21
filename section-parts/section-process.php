@@ -51,8 +51,8 @@ if ( ! empty( $page_ids ) ) {
 				$class ='';
 			} 
 			?>
-			<li class="<?php echo $firstClass;?>"><a href="#<?php echo $settings['title']?>" data-toggle="tab"><i class="<?php echo $class;?>"></i>
-			<h5><?php echo $settings['title']?></h5>
+			<li class="<?php echo esc_html($firstClass);?>"><a href="#<?php echo esc_html($settings['title']);?>" data-toggle="tab"><i class="<?php echo esc_html($class);?>"></i>
+			<h5><?php echo esc_html($settings['title']);?></h5>
 			</a>
 			</li>  
 		<?php $firstClass = ''; } ?>     

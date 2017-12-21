@@ -134,7 +134,7 @@ function grit_customize_register( $wp_customize ) {
    // Blog SETTINGS
    
        $wp_customize->add_section( 'header_image', array(
-            'title'          => __('Blog Settings' ),
+            'title'          => __('Blog Settings', 'grit' ),
             'theme_supports' => 'custom-header',
             'priority'       => 60,
             'panel'          =>'grit_general_panel',
