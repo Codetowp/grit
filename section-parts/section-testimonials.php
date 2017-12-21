@@ -1,8 +1,4 @@
-<?php
-$background_img = get_theme_mod( 'grit_testimonial_bck_ground_image',get_template_directory_uri() . '/assets/img/in-bg.jpg' );
-
-?>
-<section id="testimonials-block" class="text-center" style="background-image: url(<?php echo esc_url( $background_img); ?>);">
+<section id="testimonials-block" class="text-center">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
@@ -18,22 +14,22 @@ $background_img = get_theme_mod( 'grit_testimonial_bck_ground_image',get_templat
 
 					if ( post_type_exists( 'jetpack-testimonial' ) && $project_query -> have_posts() ) :
 
-						while ( $project_query -> have_posts() ) : $project_query -> the_post();
+					while ( $project_query -> have_posts() ) : $project_query -> the_post();
+					?>
+					<div class="item"> 
+						<?php the_post_thumbnail();?>
+						<h5><?php the_content();?></h5>
+						<p><strong>
+							<?php the_title();?></strong>
+							<?php if ( ! has_excerpt() ) {
+								echo '';} else { echo strip_tags( get_the_excerpt() ); 
+							} 
 							?>
-							<div class="item"> 
-								<?php the_post_thumbnail();?>
-								<h5><?php the_content();?></h5>
-								<p><strong>
-									<?php the_title();?></strong>
-									<?php if ( ! has_excerpt() ) {
-										echo '';} else { echo strip_tags( get_the_excerpt() ); 
-										} 
-										?>
-									</p>
-								</div>
-							<?php  	endwhile; endif;  wp_reset_postdata();?>
-						</div>
+						</p>
 					</div>
+					<?php endwhile; endif;  wp_reset_postdata();?>
 				</div>
 			</div>
-		</section>
+		</div>
+	</div>
+</section>
