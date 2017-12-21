@@ -12,9 +12,7 @@
  * @package grit
  */
 get_header(); ?>
-<!-- banner Page
-    ==========================================-->
-
+<!-- // banner SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_header_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -23,8 +21,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'home-banner' );?>
 <?php endif;?>
-<!-- about us Page
-    ==========================================-->
+<!-- // about us SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_about_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -33,8 +30,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'about' );?>			
 <?php endif;?>
-<!-- contact us Page
-    ==========================================-->
+<!-- // contact us SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -43,8 +39,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'home-contact' );?>
 <?php endif;?>
-<!-- our works block
-    ==========================================-->
+<!-- // our works SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -53,8 +48,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'ourwork' );?>
 <?php endif;?>
-<!-- the process block
-    ==========================================-->
+<!-- // the process SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_process_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -62,10 +56,8 @@ if ( grit_is_selective_refresh() ) {
 }
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'process' );?>
-			
 <?php endif;?>
-<!-- Company counter section
-    ==========================================-->
+<!-- // Company counter SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_counter_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -74,10 +66,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'counts' );?>  			
 <?php endif;?>
-<!-- /Company counter section --> 
-
-<!-- Testimonials Section
-    ==========================================-->
+<!-- // Testimonials SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
 if ( grit_is_selective_refresh() ) {
@@ -86,8 +75,7 @@ if ( grit_is_selective_refresh() ) {
 if ( ! $disable1) : ?>
 <?php  get_template_part( 'section-parts/section', 'testimonials' );?>  
 <?php endif;?>
-<!-- latest news block
-    ==========================================-->
+<!-- // latest news SECTION -->
 <?php
 $disable1    = get_theme_mod( 'grit_latest_news_check' ) == 1 ? true : false ;
 if ( grit_is_selective_refresh() ) {
