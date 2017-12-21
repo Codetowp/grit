@@ -28,7 +28,7 @@ if ( ! function_exists( 'grit_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( '%s', 'post date', 'grit' ),
+			esc_html( '%s', 'post date', 'grit' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -57,7 +57,7 @@ if ( ! function_exists( 'grit_entry_category' ) ) :
 			if ( $categories_list ) 
 			{
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'grit' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html( '%1$s', 'grit' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
 
 			
@@ -65,8 +65,6 @@ if ( ! function_exists( 'grit_entry_category' ) ) :
 
 	}
 endif;
-
-
 
 /*t section*/
 
@@ -81,17 +79,14 @@ if ( ! function_exists( 'grit_entry_tag' ) ) :
 		if ( 'post' === get_post_type() ) 
 		{
 			
-
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'grit' ) );
 			if ( $tags_list ) 
 			{
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( '%1$s', 'grit' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html( '%1$s', 'grit' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
-
-		
 
 	}
 endif;
@@ -143,13 +138,6 @@ if ( ! function_exists( 'grit_entry_edited' ) ) :
 		);
 	}
 endif;
-
-
-
-
-
-
-
 
 /*count section*/
 if ( ! function_exists( 'grit_get_section_counter_data' ) ) 
