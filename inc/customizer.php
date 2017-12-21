@@ -479,7 +479,7 @@ $wp_customize->add_setting( 'grit_header_page_text', array(
 
 $wp_customize->add_control( 'grit_about_header', array(
     'type'						=> 'text',
-    'label' 					=> __( 'Header', 'grit' ),
+    'label' 					=> __( 'Heading', 'grit' ),
     'section'  					=> 'grit_about_section',
     'priority' 					=> 2,
 ) );
