@@ -2434,6 +2434,8 @@ embed, iframe, object {
 	padding: 0px 0;
 	height: 100vh;
 	position: relative;
+	background-attachment: fixed;
+
 }
 #home-banner:before {
 	content: "";
@@ -3215,6 +3217,7 @@ ul.about-features li:hover i {
 	-o-background-size: cover;
 	background-size: cover;
 	background-position: center;
+    background-attachment: fixed;
 	padding: 80px 0;
 	height: 560px;
 	position: relative;
@@ -3309,6 +3312,7 @@ ul.about-features li:hover i {
 	-o-background-size: cover;
 	background-size: cover;
 	background-position: center;
+	background-attachment: fixed;
 	/*padding: 80px 0;*/
 	height: 100vh;
 	text-align: center;
@@ -4053,6 +4057,9 @@ to {
 	margin: 0 0 1em;
 	box-shadow: none;
 }
+
+.single-product div.product .woocommerce-product-gallery .flex-control-thumbs li img{max-width:inherit;}
+
 .woocommerce img.size-shop_catalog, .woocommerce-page img.size-shop_catalog {
 	height: auto;
 	max-width: 100%;
