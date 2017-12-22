@@ -10,34 +10,34 @@
  */
 
 ?>
+
 <footer id="bottom-footer">
-	<div class="container">
-		<div class="row wow fadeInUp">
-			<div class="col-md-4 col-sm-4 col-xs-12"> 
-				<!--copyright-->
-				<p class="copyright">&#169; 2017 Digital Blogger. All rights reserved</p>					
-			</div>
-			<!--bottom nav-->
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
-					<nav class="bottom-nav">
-						<ul>
-							<?php wp_nav_menu( array(
+  <div class="container">
+    <div class="row wow fadeInUp">
+      <div class="col-md-4 col-sm-4 col-xs-12"> 
+        <!--copyright-->
+        <p class="copyright">&#169; 2017 Digital Blogger. All rights reserved</p>
+      </div>
+      <!--bottom nav-->
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+        <nav class="bottom-nav">
+          <ul>
+            <?php wp_nav_menu( array(
 								'theme_location' => 'footer-menu',
 								'container' => 'nav'
 							) 
 						);
 						?>
-					</nav>
-				</ul>
-			<?php endif; ?>
-
-		</div>
-		<!--/bottom nav-->       
-		<!--Social Links-->
-		<div class="col-md-4 col-sm-4 col-xs-12 custom-social">
-			<ul class="social-link">
-				<?php
+          </ul>
+        </nav>
+        <?php endif; ?>
+      </div>
+      <!--/bottom nav--> 
+      <!--Social Links-->
+      <div class="col-md-4 col-sm-4 col-xs-12 custom-social">
+        <ul class="social-link">
+          <?php
 				if ( $socials = get_theme_mod( 'social') ){
 					$socials = $socials ? array_filter( $socials ) : array();
 					foreach ( $socials as $social => $name ) {
@@ -45,12 +45,12 @@
 					}
 				}
 				?>
-			</ul>
-		</div>
-		<!--/Social Links--> 
-
-	</div>
-</div>
+        </ul>
+      </div>
+      <!--/Social Links--> 
+      
+    </div>
+  </div>
 </footer>
 <?php wp_footer(); ?>
 <?php if ( is_front_page() ){ ?>
@@ -61,10 +61,9 @@
 			time: 1000
 		});
 	});
-</script> 
+</script>
 <?php } ?>
 <script>
 	new WOW().init();
 </script>
-</body>
-</html>
+</body></html>
