@@ -145,6 +145,18 @@ jQuery(document).ready(function(){
 	});
 });
 
+
+jQuery(document).ready(function() {     
+    jQuery('#nav-top li , #nav-top li ul li ').hover(function(){     
+        jQuery('#nav-top').addClass('drop-show');    
+    },     
+    function(){    
+        jQuery('#nav-top').removeClass('drop-show');     
+    });
+});   
+
+
+
 jQuery('.guide-block .nav-tabs > li > a').hover(function() {
   jQuery(this).tab('show');
 });
