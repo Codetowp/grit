@@ -24,7 +24,7 @@
 <div class="container">
 	<div class="row wow fadeInUp"> 
 		<!--blog posts container-->
-		<div class="col-md-9 col-sm-8 single-post">
+		<div class="col-md-9 col-sm-12 single-post">
 			<article class="post">
 				<?php echo the_content();?>					
 			</article>

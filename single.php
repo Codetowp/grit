@@ -59,7 +59,7 @@ get_header(); ?>
 	</div>
 	<!--blog posts container--> 
 	<!--aside-->
-	<aside class="col-md-3 col-sm-4" > 
+	<aside class="col-md-3 col-sm-12" > 
 		<?php get_sidebar(); ?> 
 	</aside>
 	<!--aside-->
