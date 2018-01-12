@@ -197,6 +197,7 @@ pre {
 #top-menu {
 	padding: 40px 20px;
 	transition: all 0.8s;
+	
 }
 #top-menu nav.bottom-nav {
 	display: none;
@@ -204,6 +205,7 @@ pre {
 #top-menu.navbar-default {
 	background-color: rgba(248, 248, 248, 0);
 	border-color: rgba(231, 231, 231, 0);
+	position:absolute;
 }
 #top-menu a.navbar-brand {
 	text-transform: uppercase;
@@ -339,9 +341,10 @@ a.navbar-brand:hover span {
 #top-menu.navbar-default .navbar-nav > li:last-child a:after {
 	display: none;
 }
-.on {
+#top-menu.on {
 	background-color: #222222 !important;
 	padding: 0 !important;
+	position:fixed;
 }
 #top-menu.navbar-default.on .navbar-nav ul li {
 	background-color: #222222 !important;
@@ -4319,6 +4322,11 @@ to {
 	padding-bottom: 30px;
 	margin-bottom: 16px;
 }
+
+.woocommerce-Reviews img{ float:left; margin-right:15px;}
+.woocommerce-Reviews .comment-text{text-align:left;}
+.woocommerce-Reviews .comment-text p.meta{margin:0;}
+
 .product_title.entry-title {
 	font-size: 42px;
 	text-transform: uppercase;
@@ -4729,9 +4737,7 @@ ul.about-features li {
 }
 #search {
 	display: inline-block;
-	/* float: none !important; */
 	margin-left: -15px;
-	/* width: 100%; */
 	float: right;
 }
 .single .single-post ul, .single .single-post ol, .page .page-block ul, .page .page-block ol {
@@ -4744,10 +4750,13 @@ blockquote {
 	margin-left: 0;
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	display: inline-block;
+	display: block;
 	margin: 1.9em;
-	width: 42%;
+	
 }
+
+.single-product.woocommerce a.woocommerce-LoopProduct-link.woocommerce-loop-product__link{display:block;}
+
 #our-work-block .works ul li {
 	width: 47%;
 	min-height: 100%;
@@ -4921,10 +4930,7 @@ background:#171616 !;
 	left: 15px;
 	right: 0;
 }
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-	width: 44%;
-	margin: 1em;
-}
+
 #nav-top {
 	display: block;
 	overflow: visible;
@@ -5045,6 +5051,17 @@ ul.about-features li i {
 .page-block h1, .page-block h2, .page-block h3, .page-block h4, .page-block h5, .page-block h6, .page-block p {
 	margin-left: auto;
 }
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	margin: 1em;
+}
+.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{width:100%;}
+
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{width:100%;}
+
+.single-product.woocommerce .products ul, .woocommerce ul.products{display:block;}
+
+
 }
  @media (max-width: 360px) {
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
