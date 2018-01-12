@@ -64,8 +64,8 @@
 					foreach ($page_ids as $post_id => $settings  ) {
 						$post_id = $settings['content_page'];
 						$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-						$post = get_post( $post_id );
-						setup_postdata( $post );
+						$post1 = get_post( $post_id );
+						setup_postdata( $post1 );
 						?>
 						<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
 							<!--tab img-->

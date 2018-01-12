@@ -32,8 +32,8 @@
 					foreach ($page_ids as $settings ) {
 						$post_id = $settings['content_page'];
 						$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-						$post = get_post($post_id);
-						setup_postdata($post);
+						$post1 = get_post($post_id);
+						setup_postdata($post1);
 						$settings['icon'] = trim($settings['icon']);
 						if ( $settings['icon'] ) {
 							$settings['icon'] = trim( $settings['icon'] );
