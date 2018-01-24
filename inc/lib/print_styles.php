@@ -4,7 +4,7 @@ if (!function_exists('text_color_styles'))
 	function text_color_styles()
 	{
 		
-		$color_value 	= get_theme_mod('header_textcolor', 'grit');
+		$color_value 	= get_theme_mod('header_textcolor');
 		$append_color 	= sprintf( 'color: %s;',  $color_value );
 		if ( $color_value ) 
 		{
@@ -20,12 +20,12 @@ if (!function_exists('grit_paragraph_font_family'))
 	function grit_paragraph_font_family()
 	{
 		
-		$fontfamily_value 	= get_theme_mod('grit_paragraph_font','Montserrat','grit');
+		$fontfamily_value 	= get_theme_mod('grit_paragraph_font');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" .'#about-us-block p{' .esc_html( $append_family ). '}' ."\n".'#process-block p{' .esc_html( $append_family ). '}'."\n".'#process-block process-content p{' .esc_html( $append_family ). '}'."\n".'#testimonials-block p{' .esc_html( $append_family ). '}'."\n".'.widget ul li{' .esc_html( $append_family ). '}'."\n".'.widget_recent_entries ul li .media-body p a{' .esc_html( $append_family ) .'}'."\n".'.widget ul li{' .esc_html( $append_family ).'}'."\n".'.widget{' .esc_html( $append_family ).'}'."\n" .'.single .single-post p{' .esc_html( $append_family ).'}';
+			echo "\n" .'#about-us-block p,#process-block p,#process-block process-content p,#testimonials-block p,.widget ul li,.widget_recent_entries ul li .media-body p a,.widget ul li,.widget,.single .single-post p{' .esc_html( $append_family ). '}';
 		}
 		
 	}
@@ -37,12 +37,12 @@ if (!function_exists('grit_paragraph_font_color'))
 	function grit_paragraph_font_color()
 	{
 		
-		$color_value 		= get_theme_mod('grit_paragraph_font_color', 'grit');
+		$color_value 		= get_theme_mod('grit_paragraph_font_color');
 		$append_color 		= sprintf( 'color: %s !important;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . '#about-us-block p{' .esc_html( $append_color ). '}' ."\n".'#process-block p{' .esc_html( $append_color ). '}'."\n".'#process-block .process-content p{' .esc_html( $append_color) .'}'."\n".'#testimonials-block p{' .esc_html( $append_color ).'}'."\n" .'.single .single-post p{' .esc_html( $append_color ).'}' ;
+			echo "\n" . '#about-us-block p,#process-block p,#process-block .process-content p,#testimonials-block p,.single .single-post p{' .esc_html( $append_color ). '}';
 		}
 		
 	}
@@ -53,7 +53,7 @@ if (!function_exists('grit_paragraph_font_size_styles'))
 	function grit_paragraph_font_size_styles()
 	{
 		
-		$fontparagraphfamily_value 	= get_theme_mod('grit_paragraph_font_size', 'grit');
+		$fontparagraphfamily_value 	= get_theme_mod('grit_paragraph_font_size');
 		$append_para_family_font 	= sprintf( 'font-size: %spx !important;',  $fontparagraphfamily_value );
 			// Output the styles.
 		if ( $fontparagraphfamily_value ) 
@@ -69,13 +69,12 @@ if (!function_exists('grit_font_family'))
 	function grit_font_family()
 	{
 		
-		$fontfamily_value 	= get_theme_mod('grit_font_family','Montserrat ','grit');
+		$fontfamily_value 	= get_theme_mod('grit_font_family');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" . 'h1{' . esc_html( $append_family ) . '}'."\n".'h2{' .esc_html( $append_family ).'}'."\n".'h3{' .esc_html($append_family). '}'.
-			"\n".'h4{' .esc_html( $append_family ).'}'."\n".'h5{' .esc_html($append_family). '}'."\n".'h6{' .esc_html( $append_family). '}'."\n".'.widget-title{' .esc_html( $append_family ).'}' ;
+			echo "\n" . 'h1,h2,h3,h4,h5,h6,.widget-title{' . esc_html( $append_family ) . '}';
 		}
 		
 	}
@@ -86,13 +85,12 @@ if (!function_exists('grit_font_size_styles'))
 	function grit_font_size_styles()
 	{
 		
-		$fontfamily_value 	= get_theme_mod('grit_font_size', 'grit');
+		$fontfamily_value 	= get_theme_mod('grit_font_size');
 		$append_family_font = sprintf( 'font-size: %spx !important;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" . 'h1{' . esc_html( $append_family_font ) . '}'."\n".'h2{' . esc_html( $append_family_font ) . '}'."\n".'h3{' . esc_html( $append_family_font ) . '}'.
-			"\n".'h4{' . esc_html( $append_family_font ) .'}'."\n".'h5{' . esc_html( $append_family_font ) .'}' ;
+			echo "\n" . 'h1,h2,h3,h4,h5,h6{' . esc_html( $append_family_font ) . '}';
 		}
 		
 	}
@@ -103,13 +101,12 @@ if (!function_exists('grit_font_color'))
 	function grit_font_color()
 	{
 		
-		$color_value 		= get_theme_mod('grit_font_color', 'grit');
+		$color_value 		= get_theme_mod('grit_font_color');
 		$append_color 		= sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . 'h1{' . esc_html( $append_color ) . '}'."\n".'h2{' . esc_html( $append_color ) .'}'."\n".'h3{' . esc_html( $append_color ) .'}'.
-			"\n".'h4{' . esc_html( $append_color ) .'}'."\n".'h5{' . esc_html( $append_color ) .'}' ."\n".'h6{' . esc_html( $append_color ) .'}'."\n".'#process-block .process-content h6{' . esc_html( $append_color ) .'}'."\n".'#latest-news-block h2{' . esc_html( $append_color ) .'}';
+			echo "\n" . 'h1,h2,h3,h4,h5,h6,#process-block .process-content h6,#latest-news-block h2{' . esc_html( $append_color ) . '}';
 		}
 		
 	}
@@ -120,7 +117,7 @@ if (!function_exists('grit_accent_color'))
 	function grit_accent_color()
 	{
 		
-		$color_value 		= get_theme_mod('grit_accent_color', '#f53347');
+		$color_value 		= get_theme_mod('grit_accent_color');
 		$append_color 		= sprintf( 'background-color: %s;border: 2px %s solid',  $color_value, $color_value );
 		$icon_color 		= sprintf( 'color: %s', $color_value );
 		$process_color 		= sprintf( 'background: %s', $color_value );
@@ -139,8 +136,8 @@ if (!function_exists('grit_header_background'))
 	function grit_header_background()
 	{
 		
-		$color_value 		= get_theme_mod('grit_header_background_color', 'grit');
-		$opacity_value 		= get_theme_mod('grit_transparnt', '');
+		$color_value 		= get_theme_mod('grit_header_background_color');
+		$opacity_value 		= get_theme_mod('grit_transparnt');
 		$append_color 		= sprintf( 'background-color: %s;',  $color_value );
 		$append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
 			// Output the styles.
@@ -157,8 +154,8 @@ if (!function_exists('grit_count_background_color'))
 	function grit_count_background_color()
 	{
 		
-		$color_value 		= get_theme_mod('grit_counter_background_color', 'grit');
-		$opacity_value 		= get_theme_mod('grit_counter_transparnt', '');
+		$color_value 		= get_theme_mod('grit_counter_background_color');
+		$opacity_value 		= get_theme_mod('grit_counter_transparnt');
 		$append_color 		= sprintf( 'background: %s;',  $color_value );
 		$append_opacity 	= sprintf( 'opacity: %s;',  $opacity_value );
 			// Output the styles.

@@ -14,11 +14,11 @@ function grit_customize_register( $wp_customize ) {
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
     require get_template_directory() . '/inc/lib/theme-info.php'; 
     $pages  =  get_pages();
-    $option_pages = array();
-    $option_pages[0] = esc_html__( 'Select page', 'grit' );
+    $grit_option_pages = array();
+    $grit_option_pages[0] = esc_html__( 'Select page', 'grit' );
     foreach( $pages as $p )
     {
-       $option_pages[ $p->ID ] = $p->post_title;
+       $grit_option_pages[ $p->ID ] = $p->post_title;
    }
 
    require get_template_directory() . '/inc/customizer-controls.php';
@@ -145,10 +145,10 @@ $wp_customize->add_section('grit_font', array(
 
 ));
 
-$font_choices                   = customizer_library_get_font_choices();
+$font_choices                   = grit_customizer_library_get_font_choices();
 $wp_customize                   ->add_setting( 'grit_paragraph_font', array(
     'default'                   => 'Montserrat',
-    'sanitize_callback'         =>'customizer_library_sanitize_font_choice',
+    'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
 ) );
 
 $wp_customize->add_control( 'grit_paragraph_font', array(
@@ -194,7 +194,7 @@ $wp_customize->add_control( new Grit_Customizer_Range_Value_Control( $wp_customi
 
 $wp_customize->add_setting( 'grit_font_family', array(
     'default'                   => 'Montserrat',
-    'sanitize_callback'         =>'customizer_library_sanitize_font_choice',
+    'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
 ) );
 
 $wp_customize->add_control( 'grit_font_family', array(
@@ -434,7 +434,7 @@ $wp_customize->add_setting( 'grit_header_page_text', array(
         $wp_customize->add_setting( 'grit_transparnt', array( 
            'default'                    => __( '0.7', 'grit' ),
            'transport'                  => 'refresh',
-           'sanitize_callback'          => 'absint',
+           'sanitize_callback'          => 'sanitize_text_field',
          ) );
 		 
         $wp_customize->add_control( 'grit_transparnt', array(
@@ -547,7 +547,7 @@ $wp_customize->add_setting( 'grit_about_boxes', array(
 						'content_page'  => array(
 							'title' 	=> esc_html__('Select a page', 'grit'),
 							'type'  	=>'select',
-							'options'		=> $option_pages
+							'options'		=> $grit_option_pages
 						),
 						'icon'  		=> array(
 							'title' 	=> esc_html__('Icon', 'grit'),
@@ -749,7 +749,7 @@ $wp_customize->add_setting( 'grit_work_header', array(
 						'content_page'  => array(
 							'title' 	=> esc_html__('Select a page', 'grit'),
 							'type'  	=>'select',
-							'options' 	=> $option_pages
+							'options' 	=> $grit_option_pages
 						),
 						'icon'  	=> array(
 							'title' 	=> esc_html__('Icon', 'grit'),
@@ -881,7 +881,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit
 $wp_customize->add_setting( 'grit_counter_transparnt', array( 
    'default'                    => __( '0.7', 'grit' ),
    'transport'                  => 'refresh',
-   'sanitize_callback'          => 'absint',
+   'sanitize_callback'          => 'sanitize_text_field',
 ) );
 
 $wp_customize->add_control( 'grit_counter_transparnt', array(
@@ -1067,13 +1067,6 @@ function grit_customize_partial_counter_check() {
 function grit_customize_partial_latest_news_header() {
    return get_theme_mod('grit_latest_news_header');
 }  
-
-function grit_sanitize_integer( $input ) {
- if( is_numeric( $input ) ) {
-    return intval( $input );
-}
-}
-
 function grit_sanitize_checkbox( $input ) {
     if ( $input == 1 ) {
       return 1;

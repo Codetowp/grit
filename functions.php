@@ -167,10 +167,10 @@ function the_breadcrumb() {
 function demo_fonts() {
 	// Font options
 	$fonts = array(
-		get_theme_mod( 'grit_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
-		get_theme_mod( 'grit_font_family', customizer_library_get_default( 'secondary-font' ) ),
+		get_theme_mod( 'grit_paragraph_font', grit_customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'grit_font_family', grit_customizer_library_get_default( 'secondary-font' ) ),
 	);
-	$font_uri = customizer_library_get_google_font_uri( $fonts );
+	$font_uri = grit_customizer_library_get_google_font_uri( $fonts );
 	// Load Google Fonts
 	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
 }
