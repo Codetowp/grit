@@ -234,7 +234,7 @@ if ( ! function_exists( 'grit_is_selective_refresh' ) ) {
 
 /*for font*/
 
-function customizer_library_get_default( $setting ) {
+function grit_customizer_library_get_default( $setting ) {
 
 	$customizer_library = Customizer_Library::Instance();
 	$options = $customizer_library->get_options();

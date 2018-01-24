@@ -38,7 +38,7 @@
       <div class="col-md-4 col-sm-4 col-xs-12 custom-social">
         <ul class="social-link">
           <?php
-				if ( $socials = get_theme_mod( 'social') ){
+				if ( $socials = get_theme_mod( 'grit_social') ){
 					$socials = $socials ? array_filter( $socials ) : array();
 					foreach ( $socials as $social => $name ) {
 						printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html( $social ) );

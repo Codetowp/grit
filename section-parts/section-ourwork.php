@@ -51,7 +51,7 @@
 											the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
 											?>
 											<ul class="work-more">
-												<li><a href="<?php the_permalink();?>"><i class="fa fa-search"></i></a></li>
+												<li><a href="<?php the_post_thumbnail_url();?>"><i class="fa fa-search"></i></a></li>
 												<li><a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a></li>
 											</ul>
 										</div>

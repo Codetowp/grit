@@ -55,7 +55,9 @@
 							<h5><?php echo esc_html($settings['title']);?></h5>
 						</a>
 					</li>  
-					<?php $firstClass = ''; } ?>     
+					<?php $firstClass = ''; }
+                     wp_reset_postdata();
+					 ?>     
 				</ul>
 					<!--/tab nav--> 
 				<div class="tab-content"> 
@@ -63,23 +65,24 @@
 					$firstClass = 'active'; 
 					foreach ($page_ids as $post_id => $settings  ) {
 						$post_id = $settings['content_page'];
-						$post_id = apply_filters( 'wpml_object_id', $post_id, 'page', true );
-						$post1 = get_post( $post_id );
-						setup_postdata( $post1 );
 						?>
 						<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
 							<!--tab img-->
-							<div class="col-md-5 process-img">  <?php the_post_thumbnail('grit_process-default');?> </div>
+							<div class="col-md-5 process-img"><?php  echo get_the_post_thumbnail( $post_id, 'grit_process-default' ); ?></div>
 							<!--/tab img--> 
 							<!--tab content-->
 							<div class="col-md-7 process-content">
-								<h6><?php the_title(); ?></h6>
+								<h6> <?php echo esc_html( get_the_title($post_id) ); ?></h6>
 								<p>
 									<?php
-									$content = get_the_content(); 
+									$content = get_post_field('post_content', $post_id); 
 									echo mb_strimwidth($content, 0, 500, '...');
-									?></p>
-									<a href="<?php echo esc_url( get_permalink($post) ); ?>">Read More</a> </div>
+									
+										
+                                    ?>
+
+									</p>
+									<a href="<?php echo esc_url( get_permalink($post_id) ); ?>">Read More</a> </div>
 									<!--/tab content--> 
 								</div>
 								<?php
