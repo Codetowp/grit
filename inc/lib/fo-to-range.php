@@ -36,7 +36,7 @@ if ( ! class_exists( 'Customizer_Library' ) ) :
 	}
 endif;
  
-    class Customizer_Toggle_Control extends WP_Customize_Control 
+    class Grit_Customizer_Toggle_Control extends WP_Customize_Control 
 	{
 		public $type = 'toggle';
 		public function enqueue() 
@@ -71,7 +71,7 @@ endif;
 		}
 	}
 
-    class Customizer_Range_Value_Control extends WP_Customize_Control 
+    class Grit_Customizer_Range_Value_Control extends WP_Customize_Control 
 	{
 		public $type = 'range-input';
 		public function enqueue() 
