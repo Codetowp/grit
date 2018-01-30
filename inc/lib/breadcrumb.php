@@ -5,7 +5,7 @@
  * @package grit
  */
 
-function the_breadcrumb() {
+function grit_breadcrumb() {
 	if ( !is_home() ) {
 		echo '<li class="breadcrumb-item">';
 		echo '<a href="';

@@ -1,9 +1,19 @@
-<header class="entry-header" style="background-image: url(<?php echo  the_post_thumbnail_url('grit_single_product'); ?>);">
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package grit
+ */
+ ?>
+ 
+<header class="entry-header" style="background-image: url(<?php the_post_thumbnail_url('grit_full_banner'); ?>);">
 	<div class="content wow fadeInUp">
 		<div class="container"> 
 			<!--breadcrumb-->
 			<ol class="breadcrumb">
-				<?php the_breadcrumb(); ?>
+				<?php grit_breadcrumb(); ?>
 			</ol>
 			<h1><?php the_title(); ?> </h1>
 			<hr>

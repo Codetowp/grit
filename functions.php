@@ -131,7 +131,7 @@ add_action( 'widgets_init', 'grit_widgets_init' );
 	require get_template_directory() . '/inc/lib/breadcrumb.php';
 
 	// Custom Theme Image Sizes
-	add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );
+	add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );//ok
 	add_image_size( 'grit_process_medium ', 400, 470,  array( 'top', 'center' ) );
 	add_image_size( 'grit_post_preview ', 270, 180,  array( 'top', 'center' ) );
 	add_image_size( 'grit_recent_posts ', 50, 50,  array( 'top', 'center' ) );
