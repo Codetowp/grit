@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row wow fadeInUp">
 			<div class="col-md-4 col-sm-4 col-xs-12">
-				<p class="copyright">&#169; <?php echo bloginfo('name'); ?>2018. <?php echo esc_html_e('All rights reserved', 'grit'); ?>.</p>
+				<p class="copyright">&#169; <?php echo bloginfo('name'); ?> 2018. <?php echo esc_html_e('All rights reserved', 'grit'); ?>.</p>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
