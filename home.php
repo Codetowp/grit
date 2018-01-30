@@ -15,7 +15,7 @@
 get_header(); ?>
 <section class="page">
 	<div id="page-banner" style="background-image: url( <?php header_image(); ?> );">
-		<div class="content  wow fdeInUp">
+		<div class="content wow fadeInUp">
 			<div class="container">                
 				<?php
 				$grit_header_page_text = get_theme_mod( 'grit_latest_news_header', esc_html__( 'Our Blog', 'grit' ) );
@@ -26,19 +26,19 @@ get_header(); ?>
 	</div>
 	<div id="page-body">
 		<div class="container">
-			<div class="row  wow fdeInUp"> 
-				<!--blog page container-->
-				<div class="col-md-9 col-sm-7 col-xs-12 page-block "   > 
+			<div class="row wow fadeInUp"> 
+				<!-- Blog page container-->
+				<div class="col-md-9 col-sm-7 col-xs-12 page-block"> 
 					<?php
 					if( have_posts() ):
+					// Start of the loop.
 						while ( have_posts() ) : the_post();
 							get_template_part( 'template-parts/content', get_post_format() );
-						endwhile; // End of the loop.
-					endif;
+						endwhile; 
 					?>
 					<div class="clearfix"></div>
 
-					<!--/portfolio page nav-->
+					<!-- Pagination -->
 					<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 						<ul>
 							<?php
@@ -48,23 +48,21 @@ get_header(); ?>
 							) );
 							?>
 							<?php wp_reset_postdata(); ?>
-							
 						</ul>
 					</nav>
+					<?php 
+					else :
+					get_template_part( 'template-parts/content', 'none' );
+					endif; ?>
 				</div>
-				<!--blog page container--> 
-
-				<!--aside-->
-				<aside class="col-md-3 col-sm-5" > 
+				<!-- Sidebar -->
+				<aside class="col-md-3 col-sm-5"> 
 					<?php get_sidebar(); ?> 
 				</aside>
-				<!--aside-->
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
 </section>
-
 <?php
-
 get_footer();
