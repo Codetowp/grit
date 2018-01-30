@@ -26,7 +26,8 @@ get_header(); ?>
 			<div class="row wow fadeInUp"> 
 				<!--blog page container-->
 				<div class="col-md-12 col-xs-12 page-block"> 
-					<?php if ( have_posts() ) : 
+					<?php 
+					if ( have_posts() ) : 
 					/* Start the Loop */
 					while ( have_posts() ) : the_post();					
 						get_template_part( 'template-parts/content', 'archive' ); 						

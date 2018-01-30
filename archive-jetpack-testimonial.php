@@ -7,14 +7,8 @@
 
 get_header(); ?>
 <?php $jetpack_options = get_theme_mod( 'jetpack_testimonials' ); ?>
-
-<?php
-$background_img = get_theme_mod( 'grit_testimonial_bck_ground_image' );
-$background_img_static = get_template_directory_uri() . '/assets/img/in-bg.jpg';
-$image = $background_img ? "$background_img" : "$background_img_static";   
-?>
-<div id="page-banner" style="background-image: url(<?php echo esc_url( $image ); ?>);">
-	<div class="content  wow fdeInUp">
+<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
+	<div class="content wow fadeInUp">
 		<div class="container ">
 			<h1>
 				<?php
@@ -37,18 +31,18 @@ $image = $background_img ? "$background_img" : "$background_img_static";
 					<?php if ( have_posts() ) : ?>
 						<?php /* Start the Loop */ ?>
 						<?php while ( have_posts() ) : the_post(); ?>
-							<div class="item">  <?php the_post_thumbnail();?>
-								<h5><?php the_excerpt();?></h5>
-								<p><strong>Dean Martin</strong> CEO Acme Inc.</p>
+							<div class="item"><?php the_post_thumbnail();?>
+								<h5><?php the_title();?></h5>
+								<strong><?php the_excerpt();?></strong>
 							</div>
-						<?php  endwhile;
+						<?php endwhile;
 					endif;
 					wp_reset_postdata();?>   
 				</ul>
 				<!--/portfolio grid-->
 				<div class="clearfix"></div>
 				<!--/portfolio page nav-->
-				<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
+				<nav class="navigation posts-navigation wow fadeInUp" role="navigation">
 					<ul>
 						<?php the_posts_navigation( array(
 							'prev_text'          => esc_html__( 'Older projects', 'grit' ),
@@ -61,4 +55,5 @@ $image = $background_img ? "$background_img" : "$background_img_static";
 			</div>
 		</div>
 	</section>
-	<?php get_footer(); ?>
+<?php 
+get_footer(); ?>
