@@ -93,7 +93,7 @@ add_action( 'after_setup_theme', 'grit_setup' );
  * @global int $content_width
  */
 function grit_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'grit_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'grit_content_width', 840 );
 }
 add_action( 'after_setup_theme', 'grit_content_width', 0 );
 /**
@@ -123,47 +123,29 @@ function grit_widgets_init() {
 	require get_template_directory() . '/inc/widgets/social.php';
 }
 add_action( 'widgets_init', 'grit_widgets_init' );
-//recent post widget
-require get_template_directory() . '/inc/widgets/recentpost.php';
-require get_template_directory() . '/inc/lib/print_styles.php';
-// Custom Theme Functions
-require get_template_directory() . '/inc/lib/related-post.php';
-// Custom Theme Image Sizes
-add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );
-add_image_size( 'grit_process_medium ', 400, 470,  array( 'top', 'center' ) );
-add_image_size( 'grit_post_preview ', 270, 180,  array( 'top', 'center' ) );
-add_image_size( 'grit_recent_posts ', 50, 50,  array( 'top', 'center' ) );
-add_image_size( 'grit_related_posts ', 262, 163,  array( 'top', 'center' ) );
-add_image_size( 'grit_single_product ', 270, 343,  array( 'top', 'center' ) );
-add_image_size( 'grit_portfolio-default', 363, 312,  array( 'top', 'center' ) );
-add_image_size( 'grit_process-default', 360, 463,  array( 'top', 'center' ) );
-add_image_size( 'grit_latest_news', 263, 163,  array( 'top', 'center' ) );
-add_image_size('grit_blog_image', 262, 163,  array( 'top', 'center' ));
 
-//add_image_size( 'grit_category', 265, 163,  array( 'top', 'center' ) );
-// Breadcrumb Function
-function the_breadcrumb() {
-	if ( !is_home() ) {
-		echo '<li class="breadcrumb-item">';
-		echo '<a href="';
-		echo esc_url( home_url( '/' ) );
-		echo '">';
-		echo esc_html_e( 'Home', 'grit' );
-		echo "</a>";
-		echo '</li>';
-		echo '<li class="breadcrumb-item">';
-		if ( is_category() || is_single() ) {
-			the_category( ',' );			
-		} elseif ( is_page() ) {
-			echo the_title();
-		}
-		echo '</li>';
-	}
-}
-/*fonts*/
+	// Custom Theme Functions
+	require get_template_directory() . '/inc/widgets/recentpost.php';
+	require get_template_directory() . '/inc/lib/print_styles.php';
+	require get_template_directory() . '/inc/lib/related-post.php';
+	require get_template_directory() . '/inc/lib/breadcrumb.php';
 
-/*fonts*/
-function demo_fonts() {
+	// Custom Theme Image Sizes
+	add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );
+	add_image_size( 'grit_process_medium ', 400, 470,  array( 'top', 'center' ) );
+	add_image_size( 'grit_post_preview ', 270, 180,  array( 'top', 'center' ) );
+	add_image_size( 'grit_recent_posts ', 50, 50,  array( 'top', 'center' ) );
+	add_image_size( 'grit_related_posts ', 262, 163,  array( 'top', 'center' ) );
+	add_image_size( 'grit_single_product ', 270, 343,  array( 'top', 'center' ) );
+	add_image_size( 'grit_portfolio-default', 363, 312,  array( 'top', 'center' ) );
+	add_image_size( 'grit_process-default', 360, 463,  array( 'top', 'center' ) );
+	add_image_size( 'grit_latest_news', 263, 163,  array( 'top', 'center' ) );
+	add_image_size('grit_blog_image', 262, 163,  array( 'top', 'center' ));
+
+/**
+ * Font options
+ */
+function grit_demo_fonts() {
 	// Font options
 	$fonts = array(
 		get_theme_mod( 'grit_paragraph_font', grit_customizer_library_get_default( 'primary-font' ) ),
@@ -171,19 +153,20 @@ function demo_fonts() {
 	);
 	$font_uri = grit_customizer_library_get_google_font_uri( $fonts );
 	// Load Google Fonts
-	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
+	wp_enqueue_style( 'grit-demo-fonts', $font_uri, array(), null, 'screen' );
 }
-add_action( 'wp_enqueue_scripts', 'demo_fonts' );
+add_action( 'wp_enqueue_scripts', 'grit_demo_fonts' );
+
 /**
  * Load WooCommerce compatibility file.
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
-/**
- * Enqueue scripts and styles.
- */
 
+/**
+ * Enqueue css styles.
+ */
 function grit_styles() {
 	wp_enqueue_style( 'grit-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css' );
 	wp_enqueue_style( 'grit-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css' );
@@ -193,9 +176,11 @@ function grit_styles() {
 	wp_enqueue_style( 'grit-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'grit-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Montserrat:100,200,300,300i,400,500,600,700,800,900' );    
 }
-
 add_action( 'wp_enqueue_scripts', 'grit_styles' );
 
+/**
+ * Enqueue Script for IE8 support
+ */
 function add_ie_support() {
 	$script = '<!--[if IE]>';
 	$script .= '<meta http-equiv="x-ua-compatible" content="IE=9" />';
@@ -204,6 +189,9 @@ function add_ie_support() {
 }
 add_action( 'wp_head', 'add_ie_support' );
 
+/**
+ * Enqueue Script for IE9 support
+ */
 function add_ie8_support() {
 	$script = '<!--[if lt IE 9]>';
 	$script .= '<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>';
@@ -213,6 +201,9 @@ function add_ie8_support() {
 }
 add_action( 'wp_head', 'add_ie8_support' );
 
+/**
+ * Enqueue js scripts.
+ */
 function grit_scripts() {
 	wp_enqueue_script( 'jquery' ); 
 	wp_enqueue_script( 'grit-navigation',get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
@@ -256,16 +247,18 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
 
+/**
+ * Customizer Library for fonts
+ */
+if ( file_exists ( get_template_directory() . '/inc/customizer-library.php' ) ) :
 // Helper library for the theme customizer.
 	require get_template_directory() . '/inc/customizer-library.php';
-// Output inline styles based on theme customizer selections.
-//require get_template_directory() . '/inc/styles.php';
-//require get_template_directory() . '/inc/style-builder.php';
-
 endif;
-//add excerpt in jetpack
+
+/**
+ * Jetpack excerpt support for testimonials
+ */
 function grit_add_excerpt_testimonial() {
 	add_post_type_support( 'jetpack-testimonial', 'excerpt' );
 }

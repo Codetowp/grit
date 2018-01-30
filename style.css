@@ -816,11 +816,6 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	color: #b5bfd0;
 	font-size: 14px;
 }
-.breadcrumb > li + li:before {
-	content: "/\00a0";
-	padding: 0 10px;
-	color: #b5bfd0;
-}
 .breadcrumb > .active {
 	color: #3a405b;
 	font-weight: 600;
