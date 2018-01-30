@@ -10,8 +10,8 @@ get_header();
 ?>
 <section class="page">
 	<div id="page-banner" style="background-image: url(<?php header_image(); ?>);">
-		<div class="content  wow fdeInUp">
-			<div class="container ">
+		<div class="content wow fadeInUp">
+			<div class="container">
 				<header class="page-header">
 					<h1 class="page-title">
 						<?php
@@ -25,8 +25,8 @@ get_header();
 	</div>
 	<div id="page-body">
 		<div class="container">
-			<div class="row  wow fdeInUp"> 
-				<div class="col-md-9 col-sm-7 col-xs-12 page-block "   ><!--blog page container--> 
+			<div class="row wow fadeInUp"> 
+				<div class="col-md-12 col-sm-12 col-xs-12 page-block"><!--blog page container--> 
 					<?php if ( have_posts() ) : ?>						
 						<?php
 						/* Start the Loop */

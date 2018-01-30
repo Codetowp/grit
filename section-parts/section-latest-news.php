@@ -32,7 +32,7 @@
 						<?php
 						if  ( get_the_post_thumbnail()!='')
 						{
-							?><a href="<?php the_permalink();?>"> <?php the_post_thumbnail('grit_latest_news');  ?></a><?php 
+							?><a href="<?php the_permalink();?>"> <?php the_post_thumbnail('grit_post_preview ');  ?></a><?php 
 						}
 						else
 							{?>

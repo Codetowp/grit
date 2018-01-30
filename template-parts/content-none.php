@@ -10,10 +10,9 @@
 ?>
 <div id="page-body">
 	<div class="container">
-		<div class="row  wow fdeInUp"> 
+		<div class="row wow fadeInUp"> 
 			<!--blog page container-->
-			<div class="col-md-9 col-sm-7 col-xs-12 page-block "   > 
-				<section class="no-results not-found">
+			<div class="col-md-9 col-sm-7 col-xs-12 page-block"> 
 					<header class="page-header">
 						<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'grit' ); ?></h1>
 					</header><!-- .page-header -->
@@ -51,8 +50,6 @@
 
 						endif; ?>
 					</div><!-- .page-content -->
-				</section><!-- .no-results -->
-
 			</div>
 		</div>
 	</div>

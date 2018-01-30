@@ -285,14 +285,14 @@ $wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, '
     'type'                      => 'ios',
 ) ) );
 
-$wp_customize->add_setting( 'grit_enable_disable_blog_auother_button', array(
+$wp_customize->add_setting( 'grit_blog_author_button', array(
     'sanitize_callback'         => 'grit_sanitize_checkbox',
     'default'                   => '',
     'capability'                => 'manage_options',
     'transport'                 => 'refresh',
 ) );
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_blog_auother_button', array(
-    'settings'                  => 'grit_enable_disable_blog_auother_button',
+$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_blog_author_button', array(
+    'settings'                  => 'grit_blog_author_button',
     'label'                     => ( 'Disable Blog Author option' ),
     'section'                   => 'grit_enabled_switch',
     'type'                      => 'ios',

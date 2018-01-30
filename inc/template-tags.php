@@ -92,14 +92,12 @@ if ( ! function_exists( 'grit_entry_tag' ) ) :
 endif;
 
 
-if ( ! function_exists( 'grit_entry_edited' ) ) :
+if ( ! function_exists( 'grit_admin_edit_link' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function grit_entry_edited() 
+	function grit_admin_edit_link() 
 	{
-		
-
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) 
 		{
 			echo '<span class="comments-link">';

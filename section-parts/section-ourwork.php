@@ -37,7 +37,7 @@
 							?>
 							<li>
 								<figure>
-									<?php the_post_thumbnail('grit_portfolio-default');?>
+									<?php the_post_thumbnail('grit_post_preview');?>
 									<!--<img src="<?php //echo get_template_directory_uri(); ?>/assets/assets/img/02-screenshot.jpg" alt="Screenshot 01">-->
 									<figcaption>
 										<div class="caption-content">

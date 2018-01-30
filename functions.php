@@ -132,11 +132,11 @@ add_action( 'widgets_init', 'grit_widgets_init' );
 
 	// Custom Theme Image Sizes
 	add_image_size( 'grit_full_banner', 1920, 1000, array( 'top', 'center' ) );//ok
-	add_image_size( 'grit_process_medium ', 400, 470,  array( 'top', 'center' ) );
-	add_image_size( 'grit_post_preview ', 270, 180,  array( 'top', 'center' ) );
-	add_image_size( 'grit_recent_posts ', 50, 50,  array( 'top', 'center' ) );
-	add_image_size( 'grit_related_posts ', 262, 163,  array( 'top', 'center' ) );
-	add_image_size( 'grit_single_product ', 270, 343,  array( 'top', 'center' ) );
+	add_image_size( 'grit_post_preview', 600, 375,  array( 'top', 'center' ) ); //latestnews, blog, archive, search
+	add_image_size( 'grit_process_medium', 400, 470,  array( 'top', 'center' ) );
+	add_image_size( 'grit_recent_posts', 50, 50,  array( 'top', 'center' ) );
+	add_image_size( 'grit_related_posts', 262, 163,  array( 'top', 'center' ) );
+	add_image_size( 'grit_single_product', 270, 343,  array( 'top', 'center' ) );
 	add_image_size( 'grit_portfolio-default', 363, 312,  array( 'top', 'center' ) );
 	add_image_size( 'grit_process-default', 360, 463,  array( 'top', 'center' ) );
 	add_image_size( 'grit_latest_news', 263, 163,  array( 'top', 'center' ) );
