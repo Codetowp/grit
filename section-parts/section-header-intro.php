@@ -1,5 +1,5 @@
 <?php
-$background_img   =  get_theme_mod( 'bck_ground_image' ,esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' )); 
+$background_img   =  get_theme_mod( 'grit_header_background_image' ,esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' )); 
 ?>
 <section id="home-banner" style="background-image: url(<?php echo esc_url( $background_img ); ?>);">
     <div class="content">
