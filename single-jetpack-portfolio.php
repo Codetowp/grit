@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all portfolio posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -9,27 +9,22 @@
 
 get_header(); ?>
 
-<?php
-if(have_posts()):		  
-	while ( have_posts() ) : the_post();	 
-		?>
-		
-<!-- banner Page
-	==========================================-->
+<?php if(have_posts()):	while ( have_posts() ) : the_post(); ?>
+
+<!-- Banner -->
 	<div id="page-banner" style="background-image: url(<?php the_post_thumbnail_url() ; ?>);">
-		<div class="content  wow fadeInUp">
-			<div class="container "> 
+		<div class="content">
+			<div class="container"> 
 				<?php 
-				$before='<span class="single-jet">';
+				$before='<span class="single-jet wow fadeInUp">';
 				$after='</span>';
-				$separator=',';
+				$separator=', ';
 				the_terms(get_the_ID(), 'jetpack-portfolio-type', $before, $separator, $after); 
 				?>
-				<h1><?php the_title(); ?></h1>
-				
+				<h1 class="wow fadeInUp"><?php the_title(); ?></h1>
 				<ul class="tag-head">
 					<?php 
-					$before='<li>';
+					$before='<li class="wow fadeInUp">';
 					$after='</li>';
 					$separator=',';
 					the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
@@ -40,12 +35,11 @@ if(have_posts()):
 	</div>
 
 	<!--page body-->
-
 	<div id="Blog-post">
 		<div class="container">
-			<div class="row wow fadeInUp"> 
+			<div class="row"> 
 				<!--blog posts container-->
-				<div class="col-md-12 single-post">
+				<div class="col-md-12 single-post wow fadeInUp">
 					<?php the_content(); ?>
 
 					<!--footer tags-->
@@ -56,7 +50,7 @@ if(have_posts()):
 							<?php 
 							$before='<span class="tag-links  clearfix">';
 							$after='</span>';
-							$separator=',';
+							$separator='';
 							the_terms(get_the_ID(), 'jetpack-portfolio-tag', $before, $separator, $after); 
 							?>
 							
@@ -69,16 +63,12 @@ if(have_posts()):
 			</div>
 		</div>
 	</div>
-	<!--/page body-->
+<?php endwhile; endif; ?> 
 
-	<?php 
-endwhile;
-endif;
-?> 
 <div class="page-share-block">
 	<div class="container">
 		<div class="row">
-			<h4>Share on :</h4>
+			<h4><?php esc_html_e('Share on :', 'grit'); ?></h4>
 			<!--page-share-->
 			<ul class="page-share">
 				<li><a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Facebook!', 'grit')?>"><i class="fa fa-facebook"></i></a></li>
@@ -87,10 +77,8 @@ endif;
 				<li><a target="_blank" href="http://www.pinterest.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Pinterest!', 'grit')?>"><i class="fa fa-pinterest"></i></a></li>
 				<li><a target="_blank" href="http://www.linkein.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="<?php esc_html_e('Share this post on Linkein!', 'grit')?>"><i class="fa fa-linkedin"></i></a></li>
 			</ul>
-			<!--page-share--> 
 		</div>
 	</div>
 </div>
 <?php
-//get_sidebar();
 get_footer();
