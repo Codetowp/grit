@@ -1,35 +1,38 @@
 <?php
 /**
- * grit Theme Customizer
+ * Grit Theme Customizer
  *
  * @package grit
  */
 
 /**
- * Add postMessage support for site title and description for the Theme Customizer.
+ * All settings for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function grit_customize_register( $wp_customize ) {
+	// Custom Theme functions
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
-    require get_template_directory() . '/inc/lib/theme-info.php'; 
-    $pages  =  get_pages();
-    $grit_option_pages = array();
-    $grit_option_pages[0] = esc_html__( 'Select page', 'grit' );
-    foreach( $pages as $p )
-    {
-       $grit_option_pages[ $p->ID ] = $p->post_title;
-   }
+	require get_template_directory() . '/inc/lib/theme-info.php';
+	require get_template_directory() . '/inc/customizer-controls.php';
+	
+	// Pages
+	$pages  =  get_pages();
+	$grit_option_pages = array();
+	$grit_option_pages[0] = esc_html__( 'Select page', 'grit' );
+	foreach( $pages as $p )
+	{
+	   $grit_option_pages[ $p->ID ] = $p->post_title;
+	}
 
-   require get_template_directory() . '/inc/customizer-controls.php';
-
+   // Default WordPress settings customized
    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-   $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-  
+   $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';  
    $wp_customize->get_section('title_tagline')->title = __( 'Branding','grit' );
-   if ( isset( $wp_customize->selective_refresh ) ) 
-   {
+   
+   // Selective Refresh
+	if ( isset( $wp_customize->selective_refresh ) ) {
     $wp_customize->selective_refresh->add_partial( 'blogname', array(
         'selector'        => '.navbar-header a span',
         'render_callback' => 'grit_customize_partial_blogname',
@@ -41,30 +44,24 @@ function grit_customize_register( $wp_customize ) {
     $wp_customize->selective_refresh->add_partial( 'grit_header_page_text', array(
         'selector'              => '#home-banner #head',
         'render_callback'       => 'grit_customize_partial_header_page_text',
-
-    ) ); 
-
+    ) );
     $wp_customize->selective_refresh->add_partial( 'grit_header_description', array(
         'selector'              => '#home-banner h1',
         'settings'              => array( 'grit_header_description' ),
         'render_callback'       => 'grit_customize_partial_header_description',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_about_header', array(
         'selector'              => '#about-us-block .section-title h2',
         'render_callback'       => 'grit_customize_partial_about_header',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_about_description', array(
         'selector'              => '#about-us-block .section-title  p',
         'render_callback'       => 'grit_customize_partial_about_description',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_contact_header', array(
         'selector'              => '#home-contact-block  p',
         'render_callback'       => 'grit_customize_partial_contact_header',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
         'selector'              => '#our-work-block .section-title  h2',
         'render_callback'       => 'grit_customize_partial_work_header',
@@ -73,941 +70,933 @@ function grit_customize_register( $wp_customize ) {
         'selector'              => '#about-us-block .section-title  p',
         'render_callback'       => 'grit_customize_partial_about_description',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_contact_header', array(
         'selector'              => '#home-contact-block  p',
         'render_callback'       => 'grit_customize_partial_contact_header',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_work_header', array(
         'selector'              => '#our-work-block .section-title  h2',
         'render_callback'       => 'grit_customize_partial_work_header',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_process_header', array(
         'selector'              => '#process-block .section-title h2',
         'render_callback'       => 'grit_customize_partial_process_header',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_counter_setting', array(
         'selector'              => '#company-counter .container',
         'render_callback'       => 'grit_customize_partial_counter_check',
     ) ); 
-
     $wp_customize->selective_refresh->add_partial( 'grit_latest_news_header', array(
         'selector'              => '#latest-news-block .section-title h2',
         'render_callback'       => 'grit_customize_partial_latest_news_header',
     ) );
-
     $wp_customize->selective_refresh->add_partial( 'grit_post_related_post_count', array(
         'selector'              => '.also-like-block',
 
     ) );
-}
+	}
 
-//**************************  COLORS ****************************************// 
-
-$wp_customize->add_setting( 'grit_accent_color', array(
-    'default' 		 		=> '#f53347', 
-    'transport'      		=> 'refresh', 
-    'sanitize_callback' 	=> 'sanitize_hex_color', 
-) );
-
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_accent_color', array(
-    'label'      			=> esc_attr__( 'Accent Color', 'grit' ),
-    'description'   		=> esc_attr__( 'Add Accent Color', 'grit' ),
-    'section'       		=> 'colors',
-) ) );
-
-//*************************** GENERAL SETTINGS PANEL ***************************//
-$wp_customize->add_panel( 'grit_general_panel' ,array(
-    'priority'              => 120,
-    'title'                 => esc_html__( 'General settings', 'grit' ),
-    'description'           => '',
-) );
-
-   // Blog SETTINGS
-
-$wp_customize->add_section( 'header_image', array(
-    'title'          => __('Blog Settings', 'grit' ),
-    'theme_supports' => 'custom-header',
-    'priority'       => 60,
-    'panel'          =>'grit_general_panel',
-) );
-
-  // Font SETTINGS
-
-$wp_customize->add_section('grit_font', array(
-    'title'                     => __('Font Settings', 'grit'),
-    'description'               => 'Easily edit your body section',
-    'priority'                  => 110,
-    'panel'                     =>'grit_general_panel',
-
-));
-
-$font_choices                   = grit_customizer_library_get_font_choices();
-$wp_customize                   ->add_setting( 'grit_paragraph_font', array(
-    'default'                   => 'Montserrat',
-    'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
-) );
-
-$wp_customize->add_control( 'grit_paragraph_font', array(
-    'label'                     => 'Pick Paragragh Font Family',
-    'section'                   => 'grit_font',
-    'type'                      => 'select',
-    'choices'                   => $font_choices,
-    'priority'                  => 1,
-));
-
-$wp_customize->add_setting( 'grit_paragraph_font_color', array(
-    'default'                   => '#6f6f6f', 
-    'transport'                 => 'refresh', 
-    'sanitize_callback'         => 'sanitize_hex_color', 
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_paragraph_font_color', 
-   array(
-    'label'                     => esc_attr__( 'Paragraph Font Color', 'grit' ),
-    'section'                   => 'grit_font',
-    'priority'               => 2,
-) ) );
-
-$wp_customize->add_setting( 'grit_paragraph_font_size', array(
-    'default'                   => get_theme_mod( 'grit_paragraph_font_size', '24px' ),
-    'capability'                => 'edit_theme_options',
-    'transport'                 => 'refresh',
-    'sanitize_callback'         =>'absint',
-) );
-
-$wp_customize->add_control( new Grit_Customizer_Range_Value_Control( $wp_customize, 'grit_paragraph_font_size', array(
-    'type'                      => 'range-value',
-    'section'                   => 'grit_font',
-    'settings'                  => 'grit_paragraph_font_size',
-    'label'                     => __( 'Paragraph Font Width','grit' ),
-    'input_attrs'               => array(
-        'min'                   => 11,
-        'max'                   => 24,
-        'step'                  => 1,
-        'suffix'                => 'px',
-    ),
-    'priority'                  => 3,
-) ) );
-
-$wp_customize->add_setting( 'grit_font_family', array(
-    'default'                   => 'Montserrat',
-    'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
-) );
-
-$wp_customize->add_control( 'grit_font_family', array(
-    'label'                     => 'Pick Heading Font Family',
-    'section'                   => 'grit_font',
-    'type'                      => 'select',
-    'choices'                   => $font_choices,
-    'priority'                  => 4,
-));
-
-$wp_customize->add_setting( 'grit_font_color', array(
-    'default'                   => '#5a5a5a', 
-    'transport'                 => 'refresh', 
-    'sanitize_callback'         => 'sanitize_hex_color', 
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_font_color', array(
-    'label'                     => esc_attr__( 'Font Color', 'grit' ),
-    'section'                   => 'grit_font',
-    'priority'                  => 5,
-) ) );
-
-$wp_customize->add_setting( 'grit_font_size', array(
-    'default'                   => get_theme_mod( 'grit_font_size_styles', '24px' ),
-    'capability'                => 'edit_theme_options',
-    'transport'                 => 'refresh',
-    'sanitize_callback'         =>'absint',
-) );
-
-$wp_customize->add_control( new Grit_Customizer_Range_Value_Control( $wp_customize, 'grit_font_size', array(
-    'type'                      => 'range-value',
-    'section'                   => 'grit_font',
-    'settings'                  => 'grit_font_size_styles',
-    'label'                     => __( 'Font Width','grit' ),
-    'input_attrs'               => array(
-        'min'                   => 11,
-        'max'                   => 24,
-        'step'                  => 1,
-        'suffix'                => 'px',
-    ),
-    'priority'                  => 6,
-) ) );
-
-	//Footer SOCIAL
-
-$wp_customize->add_section( 'grit_social', array(
-    'title'                     => __( 'Footer Social', 'grit'  ),
-    'priority'                  => 110,
-    'panel'                     =>'grit_general_panel',
-) );
-
-$social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
-
-foreach( $social_sites as $social_site ) 
-{
-    $wp_customize->add_setting( "grit_social[$social_site]", array(                
-        'type'                  => 'theme_mod',
-        'default'               => '#',
-        'capability'            => 'edit_theme_options',
-        'sanitize_callback'     => 'esc_url_raw'
-    ) );
-
-    $wp_customize->add_control( "grit_social[$social_site]", array(
-        'label'                 => ucwords( $social_site ) . __( " Url:", 'grit' ),
-        'section'               => 'grit_social',
-        'type'                  => 'text',
-    ) );
-}
-
-	//Enable/Disable
-
-$wp_customize->add_section('grit_enabled_switch', array(
-    'title'                     => __('Enable/Disable', 'grit'),
-    'description'               => 'Easily edit your body section',
-    'priority'                  => 112,
-    'panel'                     =>'grit_general_panel',
-));
-
-$wp_customize->add_setting( 'grit_enable_disable_search_button', array(
-    'sanitize_callback'         => 'grit_sanitize_checkbox',
-    'default'                   => '',
-    'capability'                => 'manage_options',
-    'transport'                 => 'refresh',
-) );
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_search_button', array(
-    'settings'                  => 'grit_enable_disable_search_button',
-    'label'                     => ( 'Enable/Disable serach option' ),
-    'section'                   => 'grit_enabled_switch',
-    'type'                      => 'ios',
-) ) );
-
-$wp_customize->add_setting( 'grit_blog_author_button', array(
-    'sanitize_callback'         => 'grit_sanitize_checkbox',
-    'default'                   => '',
-    'capability'                => 'manage_options',
-    'transport'                 => 'refresh',
-) );
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_blog_author_button', array(
-    'settings'                  => 'grit_blog_author_button',
-    'label'                     => ( 'Disable Blog Author option' ),
-    'section'                   => 'grit_enabled_switch',
-    'type'                      => 'ios',
-) ) );
-
-	//Page SETTINGS
-
-$wp_customize->add_section('grit_page_setting', array(
-    'title'                     => __('Page Settings', 'grit'),
-    'priority'                  => 112,
-    'panel'                     =>'grit_general_panel',
-));
-
-$wp_customize->add_setting(
-    'grit_post_related_post_count',
-    array(
-        'default' => '3',
-        'sanitize_callback' => 'absint'
-    )
-);
-
-$wp_customize->add_control(
-    'grit_post_related_post_count',
-    array(
-        'type' => 'integer',        
-        'label' => __('Number Of Related Post To Show - i.e 10 (default is 3)','grit'),
-        'section' => 'grit_page_setting',        
-    )
-);
-
-$wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
- 'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
- 'type'                      => 'theme_mod',
- 'capability'                => 'edit_theme_options',
- 'sanitize_callback'         => 'esc_url_raw',
-	)
-);
-
-$wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,'grit_testimonial_bck_ground_image', array(
-        'label'                     => __( 'Testimonial Page Background Image', 'grit' ),
-        'section'                   => 'grit_page_setting',
-        'settings'                  => 'grit_testimonial_bck_ground_image',
-        'context'                   => 'grit_testimonial_bck_ground_image',
-        'priority'                  => 1,
-    ) 
-) );   
-
-
-$wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
-    'default'                   =>esc_url( get_template_directory_uri() . '/assets/img/in-bg.jpg' ),
-    'type'                      => 'theme_mod',
-    'capability'                => 'edit_theme_options',
-    'sanitize_callback'         => 'esc_url_raw',
-) );
-
-$wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,'grit_portfolio_bck_ground_image', array(
-        'label'                     => __( 'PortFolio Page Background Image', 'grit' ),
-        'section'                   => 'grit_page_setting',
-        'settings'                  => 'grit_portfolio_bck_ground_image',
-        'context'                   => 'grit_portfolio_bck_ground_image',
-        'priority'                  => 2,
-    ) 
-) );    
-
-//**************************  FRONTPAGE THEME SECTIONS ****************************************// 
-$wp_customize->add_panel( 'grit_panel' ,array(
-    'priority'        		=> 130,
-    'title'           		=> esc_html__( 'Frontpage Theme Sections', 'grit' ),
-    'description'     		=> '',
-	'active_callback' 		=> 'is_front_page'
-) );
-
-	// Header INTRO  
-
-$wp_customize->add_section('grit_header', array(
-    'title'                     => __('Header Intro', 'grit'),
-    'description'               => 'Easily edit your header section',
-    'priority'                  => 100,
-    'panel'                     => 'grit_panel',    
-));
-
-$wp_customize->add_setting( 'bck_ground_image', array(
-    'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
-    'type'                      => 'theme_mod',
-    'capability'                => 'edit_theme_options',
-    'sanitize_callback'         => 'esc_url_raw',
-) );
-
-$wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,'bck_ground_image', array(
-        'label'                     => __( 'Background Image', 'grit' ),
-        'section'                   => 'grit_header',
-        'settings'                  => 'bck_ground_image',
-        'context'                   => 'bck_ground_image',
-        'priority'                  => 20,
-    ) 
-) );
-
-$wp_customize->add_setting( 'grit_header_page_text', array(      
-	'default'                   => esc_html__('Section Title', 'grit'),
-	'sanitize_callback'         => 'sanitize_text_field',
-	'transport'                 => 'postMessage', // refresh or postMessage              
+	// Accent COLOR
+	$wp_customize->add_setting( 'grit_accent_color', array(
+		'default' 		 		=> '#f53347', 
+		'transport'      		=> 'refresh', 
+		'sanitize_callback' 	=> 'sanitize_hex_color', 
 	) );
 
-        $wp_customize->add_control( 'grit_header_page_text', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Header', 'grit' ),
-            'section'  					=> 'grit_header',
-            'priority' 					=> 2,
-        ) );
-    
-
-        $wp_customize->add_setting( 'grit_header_description', array(      
-            'default'                   => esc_html__('Section Description', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage',               
-        ) );    
-
-        $wp_customize->add_control( 'grit_header_description', array(
-            'label' 					=> __( 'Description', 'grit' ),
-            'section'  					=> 'grit_header',
-            'priority' 					=> 3,
-        ) );	
-
-        $wp_customize->add_setting( 'grit_header_background_color', array(
-            'default'                   => '#ff4a5d', 
-            'transport'                 => 'refresh', 
-            'sanitize_callback'         => 'sanitize_hex_color', 
-        ) );
-    
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_header_background_color', array(
-            'label'                     => esc_attr__( 'Background Color', 'grit' ),
-            'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
-            'section'                   => 'grit_header',
-            'priority' 					=> 4,
-        ) ) );
-
-        $wp_customize->add_setting( 'grit_transparnt', array( 
-           'default'                    => __( '0.7', 'grit' ),
-           'transport'                  => 'refresh',
-           'sanitize_callback'          => 'sanitize_text_field',
-         ) );
-		 
-        $wp_customize->add_control( 'grit_transparnt', array(
-            'type'                      => 'text',
-            'section'                   => 'grit_header',
-            'label'                     => esc_attr__( "Background Transparency", 'grit' ),
-            'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
-            'priority' 					=> 5,
-            ) );
-
-	//About SECTION
-	   
-        $wp_customize->add_section('grit_about_section', array(
-            'title'                     => __('About Section', 'grit'),
-            'priority'                  => 101,
-            'panel'                     => 'grit_panel', 
-        ));
-
-         $wp_customize->add_setting( 'grit_about_check',
-				array(
-					'sanitize_callback' => 'grit_sanitize_checkbox',
-					'default'           => '',
-                    'capability'        => 'manage_options',
-			        'transport'         => 'refresh',
-				)
-			);
-	    $wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_about_check', array(
-			'settings' => 'grit_about_check',
-			'label'    => __( 'Disable this section?', 'grit' ),
-			'section'  => 'grit_about_section',
-			'type'     => 'ios',
-            'priority' => 1,
-
-	    ) ) );       
-    
-        $wp_customize->add_setting( 'grit_about_header', array(      
-            'default'                   => esc_html__('About', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) ); 
-
-$wp_customize->add_control( 'grit_about_header', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Heading', 'grit' ),
-    'section'  					=> 'grit_about_section',
-    'priority' 					=> 2,
-) );
-
-
-$wp_customize->add_setting( 'grit_about_description', array(      
-    'default'                   => esc_html__('Section Description', 'grit'),
-    'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) );    
-
-$wp_customize->add_control( 'grit_about_description', array(
-    'type'						=> 'textarea',
-    'label' 					=> __( 'Description', 'grit' ),
-    'section'  					=> 'grit_about_section',
-    'priority' 					=> 3,
-) );
-
-
-$wp_customize->add_setting( 'grit_about_button_text', array(      
-    'default'                   => esc_html__('Read More', 'grit'),
-    'sanitize_callback'         => 'sanitize_text_field',
-    'transport'                 => 'refresh',               
-) );    
-
-$wp_customize->add_control( 'grit_about_button_text', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Button Text', 'grit' ),
-    'section'  					=> 'grit_about_section',
-    'priority' 					=> 4,
-) );	
-
-
-$wp_customize->add_setting( 'grit_about_button_url', array(      
-    'default'                   => esc_url('#', 'grit'),
-    'sanitize_callback'         => 'esc_url_raw',
-    'transport'                 => 'refresh',               
-) );    
-
-$wp_customize->add_control( 'grit_about_button_url', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Button Url', 'grit' ),
-    'section'  					=> 'grit_about_section',
-    'priority' 					=> 5
-) );	  
-
-
-$wp_customize->add_setting( 'grit_about_boxes', array(
-		'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
-		'transport' => 'refresh', // refresh or postMessage
-			) );
-
-		$wp_customize->add_control(
-			new Grit_Customize_Repeatable_Control(
-				$wp_customize,
-				'grit_about_boxes',
-				array(
-					'label' 		=> esc_html__('About content page', 'grit'),
-					'description'   => esc_html__('There is a limit of 8 item to maintain elegant design. Contact us if you need more.', 'grit'),
-					'section'       => 'grit_about_section',
-
-					'live_title_id' => 'content_page', // apply for unput text and textarea only
-					'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
-					'max_item'      => 8, // Maximum item can add
-					'fields'    	=> array(
-						'content_page'  => array(
-							'title' 	=> esc_html__('Select a page', 'grit'),
-							'type'  	=>'select',
-							'options'		=> $grit_option_pages
-						),
-						'icon'  		=> array(
-							'title' 	=> esc_html__('Icon', 'grit'),
-							'type'  	=>'icon',
-							'required' 	=> array( 'icon_type', '=', 'icon' ),
-						),
-
-					),
-
-				)
-
-			) );
-    
-        //Call to action SECTION  
-        $wp_customize->add_section('grit_contact_section', array(
-            'title'                     => __('Call to action Section', 'grit'),
-            'priority'                  => 101,
-            'panel'                     => 'grit_panel', 
-        ) );
-
-        $wp_customize->add_setting( 'grit_contact_check',
-				array(
-					'sanitize_callback' => 'grit_sanitize_checkbox',
-					'default'           => '',
-                    'capability'        => 'manage_options',
-			        'transport'         => 'refresh',
-				)
-			);
-	    $wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_contact_check', array(
-			'settings' => 'grit_contact_check',
-			'label'    => __( 'Disable this section?', 'grit' ),
-			'section'  => 'grit_contact_section',
-			'type'     => 'ios',
-            'priority' => 1,
-
-	    ) ) );       
-    
-        $wp_customize->add_setting( 'grit_contact_header', array(      
-            'default'                   => esc_html__('Section Title', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) );    
-
-        $wp_customize->add_control( 'grit_contact_header', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Description', 'grit' ),
-            'section'  					=> 'grit_contact_section',
-            'priority' 					=> 2,
-        ) );
-
-        $wp_customize->add_setting( 'grit_contact_button_text', array(      
-            'default'                   => esc_html__('Read More', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh',               
-        ) );    
-
-$wp_customize->add_control( 'grit_contact_button_text', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Button Text', 'grit' ),
-    'section'  					=> 'grit_contact_section',
-    'priority' 					=> 3,
-) );
-
-$wp_customize->add_setting( 'grit_contact_button_url', array(      
-    'default'                   => '#',
-    'sanitize_callback'         => 'esc_url_raw',
-    'transport'                 => 'refresh',               
-) );    
-
-$wp_customize->add_control( 'grit_contact_button_url', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Button Url', 'grit' ),
-    'section'  					=> 'grit_contact_section',
-    'priority' 					=> 5
-) );	  
-
-	//Portfolio SECTION
- 
-$wp_customize->add_section('grit_work_section', array(
-    'title'                     => __('Portfolio Section', 'grit'),
-    'priority'                  => 104,
-    'panel'                     => 'grit_panel', 
-));
-
-$wp_customize->add_setting( 'grit_work_check',
-    array(
-     'sanitize_callback' => 'grit_sanitize_checkbox',
-     'default'           => '',
-     'capability'        => 'manage_options',
-     'transport'         => 'refresh',
- )
-);
-
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_work_check', array(
-   'settings' => 'grit_work_check',
-   'label'    => __( 'Enable Portfolio?', 'grit' ),
-   'section'  => 'grit_work_section',
-   'type'     => 'ios',
-   'priority' => 1,
-
-) ) );  
-
-$wp_customize->add_setting( 'grit_work_header', array(      
-    'default'                   => esc_html__('Section Title', 'grit'),
-    'sanitize_callback'         => 'sanitize_text_field',
-    'transport'                 => 'postMessage', // refresh or postMessage              
-) ); 
-
-        $wp_customize->add_control( 'grit_work_header', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Heading', 'grit' ),
-            'section'  					=> 'grit_work_section',
-            'priority' 					=> 2,
-        ) );
-
-        $wp_customize->add_setting( 'grit_work_button_text', array(      
-            'default'                   => esc_html__('Read More', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'refresh',               
-
-        ) );    
-
-        $wp_customize->add_control( 'grit_work_button_url', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Button Url', 'grit' ),
-            'section'  					=> 'grit_work_section',
-            'priority' 					=> 5
-        ) );	
-    
-       $wp_customize->add_setting( 'grit_work_portfolio_count', array(
-            'default'                   => esc_html__('6', 'grit'),
-            'sanitize_callback'         => 'absint'
-            )
-        );
-        $wp_customize->add_control( 'grit_work_portfolio_count', array(
-            'type'                      => 'integer',
-            'label'                     => __('Number Of Portfolio items to show - i.e 10 (default 6)','grit'),
-            'section'                   => 'grit_work_section',
-            )
-        );
-
-        //Process SECTION  
-        $wp_customize->add_section('grit_process_section', array(
-            'title'                     => __('Process Section', 'grit'),
-            'priority'                  => 104,
-            'panel'                     => 'grit_panel', 
-        ));
-    
-         $wp_customize->add_setting( 'grit_process_check',
-				array(
-					'sanitize_callback' => 'grit_sanitize_checkbox',
-					'default'           => '',
-                    'capability'        => 'manage_options',
-			        'transport'         => 'refresh',
-				)
-			);
-			
-	    $wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_process_check', array(
-			'settings' => 'grit_process_check',
-			'label'    => __( 'Disable this section?', 'grit' ),
-			'section'  => 'grit_process_section',
-			'type'     => 'ios',
-            'priority' => 1,
-
-	    ) ) );      
-    
-        $wp_customize->add_setting( 'grit_process_header', array(      
-            'default'                   => esc_html__('Section Title', 'grit'),
-            'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) );
-
-        $wp_customize->add_control( 'grit_process_header', array(
-            'type'						=> 'text',
-            'label' 					=> __( 'Heading', 'grit' ),
-            'section'  					=> 'grit_process_section',
-            'priority' 					=> 2,
-        ) );    
-
-        $wp_customize->add_setting(
-			'grit_process_boxes',
-			array(				
-				'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
-				'transport' => 'refresh', // refresh or postMessage
-			) );
-
-		$wp_customize->add_control(
-			new Grit_Customize_Repeatable_Control(
-				$wp_customize, 
-				'grit_process_boxes',
-				array(
-					'label' 		=> esc_html__('process content page', 'grit'),
-					'description'   => esc_html__('You can add upto 7 process to maintain elegant design', 'grit'),
-					'section'       => 'grit_process_section',
-					'live_title_id' => 'content_page', // apply for unput text and textarea only
-					'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
-					'max_item'      => 7, // Maximum item can add	
-					'fields'    	=> array(
-						'content_page'  => array(
-							'title' 	=> esc_html__('Select a page', 'grit'),
-							'type'  	=>'select',
-							'options' 	=> $grit_option_pages
-						),
-						'icon'  	=> array(
-							'title' 	=> esc_html__('Icon', 'grit'),
-							'type'  	=>'icon',
-							'required' 	=> array( 'icon_type', '=', 'icon' ),
-						),
-						'title' 	=> array(
-							'title' 	=> esc_html__('Title', 'grit'),
-							'type'  	=>'text',
-							'default' 	=> wp_kses_post('Creating', 'grit'),
-						),
-					),
-
-				)
-
-) );
-
-//Counter SECTION
-$wp_customize->add_section('grit_counter_section', array(
-    'title'                     => __('Counter Section', 'grit'),
-    'priority'                  => 105,
-    'panel'                     => 'grit_panel', 
-));
-
-$wp_customize->add_setting( 'grit_counter_check',
-    array(
-     'sanitize_callback' => 'grit_sanitize_checkbox',
-     'default'           => '',
-     'capability'        => 'manage_options',
-     'transport'         => 'refresh',
- )
-);
-
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_counter_check', array(
-   'settings' => 'grit_counter_check',
-   'label'    => __( 'Disable this section?', 'grit' ),
-   'section'  => 'grit_counter_section',
-   'type'     => 'ios',
-   'priority' => 1,
-
-) ) );  
-
-
-$wp_customize->add_setting( 'grit_counter_setting', 
-   array(               
-       'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
-        'transport' => 'refresh', // refresh or postMessage
-        ) );    
-
-$wp_customize->add_control(
-   new Grit_Customize_Repeatable_Control(
-    $wp_customize,
-    'grit_counter_setting',
-    array(
-     'label'     	=> esc_html__('Counter Sections', 'grit'),
-     'description'   => 'Add upto 4 service blocks',
-     'section'       => 'grit_counter_section',
-					'title_format'  => esc_html__( '[live_title]', 'grit'), // [live_title]
-					'max_item'      => 4, // Maximum item can add
-					'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'grit' ),
-					'fields'    	=> array(
-						'icon_type'  => array(
-							'title'		=> esc_html__('Custom icon', 'grit'),
-							'type'  	=>'select',
-							'options' 	=> array(
-                               'icon' 		=> esc_html__('Icon', 'grit'),
-                               'image' 	=> esc_html__('image', 'grit'),
-                           ),
-						),
-
-                     'icon'  	=> array(
-                      'title' 	=> esc_html__('Icon', 'grit'),
-                      'type'  	=>'icon',
-                      'required' 	=> array( 'icon_type', '=', 'icon' ),
-                  ),
-
-                     'image'  	=> array(
-                      'title' 	=> esc_html__('Image', 'grit'),
-                      'type'  	=>'media',
-                      'required' 	=> array( 'icon_type', '=', 'image' ),
-                  ),
-                     'count' 	=> array(
-                       'title' 	=> esc_html__('Count', 'grit'),
-                       'type'  	=>'text',
-                       'default' 	=> wp_kses_post('455', 'grit'),
-                   ),
-
-
-                     'title' 	=> array(
-                       'title' 	=> esc_html__('Title', 'grit'),
-                       'type'  	=>'text',
-                       'default' 	=> wp_kses_post('CLIENTS'),
-                   ),
-                 ),
-
-				)
-) );
-
-$wp_customize->add_setting( 'grit_counter_bck_ground_image', array(
- 'default'           => esc_url( get_template_directory_uri() . '/assets/img/bg-counter.jpg' ),
- 'type'                      => 'theme_mod',
- 'capability'                => 'edit_theme_options',
- 'sanitize_callback'         => 'esc_url_raw',
-) );
-
-$wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,'grit_counter_bck_ground_image', array(
-        'label'                     => __( 'Background Image', 'grit' ),
-        'section'                   => 'grit_counter_section',
-        'settings'                  => 'grit_counter_bck_ground_image',
-        'context'                   => 'grit_counter_bck_ground_image',
-        'priority'                  => 20,
-    ) 
-) );
-
-$wp_customize->add_setting( 'grit_counter_background_color', array(
-    'default'                   => '#ff4a5d', 
-    'transport'                 => 'refresh', 
-    'sanitize_callback'         => 'sanitize_hex_color', 
-) );
-
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_counter_background_color', array(
-    'label'                     => esc_attr__( 'Background Color', 'grit' ),
-    'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
-    'section'                   => 'grit_counter_section',
-    'priority' 					=> 21,
-) ) );
-
-$wp_customize->add_setting( 'grit_counter_transparnt', array( 
-   'default'                    => __( '0.7', 'grit' ),
-   'transport'                  => 'refresh',
-   'sanitize_callback'          => 'sanitize_text_field',
-) );
-
-$wp_customize->add_control( 'grit_counter_transparnt', array(
-    'type'                      => 'text',
-    'section'                   => 'grit_counter_section',
-    'label'                     => esc_attr__( "Background Transparency", 'grit' ),
-    'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
-    'priority' 					=> 25,
-) );
-
-	//Testimonial SECTION
-
-$wp_customize->add_section('grit_testimonial_section', array(
-    'title'                     => __('Testimonial Section', 'grit'),
-    'priority'                  => 107,
-    'panel'                     => 'grit_panel', 
-));
-
-$wp_customize->add_setting( 'grit_testimonial_check',
-    array(
-     'sanitize_callback' => 'grit_sanitize_checkbox',
-     'default'           => '',
-     'capability'        => 'manage_options',
-     'transport'         => 'refresh',
- )
-);
-
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_testimonial_check', array(
-   'settings' => 'grit_testimonial_check',
-   'label'    => __( 'Enable Testimonial?', 'grit' ),
-   'section'  => 'grit_testimonial_section',
-   'type'     => 'ios',
-   'priority' => 1,
-	) 
-) );  
-
-$wp_customize->add_setting( 'grit_testimonial_count', array(
-   'default'                   => esc_html__('3', 'grit'),
-   'sanitize_callback'         => 'absint'
-	)
-);
-$wp_customize->add_control( 'grit_testimonial_count', array(
-    'type'                      => 'integer',
-    'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 3)','grit'),
-    'section'                   => 'grit_testimonial_section',
-	)
-);
-
-	//Blog SECTION
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_accent_color', array(
+		'label'      			=> esc_attr__( 'Accent Color', 'grit' ),
+		'description'   		=> esc_attr__( 'Add Accent Color', 'grit' ),
+		'section'       		=> 'colors',
+	) ) );
+
+	//*************************** GENERAL SETTINGS PANEL ***************************//
+	$wp_customize->add_panel( 'grit_general_panel' ,array(
+		'priority'              => 120,
+		'title'                 => esc_html__( 'General settings', 'grit' ),
+		'description'           => '',
+	) );
+
+	// Blog SETTINGS
+	$wp_customize->add_section( 'header_image', array(
+		'title'          => __('Blog Banner', 'grit' ),
+		'theme_supports' => 'custom-header',
+		'priority'       => 10,
+		'panel'          =>'grit_general_panel',
+	) );
+
+	// Font SETTINGS
+	$font_choices                   = grit_customizer_library_get_font_choices();
 	
-$wp_customize->add_section('grit_latest_news_section', array(
-    'title'                     => __('Blog Section', 'grit'),
-    'priority'                  => 109,
-    'panel'                     => 'grit_panel',
-));
+	$wp_customize->add_section('grit_font_settings', array(
+		'title'                     => __('Font Settings', 'grit'),
+		'description'               => 'Easily edit your body section',
+		'priority'                  => 20,
+		'panel'                     =>'grit_general_panel',
+	));
 
-$wp_customize->add_setting( 'grit_latest_news_check',
-    array(
-     'sanitize_callback' => 'grit_sanitize_checkbox',
-     'default'           => '',
-     'capability'        => 'manage_options',
-     'transport'         => 'refresh',
- )
-);
+	$wp_customize                   ->add_setting( 'grit_paragraph_font', array(
+		'default'                   => 'Montserrat',
+		'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
+	) );
 
-$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_latest_news_check', array(
-   'settings' => 'grit_latest_news_check',
-   'label'    => __( 'Disable Latest News?', 'grit' ),
-   'section'  => 'grit_latest_news_section',
-   'type'     => 'ios',
-   'priority' => 1,
+	$wp_customize->add_control( 'grit_paragraph_font', array(
+		'label'                     => 'Pick Paragragh Font Family',
+		'section'                   => 'grit_font_settings',
+		'type'                      => 'select',
+		'choices'                   => $font_choices,
+		'priority'                  => 1,
+	));
 
-) ) );  
+	$wp_customize->add_setting( 'grit_paragraph_font_color', array(
+		'default'                   => '#6f6f6f', 
+		'transport'                 => 'refresh', 
+		'sanitize_callback'         => 'sanitize_hex_color', 
+	) );
+	
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_paragraph_font_color', 
+	   array(
+		'label'                     => esc_attr__( 'Paragraph Font Color', 'grit' ),
+		'section'                   => 'grit_font_settings',
+		'priority'               => 2,
+	) ) );
 
-$wp_customize->add_setting( 'grit_latest_news_header', array(      
-    'default'                   => esc_html__('Our Blog', 'grit'),
-    'sanitize_callback'         => 'sanitize_text_field',
-            'transport'                 => 'postMessage', // refresh or postMessage              
-        ) );    
+	$wp_customize->add_setting( 'grit_paragraph_font_size', array(
+		'default'                   => get_theme_mod( 'grit_paragraph_font_size', '24px' ),
+		'capability'                => 'edit_theme_options',
+		'transport'                 => 'refresh',
+		'sanitize_callback'         =>'absint',
+	) );
 
-$wp_customize->add_control( 'grit_latest_news_header', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Header', 'grit' ),
-    'section'  					=> 'grit_latest_news_section',
-    'priority' 					=> 2,
+	$wp_customize->add_control( new Grit_Customizer_Range_Value_Control( $wp_customize, 'grit_paragraph_font_size', array(
+		'type'                      => 'range-value',
+		'section'                   => 'grit_font_settings',
+		'settings'                  => 'grit_paragraph_font_size',
+		'label'                     => __( 'Paragraph Font Width','grit' ),
+		'input_attrs'               => array(
+			'min'                   => 11,
+			'max'                   => 24,
+			'step'                  => 1,
+			'suffix'                => 'px',
+		),
+		'priority'                  => 3,
+	) ) );
+
+	$wp_customize->add_setting( 'grit_font_family', array(
+		'default'                   => 'Montserrat',
+		'sanitize_callback'         =>'grit_customizer_library_sanitize_font_choice',
+	) );
+
+	$wp_customize->add_control( 'grit_font_family', array(
+		'label'                     => 'Pick Heading Font Family',
+		'section'                   => 'grit_font_settings',
+		'type'                      => 'select',
+		'choices'                   => $font_choices,
+		'priority'                  => 4,
+	));
+
+	$wp_customize->add_setting( 'grit_font_color', array(
+		'default'                   => '#5a5a5a', 
+		'transport'                 => 'refresh', 
+		'sanitize_callback'         => 'sanitize_hex_color', 
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_font_color', array(
+		'label'                     => esc_attr__( 'Font Color', 'grit' ),
+		'section'                   => 'grit_font_settings',
+		'priority'                  => 5,
+	) ) );
+
+	$wp_customize->add_setting( 'grit_font_size', array(
+		'default'                   => get_theme_mod( 'grit_font_size_styles', '24px' ),
+		'capability'                => 'edit_theme_options',
+		'transport'                 => 'refresh',
+		'sanitize_callback'         =>'absint',
+	) );
+
+	$wp_customize->add_control( new Grit_Customizer_Range_Value_Control( $wp_customize, 'grit_font_size', array(
+		'type'                      => 'range-value',
+		'section'                   => 'grit_font_settings',
+		'settings'                  => 'grit_font_size_styles',
+		'label'                     => __( 'Font Width','grit' ),
+		'input_attrs'               => array(
+			'min'                   => 11,
+			'max'                   => 24,
+			'step'                  => 1,
+			'suffix'                => 'px',
+		),
+		'priority'                  => 6,
+	) ) );
+
+		//Footer SOCIAL
+
+	$wp_customize->add_section( 'grit_social', array(
+		'title'                     => __( 'Footer Social', 'grit'  ),
+		'priority'                  => 30,
+		'panel'                     =>'grit_general_panel',
+	) );
+
+	$social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+	foreach( $social_sites as $social_site ) 
+	{
+		$wp_customize->add_setting( "grit_social[$social_site]", array(                
+			'type'                  => 'theme_mod',
+			'default'               => '#',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => 'esc_url_raw'
+		) );
+
+		$wp_customize->add_control( "grit_social[$social_site]", array(
+			'label'                 => ucwords( $social_site ) . __( " Url:", 'grit' ),
+			'section'               => 'grit_social',
+			'type'                  => 'text',
+		) );
+	}
+
+		//Enable/Disable
+
+	$wp_customize->add_section('grit_enabled_switch', array(
+		'title'                     => __('Enable/Disable', 'grit'),
+		'description'               => 'Easily edit your body section',
+		'priority'                  => 40,
+		'panel'                     =>'grit_general_panel',
+	));
+
+	$wp_customize->add_setting( 'grit_enable_disable_search_button', array(
+		'sanitize_callback'         => 'grit_sanitize_checkbox',
+		'default'                   => '',
+		'capability'                => 'manage_options',
+		'transport'                 => 'refresh',
+	) );
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_enable_disable_search_button', array(
+		'settings'                  => 'grit_enable_disable_search_button',
+		'label'                     => ( 'Enable/Disable serach option' ),
+		'section'                   => 'grit_enabled_switch',
+		'type'                      => 'ios',
+	) ) );
+
+	$wp_customize->add_setting( 'grit_blog_author_button', array(
+		'sanitize_callback'         => 'grit_sanitize_checkbox',
+		'default'                   => '',
+		'capability'                => 'manage_options',
+		'transport'                 => 'refresh',
+	) );
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_blog_author_button', array(
+		'settings'                  => 'grit_blog_author_button',
+		'label'                     => ( 'Disable Blog Author option' ),
+		'section'                   => 'grit_enabled_switch',
+		'type'                      => 'ios',
+	) ) );
+
+		//Page SETTINGS
+
+	$wp_customize->add_section('grit_page_setting', array(
+		'title'                     => __('Page Settings', 'grit'),
+		'priority'                  => 50,
+		'panel'                     =>'grit_general_panel',
+	));
+
+	$wp_customize->add_setting(
+		'grit_post_related_post_count',
+		array(
+			'default' => '3',
+			'sanitize_callback' => 'absint'
+		)
+	);
+
+	$wp_customize->add_control(
+		'grit_post_related_post_count',
+		array(
+			'type' => 'integer',        
+			'label' => __('Number Of Related Post To Show - i.e 10 (default is 3)','grit'),
+			'section' => 'grit_page_setting',        
+		)
+	);
+
+	$wp_customize->add_setting( 'grit_testimonial_bck_ground_image', array(
+	 'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
+	 'type'                      => 'theme_mod',
+	 'capability'                => 'edit_theme_options',
+	 'sanitize_callback'         => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Image_Control(
+		$wp_customize,'grit_testimonial_bck_ground_image', array(
+			'label'                     => __( 'Testimonial Page Background Image', 'grit' ),
+			'section'                   => 'grit_page_setting',
+			'settings'                  => 'grit_testimonial_bck_ground_image',
+			'context'                   => 'grit_testimonial_bck_ground_image',
+			'priority'                  => 1,
+		) 
+	) );   
+
+
+	$wp_customize->add_setting( 'grit_portfolio_bck_ground_image', array(
+		'default'                   =>esc_url( get_template_directory_uri() . '/assets/img/in-bg.jpg' ),
+		'type'                      => 'theme_mod',
+		'capability'                => 'edit_theme_options',
+		'sanitize_callback'         => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control(
+		$wp_customize,'grit_portfolio_bck_ground_image', array(
+			'label'                     => __( 'PortFolio Page Background Image', 'grit' ),
+			'section'                   => 'grit_page_setting',
+			'settings'                  => 'grit_portfolio_bck_ground_image',
+			'context'                   => 'grit_portfolio_bck_ground_image',
+			'priority'                  => 2,
+		) 
+	) );    
+
+	//**************************  FRONTPAGE THEME SECTIONS ****************************************// 
+	$wp_customize->add_panel( 'grit_panel' ,array(
+		'priority'        		=> 130,
+		'title'           		=> esc_html__( 'Frontpage Theme Sections', 'grit' ),
+		'description'     		=> '',
+		'active_callback' 		=> 'is_front_page'
+	) );
+
+		// Header INTRO  
+
+	$wp_customize->add_section('grit_header', array(
+		'title'                     => __('Header Intro', 'grit'),
+		'description'               => 'Easily edit your header section',
+		'priority'                  => 100,
+		'panel'                     => 'grit_panel',    
+	));
+
+	$wp_customize->add_setting( 'bck_ground_image', array(
+		'default'           => esc_url( get_template_directory_uri() . '/assets/img/b-1.jpg' ),
+		'type'                      => 'theme_mod',
+		'capability'                => 'edit_theme_options',
+		'sanitize_callback'         => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control(
+		$wp_customize,'bck_ground_image', array(
+			'label'                     => __( 'Background Image', 'grit' ),
+			'section'                   => 'grit_header',
+			'settings'                  => 'bck_ground_image',
+			'context'                   => 'bck_ground_image',
+			'priority'                  => 20,
+		) 
+	) );
+
+	$wp_customize->add_setting( 'grit_header_page_text', array(      
+		'default'                   => esc_html__('Section Title', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'postMessage',            
+		) );
+
+	$wp_customize->add_control( 'grit_header_page_text', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Header', 'grit' ),
+		'section'  					=> 'grit_header',
+		'priority' 					=> 2,
+	) );
+
+
+	$wp_customize->add_setting( 'grit_header_description', array(      
+		'default'                   => esc_html__('Section Description', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'postMessage',               
+	) );    
+
+	$wp_customize->add_control( 'grit_header_description', array(
+		'label' 					=> __( 'Description', 'grit' ),
+		'section'  					=> 'grit_header',
+		'priority' 					=> 3,
+	) );	
+
+	$wp_customize->add_setting( 'grit_header_background_color', array(
+		'default'                   => '#ff4a5d', 
+		'transport'                 => 'refresh', 
+		'sanitize_callback'         => 'sanitize_hex_color', 
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_header_background_color', array(
+		'label'                     => esc_attr__( 'Background Color', 'grit' ),
+		'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
+		'section'                   => 'grit_header',
+		'priority' 					=> 4,
+	) ) );
+
+	$wp_customize->add_setting( 'grit_transparnt', array( 
+	   'default'                    => __( '0.7', 'grit' ),
+	   'transport'                  => 'refresh',
+	   'sanitize_callback'          => 'sanitize_text_field',
+	 ) );
+	 
+	$wp_customize->add_control( 'grit_transparnt', array(
+		'type'                      => 'text',
+		'section'                   => 'grit_header',
+		'label'                     => esc_attr__( "Background Transparency", 'grit' ),
+		'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
+		'priority' 					=> 5,
+		) );
+
+//About SECTION
+   
+	$wp_customize->add_section('grit_about_section', array(
+		'title'                     => __('About Section', 'grit'),
+		'priority'                  => 101,
+		'panel'                     => 'grit_panel', 
+	));
+
+	 $wp_customize->add_setting( 'grit_about_check',
+			array(
+				'sanitize_callback' => 'grit_sanitize_checkbox',
+				'default'           => '',
+				'capability'        => 'manage_options',
+				'transport'         => 'refresh',
+			)
+		);
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_about_check', array(
+		'settings' => 'grit_about_check',
+		'label'    => __( 'Disable this section?', 'grit' ),
+		'section'  => 'grit_about_section',
+		'type'     => 'ios',
+		'priority' => 1,
+
+	) ) );       
+
+	$wp_customize->add_setting( 'grit_about_header', array(      
+		'default'                   => esc_html__('About', 'grit'),
+		'sanitize_callback'         => 'wp_kses_post',
+		'transport'                 => 'postMessage',           
+	) ); 
+
+	$wp_customize->add_control( 'grit_about_header', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Heading', 'grit' ),
+		'section'  					=> 'grit_about_section',
+		'priority' 					=> 2,
+	) );
+
+
+	$wp_customize->add_setting( 'grit_about_description', array(      
+		'default'                   => esc_html__('Section Description', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+				'transport'                 => 'postMessage',            
+			) );    
+
+	$wp_customize->add_control( 'grit_about_description', array(
+		'type'						=> 'textarea',
+		'label' 					=> __( 'Description', 'grit' ),
+		'section'  					=> 'grit_about_section',
+		'priority' 					=> 3,
+	) );
+
+
+	$wp_customize->add_setting( 'grit_about_button_text', array(      
+		'default'                   => esc_html__('Read More', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_about_button_text', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Text', 'grit' ),
+		'section'  					=> 'grit_about_section',
+		'priority' 					=> 4,
+	) );	
+
+
+	$wp_customize->add_setting( 'grit_about_button_url', array(      
+		'default'                   => esc_url('#', 'grit'),
+		'sanitize_callback'         => 'esc_url_raw',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_about_button_url', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Url', 'grit' ),
+		'section'  					=> 'grit_about_section',
+		'priority' 					=> 5
+	) );	  
+
+
+	$wp_customize->add_setting( 'grit_about_boxes', array(
+			'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
+			'transport' => 'refresh', // refresh or postMessage
+				) );
+
+			$wp_customize->add_control(
+				new Grit_Customize_Repeatable_Control(
+					$wp_customize,
+					'grit_about_boxes',
+					array(
+						'label' 		=> esc_html__('About content page', 'grit'),
+						'description'   => esc_html__('There is a limit of 8 item to maintain elegant design. Contact us if you need more.', 'grit'),
+						'section'       => 'grit_about_section',
+
+						'live_title_id' => 'content_page', // apply for unput text and textarea only
+						'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
+						'max_item'      => 8, // Maximum item can add
+						'fields'    	=> array(
+							'content_page'  => array(
+								'title' 	=> esc_html__('Select a page', 'grit'),
+								'type'  	=>'select',
+								'options'		=> $grit_option_pages
+							),
+							'icon'  		=> array(
+								'title' 	=> esc_html__('Icon', 'grit'),
+								'type'  	=>'icon',
+								'required' 	=> array( 'icon_type', '=', 'icon' ),
+							),
+
+						),
+
+					)
+
+				) );
+    
+	//Call to action SECTION  
+	$wp_customize->add_section('grit_contact_section', array(
+		'title'                     => __('Call to action Section', 'grit'),
+		'priority'                  => 101,
+		'panel'                     => 'grit_panel', 
+	) );
+
+	$wp_customize->add_setting( 'grit_contact_check',
+			array(
+				'sanitize_callback' => 'grit_sanitize_checkbox',
+				'default'           => '',
+				'capability'        => 'manage_options',
+				'transport'         => 'refresh',
+			)
+		);
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_contact_check', array(
+		'settings' => 'grit_contact_check',
+		'label'    => __( 'Disable this section?', 'grit' ),
+		'section'  => 'grit_contact_section',
+		'type'     => 'ios',
+		'priority' => 1,
+
+	) ) );       
+
+	$wp_customize->add_setting( 'grit_contact_header', array(      
+		'default'                   => esc_html__('Section Title', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'postMessage',            
+	) );    
+
+	$wp_customize->add_control( 'grit_contact_header', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Description', 'grit' ),
+		'section'  					=> 'grit_contact_section',
+		'priority' 					=> 2,
+	) );
+
+	$wp_customize->add_setting( 'grit_contact_button_text', array(      
+		'default'                   => esc_html__('Read More', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_contact_button_text', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Text', 'grit' ),
+		'section'  					=> 'grit_contact_section',
+		'priority' 					=> 3,
+	) );
+
+	$wp_customize->add_setting( 'grit_contact_button_url', array(      
+		'default'                   => '#',
+		'sanitize_callback'         => 'esc_url_raw',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_contact_button_url', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Url', 'grit' ),
+		'section'  					=> 'grit_contact_section',
+		'priority' 					=> 5
+	) );	  
+
+		//Portfolio SECTION
+	 
+	$wp_customize->add_section('grit_work_section', array(
+		'title'                     => __('Portfolio Section', 'grit'),
+		'priority'                  => 104,
+		'panel'                     => 'grit_panel', 
+	));
+
+	$wp_customize->add_setting( 'grit_work_check',
+		array(
+		 'sanitize_callback' => 'grit_sanitize_checkbox',
+		 'default'           => '',
+		 'capability'        => 'manage_options',
+		 'transport'         => 'refresh',
+	 )
+	);
+
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_work_check', array(
+	   'settings' => 'grit_work_check',
+	   'label'    => __( 'Enable Portfolio?', 'grit' ),
+	   'section'  => 'grit_work_section',
+	   'type'     => 'ios',
+	   'priority' => 1,
+
+	) ) );  
+
+	$wp_customize->add_setting( 'grit_work_header', array(      
+		'default'                   => esc_html__('Section Title', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'postMessage',            
+	) ); 
+
+	$wp_customize->add_control( 'grit_work_header', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Heading', 'grit' ),
+		'section'  					=> 'grit_work_section',
+		'priority' 					=> 2,
+	) );
+
+	$wp_customize->add_setting( 'grit_work_button_text', array(      
+		'default'                   => esc_html__('Read More', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'refresh',               
+
+	) );    
+
+	$wp_customize->add_control( 'grit_work_button_url', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Url', 'grit' ),
+		'section'  					=> 'grit_work_section',
+		'priority' 					=> 5
+	) );	
+
+   $wp_customize->add_setting( 'grit_work_portfolio_count', array(
+		'default'                   => esc_html__('6', 'grit'),
+		'sanitize_callback'         => 'absint'
+		)
+	);
+	$wp_customize->add_control( 'grit_work_portfolio_count', array(
+		'type'                      => 'integer',
+		'label'                     => __('Number Of Portfolio items to show - i.e 10 (default 6)','grit'),
+		'section'                   => 'grit_work_section',
+		)
+	);
+
+	//Process SECTION  
+	$wp_customize->add_section('grit_process_section', array(
+		'title'                     => __('Process Section', 'grit'),
+		'priority'                  => 104,
+		'panel'                     => 'grit_panel', 
+	));
+
+	 $wp_customize->add_setting( 'grit_process_check',
+			array(
+				'sanitize_callback' => 'grit_sanitize_checkbox',
+				'default'           => '',
+				'capability'        => 'manage_options',
+				'transport'         => 'refresh',
+			)
+		);
+		
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_process_check', array(
+		'settings' => 'grit_process_check',
+		'label'    => __( 'Disable this section?', 'grit' ),
+		'section'  => 'grit_process_section',
+		'type'     => 'ios',
+		'priority' => 1,
+
+	) ) );      
+
+	$wp_customize->add_setting( 'grit_process_header', array(      
+		'default'                   => esc_html__('Section Title', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'postMessage',            
+	) );
+
+	$wp_customize->add_control( 'grit_process_header', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Heading', 'grit' ),
+		'section'  					=> 'grit_process_section',
+		'priority' 					=> 2,
+	) );    
+
+	$wp_customize->add_setting(
+		'grit_process_boxes',
+		array(				
+			'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
+			'transport' => 'refresh', // refresh or postMessage
+		) );
+
+	$wp_customize->add_control(
+		new Grit_Customize_Repeatable_Control(
+			$wp_customize, 
+			'grit_process_boxes',
+			array(
+				'label' 		=> esc_html__('process content page', 'grit'),
+				'description'   => esc_html__('You can add upto 7 process to maintain elegant design', 'grit'),
+				'section'       => 'grit_process_section',
+				'live_title_id' => 'content_page', // apply for unput text and textarea only
+				'title_format'  => esc_html__('[live_title]', 'grit'), // [live_title]
+				'max_item'      => 7, // Maximum item can add	
+				'fields'    	=> array(
+					'content_page'  => array(
+						'title' 	=> esc_html__('Select a page', 'grit'),
+						'type'  	=>'select',
+						'options' 	=> $grit_option_pages
+					),
+					'icon'  	=> array(
+						'title' 	=> esc_html__('Icon', 'grit'),
+						'type'  	=>'icon',
+						'required' 	=> array( 'icon_type', '=', 'icon' ),
+					),
+					'title' 	=> array(
+						'title' 	=> esc_html__('Title', 'grit'),
+						'type'  	=>'text',
+						'default' 	=> wp_kses_post('Creating', 'grit'),
+					),
+				),
+
+			)
+
 ) );
 
-$wp_customize->add_setting( 'grit_latest_news_button_text', array(      
-    'default'                   => esc_html__('Read More', 'grit'),
-    'sanitize_callback'         => 'sanitize_text_field',
-    'transport'                 => 'refresh',               
-) );    
+	//Counter SECTION
+	$wp_customize->add_section('grit_counter_section', array(
+		'title'                     => __('Counter Section', 'grit'),
+		'priority'                  => 105,
+		'panel'                     => 'grit_panel', 
+	));
 
-$wp_customize->add_control( 'grit_latest_news_button_text', array(
-    'type'						=> 'text',
-    'label' 					=> __( 'Button Text', 'grit' ),
-    'section'  					=> 'grit_latest_news_section',
-    'priority' 					=> 3,
-) );	
+	$wp_customize->add_setting( 'grit_counter_check',
+		array(
+		 'sanitize_callback' => 'grit_sanitize_checkbox',
+		 'default'           => '',
+		 'capability'        => 'manage_options',
+		 'transport'         => 'refresh',
+	 )
+	);
 
-$wp_customize->add_setting( 'grit_blog_button_url', array(      
-    'default'                   => esc_url('#', 'grit'),
-    'sanitize_callback'         => 'esc_url_raw',
-    'transport'                 => 'refresh',               
-) );    
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_counter_check', array(
+	   'settings' => 'grit_counter_check',
+	   'label'    => __( 'Disable this section?', 'grit' ),
+	   'section'  => 'grit_counter_section',
+	   'type'     => 'ios',
+	   'priority' => 1,
 
-$wp_customize->add_control( 'grit_blog_button_url', array(
-    'type'                      => 'text',
-    'label'                     => __( 'Button Url', 'grit' ),
-    'section'                   => 'grit_latest_news_section',
-    'priority'                  => 5
-) );     
- 
-$wp_customize->add_setting( 'grit_blog_post_count', array(
-    'default'                   => 4,
-    'sanitize_callback'         => 'absint'
-)
-);
+	) ) );  
 
-$wp_customize->add_control( 'grit_blog_post_count', array(
-    'type'                      => 'integer',
-    'label'                     => __('Number Of Blog To Show - i.e 10 (default is 4)','grit'),
-    'section'                   => 'grit_latest_news_section',
-)
-);
+
+	$wp_customize->add_setting( 'grit_counter_setting', 
+	   array(               
+		   'sanitize_callback' => 'grit_sanitize_repeatable_data_field',
+			'transport' => 'refresh', // refresh or postMessage
+			) );    
+
+	$wp_customize->add_control(
+	   new Grit_Customize_Repeatable_Control(
+		$wp_customize,
+		'grit_counter_setting',
+		array(
+		 'label'     	=> esc_html__('Counter Sections', 'grit'),
+		 'description'   => 'Add upto 4 service blocks',
+		 'section'       => 'grit_counter_section',
+						'title_format'  => esc_html__( '[live_title]', 'grit'), // [live_title]
+						'max_item'      => 4, // Maximum item can add
+						'limited_msg' 	=> wp_kses_post( 'Contact us through our Support Forum if you need more.', 'grit' ),
+						'fields'    	=> array(
+							'icon_type'  => array(
+								'title'		=> esc_html__('Custom icon', 'grit'),
+								'type'  	=>'select',
+								'options' 	=> array(
+								   'icon' 		=> esc_html__('Icon', 'grit'),
+								   'image' 	=> esc_html__('image', 'grit'),
+							   ),
+							),
+
+						 'icon'  	=> array(
+						  'title' 	=> esc_html__('Icon', 'grit'),
+						  'type'  	=>'icon',
+						  'required' 	=> array( 'icon_type', '=', 'icon' ),
+					  ),
+
+						 'image'  	=> array(
+						  'title' 	=> esc_html__('Image', 'grit'),
+						  'type'  	=>'media',
+						  'required' 	=> array( 'icon_type', '=', 'image' ),
+					  ),
+						 'count' 	=> array(
+						   'title' 	=> esc_html__('Count', 'grit'),
+						   'type'  	=>'text',
+						   'default' 	=> wp_kses_post('455', 'grit'),
+					   ),
+
+
+						 'title' 	=> array(
+						   'title' 	=> esc_html__('Title', 'grit'),
+						   'type'  	=>'text',
+						   'default' 	=> wp_kses_post('CLIENTS'),
+					   ),
+					 ),
+
+					)
+	) );
+
+	$wp_customize->add_setting( 'grit_counter_bck_ground_image', array(
+	 'default'           => esc_url( get_template_directory_uri() . '/assets/img/bg-counter.jpg' ),
+	 'type'                      => 'theme_mod',
+	 'capability'                => 'edit_theme_options',
+	 'sanitize_callback'         => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control(
+		$wp_customize,'grit_counter_bck_ground_image', array(
+			'label'                     => __( 'Background Image', 'grit' ),
+			'section'                   => 'grit_counter_section',
+			'settings'                  => 'grit_counter_bck_ground_image',
+			'context'                   => 'grit_counter_bck_ground_image',
+			'priority'                  => 20,
+		) 
+	) );
+
+	$wp_customize->add_setting( 'grit_counter_background_color', array(
+		'default'                   => '#ff4a5d', 
+		'transport'                 => 'refresh', 
+		'sanitize_callback'         => 'sanitize_hex_color', 
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grit_counter_background_color', array(
+		'label'                     => esc_attr__( 'Background Color', 'grit' ),
+		'description'               => esc_attr__( 'Add a background ocolor', 'grit' ),
+		'section'                   => 'grit_counter_section',
+		'priority' 					=> 21,
+	) ) );
+
+	$wp_customize->add_setting( 'grit_counter_transparnt', array( 
+	   'default'                    => __( '0.7', 'grit' ),
+	   'transport'                  => 'refresh',
+	   'sanitize_callback'          => 'sanitize_text_field',
+	) );
+
+	$wp_customize->add_control( 'grit_counter_transparnt', array(
+		'type'                      => 'text',
+		'section'                   => 'grit_counter_section',
+		'label'                     => esc_attr__( "Background Transparency", 'grit' ),
+		'description'               => esc_attr__( 'Change the opacity of the above background color.', 'grit' ),
+		'priority' 					=> 25,
+	) );
+
+		//Testimonial SECTION
+
+	$wp_customize->add_section('grit_testimonial_section', array(
+		'title'                     => __('Testimonial Section', 'grit'),
+		'priority'                  => 107,
+		'panel'                     => 'grit_panel', 
+	));
+
+	$wp_customize->add_setting( 'grit_testimonial_check',
+		array(
+		 'sanitize_callback' => 'grit_sanitize_checkbox',
+		 'default'           => '',
+		 'capability'        => 'manage_options',
+		 'transport'         => 'refresh',
+	 )
+	);
+
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_testimonial_check', array(
+	   'settings' => 'grit_testimonial_check',
+	   'label'    => __( 'Enable Testimonial?', 'grit' ),
+	   'section'  => 'grit_testimonial_section',
+	   'type'     => 'ios',
+	   'priority' => 1,
+		) 
+	) );  
+
+	$wp_customize->add_setting( 'grit_testimonial_count', array(
+	   'default'                   => esc_html__('3', 'grit'),
+	   'sanitize_callback'         => 'absint'
+		)
+	);
+	$wp_customize->add_control( 'grit_testimonial_count', array(
+		'type'                      => 'integer',
+		'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 3)','grit'),
+		'section'                   => 'grit_testimonial_section',
+		)
+	);
+
+		//Blog SECTION
+		
+	$wp_customize->add_section('grit_latest_news_section', array(
+		'title'                     => __('Blog Section', 'grit'),
+		'priority'                  => 109,
+		'panel'                     => 'grit_panel',
+	));
+
+	$wp_customize->add_setting( 'grit_latest_news_check',
+		array(
+		 'sanitize_callback' => 'grit_sanitize_checkbox',
+		 'default'           => '',
+		 'capability'        => 'manage_options',
+		 'transport'         => 'refresh',
+	 )
+	);
+
+	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_latest_news_check', array(
+	   'settings' => 'grit_latest_news_check',
+	   'label'    => __( 'Disable Latest News?', 'grit' ),
+	   'section'  => 'grit_latest_news_section',
+	   'type'     => 'ios',
+	   'priority' => 1,
+
+	) ) );  
+
+	$wp_customize->add_setting( 'grit_latest_news_header', array(      
+		'default'                   => esc_html__('Our Blog', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+				'transport'                 => 'postMessage',            
+			) );    
+
+	$wp_customize->add_control( 'grit_latest_news_header', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Header', 'grit' ),
+		'section'  					=> 'grit_latest_news_section',
+		'priority' 					=> 2,
+	) );
+
+	$wp_customize->add_setting( 'grit_latest_news_button_text', array(      
+		'default'                   => esc_html__('Read More', 'grit'),
+		'sanitize_callback'         => 'sanitize_text_field',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_latest_news_button_text', array(
+		'type'						=> 'text',
+		'label' 					=> __( 'Button Text', 'grit' ),
+		'section'  					=> 'grit_latest_news_section',
+		'priority' 					=> 3,
+	) );	
+
+	$wp_customize->add_setting( 'grit_blog_button_url', array(      
+		'default'                   => esc_url('#', 'grit'),
+		'sanitize_callback'         => 'esc_url_raw',
+		'transport'                 => 'refresh',               
+	) );    
+
+	$wp_customize->add_control( 'grit_blog_button_url', array(
+		'type'                      => 'text',
+		'label'                     => __( 'Button Url', 'grit' ),
+		'section'                   => 'grit_latest_news_section',
+		'priority'                  => 5
+	) );     
+	 
+	$wp_customize->add_setting( 'grit_blog_post_count', array(
+		'default'                   => 4,
+		'sanitize_callback'         => 'absint'
+	)
+	);
+
+	$wp_customize->add_control( 'grit_blog_post_count', array(
+		'type'                      => 'integer',
+		'label'                     => __('Number Of Blog To Show - i.e 10 (default is 4)','grit'),
+		'section'                   => 'grit_latest_news_section',
+	)
+	);
 
 }
 add_action( 'customize_register', 'grit_customize_register' );
