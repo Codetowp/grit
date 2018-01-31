@@ -148,8 +148,8 @@ add_action( 'widgets_init', 'grit_widgets_init' );
 function grit_demo_fonts() {
 	// Font options
 	$fonts = array(
-		get_theme_mod( 'grit_paragraph_font', grit_customizer_library_get_default( 'primary-font' ) ),
-		get_theme_mod( 'grit_font_family', grit_customizer_library_get_default( 'secondary-font' ) ),
+		get_theme_mod( 'grit_paragraph_font_family', grit_customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'grit_heading_font_family', grit_customizer_library_get_default( 'secondary-font' ) ),
 	);
 	$font_uri = grit_customizer_library_get_google_font_uri( $fonts );
 	// Load Google Fonts

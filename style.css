@@ -2587,7 +2587,6 @@ embed, iframe, object {
 	font-weight: 400;
 	font-size: 18px;
 	letter-spacing: 0.8px;
-	font-family: 'PT Serif', serif;
 	font-style: italic;
 	padding-bottom: 18px;
 	display: inline-block;
@@ -2666,19 +2665,6 @@ embed, iframe, object {
 	max-width: 600px;
 	margin: 0 auto;
 }
-/*#about-us-block hr {
-	width: 100px;
-	margin-top: 0;
-}
-#about-us-block hr:after {
-	background: #ffbf35;
-	width: 30px;
-	height: 2px;
-	content: "";
-	display: inline-block;
-	position: relative;
-	top: -15px;
-}*/
 #about-us-block .section-title {
 	margin-bottom: 80px;
 }
@@ -2687,7 +2673,6 @@ embed, iframe, object {
 	font-size: 16px;
 	max-width: 800px;
 	margin: 0 auto;
-	font-family: 'PT Serif', serif;
 	margin-top: 50px;
 }
 .section-title a {/*position:relative; margin-top:-64px; margin-right:8px;*/
@@ -3069,7 +3054,6 @@ ul.about-features li:hover i {
 	color: #6f6f6f;
 	font-size: 16px;
 	font-weight: 400;
-	font-family: 'PT Serif', serif;
 	margin-top: 50px;
 	margin-bottom: 35px;
 }

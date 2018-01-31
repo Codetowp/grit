@@ -20,12 +20,12 @@ if (!function_exists('grit_paragraph_font_family'))
 	function grit_paragraph_font_family()
 	{
 		
-		$fontfamily_value 	= get_theme_mod('grit_paragraph_font');
+		$fontfamily_value 	= get_theme_mod('grit_paragraph_font_family');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" .'#about-us-block p,#process-block p,#process-block process-content p,#testimonials-block p,.widget ul li,.widget_recent_entries ul li .media-body p a,.widget ul li,.widget,.single .single-post p{' .esc_html( $append_family ). '}';
+			echo "\n" .'.c-block p, #latest-news-block .entry-header a, #home-banner span, #home-contact-block p, #about-us-block p,#process-block p,#testimonials-block p,.widget ul li,.widget_recent_entries ul li .media-body p a,.widget ul li,.widget,.single .single-post p, .page #page-body p{' .esc_html( $append_family ). '}';
 		}
 		
 	}
@@ -48,9 +48,9 @@ if (!function_exists('grit_paragraph_font_color'))
 	}
 } 
 
-if (!function_exists('grit_paragraph_font_size_styles')) 
+if (!function_exists('grit_paragraph_font_size')) 
 {
-	function grit_paragraph_font_size_styles()
+	function grit_paragraph_font_size()
 	{
 		
 		$fontparagraphfamily_value 	= get_theme_mod('grit_paragraph_font_size');
@@ -64,17 +64,17 @@ if (!function_exists('grit_paragraph_font_size_styles'))
 	}
 }
 
-if (!function_exists('grit_font_family'))  
+if (!function_exists('grit_heading_font_family'))  
 {
-	function grit_font_family()
+	function grit_heading_font_family()
 	{
 		
-		$fontfamily_value 	= get_theme_mod('grit_font_family');
+		$fontfamily_value 	= get_theme_mod('grit_heading_font_family');
 		$append_family 		= sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) 
 		{
-			echo "\n" . 'h1,h2,h3,h4,h5,h6,.widget-title{' . esc_html( $append_family ) . '}';
+			echo "\n" . 'h1,h2,h3,h4,h5,h6,.widget-title, #latest-news-block a h6{' . esc_html( $append_family ) . '}';
 		}
 		
 	}
@@ -96,17 +96,17 @@ if (!function_exists('grit_font_size_styles'))
 	}
 } 
 
-if (!function_exists('grit_font_color'))  
+if (!function_exists('grit_heading_font_color'))  
 {
-	function grit_font_color()
+	function grit_heading_font_color()
 	{
 		
-		$color_value 		= get_theme_mod('grit_font_color');
+		$color_value 		= get_theme_mod('grit_heading_font_color');
 		$append_color 		= sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) 
 		{
-			echo "\n" . 'h1,h2,h3,h4,h5,h6,#process-block .process-content h6,#latest-news-block h2{' . esc_html( $append_color ) . '}';
+			echo "\n" . 'h1,h2,h3,h4,h5,h6,#process-block .process-content h6,#latest-news-block h2, #about-us-block h2{' . esc_html( $append_color ) . '}';
 		}
 		
 	}
@@ -177,10 +177,10 @@ echo '<style type="text/css" id="grit-styles" >';
 text_color_styles();
 grit_paragraph_font_family();
 grit_paragraph_font_color();
-grit_paragraph_font_size_styles();
-grit_font_family();
+grit_paragraph_font_size();
+grit_heading_font_family();
 grit_font_size_styles();
-grit_font_color();
+grit_heading_font_color();
 grit_accent_color();
 grit_header_background();
 grit_count_background_color();

@@ -17,15 +17,7 @@
 			</ol>
 			<h1><?php the_title(); ?> </h1>
 			<hr>
-			<?php 						
-			$disable    = get_theme_mod( 'grit_blog_author_button' ) == 1 ? true : false ;
-			if ( grit_is_selective_refresh() ) {
-				$disable = false;
-			}
-			if ( ! $disable) : 
-				grit_posted_on();
-			endif;
-			?>
+			<?php grit_posted_on(); ?>
 		</div>
 	</div>
 	<div class="arrow bounce"><i class="fa fa-arrow-down fa-2x"></i></div>
