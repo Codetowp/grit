@@ -3512,7 +3512,7 @@ ul.about-features li:hover i {
 }
 .single .single-post footer.entry-meta-bar, .page .page-block footer.entry-meta-bar {
 	margin-top: 30px;
-	margin-left: 5%;
+	margin-left: 3%;
 }
 .single .single-post footer.entry-meta-bar .fa, .page .page-block footer.entry-meta-bar .fa {
 	position: relative;

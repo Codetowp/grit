@@ -13,11 +13,11 @@
 
 <footer id="bottom-footer">
 	<div class="container">
-		<div class="row wow fadeInUp">
-			<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft">
 				<p class="copyright">&#169; <?php echo bloginfo('name'); ?> 2018. <?php echo esc_html_e('All rights reserved', 'grit'); ?>.</p>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
+			<div class="col-md-4 col-sm-4 col-xs-12 wow zoomIn">
 				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
 				<nav class="bottom-nav">
 					<ul>
@@ -31,7 +31,7 @@
 				</nav>
 				<?php endif; ?>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12 custom-social">
+			<div class="col-md-4 col-sm-4 col-xs-12 custom-social wow fadeInRight">
 			<ul class="social-link">
 				<?php
 					if ( $socials = get_theme_mod( 'grit_social') ){
