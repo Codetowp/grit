@@ -8,83 +8,91 @@
  * E.g., it puts together the home page when no home.php file exists.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
- * Template Name:front-page
+ * Template Name: Frontpage
  * @package grit
  */
 get_header(); ?>
-<!-- // banner SECTION -->
-<?php
-$disable1    = get_theme_mod( 'grit_header_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'home-banner' );?>
-<?php endif;?>
-<!-- // about us SECTION -->
-<?php
-$disable1    = get_theme_mod( 'grit_about_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'about' );?>			
-<?php endif;?>
-<!-- Call to action SECTION  
-    ==========================================-->
 
+<!--  Header INTRO -->
+<?php 
+	get_template_part( 'section-parts/section', 'header-intro' );	
+?>
+
+<!--  About SECTION -->
 <?php
-$disable1    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'home-contact' );?>
-<?php endif;?>
-<!-- // our works SECTION -->
+	$disable_about    = get_theme_mod( 'grit_about_check' ) == 1 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_about = false;
+	}
+	if ( ! $disable_about) :
+	get_template_part( 'section-parts/section', 'about' );
+	endif;
+?>
+
+<!-- Call to action SECTION  -->
 <?php
-$disable1    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'ourwork' );?>
-<?php endif;?>
-<!-- // the process SECTION -->
+	$disable_cta    = get_theme_mod( 'grit_contact_check' ) == 1 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_cta = false;
+	}
+	if ( ! $disable_cta) :
+	get_template_part( 'section-parts/section', 'cta' );
+	endif;
+?>
+
+<!-- Portfolio SECTION -->
+	<?php
+	$disable_portfolio    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_portfolio = false;
+	}
+	if ( ! $disable_portfolio) :
+	get_template_part( 'section-parts/section', 'portfolio' );
+	endif;
+?>
+
+<!-- Process SECTION  -->
 <?php
-$disable1    = get_theme_mod( 'grit_process_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'process' );?>
-<?php endif;?>
-<!-- // Company counter SECTION -->
+	$disable_process    = get_theme_mod( 'grit_process_check' ) == 1 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_process = false;
+	}
+	if ( ! $disable_process) :
+	get_template_part( 'section-parts/section', 'process' );
+	endif;
+?>
+
+<!-- Counter SECTION -->
 <?php
-$disable1    = get_theme_mod( 'grit_counter_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'counts' );?>  			
-<?php endif;?>
-<!-- // Testimonials SECTION -->
+	$disable_counter    = get_theme_mod( 'grit_counter_check' ) == 1 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_counter = false;
+	}
+	if ( ! $disable_counter) :
+	get_template_part( 'section-parts/section', 'counter' );
+	endif;
+?>
+
+<!-- Testimonial SECTION -->
 <?php
-$disable1    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'testimonials' );?>  
-<?php endif;?>
-<!-- // latest news SECTION -->
+	$disable_testimonial    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_testimonial = false;
+	}
+	if ( ! $disable_testimonial) :
+	get_template_part( 'section-parts/section', 'testimonial' ); 
+	endif;
+?>
+
+<!-- Blog SECTION -->
 <?php
-$disable1    = get_theme_mod( 'grit_latest_news_check' ) == 1 ? true : false ;
-if ( grit_is_selective_refresh() ) {
-	$disable1 = false;
-}
-if ( ! $disable1) : ?>
-<?php  get_template_part( 'section-parts/section', 'latest-news' );?> 
-<?php endif;?>
+	$disable_latest_news    = get_theme_mod( 'grit_latest_news_check' ) == 1 ? true : false ;
+	if ( grit_is_selective_refresh() ) {
+		$disable_latest_news = false;
+	}
+	if ( ! $disable_latest_news) :
+	get_template_part( 'section-parts/section', 'latest-news' );
+	endif;
+?>
 <?php
 get_footer();

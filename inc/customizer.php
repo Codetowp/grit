@@ -364,6 +364,7 @@ $wp_customize->add_panel( 'grit_panel' ,array(
     'priority'        		=> 130,
     'title'           		=> esc_html__( 'Frontpage Theme Sections', 'grit' ),
     'description'     		=> '',
+	'active_callback' 		=> 'is_front_page'
 ) );
 
 	// Header INTRO  
