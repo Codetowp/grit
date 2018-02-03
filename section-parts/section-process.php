@@ -4,7 +4,7 @@
 			<!--section-title-->
 			<div class="section-title text-center wow fadeInUp">
 				<?php 
-				$grit_process_header = get_theme_mod( 'grit_process_header', esc_html__('Section Title', 'grit' ));
+				$grit_process_header = get_theme_mod( 'grit_process_header', __('Section Title', 'grit' ));
 				if ($grit_process_header != '') echo '<h2>  ' . wp_kses_post($grit_process_header) . ' </h2>'; 
 				?>
 				
@@ -66,7 +66,7 @@
 					foreach ($page_ids as $post_id => $settings  ) {
 						$post_id = $settings['content_page'];
 						?>
-						<div id="<?php echo $settings['title']?>" class="tab-pane <?php echo $firstClass;?>"> 
+						<div id="<?php echo esc_html( $settings['title']);?>" class="tab-pane <?php echo esc_html($firstClass);?>"> 
 							<!--tab img-->
 							<div class="col-md-5 process-img"><?php  echo get_the_post_thumbnail( $post_id, 'grit_process-default' ); ?></div>
 							<!--/tab img--> 
@@ -76,13 +76,13 @@
 								<p>
 									<?php
 									$content = get_post_field('post_content', $post_id); 
-									echo mb_strimwidth($content, 0, 500, '...');
+									echo wp_kses_post(mb_strimwidth($content, 0, 500, '...'));
 									
 										
                                     ?>
 
 									</p>
-									<a href="<?php echo esc_url( get_permalink($post_id) ); ?>">Read More</a> </div>
+									<a href="<?php echo esc_url( get_permalink($post_id) ); ?>"><?php esc_html_e('Read More','grit'); ?></a> </div>
 									<!--/tab content--> 
 								</div>
 								<?php
@@ -117,6 +117,22 @@
 						<div class="col-md-7 process-content">
 							<h6>Professional website design</h6>
 							<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
+							<a href="#">Read More</a> 
+						</div>
+					</div>
+					<div id="prototype" class="tab-pane"> 
+						<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
+						<div class="col-md-7 process-content">
+							<h6>Professional website design</h6>
+							<p>Apes and spider monkeys move theirbody from branch to branch by swaying hands, but most monkeys do not. They just run and jump from branch to branch.</p>
+							<a href="#">Read More</a> 
+						</div>
+					</div>
+					<div id="prototype" class="tab-pane"> 
+						<div class="col-md-5 process-img"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/03-screenshot.jpg" class="img-responsive"> </div>
+						<div class="col-md-7 process-content">
+							<h6>Apes and spider monkeys </h6>
+							<p>website design most monkeys do not. They just run and jump from branch to branch.</p>
 							<a href="#">Read More</a> 
 						</div>
 					</div>

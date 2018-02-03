@@ -45,21 +45,21 @@ function grit_related_post()
                 $cat_link = get_category_link($categories[0]->cat_ID);
                 //$cat_name = get_category_link($categories[0]->cat_name);
                 ?>
-                <a  href="<?php the_permalink() ?>"><?php
+                <?php
 				printf(
 					'<article class="col-md-4 col-sm-6 col-xs-12 eq-blocks">
-                        <header class="entry-header"> %s <a href="%s">
+                        <header class="entry-header"><a href="%s"> %s </a>
+                        <a href="%s">
                         <h6>%s</h6>
-                        </a> <a href="%s"></a> </header>
+                        </a></header>
                      </article>
                    ',
-					$post_thumbnail,
+                    esc_url(get_permalink()),
+					wp_kses_post($post_thumbnail),
                     esc_url( get_permalink() ),
-                    esc_html( $title ),
-                    esc_url( $cat_link ),
-                    esc_html( $class_format )
+                    esc_html( $title )
 				);
-				?></a>
+				?>
 			<?php
 			}
 			?>

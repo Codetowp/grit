@@ -14,7 +14,7 @@
 				$grit_work_button_text  = get_theme_mod( 'grit_work_button_text', esc_html__('Read More', 'grit' ));
 				
 				
-				if ($grit_work_button_text != '') echo '<a href="' . esc_url( home_url( '/portfolio' ) ) . '">  ' . wp_kses_post($grit_work_button_text) . ' </a>' ; 
+				if ($grit_work_button_text != '') echo '<a href="' . esc_url( home_url( '/portfolio' ) ) . '">  ' . esc_html($grit_work_button_text) . ' </a>' ; 
 				?>
 				
 				
@@ -24,7 +24,7 @@
 			<div class="works">
 				<ul class="grid">
 					<?php 
-					$posts_per_page_portfolio = get_theme_mod( 'grit_work_portfolio_count' );
+					$posts_per_page_portfolio = get_theme_mod( 'grit_work_portfolio_count',6 );
 					$args = array(
 						'post_type'      => 'jetpack-portfolio',
 						'posts_per_page' => $posts_per_page_portfolio,

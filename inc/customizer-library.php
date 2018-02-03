@@ -22,7 +22,7 @@ if ( ! class_exists( 'Customizer_Library' ) ) :
 
 	 /*Class wrapper with useful methods for interacting with the theme customizer.*/
 	
-	class Customizer_Library {
+	class Grit_Customizer_Library {
 
 		/**
 		 * The one instance of Customizer_Library.

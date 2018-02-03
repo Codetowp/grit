@@ -4,7 +4,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div id="testimonial" class="owl-carousel owl-theme">
 					<?php 
-					$posts_per_page_testimonial = get_theme_mod( 'grit_testimonial_count' );
+					$posts_per_page_testimonial = get_theme_mod( 'grit_testimonial_count',3 );
 					$args = array(
 						'post_type'      => 'jetpack-testimonial',
 						'posts_per_page' => $posts_per_page_testimonial,
@@ -17,12 +17,12 @@
 					while ( $project_query -> have_posts() ) : $project_query -> the_post();
 					?>
 					<div class="item"> 
-						<?php the_post_thumbnail();?>
+						<?php the_post_thumbnail('post-thumbnail', array('class' => 'aligncenter'));?>
 						<h5><?php the_content();?></h5>
 						<p><strong>
 							<?php the_title();?></strong>
 							<?php if ( ! has_excerpt() ) {
-								echo '';} else { echo strip_tags( get_the_excerpt() ); 
+								echo '';} else { echo esc_html( get_the_excerpt() ); 
 							} 
 							?>
 						</p>
