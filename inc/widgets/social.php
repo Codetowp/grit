@@ -1,5 +1,9 @@
 <?php 
-
+/**
+ * Register a simple social follow widget
+ * 
+ * @package grit
+ */
 class Grit_Premium extends WP_Widget{
 
     /**

@@ -1,5 +1,9 @@
 <?php 
-
+/**
+ * Register a recent posts with thumbnail widget
+ * 
+ * @package grit
+ */
 class Grit_WP_Widget_Recent_Posts extends WP_Widget 
 	{
 		function __construct() 
