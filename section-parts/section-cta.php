@@ -8,9 +8,9 @@
            ?>
            <?php 
            $grit_contact_button_text  = get_theme_mod( 'grit_contact_button_text', esc_html__('Read More', 'grit' ));
-           $grit_contact_button_url= get_theme_mod( 'grit_contact_button_url', esc_html__('#', 'grit') );
+           $grit_contact_button_url= get_theme_mod( 'grit_contact_button_url', '#' );
            
-           if ($grit_contact_button_text != '' && $grit_contact_button_url != '') echo '<a href="' . esc_url($grit_contact_button_url) . '">  ' . wp_kses_post($grit_contact_button_text) . ' </a>'; 
+           if ($grit_contact_button_text != '' && $grit_contact_button_url != '') echo '<a href="' . esc_url($grit_contact_button_url) . '">  ' . esc_html($grit_contact_button_text) . ' </a>'; 
            ?>
        </div>
    </div>

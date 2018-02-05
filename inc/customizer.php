@@ -352,7 +352,7 @@ function grit_customize_register( $wp_customize ) {
 	) ) );
 
 	$wp_customize->add_setting( 'grit_transparnt', array( 
-	   'default'                    => __( '0.7', 'grit' ),
+	   'default'                    => '0.7',
 	   'transport'                  => 'refresh',
 	   'sanitize_callback'          => 'sanitize_text_field',
 	 ) );
@@ -422,8 +422,8 @@ function grit_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'grit_about_description', array(      
 		'default'                   => esc_html__('Section Description', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
-				'transport'                 => 'postMessage',            
+		'sanitize_callback'         => 'wp_kses_post',
+				'transport'         => 'postMessage',            
 			) );    
 
 	$wp_customize->add_control( 'grit_about_description', array(
@@ -449,7 +449,7 @@ function grit_customize_register( $wp_customize ) {
 
 
 	$wp_customize->add_setting( 'grit_about_button_url', array(      
-		'default'                   => esc_url('#', 'grit'),
+		'default'                   => '#',
 		'sanitize_callback'         => 'esc_url_raw',
 		'transport'                 => 'refresh',               
 	) );    
@@ -523,7 +523,7 @@ function grit_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'grit_contact_header', array(      
 		'default'                   => esc_html__('Section Title', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
+		'sanitize_callback'         => 'wp_kses_post',
 		'transport'                 => 'postMessage',            
 	) );    
 
@@ -588,7 +588,7 @@ function grit_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'grit_work_header', array(      
 		'default'                   => esc_html__('Section Title', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
+		'sanitize_callback'         => 'wp_kses_post',
 		'transport'                 => 'postMessage',            
 	) ); 
 
@@ -606,15 +606,8 @@ function grit_customize_register( $wp_customize ) {
 
 	) );    
 
-	$wp_customize->add_control( 'grit_work_button_url', array(
-		'type'						=> 'text',
-		'label' 					=> __( 'Button Url', 'grit' ),
-		'section'  					=> 'grit_work_section',
-		'priority' 					=> 5
-	) );	
-
    $wp_customize->add_setting( 'grit_work_portfolio_count', array(
-		'default'                   => esc_html__('6', 'grit'),
+		'default'                   => 6,
 		'sanitize_callback'         => 'absint'
 		)
 	);
@@ -652,7 +645,7 @@ function grit_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'grit_process_header', array(      
 		'default'                   => esc_html__('Section Title', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
+		'sanitize_callback'         => 'wp_kses_post',
 		'transport'                 => 'postMessage',            
 	) );
 
@@ -815,7 +808,7 @@ function grit_customize_register( $wp_customize ) {
 	) ) );
 
 	$wp_customize->add_setting( 'grit_counter_transparnt', array( 
-	   'default'                    => __( '0.7', 'grit' ),
+	   'default'                    => '0.7',
 	   'transport'                  => 'refresh',
 	   'sanitize_callback'          => 'sanitize_text_field',
 	) );
@@ -855,7 +848,7 @@ function grit_customize_register( $wp_customize ) {
 	) );  
 
 	$wp_customize->add_setting( 'grit_testimonial_count', array(
-	   'default'                   => esc_html__('3', 'grit'),
+	   'default'                   => 3,
 	   'sanitize_callback'         => 'absint'
 		)
 	);
@@ -894,7 +887,7 @@ function grit_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'grit_latest_news_header', array(      
 		'default'                   => esc_html__('Our Blog', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
+		'sanitize_callback'         => 'wp_kses_post',
 				'transport'                 => 'postMessage',            
 			) );    
 
@@ -919,7 +912,7 @@ function grit_customize_register( $wp_customize ) {
 	) );	
 
 	$wp_customize->add_setting( 'grit_blog_button_url', array(      
-		'default'                   => esc_url('#', 'grit'),
+		'default'                   => '#',
 		'sanitize_callback'         => 'esc_url_raw',
 		'transport'                 => 'refresh',               
 	) );    
@@ -961,9 +954,7 @@ function grit_customize_partial_blogname() {
  *
  * @return void
  */
-/*function grit_customize_partial_header_text() {
-   bloginfo( 'name' );
-}*/
+
 
 function grit_customize_partial_blogdescription() {
 	bloginfo( 'description' );
@@ -1051,6 +1042,3 @@ function grit_customize_controls_enqueue_scripts()
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'grit_customize_controls_enqueue_scripts' );
-
-
-

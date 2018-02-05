@@ -1,7 +1,5 @@
 <?php
-$background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', get_template_directory_uri() . '/assets/img/bg-counter.jpg' );   
-    //$background_img_static   = get_template_directory_uri() .'/assets/assets/img/07-screenshot.jpg';
-   // $image = $background_img ? "$background_img" : "";      
+$background_img   =  get_theme_mod( 'grit_counter_bck_ground_image', get_template_directory_uri() . '/assets/img/bg-counter.jpg' );    
 ?>
 <section id="company-counter" style="background-image:url(<?php echo esc_url( $background_img ); ?>); ">
 	<div class="container">

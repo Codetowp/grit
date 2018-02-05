@@ -5,15 +5,15 @@
 			<div class="section-title text-center wow fadeInUp">
 				
 				<?php 
-				$grit_latest_news_header = get_theme_mod( 'grit_latest_news_header', esc_html__('Our Blog', 'grit' ));
+				$grit_latest_news_header = get_theme_mod( 'grit_latest_news_header', __('Our Blog', 'grit' ));
 				if ($grit_latest_news_header != '') echo '<h2>  ' . wp_kses_post($grit_latest_news_header) . ' </h2>'; 
 				?>
 				<?php 
 				$grit_latest_news_button_text  = get_theme_mod( 'grit_latest_news_button_text', esc_html__('Read More', 'grit' ));  
-				$grit_latest_news_button_url= get_theme_mod( 'grit_blog_button_url', esc_html__('#', 'grit') );
+				$grit_latest_news_button_url= get_theme_mod( 'grit_blog_button_url', '#' );
 				
 				
-				if ($grit_latest_news_button_text != ''&& $grit_latest_news_button_url != '') echo '<a href="' . esc_url($grit_latest_news_button_url) . '">  ' . wp_kses_post($grit_latest_news_button_text) . ' </a>'; 
+				if ($grit_latest_news_button_text != ''&& $grit_latest_news_button_url != '') echo '<a href="' . esc_url($grit_latest_news_button_url) . '">  ' . esc_html($grit_latest_news_button_text) . ' </a>'; 
 				
 				?>
 				
