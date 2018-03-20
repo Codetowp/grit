@@ -11,14 +11,14 @@ function grit_breadcrumb() {
 		echo '<a href="';
 		echo esc_url( home_url( '/' ) );
 		echo '">';
-		echo esc_html_e( 'Home', 'grit' );
+		esc_html_e( 'Home', 'grit' );
 		echo "</a>";
 		echo '</li>';
 		echo '<li class="breadcrumb-item">';
 		if ( is_category() || is_single() ) {
 			the_category( ' / ' );			
 		} elseif ( is_page() ) {
-			echo the_title();
+			the_title();
 		}
 		echo '</li>';
 	}
