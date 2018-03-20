@@ -11,7 +11,6 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 			$widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails",'grit'), 'customize_selective_refresh' => true, );
 			parent::__construct('grit-recent-posts', __('Grit Recent Posts','grit'), $widget_ops);
 			$this->alt_option_name = 'widget_recent_entries';
-
 			add_action( 'save_post', array($this, 'flush_widget_cache') );
 			add_action( 'deleted_post', array($this, 'flush_widget_cache') );
 			add_action( 'switch_theme', array($this, 'flush_widget_cache') );
