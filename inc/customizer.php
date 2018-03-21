@@ -568,55 +568,24 @@ function grit_customize_register( $wp_customize ) {
 		'panel'                     => 'grit_frontpage_panel', 
 	));
 
-	$wp_customize->add_setting( 'grit_work_check',
-		array(
-		 'sanitize_callback' => 'grit_sanitize_checkbox',
-		 'default'           => '',
-		 'capability'        => 'manage_options',
-		 'transport'         => 'refresh',
-	 )
-	);
+	 
 
-	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_work_check', array(
-	   'settings' => 'grit_work_check',
-	   'label'    => __( 'Enable Portfolio?', 'grit' ),
-	   'section'  => 'grit_work_section',
-	   'type'     => 'ios',
-	   'priority' => 1,
-
-	) ) );  
-
-	$wp_customize->add_setting( 'grit_work_header', array(      
-		'default'                   => esc_html__('Section Title', 'grit'),
-		'sanitize_callback'         => 'wp_kses_post',
+	$wp_customize->add_setting( 'grit_portfolio_pro', array(      
+		
+		'sanitize_callback'         => 'grit_sanitize_checkbox',
 		'transport'                 => 'postMessage',            
 	) ); 
 
-	$wp_customize->add_control( 'grit_work_header', array(
-		'type'						=> 'text',
-		'label' 					=> __( 'Heading', 'grit' ),
+	$wp_customize->add_control( 'grit_portfolio_pro', array(
+		'label'                     => __('Portfolio'),
+		'description'               => __('Customize all theme portfolio in PRO','grit'),
 		'section'  					=> 'grit_work_section',
 		'priority' 					=> 2,
+		'type'                      =>'checkbox'
 	) );
 
-	$wp_customize->add_setting( 'grit_work_button_text', array(      
-		'default'                   => esc_html__('Read More', 'grit'),
-		'sanitize_callback'         => 'sanitize_text_field',
-		'transport'                 => 'refresh',               
-
-	) );    
-
-   $wp_customize->add_setting( 'grit_work_portfolio_count', array(
-		'default'                   => 6,
-		'sanitize_callback'         => 'absint'
-		)
-	);
-	$wp_customize->add_control( 'grit_work_portfolio_count', array(
-		'type'                      => 'integer',
-		'label'                     => __('Number Of Portfolio items to show - i.e 10 (default 6)','grit'),
-		'section'                   => 'grit_work_section',
-		)
-	);
+	      
+	
 
 	//Process SECTION  
 	$wp_customize->add_section('grit_process_section', array(
@@ -829,36 +798,19 @@ function grit_customize_register( $wp_customize ) {
 		'panel'                     => 'grit_frontpage_panel', 
 	));
 
-	$wp_customize->add_setting( 'grit_testimonial_check',
-		array(
-		 'sanitize_callback' => 'grit_sanitize_checkbox',
-		 'default'           => '',
-		 'capability'        => 'manage_options',
-		 'transport'         => 'refresh',
-	 )
-	);
+$wp_customize->add_setting( 'grit_testimonial_pro', array(      
+		
+		'sanitize_callback'         => 'grit_sanitize_checkbox',
+		'transport'                 => 'postMessage',            
+	) ); 
 
-	$wp_customize->add_control( new Grit_Customizer_Toggle_Control( $wp_customize, 'grit_testimonial_check', array(
-	   'settings' => 'grit_testimonial_check',
-	   'label'    => __( 'Enable Testimonial?', 'grit' ),
-	   'section'  => 'grit_testimonial_section',
-	   'type'     => 'ios',
-	   'priority' => 1,
-		) 
-	) );  
-
-	$wp_customize->add_setting( 'grit_testimonial_count', array(
-	   'default'                   => 3,
-	   'sanitize_callback'         => 'absint'
-		)
-	);
-	$wp_customize->add_control( 'grit_testimonial_count', array(
-		'type'                      => 'integer',
-		'label'                     => __('Number Of Testimonial To Show - i.e 10 (default is 3)','grit'),
-		'section'                   => 'grit_testimonial_section',
-		)
-	);
-
+	$wp_customize->add_control( 'grit_testimonial_pro', array(
+		'label'                     => __('Testimonial'),
+		'description'               => __('Customize all theme testimonials in PRO','grit'),
+		'section'  					=> 'grit_testimonial_section',
+		'priority' 					=> 2,
+		'type'                      =>'checkbox'
+	) );
 		//Blog SECTION
 		
 	$wp_customize->add_section('grit_latest_news_section', array(

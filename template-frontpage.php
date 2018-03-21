@@ -40,16 +40,8 @@ get_header(); ?>
 	endif;
 ?>
 
-<!-- Portfolio SECTION -->
-	<?php
-	$disable_portfolio    = get_theme_mod( 'grit_work_check' ) == 0 ? true : false ;
-	if ( grit_is_selective_refresh() ) {
-		$disable_portfolio = false;
-	}
-	if ( ! $disable_portfolio) :
-	get_template_part( 'section-parts/section', 'portfolio' );
-	endif;
-?>
+
+
 
 <!-- Process SECTION  -->
 <?php
@@ -73,16 +65,7 @@ get_header(); ?>
 	endif;
 ?>
 
-<!-- Testimonial SECTION -->
-<?php
-	$disable_testimonial    = get_theme_mod( 'grit_testimonial_check' ) == 0 ? true : false ;
-	if ( grit_is_selective_refresh() ) {
-		$disable_testimonial = false;
-	}
-	if ( ! $disable_testimonial) :
-	get_template_part( 'section-parts/section', 'testimonial' ); 
-	endif;
-?>
+
 
 <!-- Blog SECTION -->
 <?php
