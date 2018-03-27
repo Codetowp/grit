@@ -15,7 +15,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft">
-				<p class="copyright">&#169; <?php echo bloginfo('name'); ?> 2018. <?php echo esc_html_e('All rights reserved', 'grit'); ?>.</p>
+				<p class="copyright">&#169; 
+				<?php printf( /* translators: 1: Website. */
+							esc_html__( '%1$s', 'grit' ) , 
+							'<a href="https://dcrazed.com/" target="_blank">Grit Theme</a>.'
+						);
+				?> 
+				<?php echo esc_html_e('All rights reserved', 'grit'); ?>.</p>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12 wow zoomIn">
 				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
