@@ -33,7 +33,7 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 			$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts','grit') : $instance['title'], $instance, $this->id_base);
 			
 			if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
-				$number = 10;
+				$number = 5;
 				$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
 				$r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true, 'category__not_in' => array(23,24,25,26,27) ) ) );
@@ -46,7 +46,7 @@ class Grit_WP_Widget_Recent_Posts extends WP_Widget
 					    <li class="media"> 
 							<a class="pull-left no-pddig"  href="<?php the_permalink() ?>">
 								<?php if  ( get_the_post_thumbnail()=='') { ?>
-					<img src="<?php echo esc_url(get_template_directory_uri()."/img/default.jpg");?> ">		
+					<img src="<?php echo esc_url(get_template_directory_uri()."/assets/img/default.jpg");?> ">		
 					<?php } 
 					else
 					{

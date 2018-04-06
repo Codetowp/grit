@@ -1,13 +1,13 @@
 === Grit ===
 
-Contributors: Rijo Abraham, Dcrazed.
+Contributors: Rijo Abraham, Designscrazed.
 Requires at least: 4.0
-Tested up to: 4.9.4
+Tested up to: 4.9.5
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Grit Theme, Copyright 2018 Dcrazed.
+Grit Theme, Copyright 2018 Designscrazed.
 Grit is distributed under the terms of the GNU GPL
 
 
